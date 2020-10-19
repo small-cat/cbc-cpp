@@ -1,0 +1,50 @@
+\hypertarget{classantlr4_1_1NoViableAltException}{}\section{antlr4\+:\+:No\+Viable\+Alt\+Exception Class Reference}
+\label{classantlr4_1_1NoViableAltException}\index{antlr4\+::\+No\+Viable\+Alt\+Exception@{antlr4\+::\+No\+Viable\+Alt\+Exception}}
+
+
+{\ttfamily \#include $<$No\+Viable\+Alt\+Exception.\+h$>$}
+
+
+
+Inheritance diagram for antlr4\+:\+:No\+Viable\+Alt\+Exception\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{classantlr4_1_1NoViableAltException__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for antlr4\+:\+:No\+Viable\+Alt\+Exception\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{classantlr4_1_1NoViableAltException__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1NoViableAltException_a3a36e4d29560f3ff93b61209a17140de}\label{classantlr4_1_1NoViableAltException_a3a36e4d29560f3ff93b61209a17140de}} 
+{\bfseries No\+Viable\+Alt\+Exception} (\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$recognizer)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1NoViableAltException_ab3807d6565ec1238d02d57604b726956}\label{classantlr4_1_1NoViableAltException_ab3807d6565ec1238d02d57604b726956}} 
+{\bfseries No\+Viable\+Alt\+Exception} (\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$recognizer, Token\+Stream $\ast$input, \hyperlink{classantlr4_1_1Token}{Token} $\ast$start\+Token, \hyperlink{classantlr4_1_1Token}{Token} $\ast$offending\+Token, \hyperlink{classantlr4_1_1atn_1_1ATNConfigSet}{atn\+::\+A\+T\+N\+Config\+Set} $\ast$dead\+End\+Configs, \hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} $\ast$ctx, bool delete\+Configs)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1NoViableAltException_a2aa17bd19a447caefb02a4b7412eb198}\label{classantlr4_1_1NoViableAltException_a2aa17bd19a447caefb02a4b7412eb198}} 
+virtual \hyperlink{classantlr4_1_1Token}{Token} $\ast$ {\bfseries get\+Start\+Token} () const
+\item 
+\mbox{\Hypertarget{classantlr4_1_1NoViableAltException_af4879eed620656f49a4d0365eb27e64b}\label{classantlr4_1_1NoViableAltException_af4879eed620656f49a4d0365eb27e64b}} 
+virtual \hyperlink{classantlr4_1_1atn_1_1ATNConfigSet}{atn\+::\+A\+T\+N\+Config\+Set} $\ast$ {\bfseries get\+Dead\+End\+Configs} () const
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Indicates that the parser could not decide which of two or more paths to take based upon the remaining input. It tracks the starting token of the offending input and also knows where the parser was in the various paths when the error. Reported by report\+No\+Viable\+Alternative() 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Viable\+Alt\+Exception.\+h\item 
+No\+Viable\+Alt\+Exception.\+cpp\end{DoxyCompactItemize}

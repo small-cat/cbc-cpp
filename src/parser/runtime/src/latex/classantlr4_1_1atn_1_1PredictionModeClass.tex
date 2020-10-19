@@ -1,0 +1,126 @@
+\hypertarget{classantlr4_1_1atn_1_1PredictionModeClass}{}\section{antlr4\+:\+:atn\+:\+:Prediction\+Mode\+Class Class Reference}
+\label{classantlr4_1_1atn_1_1PredictionModeClass}\index{antlr4\+::atn\+::\+Prediction\+Mode\+Class@{antlr4\+::atn\+::\+Prediction\+Mode\+Class}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classantlr4_1_1atn_1_1PredictionModeClass_aac21971225a47c6c3ee7bc0148567d6e}{has\+S\+L\+L\+Conflict\+Terminating\+Prediction} (Prediction\+Mode mode, \hyperlink{classantlr4_1_1atn_1_1ATNConfigSet}{A\+T\+N\+Config\+Set} $\ast$configs)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionModeClass_aac21971225a47c6c3ee7bc0148567d6e}\label{classantlr4_1_1atn_1_1PredictionModeClass_aac21971225a47c6c3ee7bc0148567d6e}} 
+\index{antlr4\+::atn\+::\+Prediction\+Mode\+Class@{antlr4\+::atn\+::\+Prediction\+Mode\+Class}!has\+S\+L\+L\+Conflict\+Terminating\+Prediction@{has\+S\+L\+L\+Conflict\+Terminating\+Prediction}}
+\index{has\+S\+L\+L\+Conflict\+Terminating\+Prediction@{has\+S\+L\+L\+Conflict\+Terminating\+Prediction}!antlr4\+::atn\+::\+Prediction\+Mode\+Class@{antlr4\+::atn\+::\+Prediction\+Mode\+Class}}
+\subsubsection{\texorpdfstring{has\+S\+L\+L\+Conflict\+Terminating\+Prediction()}{hasSLLConflictTerminatingPrediction()}}
+{\footnotesize\ttfamily bool Prediction\+Mode\+Class\+::has\+S\+L\+L\+Conflict\+Terminating\+Prediction (\begin{DoxyParamCaption}\item[{Prediction\+Mode}]{mode,  }\item[{\hyperlink{classantlr4_1_1atn_1_1ATNConfigSet}{A\+T\+N\+Config\+Set} $\ast$}]{configs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Computes the S\+LL prediction termination condition.
+
+This method computes the S\+LL prediction termination condition for both of the following cases.
+
+
+\begin{DoxyItemize}
+\item The usual S\+L\+L+\+LL fallback upon S\+LL conflict 
+\item Pure S\+LL without LL fallback 
+\end{DoxyItemize}
+
+{\bfseries C\+O\+M\+B\+I\+N\+ED S\+L\+L+\+LL P\+A\+R\+S\+I\+NG}
+
+When L\+L-\/fallback is enabled upon S\+LL conflict, correct predictions are ensured regardless of how the termination condition is computed by this method. Due to the substantially higher cost of LL prediction, the prediction should only fall back to LL when the additional lookahead cannot lead to a unique S\+LL prediction.
+
+Assuming combined S\+L\+L+\+LL parsing, an S\+LL configuration set with only conflicting subsets should fall back to full LL, even if the configuration sets don\textquotesingle{}t resolve to the same alternative (e.\+g. 
+\begin{DoxyCode}
+\{1,2\} 
+\end{DoxyCode}
+ and
+\begin{DoxyCode}
+\{3,4\} 
+\end{DoxyCode}
+ . If there is at least one non-\/conflicting configuration, S\+LL could continue with the hopes that more lookahead will resolve via one of those non-\/conflicting configurations.
+
+Here\textquotesingle{}s the prediction termination rule them\+: S\+LL (for S\+L\+L+\+LL parsing) stops when it sees only conflicting configuration subsets. In contrast, full LL keeps going when there is uncertainty.
+
+{\bfseries H\+E\+U\+R\+I\+S\+T\+IC}
+
+As a heuristic, we stop prediction when we see any conflicting subset unless we see a state that only has one alternative associated with it. The single-\/alt-\/state thing lets prediction continue upon rules like (otherwise, it would admit defeat too soon)\+:
+
+
+\begin{DoxyCode}
+[12|1|[], 6|2|[], 12|2|[]]. s : (ID | ID ID?) \textcolor{charliteral}{';'} ; 
+\end{DoxyCode}
+ 
+
+When the A\+TN simulation reaches the state before
+\begin{DoxyCode}
+\textcolor{charliteral}{';'} 
+\end{DoxyCode}
+ , it has a D\+FA state that looks like\+:
+\begin{DoxyCode}
+[12|1|[], 6|2|[], 12|2|[]] 
+\end{DoxyCode}
+ . Naturally 
+\begin{DoxyCode}
+12|1|[] 
+\end{DoxyCode}
+ and
+\begin{DoxyCode}
+12|2|[] 
+\end{DoxyCode}
+ conflict, but we cannot stop processing this node because alternative to has another way to continue, via
+\begin{DoxyCode}
+[6|2|[]] 
+\end{DoxyCode}
+ .
+
+It also let\textquotesingle{}s us continue for this rule\+:
+
+
+\begin{DoxyCode}
+[1|1|[], 1|2|[], 8|3|[]] a : A | A | A B ; 
+\end{DoxyCode}
+ 
+
+After matching input A, we reach the stop state for rule A, state 1. State 8 is the state right before B. Clearly alternatives 1 and 2 conflict and no amount of further lookahead will separate the two. However, alternative 3 will be able to continue and so we do not stop working on this state. In the previous example, we\textquotesingle{}re concerned with states associated with the conflicting alternatives. Here alt 3 is not associated with the conflicting configs, but since we can continue looking for input reasonably, don\textquotesingle{}t declare the state done.
+
+{\bfseries P\+U\+RE S\+LL P\+A\+R\+S\+I\+NG}
+
+To handle pure S\+LL parsing, all we have to do is make sure that we combine stack contexts for configurations that differ only by semantic predicate. From there, we can do the usual S\+LL termination heuristic.
+
+{\bfseries P\+R\+E\+D\+I\+C\+A\+T\+ES IN S\+L\+L+\+LL P\+A\+R\+S\+I\+NG}
+
+S\+LL decisions don\textquotesingle{}t evaluate predicates until after they reach D\+FA stop states because they need to create the D\+FA cache that works in all semantic situations. In contrast, full LL evaluates predicates collected during start state computation so it can ignore predicates thereafter. This means that S\+LL termination detection can totally ignore semantic predicates.
+
+Implementation-\/wise, \hyperlink{classantlr4_1_1atn_1_1ATNConfigSet}{A\+T\+N\+Config\+Set} combines stack contexts but not semantic predicate contexts so we might see two configurations like the following.
+
+
+\begin{DoxyCode}
+(s, 1, x, \{\}), (s, 1, x\textcolor{stringliteral}{', \{p\}) }
+\end{DoxyCode}
+ 
+
+Before testing these configurations against others, we have to merge 
+\begin{DoxyCode}
+x 
+\end{DoxyCode}
+ and
+\begin{DoxyCode}
+x\textcolor{stringliteral}{' }
+\end{DoxyCode}
+ (without modifying the existing configurations). For example, we test
+\begin{DoxyCode}
+(x+x\textcolor{stringliteral}{')==x'}\textcolor{stringliteral}{' }
+\end{DoxyCode}
+ when looking for conflicts in the following configurations.
+
+
+\begin{DoxyCode}
+(s, 1, x, \{\}), (s, 1, x\textcolor{stringliteral}{', \{p\}), (s, 2, x'}\textcolor{stringliteral}{', \{\}) }
+\end{DoxyCode}
+ 
+
+If the configuration set has predicates (as indicated by \hyperlink{}{A\+T\+N\+Config\+Set\#has\+Semantic\+Context}), this algorithm makes a copy of the configurations to strip out all of the predicates so that a standard \hyperlink{classantlr4_1_1atn_1_1ATNConfigSet}{A\+T\+N\+Config\+Set} will merge everything ignoring predicates.
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+atn/Prediction\+Mode.\+h\item 
+atn/Prediction\+Mode.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,450 @@
+\hypertarget{classantlr4_1_1atn_1_1DecisionInfo}{}\section{antlr4\+:\+:atn\+:\+:Decision\+Info Class Reference}
+\label{classantlr4_1_1atn_1_1DecisionInfo}\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+
+
+This class contains profiling gathered for a particular decision.  
+
+
+
+
+{\ttfamily \#include $<$Decision\+Info.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a99833736f88c09563a01b57284742b88}{Decision\+Info} (size\+\_\+t \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_ad81f14a210fb5e80f86ac800d56cc7bb}{decision})
+\begin{DoxyCompactList}\small\item\em Constructs a new instance of the \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo}{Decision\+Info}
+
+
+\end{DoxySeeAlso}
+class to contain statistics for a particular decision. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a20a4ba0dfbd5e17526e7e6e6e888616d}\label{classantlr4_1_1atn_1_1DecisionInfo_a20a4ba0dfbd5e17526e7e6e6e888616d}} 
+std\+::string {\bfseries to\+String} () const
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const size\+\_\+t \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_ad81f14a210fb5e80f86ac800d56cc7bb}{decision}
+\begin{DoxyCompactList}\small\item\em The decision number, which is an index into \begin{DoxySeeAlso}{See also}
+A\+T\+N\+::decision\+To\+State
+
+
+\end{DoxySeeAlso}
+. \end{DoxyCompactList}\item 
+long long \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a51da41280fc7b9d27679b2c34bf8c76b}{invocations} = 0
+\begin{DoxyCompactList}\small\item\em The total number of times \begin{DoxySeeAlso}{See also}
+Parser\+A\+T\+N\+Simulator\+::adaptive\+Predict
+
+
+\end{DoxySeeAlso}
+was invoked for this decision. \end{DoxyCompactList}\item 
+long long \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_ae758fc847ab20067a1136393a0ae49c3}{time\+In\+Prediction} = 0
+\begin{DoxyCompactList}\small\item\em The total time spent in \begin{DoxySeeAlso}{See also}
+Parser\+A\+T\+N\+Simulator\+::adaptive\+Predict
+
+
+\end{DoxySeeAlso}
+for this decision, in nanoseconds. \end{DoxyCompactList}\item 
+long long \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a63d0122173acb50fa288e876220cdb90}{S\+L\+L\+\_\+\+Total\+Look} = 0
+\begin{DoxyCompactList}\small\item\em The sum of the lookahead required for S\+LL prediction for this decision. Note that S\+LL prediction is used before LL prediction for performance reasons even when \begin{DoxySeeAlso}{See also}
+Prediction\+Mode\+::\+LL, Prediction\+Mode\+::\+L\+L\+\_\+\+E\+X\+A\+C\+T\+\_\+\+A\+M\+B\+I\+G\+\_\+\+D\+E\+T\+E\+C\+T\+I\+ON
+
+
+\end{DoxySeeAlso}
+or  is used. \end{DoxyCompactList}\item 
+long long \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a8ab55352ff7f6a4598f96291377780e8}{S\+L\+L\+\_\+\+Min\+Look} = 0
+\begin{DoxyCompactList}\small\item\em Gets the minimum lookahead required for any single S\+LL prediction to complete for this decision, by reaching a unique prediction, reaching an S\+LL conflict state, or encountering a syntax error. \end{DoxyCompactList}\item 
+long long \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a79f953eada792e1239b292a4a2163138}{S\+L\+L\+\_\+\+Max\+Look} = 0
+\begin{DoxyCompactList}\small\item\em Gets the maximum lookahead required for any single S\+LL prediction to complete for this decision, by reaching a unique prediction, reaching an S\+LL conflict state, or encountering a syntax error. \end{DoxyCompactList}\item 
+Ref$<$ Lookahead\+Event\+Info $>$ \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a85c7fd7170cfc98eef6434ff7221ac9d}{S\+L\+L\+\_\+\+Max\+Look\+Event}
+\item 
+long long \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a74ee8e588415c652036556738bdd2a04}{L\+L\+\_\+\+Total\+Look} = 0
+\begin{DoxyCompactList}\small\item\em The sum of the lookahead required for LL prediction for this decision. Note that LL prediction is only used when S\+LL prediction reaches a conflict state. \end{DoxyCompactList}\item 
+long long \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a98a55749390e7acf3db64bef3fed7e90}{L\+L\+\_\+\+Min\+Look} = 0
+\begin{DoxyCompactList}\small\item\em Gets the minimum lookahead required for any single LL prediction to complete for this decision. An LL prediction completes when the algorithm reaches a unique prediction, a conflict state (for \begin{DoxySeeAlso}{See also}
+Prediction\+Mode\+::\+LL, Prediction\+Mode\+::\+L\+L\+\_\+\+E\+X\+A\+C\+T\+\_\+\+A\+M\+B\+I\+G\+\_\+\+D\+E\+T\+E\+C\+T\+I\+ON
+
+
+\end{DoxySeeAlso}
+, an ambiguity state (for , or a syntax error. \end{DoxyCompactList}\item 
+long long \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a38f6ee6c6bbed06adae2df60f11dd705}{L\+L\+\_\+\+Max\+Look} = 0
+\begin{DoxyCompactList}\small\item\em Gets the maximum lookahead required for any single LL prediction to complete for this decision. An LL prediction completes when the algorithm reaches a unique prediction, a conflict state (for \begin{DoxySeeAlso}{See also}
+Prediction\+Mode\+::\+LL, Prediction\+Mode\+::\+L\+L\+\_\+\+E\+X\+A\+C\+T\+\_\+\+A\+M\+B\+I\+G\+\_\+\+D\+E\+T\+E\+C\+T\+I\+ON
+
+
+\end{DoxySeeAlso}
+, an ambiguity state (for , or a syntax error. \end{DoxyCompactList}\item 
+Ref$<$ Lookahead\+Event\+Info $>$ \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a1ddd46ba432cca67892ebbf1263cef6d}{L\+L\+\_\+\+Max\+Look\+Event}
+\begin{DoxyCompactList}\small\item\em Gets the \begin{DoxySeeAlso}{See also}
+Lookahead\+Event\+Info, \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a38f6ee6c6bbed06adae2df60f11dd705}{L\+L\+\_\+\+Max\+Look}
+
+
+\end{DoxySeeAlso}
+associated with the event where the  value was set. \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{classantlr4_1_1atn_1_1ContextSensitivityInfo}{Context\+Sensitivity\+Info} $>$ \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a607bcd881761a0c502f3511d840c1c16}{context\+Sensitivities}
+\begin{DoxyCompactList}\small\item\em A collection of \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1ContextSensitivityInfo}{Context\+Sensitivity\+Info}
+
+
+\end{DoxySeeAlso}
+instances describing the context sensitivities encountered during LL prediction for this decision. \end{DoxyCompactList}\item 
+std\+::vector$<$ Error\+Info $>$ \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a38e19d544a49e811de5e3aaa762bc1c2}{errors}
+\begin{DoxyCompactList}\small\item\em A collection of \begin{DoxySeeAlso}{See also}
+Error\+Info, Parser\+A\+T\+N\+Simulator\+::adaptive\+Predict
+
+
+\end{DoxySeeAlso}
+instances describing the parse errors identified during calls to  for this decision. \end{DoxyCompactList}\item 
+std\+::vector$<$ Ambiguity\+Info $>$ \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a63842cdb1628b1e6ff45ae2c8d4a68d8}{ambiguities}
+\begin{DoxyCompactList}\small\item\em A collection of \begin{DoxySeeAlso}{See also}
+Ambiguity\+Info
+
+
+\end{DoxySeeAlso}
+instances describing the ambiguities encountered during LL prediction for this decision. \end{DoxyCompactList}\item 
+std\+::vector$<$ Predicate\+Eval\+Info $>$ \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_aeedf6b569f2d3cd3902d0218a50526a1}{predicate\+Evals}
+\begin{DoxyCompactList}\small\item\em A collection of \begin{DoxySeeAlso}{See also}
+Predicate\+Eval\+Info
+
+
+\end{DoxySeeAlso}
+instances describing the results of evaluating individual predicates during prediction for this decision. \end{DoxyCompactList}\item 
+long long \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_af3e230f5955ff56df52e821b8b8fefd8}{S\+L\+L\+\_\+\+A\+T\+N\+Transitions} = 0
+\begin{DoxyCompactList}\small\item\em The total number of A\+TN transitions required during S\+LL prediction for this decision. An A\+TN transition is determined by the number of times the D\+FA does not contain an edge that is required for prediction, resulting in on-\/the-\/fly computation of that edge. \end{DoxyCompactList}\item 
+long long \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a95666f6bd1c67636006fc026c7315e5b}{S\+L\+L\+\_\+\+D\+F\+A\+Transitions} = 0
+\begin{DoxyCompactList}\small\item\em The total number of D\+FA transitions required during S\+LL prediction for this decision. \end{DoxyCompactList}\item 
+long long \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a311fb2f2a4f7c6108106b8700f03cb18}{L\+L\+\_\+\+Fallback} = 0
+\begin{DoxyCompactList}\small\item\em Gets the total number of times S\+LL prediction completed in a conflict state, resulting in fallback to LL prediction. \end{DoxyCompactList}\item 
+long long \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a4e600839653af69293014d3aa7d4e6fd}{L\+L\+\_\+\+A\+T\+N\+Transitions} = 0
+\begin{DoxyCompactList}\small\item\em The total number of A\+TN transitions required during LL prediction for this decision. An A\+TN transition is determined by the number of times the D\+FA does not contain an edge that is required for prediction, resulting in on-\/the-\/fly computation of that edge. \end{DoxyCompactList}\item 
+long long \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a9d709cc94f1b7886e1c3be5cf46ac2c4}{L\+L\+\_\+\+D\+F\+A\+Transitions} = 0
+\begin{DoxyCompactList}\small\item\em The total number of D\+FA transitions required during LL prediction for this decision. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class contains profiling gathered for a particular decision. 
+
+Parsing performance in A\+N\+T\+LR 4 is heavily influenced by both static factors (e.\+g. the form of the rules in the grammar) and dynamic factors (e.\+g. the choice of input and the state of the D\+FA cache at the time profiling operations are started). For best results, gather and use aggregate statistics from a large sample of inputs representing the inputs expected in production before using the results to make changes in the grammar.
+
+\begin{DoxySince}{Since}
+4.\+3 
+\end{DoxySince}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a99833736f88c09563a01b57284742b88}\label{classantlr4_1_1atn_1_1DecisionInfo_a99833736f88c09563a01b57284742b88}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!Decision\+Info@{Decision\+Info}}
+\index{Decision\+Info@{Decision\+Info}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{Decision\+Info()}{DecisionInfo()}}
+{\footnotesize\ttfamily Decision\+Info\+::\+Decision\+Info (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{decision }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance of the \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo}{Decision\+Info}
+
+
+\end{DoxySeeAlso}
+class to contain statistics for a particular decision. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em decision} & The decision number \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a63842cdb1628b1e6ff45ae2c8d4a68d8}\label{classantlr4_1_1atn_1_1DecisionInfo_a63842cdb1628b1e6ff45ae2c8d4a68d8}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!ambiguities@{ambiguities}}
+\index{ambiguities@{ambiguities}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{ambiguities}{ambiguities}}
+{\footnotesize\ttfamily std\+::vector$<$Ambiguity\+Info$>$ antlr4\+::atn\+::\+Decision\+Info\+::ambiguities}
+
+
+
+A collection of \begin{DoxySeeAlso}{See also}
+Ambiguity\+Info
+
+
+\end{DoxySeeAlso}
+instances describing the ambiguities encountered during LL prediction for this decision. 
+
+$<$seealso cref= Ambiguity\+Info \mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a607bcd881761a0c502f3511d840c1c16}\label{classantlr4_1_1atn_1_1DecisionInfo_a607bcd881761a0c502f3511d840c1c16}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!context\+Sensitivities@{context\+Sensitivities}}
+\index{context\+Sensitivities@{context\+Sensitivities}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{context\+Sensitivities}{contextSensitivities}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{classantlr4_1_1atn_1_1ContextSensitivityInfo}{Context\+Sensitivity\+Info}$>$ antlr4\+::atn\+::\+Decision\+Info\+::context\+Sensitivities}
+
+
+
+A collection of \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1ContextSensitivityInfo}{Context\+Sensitivity\+Info}
+
+
+\end{DoxySeeAlso}
+instances describing the context sensitivities encountered during LL prediction for this decision. 
+
+$<$seealso cref= \hyperlink{classantlr4_1_1atn_1_1ContextSensitivityInfo}{Context\+Sensitivity\+Info} \mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_ad81f14a210fb5e80f86ac800d56cc7bb}\label{classantlr4_1_1atn_1_1DecisionInfo_ad81f14a210fb5e80f86ac800d56cc7bb}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!decision@{decision}}
+\index{decision@{decision}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{decision}{decision}}
+{\footnotesize\ttfamily const size\+\_\+t antlr4\+::atn\+::\+Decision\+Info\+::decision}
+
+
+
+The decision number, which is an index into \begin{DoxySeeAlso}{See also}
+A\+T\+N\+::decision\+To\+State
+
+
+\end{DoxySeeAlso}
+. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a38e19d544a49e811de5e3aaa762bc1c2}\label{classantlr4_1_1atn_1_1DecisionInfo_a38e19d544a49e811de5e3aaa762bc1c2}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!errors@{errors}}
+\index{errors@{errors}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{errors}{errors}}
+{\footnotesize\ttfamily std\+::vector$<$Error\+Info$>$ antlr4\+::atn\+::\+Decision\+Info\+::errors}
+
+
+
+A collection of \begin{DoxySeeAlso}{See also}
+Error\+Info, Parser\+A\+T\+N\+Simulator\+::adaptive\+Predict
+
+
+\end{DoxySeeAlso}
+instances describing the parse errors identified during calls to  for this decision. 
+
+$<$seealso cref= Error\+Info \mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a51da41280fc7b9d27679b2c34bf8c76b}\label{classantlr4_1_1atn_1_1DecisionInfo_a51da41280fc7b9d27679b2c34bf8c76b}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!invocations@{invocations}}
+\index{invocations@{invocations}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{invocations}{invocations}}
+{\footnotesize\ttfamily long long antlr4\+::atn\+::\+Decision\+Info\+::invocations = 0}
+
+
+
+The total number of times \begin{DoxySeeAlso}{See also}
+Parser\+A\+T\+N\+Simulator\+::adaptive\+Predict
+
+
+\end{DoxySeeAlso}
+was invoked for this decision. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a4e600839653af69293014d3aa7d4e6fd}\label{classantlr4_1_1atn_1_1DecisionInfo_a4e600839653af69293014d3aa7d4e6fd}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!L\+L\+\_\+\+A\+T\+N\+Transitions@{L\+L\+\_\+\+A\+T\+N\+Transitions}}
+\index{L\+L\+\_\+\+A\+T\+N\+Transitions@{L\+L\+\_\+\+A\+T\+N\+Transitions}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{L\+L\+\_\+\+A\+T\+N\+Transitions}{LL\_ATNTransitions}}
+{\footnotesize\ttfamily long long antlr4\+::atn\+::\+Decision\+Info\+::\+L\+L\+\_\+\+A\+T\+N\+Transitions = 0}
+
+
+
+The total number of A\+TN transitions required during LL prediction for this decision. An A\+TN transition is determined by the number of times the D\+FA does not contain an edge that is required for prediction, resulting in on-\/the-\/fly computation of that edge. 
+
+If D\+FA caching of LL transitions is employed by the implementation, A\+TN computation may cache the computed edge for efficient lookup during future parsing of this decision. Otherwise, the LL parsing algorithm will use A\+TN transitions exclusively.
+
+$<$seealso cref= \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a9d709cc94f1b7886e1c3be5cf46ac2c4}{L\+L\+\_\+\+D\+F\+A\+Transitions} 
+
+$<$seealso cref= Parser\+A\+T\+N\+Simulator\+::compute\+Target\+State 
+
+$<$seealso cref= Lexer\+A\+T\+N\+Simulator\+::compute\+Target\+State \mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a9d709cc94f1b7886e1c3be5cf46ac2c4}\label{classantlr4_1_1atn_1_1DecisionInfo_a9d709cc94f1b7886e1c3be5cf46ac2c4}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!L\+L\+\_\+\+D\+F\+A\+Transitions@{L\+L\+\_\+\+D\+F\+A\+Transitions}}
+\index{L\+L\+\_\+\+D\+F\+A\+Transitions@{L\+L\+\_\+\+D\+F\+A\+Transitions}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{L\+L\+\_\+\+D\+F\+A\+Transitions}{LL\_DFATransitions}}
+{\footnotesize\ttfamily long long antlr4\+::atn\+::\+Decision\+Info\+::\+L\+L\+\_\+\+D\+F\+A\+Transitions = 0}
+
+
+
+The total number of D\+FA transitions required during LL prediction for this decision. 
+
+If the A\+TN simulator implementation does not use D\+FA caching for LL transitions, this value will be 0.
+
+$<$seealso cref= Parser\+A\+T\+N\+Simulator\+::get\+Existing\+Target\+State 
+
+$<$seealso cref= Lexer\+A\+T\+N\+Simulator\+::get\+Existing\+Target\+State \mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a311fb2f2a4f7c6108106b8700f03cb18}\label{classantlr4_1_1atn_1_1DecisionInfo_a311fb2f2a4f7c6108106b8700f03cb18}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!L\+L\+\_\+\+Fallback@{L\+L\+\_\+\+Fallback}}
+\index{L\+L\+\_\+\+Fallback@{L\+L\+\_\+\+Fallback}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{L\+L\+\_\+\+Fallback}{LL\_Fallback}}
+{\footnotesize\ttfamily long long antlr4\+::atn\+::\+Decision\+Info\+::\+L\+L\+\_\+\+Fallback = 0}
+
+
+
+Gets the total number of times S\+LL prediction completed in a conflict state, resulting in fallback to LL prediction. 
+
+Note that this value is not related to whether or not \begin{DoxySeeAlso}{See also}
+Prediction\+Mode\+::\+S\+LL, Prediction\+Mode\+::\+S\+LL, Prediction\+Mode\+::\+LL
+
+
+\end{DoxySeeAlso}
+may be used successfully with a particular grammar. If the ambiguity resolution algorithm applied to the S\+LL conflicts for this decision produce the same result as LL prediction for this decision,  would produce the same overall parsing result as .\mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a38f6ee6c6bbed06adae2df60f11dd705}\label{classantlr4_1_1atn_1_1DecisionInfo_a38f6ee6c6bbed06adae2df60f11dd705}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!L\+L\+\_\+\+Max\+Look@{L\+L\+\_\+\+Max\+Look}}
+\index{L\+L\+\_\+\+Max\+Look@{L\+L\+\_\+\+Max\+Look}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{L\+L\+\_\+\+Max\+Look}{LL\_MaxLook}}
+{\footnotesize\ttfamily long long antlr4\+::atn\+::\+Decision\+Info\+::\+L\+L\+\_\+\+Max\+Look = 0}
+
+
+
+Gets the maximum lookahead required for any single LL prediction to complete for this decision. An LL prediction completes when the algorithm reaches a unique prediction, a conflict state (for \begin{DoxySeeAlso}{See also}
+Prediction\+Mode\+::\+LL, Prediction\+Mode\+::\+L\+L\+\_\+\+E\+X\+A\+C\+T\+\_\+\+A\+M\+B\+I\+G\+\_\+\+D\+E\+T\+E\+C\+T\+I\+ON
+
+
+\end{DoxySeeAlso}
+, an ambiguity state (for , or a syntax error. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a1ddd46ba432cca67892ebbf1263cef6d}\label{classantlr4_1_1atn_1_1DecisionInfo_a1ddd46ba432cca67892ebbf1263cef6d}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!L\+L\+\_\+\+Max\+Look\+Event@{L\+L\+\_\+\+Max\+Look\+Event}}
+\index{L\+L\+\_\+\+Max\+Look\+Event@{L\+L\+\_\+\+Max\+Look\+Event}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{L\+L\+\_\+\+Max\+Look\+Event}{LL\_MaxLookEvent}}
+{\footnotesize\ttfamily Ref$<$Lookahead\+Event\+Info$>$ antlr4\+::atn\+::\+Decision\+Info\+::\+L\+L\+\_\+\+Max\+Look\+Event}
+
+
+
+Gets the \begin{DoxySeeAlso}{See also}
+Lookahead\+Event\+Info, \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a38f6ee6c6bbed06adae2df60f11dd705}{L\+L\+\_\+\+Max\+Look}
+
+
+\end{DoxySeeAlso}
+associated with the event where the  value was set. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a98a55749390e7acf3db64bef3fed7e90}\label{classantlr4_1_1atn_1_1DecisionInfo_a98a55749390e7acf3db64bef3fed7e90}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!L\+L\+\_\+\+Min\+Look@{L\+L\+\_\+\+Min\+Look}}
+\index{L\+L\+\_\+\+Min\+Look@{L\+L\+\_\+\+Min\+Look}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{L\+L\+\_\+\+Min\+Look}{LL\_MinLook}}
+{\footnotesize\ttfamily long long antlr4\+::atn\+::\+Decision\+Info\+::\+L\+L\+\_\+\+Min\+Look = 0}
+
+
+
+Gets the minimum lookahead required for any single LL prediction to complete for this decision. An LL prediction completes when the algorithm reaches a unique prediction, a conflict state (for \begin{DoxySeeAlso}{See also}
+Prediction\+Mode\+::\+LL, Prediction\+Mode\+::\+L\+L\+\_\+\+E\+X\+A\+C\+T\+\_\+\+A\+M\+B\+I\+G\+\_\+\+D\+E\+T\+E\+C\+T\+I\+ON
+
+
+\end{DoxySeeAlso}
+, an ambiguity state (for , or a syntax error. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a74ee8e588415c652036556738bdd2a04}\label{classantlr4_1_1atn_1_1DecisionInfo_a74ee8e588415c652036556738bdd2a04}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!L\+L\+\_\+\+Total\+Look@{L\+L\+\_\+\+Total\+Look}}
+\index{L\+L\+\_\+\+Total\+Look@{L\+L\+\_\+\+Total\+Look}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{L\+L\+\_\+\+Total\+Look}{LL\_TotalLook}}
+{\footnotesize\ttfamily long long antlr4\+::atn\+::\+Decision\+Info\+::\+L\+L\+\_\+\+Total\+Look = 0}
+
+
+
+The sum of the lookahead required for LL prediction for this decision. Note that LL prediction is only used when S\+LL prediction reaches a conflict state. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_aeedf6b569f2d3cd3902d0218a50526a1}\label{classantlr4_1_1atn_1_1DecisionInfo_aeedf6b569f2d3cd3902d0218a50526a1}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!predicate\+Evals@{predicate\+Evals}}
+\index{predicate\+Evals@{predicate\+Evals}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{predicate\+Evals}{predicateEvals}}
+{\footnotesize\ttfamily std\+::vector$<$Predicate\+Eval\+Info$>$ antlr4\+::atn\+::\+Decision\+Info\+::predicate\+Evals}
+
+
+
+A collection of \begin{DoxySeeAlso}{See also}
+Predicate\+Eval\+Info
+
+
+\end{DoxySeeAlso}
+instances describing the results of evaluating individual predicates during prediction for this decision. 
+
+$<$seealso cref= Predicate\+Eval\+Info \mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_af3e230f5955ff56df52e821b8b8fefd8}\label{classantlr4_1_1atn_1_1DecisionInfo_af3e230f5955ff56df52e821b8b8fefd8}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!S\+L\+L\+\_\+\+A\+T\+N\+Transitions@{S\+L\+L\+\_\+\+A\+T\+N\+Transitions}}
+\index{S\+L\+L\+\_\+\+A\+T\+N\+Transitions@{S\+L\+L\+\_\+\+A\+T\+N\+Transitions}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{S\+L\+L\+\_\+\+A\+T\+N\+Transitions}{SLL\_ATNTransitions}}
+{\footnotesize\ttfamily long long antlr4\+::atn\+::\+Decision\+Info\+::\+S\+L\+L\+\_\+\+A\+T\+N\+Transitions = 0}
+
+
+
+The total number of A\+TN transitions required during S\+LL prediction for this decision. An A\+TN transition is determined by the number of times the D\+FA does not contain an edge that is required for prediction, resulting in on-\/the-\/fly computation of that edge. 
+
+If D\+FA caching of S\+LL transitions is employed by the implementation, A\+TN computation may cache the computed edge for efficient lookup during future parsing of this decision. Otherwise, the S\+LL parsing algorithm will use A\+TN transitions exclusively.
+
+$<$seealso cref= \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_af3e230f5955ff56df52e821b8b8fefd8}{S\+L\+L\+\_\+\+A\+T\+N\+Transitions} 
+
+$<$seealso cref= Parser\+A\+T\+N\+Simulator\+::compute\+Target\+State 
+
+$<$seealso cref= Lexer\+A\+T\+N\+Simulator\+::compute\+Target\+State \mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a95666f6bd1c67636006fc026c7315e5b}\label{classantlr4_1_1atn_1_1DecisionInfo_a95666f6bd1c67636006fc026c7315e5b}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!S\+L\+L\+\_\+\+D\+F\+A\+Transitions@{S\+L\+L\+\_\+\+D\+F\+A\+Transitions}}
+\index{S\+L\+L\+\_\+\+D\+F\+A\+Transitions@{S\+L\+L\+\_\+\+D\+F\+A\+Transitions}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{S\+L\+L\+\_\+\+D\+F\+A\+Transitions}{SLL\_DFATransitions}}
+{\footnotesize\ttfamily long long antlr4\+::atn\+::\+Decision\+Info\+::\+S\+L\+L\+\_\+\+D\+F\+A\+Transitions = 0}
+
+
+
+The total number of D\+FA transitions required during S\+LL prediction for this decision. 
+
+If the A\+TN simulator implementation does not use D\+FA caching for S\+LL transitions, this value will be 0.
+
+$<$seealso cref= Parser\+A\+T\+N\+Simulator\+::get\+Existing\+Target\+State 
+
+$<$seealso cref= Lexer\+A\+T\+N\+Simulator\+::get\+Existing\+Target\+State \mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a79f953eada792e1239b292a4a2163138}\label{classantlr4_1_1atn_1_1DecisionInfo_a79f953eada792e1239b292a4a2163138}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!S\+L\+L\+\_\+\+Max\+Look@{S\+L\+L\+\_\+\+Max\+Look}}
+\index{S\+L\+L\+\_\+\+Max\+Look@{S\+L\+L\+\_\+\+Max\+Look}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{S\+L\+L\+\_\+\+Max\+Look}{SLL\_MaxLook}}
+{\footnotesize\ttfamily long long antlr4\+::atn\+::\+Decision\+Info\+::\+S\+L\+L\+\_\+\+Max\+Look = 0}
+
+
+
+Gets the maximum lookahead required for any single S\+LL prediction to complete for this decision, by reaching a unique prediction, reaching an S\+LL conflict state, or encountering a syntax error. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a85c7fd7170cfc98eef6434ff7221ac9d}\label{classantlr4_1_1atn_1_1DecisionInfo_a85c7fd7170cfc98eef6434ff7221ac9d}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!S\+L\+L\+\_\+\+Max\+Look\+Event@{S\+L\+L\+\_\+\+Max\+Look\+Event}}
+\index{S\+L\+L\+\_\+\+Max\+Look\+Event@{S\+L\+L\+\_\+\+Max\+Look\+Event}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{S\+L\+L\+\_\+\+Max\+Look\+Event}{SLL\_MaxLookEvent}}
+{\footnotesize\ttfamily Ref$<$Lookahead\+Event\+Info$>$ antlr4\+::atn\+::\+Decision\+Info\+::\+S\+L\+L\+\_\+\+Max\+Look\+Event}
+
+Gets the \begin{DoxySeeAlso}{See also}
+Lookahead\+Event\+Info, \hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a79f953eada792e1239b292a4a2163138}{S\+L\+L\+\_\+\+Max\+Look}
+
+
+\end{DoxySeeAlso}
+associated with the event where the  value was set. \mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a8ab55352ff7f6a4598f96291377780e8}\label{classantlr4_1_1atn_1_1DecisionInfo_a8ab55352ff7f6a4598f96291377780e8}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!S\+L\+L\+\_\+\+Min\+Look@{S\+L\+L\+\_\+\+Min\+Look}}
+\index{S\+L\+L\+\_\+\+Min\+Look@{S\+L\+L\+\_\+\+Min\+Look}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{S\+L\+L\+\_\+\+Min\+Look}{SLL\_MinLook}}
+{\footnotesize\ttfamily long long antlr4\+::atn\+::\+Decision\+Info\+::\+S\+L\+L\+\_\+\+Min\+Look = 0}
+
+
+
+Gets the minimum lookahead required for any single S\+LL prediction to complete for this decision, by reaching a unique prediction, reaching an S\+LL conflict state, or encountering a syntax error. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_a63d0122173acb50fa288e876220cdb90}\label{classantlr4_1_1atn_1_1DecisionInfo_a63d0122173acb50fa288e876220cdb90}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!S\+L\+L\+\_\+\+Total\+Look@{S\+L\+L\+\_\+\+Total\+Look}}
+\index{S\+L\+L\+\_\+\+Total\+Look@{S\+L\+L\+\_\+\+Total\+Look}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{S\+L\+L\+\_\+\+Total\+Look}{SLL\_TotalLook}}
+{\footnotesize\ttfamily long long antlr4\+::atn\+::\+Decision\+Info\+::\+S\+L\+L\+\_\+\+Total\+Look = 0}
+
+
+
+The sum of the lookahead required for S\+LL prediction for this decision. Note that S\+LL prediction is used before LL prediction for performance reasons even when \begin{DoxySeeAlso}{See also}
+Prediction\+Mode\+::\+LL, Prediction\+Mode\+::\+L\+L\+\_\+\+E\+X\+A\+C\+T\+\_\+\+A\+M\+B\+I\+G\+\_\+\+D\+E\+T\+E\+C\+T\+I\+ON
+
+
+\end{DoxySeeAlso}
+or  is used. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1DecisionInfo_ae758fc847ab20067a1136393a0ae49c3}\label{classantlr4_1_1atn_1_1DecisionInfo_ae758fc847ab20067a1136393a0ae49c3}} 
+\index{antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}!time\+In\+Prediction@{time\+In\+Prediction}}
+\index{time\+In\+Prediction@{time\+In\+Prediction}!antlr4\+::atn\+::\+Decision\+Info@{antlr4\+::atn\+::\+Decision\+Info}}
+\subsubsection{\texorpdfstring{time\+In\+Prediction}{timeInPrediction}}
+{\footnotesize\ttfamily long long antlr4\+::atn\+::\+Decision\+Info\+::time\+In\+Prediction = 0}
+
+
+
+The total time spent in \begin{DoxySeeAlso}{See also}
+Parser\+A\+T\+N\+Simulator\+::adaptive\+Predict
+
+
+\end{DoxySeeAlso}
+for this decision, in nanoseconds. 
+
+The value of this field contains the sum of differential results obtained by \begin{DoxySeeAlso}{See also}
+System\+::nano\+Time(), System\+::nano\+Time(), \hyperlink{classantlr4_1_1atn_1_1ATNSimulator_a3358fa3e8ebcb4abeeceb914b0b07f10}{A\+T\+N\+Simulator\+::clear\+D\+FA}
+
+
+\end{DoxySeeAlso}
+, and is not adjusted to compensate for J\+IT and/or garbage collection overhead. For best accuracy, use a modern J\+VM implementation that provides precise results from , and perform profiling in a separate process which is warmed up by parsing the input prior to profiling. If desired, call  to reset the D\+FA cache to its initial state before starting the profiling measurement pass.
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+atn/Decision\+Info.\+h\item 
+atn/Decision\+Info.\+cpp\end{DoxyCompactItemize}

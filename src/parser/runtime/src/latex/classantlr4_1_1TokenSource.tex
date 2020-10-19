@@ -1,0 +1,117 @@
+\hypertarget{classantlr4_1_1TokenSource}{}\section{antlr4\+:\+:Token\+Source Class Reference}
+\label{classantlr4_1_1TokenSource}\index{antlr4\+::\+Token\+Source@{antlr4\+::\+Token\+Source}}
+
+
+A source of tokens must provide a sequence of tokens via \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1TokenSource_a41e3a36074ba6dcd3e0dab9250d4b179}{next\+Token()}, \hyperlink{classantlr4_1_1CommonToken}{Common\+Token}, Char\+Stream
+
+
+\end{DoxySeeAlso}
+and also must reveal it\textquotesingle{}s source of characters; \textquotesingle{}s text is computed from a ; it only store indices into the char stream. 
+
+Errors from the lexer are never passed to the parser. Either you want to keep going or you do not upon token recognition error. If you do not want to continue lexing then you do not want to continue parsing. Just throw an exception not under \begin{DoxySeeAlso}{See also}
+Recognition\+Exception
+
+
+\end{DoxySeeAlso}
+and Java will naturally toss you all the way out of the recognizers. If you want to continue lexing then you should not throw an exception to the parser--it has already requested a token. Keep lexing until you get a valid one. Just report errors and keep going, looking for a valid token.  
+
+
+
+
+{\ttfamily \#include $<$Token\+Source.\+h$>$}
+
+
+
+Inheritance diagram for antlr4\+:\+:Token\+Source\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{classantlr4_1_1TokenSource__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::unique\+\_\+ptr$<$ \hyperlink{classantlr4_1_1Token}{Token} $>$ \hyperlink{classantlr4_1_1TokenSource_a41e3a36074ba6dcd3e0dab9250d4b179}{next\+Token} ()=0
+\item 
+virtual size\+\_\+t \hyperlink{classantlr4_1_1TokenSource_a3b5d8cfd192fd9b9e4518010e600c714}{get\+Line} () const =0
+\begin{DoxyCompactList}\small\item\em Get the line number for the current position in the input stream. The first line in the input is line 1. \end{DoxyCompactList}\item 
+virtual size\+\_\+t \hyperlink{classantlr4_1_1TokenSource_a69822a3dcbce1bd4ca407626a2420e4d}{get\+Char\+Position\+In\+Line} ()=0
+\begin{DoxyCompactList}\small\item\em Get the index into the current line for the current position in the input stream. The first character on a line has position 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A source of tokens must provide a sequence of tokens via \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1TokenSource_a41e3a36074ba6dcd3e0dab9250d4b179}{next\+Token()}, \hyperlink{classantlr4_1_1CommonToken}{Common\+Token}, Char\+Stream
+
+
+\end{DoxySeeAlso}
+and also must reveal it\textquotesingle{}s source of characters; \textquotesingle{}s text is computed from a ; it only store indices into the char stream. 
+
+Errors from the lexer are never passed to the parser. Either you want to keep going or you do not upon token recognition error. If you do not want to continue lexing then you do not want to continue parsing. Just throw an exception not under \begin{DoxySeeAlso}{See also}
+Recognition\+Exception
+
+
+\end{DoxySeeAlso}
+and Java will naturally toss you all the way out of the recognizers. If you want to continue lexing then you should not throw an exception to the parser--it has already requested a token. Keep lexing until you get a valid one. Just report errors and keep going, looking for a valid token. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1TokenSource_a69822a3dcbce1bd4ca407626a2420e4d}\label{classantlr4_1_1TokenSource_a69822a3dcbce1bd4ca407626a2420e4d}} 
+\index{antlr4\+::\+Token\+Source@{antlr4\+::\+Token\+Source}!get\+Char\+Position\+In\+Line@{get\+Char\+Position\+In\+Line}}
+\index{get\+Char\+Position\+In\+Line@{get\+Char\+Position\+In\+Line}!antlr4\+::\+Token\+Source@{antlr4\+::\+Token\+Source}}
+\subsubsection{\texorpdfstring{get\+Char\+Position\+In\+Line()}{getCharPositionInLine()}}
+{\footnotesize\ttfamily virtual size\+\_\+t antlr4\+::\+Token\+Source\+::get\+Char\+Position\+In\+Line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the index into the current line for the current position in the input stream. The first character on a line has position 0. 
+
+\begin{DoxyReturn}{Returns}
+The line number for the current position in the input stream, or (sze\+\_\+t)-\/1 if the current token source does not track character positions. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classantlr4_1_1Lexer_a6f2437c9681598c4d9475cb8a91bb2c0}{antlr4\+::\+Lexer}.
+
+\mbox{\Hypertarget{classantlr4_1_1TokenSource_a3b5d8cfd192fd9b9e4518010e600c714}\label{classantlr4_1_1TokenSource_a3b5d8cfd192fd9b9e4518010e600c714}} 
+\index{antlr4\+::\+Token\+Source@{antlr4\+::\+Token\+Source}!get\+Line@{get\+Line}}
+\index{get\+Line@{get\+Line}!antlr4\+::\+Token\+Source@{antlr4\+::\+Token\+Source}}
+\subsubsection{\texorpdfstring{get\+Line()}{getLine()}}
+{\footnotesize\ttfamily virtual size\+\_\+t antlr4\+::\+Token\+Source\+::get\+Line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the line number for the current position in the input stream. The first line in the input is line 1. 
+
+\begin{DoxyReturn}{Returns}
+The line number for the current position in the input stream, or 0 if the current token source does not track line numbers. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classantlr4_1_1Lexer_a8ecc41ff09e40b469e519ed1b0d0912a}{antlr4\+::\+Lexer}.
+
+\mbox{\Hypertarget{classantlr4_1_1TokenSource_a41e3a36074ba6dcd3e0dab9250d4b179}\label{classantlr4_1_1TokenSource_a41e3a36074ba6dcd3e0dab9250d4b179}} 
+\index{antlr4\+::\+Token\+Source@{antlr4\+::\+Token\+Source}!next\+Token@{next\+Token}}
+\index{next\+Token@{next\+Token}!antlr4\+::\+Token\+Source@{antlr4\+::\+Token\+Source}}
+\subsubsection{\texorpdfstring{next\+Token()}{nextToken()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$\hyperlink{classantlr4_1_1Token}{Token}$>$ antlr4\+::\+Token\+Source\+::next\+Token (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Return a \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1Token}{Token}, Char\+Stream
+
+
+\end{DoxySeeAlso}
+object from your input stream (usually a ). Do not fail/return upon lexing error; keep chewing on the characters until you get a good one; errors are not passed through to the parser. 
+
+Implemented in \hyperlink{classantlr4_1_1Lexer_a50ac15500fabb9c3fee8d23af11fdc02}{antlr4\+::\+Lexer}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Token\+Source.\+h\item 
+Token\+Source.\+cpp\end{DoxyCompactItemize}

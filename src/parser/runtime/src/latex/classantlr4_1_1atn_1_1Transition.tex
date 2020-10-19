@@ -1,0 +1,147 @@
+\hypertarget{classantlr4_1_1atn_1_1Transition}{}\section{antlr4\+:\+:atn\+:\+:Transition Class Reference}
+\label{classantlr4_1_1atn_1_1Transition}\index{antlr4\+::atn\+::\+Transition@{antlr4\+::atn\+::\+Transition}}
+
+
+An A\+TN transition between any two A\+TN states. Subclasses define atom, set, epsilon, action, predicate, rule transitions. 
+
+This is a one way link. It emanates from a state (usually via a list of transitions) and has a target state. 
+
+Since we never have to change the A\+TN transitions once we construct it, we can fix these transitions as specific classes. The D\+FA transitions on the other hand need to update the labels as it adds transitions to the states. We\textquotesingle{}ll use the term Edge for the D\+FA to distinguish them from A\+TN transitions.  
+
+
+
+
+{\ttfamily \#include $<$Transition.\+h$>$}
+
+
+
+Inheritance diagram for antlr4\+:\+:atn\+:\+:Transition\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classantlr4_1_1atn_1_1Transition__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1Transition_a05a5668a4bc551c4ef1a90721fb80843}\label{classantlr4_1_1atn_1_1Transition_a05a5668a4bc551c4ef1a90721fb80843}} 
+enum {\bfseries Serialization\+Type} \{ \newline
+{\bfseries E\+P\+S\+I\+L\+ON} = 1, 
+{\bfseries R\+A\+N\+GE} = 2, 
+{\bfseries R\+U\+LE} = 3, 
+{\bfseries P\+R\+E\+D\+I\+C\+A\+TE} = 4, 
+\newline
+{\bfseries A\+T\+OM} = 5, 
+{\bfseries A\+C\+T\+I\+ON} = 6, 
+{\bfseries S\+ET} = 7, 
+{\bfseries N\+O\+T\+\_\+\+S\+ET} = 8, 
+\newline
+{\bfseries W\+I\+L\+D\+C\+A\+RD} = 9, 
+{\bfseries P\+R\+E\+C\+E\+D\+E\+N\+CE} = 10
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1Transition_a9a850c39a688cf755a1983342a67ec22}\label{classantlr4_1_1atn_1_1Transition_a9a850c39a688cf755a1983342a67ec22}} 
+virtual Serialization\+Type {\bfseries get\+Serialization\+Type} () const =0
+\item 
+virtual bool \hyperlink{classantlr4_1_1atn_1_1Transition_a8e712c7a46586d73c054c56f481b1be7}{is\+Epsilon} () const
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1Transition_abf4e36a49e1d97d7a4bb6e16da088208}\label{classantlr4_1_1atn_1_1Transition_abf4e36a49e1d97d7a4bb6e16da088208}} 
+virtual \hyperlink{classantlr4_1_1misc_1_1IntervalSet}{misc\+::\+Interval\+Set} {\bfseries label} () const
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1Transition_ae68515757231433d42580021e9e64432}\label{classantlr4_1_1atn_1_1Transition_ae68515757231433d42580021e9e64432}} 
+virtual bool {\bfseries matches} (size\+\_\+t symbol, size\+\_\+t min\+Vocab\+Symbol, size\+\_\+t max\+Vocab\+Symbol) const =0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1Transition_ac98fee69542c40aaadbd330e28c91105}\label{classantlr4_1_1atn_1_1Transition_ac98fee69542c40aaadbd330e28c91105}} 
+virtual std\+::string {\bfseries to\+String} () const
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1Transition_a308299411ddffa07e8e2efe5b683d00e}\label{classantlr4_1_1atn_1_1Transition_a308299411ddffa07e8e2efe5b683d00e}} 
+{\bfseries Transition} (\hyperlink{classantlr4_1_1atn_1_1Transition}{Transition} const \&)=delete
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1Transition_a1bc05f9e7ef50501858b89a870a27c92}\label{classantlr4_1_1atn_1_1Transition_a1bc05f9e7ef50501858b89a870a27c92}} 
+\hyperlink{classantlr4_1_1atn_1_1Transition}{Transition} \& {\bfseries operator=} (\hyperlink{classantlr4_1_1atn_1_1Transition}{Transition} const \&)=delete
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1Transition_aaaed7f4ddda71e156b36de33e88f66a7}\label{classantlr4_1_1atn_1_1Transition_aaaed7f4ddda71e156b36de33e88f66a7}} 
+A\+T\+N\+State $\ast$ \hyperlink{classantlr4_1_1atn_1_1Transition_aaaed7f4ddda71e156b36de33e88f66a7}{target}
+\begin{DoxyCompactList}\small\item\em The target of this transition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const std\+::vector$<$ std\+::string $>$ {\bfseries serialization\+Names}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1Transition_a46f1588fb7eddb745625b03a21b0fbcb}\label{classantlr4_1_1atn_1_1Transition_a46f1588fb7eddb745625b03a21b0fbcb}} 
+{\bfseries Transition} (A\+T\+N\+State $\ast$\hyperlink{classantlr4_1_1atn_1_1Transition_aaaed7f4ddda71e156b36de33e88f66a7}{target})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An A\+TN transition between any two A\+TN states. Subclasses define atom, set, epsilon, action, predicate, rule transitions. 
+
+This is a one way link. It emanates from a state (usually via a list of transitions) and has a target state. 
+
+Since we never have to change the A\+TN transitions once we construct it, we can fix these transitions as specific classes. The D\+FA transitions on the other hand need to update the labels as it adds transitions to the states. We\textquotesingle{}ll use the term Edge for the D\+FA to distinguish them from A\+TN transitions. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1Transition_a8e712c7a46586d73c054c56f481b1be7}\label{classantlr4_1_1atn_1_1Transition_a8e712c7a46586d73c054c56f481b1be7}} 
+\index{antlr4\+::atn\+::\+Transition@{antlr4\+::atn\+::\+Transition}!is\+Epsilon@{is\+Epsilon}}
+\index{is\+Epsilon@{is\+Epsilon}!antlr4\+::atn\+::\+Transition@{antlr4\+::atn\+::\+Transition}}
+\subsubsection{\texorpdfstring{is\+Epsilon()}{isEpsilon()}}
+{\footnotesize\ttfamily bool Transition\+::is\+Epsilon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Determines if the transition is an \char`\"{}epsilon\char`\"{} transition.
+
+The default implementation returns
+\begin{DoxyCode}
+\textcolor{keyword}{false} 
+\end{DoxyCode}
+ .
+
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyCode}
+\textcolor{keyword}{true} 
+\end{DoxyCode}
+ if traversing this transition in the A\+TN does not consume an input symbol; otherwise,
+\begin{DoxyCode}
+\textcolor{keyword}{false} 
+\end{DoxyCode}
+ if traversing this transition consumes (matches) an input symbol. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classantlr4_1_1atn_1_1RuleTransition_a899ddb9161a918c929cd90371aeec15b}{antlr4\+::atn\+::\+Rule\+Transition}, \hyperlink{classantlr4_1_1atn_1_1EpsilonTransition_aa2ed63d1d7605293c69cd812c6e374ec}{antlr4\+::atn\+::\+Epsilon\+Transition}, \hyperlink{classantlr4_1_1atn_1_1PredicateTransition_a1c43f41d9500f136375cff1d4b7a5d7a}{antlr4\+::atn\+::\+Predicate\+Transition}, \hyperlink{classantlr4_1_1atn_1_1ActionTransition_a995b2814e1d1751f39655f6856572584}{antlr4\+::atn\+::\+Action\+Transition}, and \hyperlink{classantlr4_1_1atn_1_1PrecedencePredicateTransition_a68e686bc0b7ddce9b5fc3f93a763ca52}{antlr4\+::atn\+::\+Precedence\+Predicate\+Transition}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1Transition_a891b08e421df76b8a19c9d6ac6f54ddc}\label{classantlr4_1_1atn_1_1Transition_a891b08e421df76b8a19c9d6ac6f54ddc}} 
+\index{antlr4\+::atn\+::\+Transition@{antlr4\+::atn\+::\+Transition}!serialization\+Names@{serialization\+Names}}
+\index{serialization\+Names@{serialization\+Names}!antlr4\+::atn\+::\+Transition@{antlr4\+::atn\+::\+Transition}}
+\subsubsection{\texorpdfstring{serialization\+Names}{serializationNames}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::string $>$ Transition\+::serialization\+Names\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+  \textcolor{stringliteral}{"INVALID"}, \textcolor{stringliteral}{"EPSILON"}, \textcolor{stringliteral}{"RANGE"}, \textcolor{stringliteral}{"RULE"}, \textcolor{stringliteral}{"PREDICATE"}, \textcolor{stringliteral}{"ATOM"}, \textcolor{stringliteral}{"ACTION"}, \textcolor{stringliteral}{"SET"}, \textcolor{stringliteral}{"NOT\_SET"}, \textcolor{stringliteral}{"WILDCARD"}, \textcolor{stringliteral}{"
+      PRECEDENCE"}
+\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+atn/Transition.\+h\item 
+atn/Transition.\+cpp\end{DoxyCompactItemize}

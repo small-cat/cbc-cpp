@@ -1,0 +1,57 @@
+\hypertarget{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation}{}\section{antlr4\+:\+:Token\+Stream\+Rewriter\+:\+:Rewrite\+Operation Class Reference}
+\label{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation}\index{antlr4\+::\+Token\+Stream\+Rewriter\+::\+Rewrite\+Operation@{antlr4\+::\+Token\+Stream\+Rewriter\+::\+Rewrite\+Operation}}
+
+
+Inheritance diagram for antlr4\+:\+:Token\+Stream\+Rewriter\+:\+:Rewrite\+Operation\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a2e15f057567b203697625ba54176c70f}\label{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a2e15f057567b203697625ba54176c70f}} 
+{\bfseries Rewrite\+Operation} (\hyperlink{classantlr4_1_1TokenStreamRewriter}{Token\+Stream\+Rewriter} $\ast$outer\+Instance, size\+\_\+t \hyperlink{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a1d3d3c3b22f030f300b3fd7c41a5ec47}{index})
+\item 
+\mbox{\Hypertarget{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_ae481d06f75d98d8c279f676872778e6e}\label{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_ae481d06f75d98d8c279f676872778e6e}} 
+{\bfseries Rewrite\+Operation} (\hyperlink{classantlr4_1_1TokenStreamRewriter}{Token\+Stream\+Rewriter} $\ast$outer\+Instance, size\+\_\+t \hyperlink{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a1d3d3c3b22f030f300b3fd7c41a5ec47}{index}, const std\+::string \&text)
+\item 
+virtual size\+\_\+t \hyperlink{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a9e9998fb2aa14bbf60710dde1d6d50b0}{execute} (std\+::string $\ast$buf)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a24d28ca0f57562670f4e1196d19527c0}\label{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a24d28ca0f57562670f4e1196d19527c0}} 
+virtual std\+::string {\bfseries to\+String} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a1d3d3c3b22f030f300b3fd7c41a5ec47}\label{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a1d3d3c3b22f030f300b3fd7c41a5ec47}} 
+size\+\_\+t \hyperlink{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a1d3d3c3b22f030f300b3fd7c41a5ec47}{index}
+\begin{DoxyCompactList}\small\item\em What index into rewrites List are we? \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a59c0cce85a795ba97acfa8999f3cdfe6}\label{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a59c0cce85a795ba97acfa8999f3cdfe6}} 
+std\+::string {\bfseries text}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a6a6ef7ecb15f2be19e86808187469f70}\label{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a6a6ef7ecb15f2be19e86808187469f70}} 
+size\+\_\+t \hyperlink{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a6a6ef7ecb15f2be19e86808187469f70}{instruction\+Index}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classantlr4_1_1Token}{Token} buffer index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a9e9998fb2aa14bbf60710dde1d6d50b0}\label{classantlr4_1_1TokenStreamRewriter_1_1RewriteOperation_a9e9998fb2aa14bbf60710dde1d6d50b0}} 
+\index{antlr4\+::\+Token\+Stream\+Rewriter\+::\+Rewrite\+Operation@{antlr4\+::\+Token\+Stream\+Rewriter\+::\+Rewrite\+Operation}!execute@{execute}}
+\index{execute@{execute}!antlr4\+::\+Token\+Stream\+Rewriter\+::\+Rewrite\+Operation@{antlr4\+::\+Token\+Stream\+Rewriter\+::\+Rewrite\+Operation}}
+\subsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily size\+\_\+t Token\+Stream\+Rewriter\+::\+Rewrite\+Operation\+::execute (\begin{DoxyParamCaption}\item[{std\+::string $\ast$}]{buf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Execute the rewrite operation by possibly adding to the buffer. Return the index of the next token to operate on. 
+
+Reimplemented in \hyperlink{classantlr4_1_1TokenStreamRewriter_1_1ReplaceOp_af530710355bab587a6ff70f889e3eec3}{antlr4\+::\+Token\+Stream\+Rewriter\+::\+Replace\+Op}, and \hyperlink{classantlr4_1_1TokenStreamRewriter_1_1InsertBeforeOp_a3370a856de310970f4448c0aff90244e}{antlr4\+::\+Token\+Stream\+Rewriter\+::\+Insert\+Before\+Op}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Token\+Stream\+Rewriter.\+h\item 
+Token\+Stream\+Rewriter.\+cpp\end{DoxyCompactItemize}

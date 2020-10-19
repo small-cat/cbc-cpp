@@ -1,0 +1,14 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classantlr4_1_1atn_1_1Transition.html" title="An ATN transition between any two ATN states. Subclasses define atom, set, epsilon, action, predicate, rule transitions. This is a one way link. It emanates from a state (usually via a list of transitions) and has a target state. Since we never have to change the ATN transitions once we construct it, we can fix these transitions as specific classes. The DFA transitions on the other hand need to update the labels as it adds transitions to the states. We&#39;ll use the term Edge for the DFA to distinguish them from ATN transitions. " alt="" coords="5,227,151,254"/>
+<area shape="rect" id="node2" href="$classantlr4_1_1atn_1_1AbstractPredicateTransition.html" title="antlr4::atn::AbstractPredicate\lTransition" alt="" coords="201,35,393,76"/>
+<area shape="rect" id="node5" href="$classantlr4_1_1atn_1_1ActionTransition.html" title="antlr4::atn::ActionTransition" alt="" coords="205,101,388,127"/>
+<area shape="rect" id="node6" href="$classantlr4_1_1atn_1_1AtomTransition.html" title="TO_DO: make all transitions sets? no, should remove set edges. " alt="" coords="209,151,385,178"/>
+<area shape="rect" id="node7" href="$classantlr4_1_1atn_1_1EpsilonTransition.html" title="antlr4::atn::EpsilonTransition" alt="" coords="203,202,391,229"/>
+<area shape="rect" id="node8" href="$classantlr4_1_1atn_1_1RangeTransition.html" title="antlr4::atn::RangeTransition" alt="" coords="205,253,388,279"/>
+<area shape="rect" id="node9" href="$classantlr4_1_1atn_1_1RuleTransition.html" title="antlr4::atn::RuleTransition" alt="" coords="211,303,383,330"/>
+<area shape="rect" id="node10" href="$classantlr4_1_1atn_1_1SetTransition.html" title="A transition containing a set of values. " alt="" coords="214,354,379,381"/>
+<area shape="rect" id="node12" href="$classantlr4_1_1atn_1_1WildcardTransition.html" title="antlr4::atn::WildcardTransition" alt="" coords="199,405,395,431"/>
+<area shape="rect" id="node3" href="$classantlr4_1_1atn_1_1PrecedencePredicateTransition.html" title="antlr4::atn::PrecedencePredicate\lTransition" alt="" coords="443,5,655,47"/>
+<area shape="rect" id="node4" href="$classantlr4_1_1atn_1_1PredicateTransition.html" title="antlr4::atn::PredicateTransition" alt="" coords="449,71,649,98"/>
+<area shape="rect" id="node11" href="$classantlr4_1_1atn_1_1NotSetTransition.html" title="antlr4::atn::NotSetTransition" alt="" coords="455,354,642,381"/>
+</map>

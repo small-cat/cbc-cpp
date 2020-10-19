@@ -1,0 +1,268 @@
+\hypertarget{classantlr4_1_1ParserInterpreter}{}\section{antlr4\+:\+:Parser\+Interpreter Class Reference}
+\label{classantlr4_1_1ParserInterpreter}\index{antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}}
+
+
+A parser simulator that mimics what A\+N\+T\+LR\textquotesingle{}s generated parser code does. A Parser\+A\+T\+N\+Simulator is used to make predictions via adaptive\+Predict but this class moves a pointer through the A\+TN to simulate parsing. Parser\+A\+T\+N\+Simulator just makes us efficient rather than having to backtrack, for example.  
+
+
+
+
+{\ttfamily \#include $<$Parser\+Interpreter.\+h$>$}
+
+
+
+Inheritance diagram for antlr4\+:\+:Parser\+Interpreter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classantlr4_1_1ParserInterpreter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for antlr4\+:\+:Parser\+Interpreter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classantlr4_1_1ParserInterpreter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a533d22b76ea5f673b1a90bb39c30e43a}\label{classantlr4_1_1ParserInterpreter_a533d22b76ea5f673b1a90bb39c30e43a}} 
+{\bfseries Parser\+Interpreter} (const std\+::string \&grammar\+File\+Name, const std\+::vector$<$ std\+::string $>$ \&token\+Names, const std\+::vector$<$ std\+::string $>$ \&rule\+Names, const atn\+::\+A\+TN \&atn, Token\+Stream $\ast$input)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a194d3acdc5d1f127d36747b0306dbf0c}\label{classantlr4_1_1ParserInterpreter_a194d3acdc5d1f127d36747b0306dbf0c}} 
+{\bfseries Parser\+Interpreter} (const std\+::string \&grammar\+File\+Name, const dfa\+::\+Vocabulary \&vocabulary, const std\+::vector$<$ std\+::string $>$ \&rule\+Names, const atn\+::\+A\+TN \&atn, Token\+Stream $\ast$input)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a65e201e92ef18a6d9d202938983d940e}\label{classantlr4_1_1ParserInterpreter_a65e201e92ef18a6d9d202938983d940e}} 
+virtual void \hyperlink{classantlr4_1_1ParserInterpreter_a65e201e92ef18a6d9d202938983d940e}{reset} () override
+\begin{DoxyCompactList}\small\item\em reset the parser\textquotesingle{}s state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_ab774f28b8ea4caec00a4024acbdf7169}\label{classantlr4_1_1ParserInterpreter_ab774f28b8ea4caec00a4024acbdf7169}} 
+virtual const atn\+::\+A\+TN \& {\bfseries get\+A\+TN} () const override
+\item 
+virtual const std\+::vector$<$ std\+::string $>$ \& \hyperlink{classantlr4_1_1ParserInterpreter_a8aaa489bc12ef24e3808ecfc41609869}{get\+Token\+Names} () const override
+\item 
+virtual const dfa\+::\+Vocabulary \& \hyperlink{classantlr4_1_1ParserInterpreter_af8009dbf9445325303ebc59350a7d137}{get\+Vocabulary} () const override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a3af38fde74ad142ef5ca5c1da5a10288}\label{classantlr4_1_1ParserInterpreter_a3af38fde74ad142ef5ca5c1da5a10288}} 
+virtual const std\+::vector$<$ std\+::string $>$ \& {\bfseries get\+Rule\+Names} () const override
+\item 
+virtual std\+::string \hyperlink{classantlr4_1_1ParserInterpreter_a14fc40b7791578d486eacffd2c5bb483}{get\+Grammar\+File\+Name} () const override
+\begin{DoxyCompactList}\small\item\em For debugging and other purposes, might want the grammar name. Have A\+N\+T\+LR generate an implementation for this method. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_aaa891c8229fdbebdafc7e6c01cf92b8d}\label{classantlr4_1_1ParserInterpreter_aaa891c8229fdbebdafc7e6c01cf92b8d}} 
+virtual \hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} $\ast$ \hyperlink{classantlr4_1_1ParserInterpreter_aaa891c8229fdbebdafc7e6c01cf92b8d}{parse} (size\+\_\+t start\+Rule\+Index)
+\begin{DoxyCompactList}\small\item\em Begin parsing at start\+Rule\+Index. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_af312ed6d85802de4dc8e5344c86089d3}\label{classantlr4_1_1ParserInterpreter_af312ed6d85802de4dc8e5344c86089d3}} 
+virtual void {\bfseries enter\+Recursion\+Rule} (\hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} $\ast$localctx, size\+\_\+t state, size\+\_\+t rule\+Index, int precedence) override
+\item 
+void \hyperlink{classantlr4_1_1ParserInterpreter_abf60cba91e262b5384871b3b7412367f}{add\+Decision\+Override} (int decision, int token\+Index, int forced\+Alt)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a7cc2c25815fef451c6e2801af9d9470b}\label{classantlr4_1_1ParserInterpreter_a7cc2c25815fef451c6e2801af9d9470b}} 
+Ref$<$ \hyperlink{classantlr4_1_1InterpreterRuleContext}{Interpreter\+Rule\+Context} $>$ {\bfseries get\+Override\+Decision\+Root} () const
+\item 
+\hyperlink{classantlr4_1_1InterpreterRuleContext}{Interpreter\+Rule\+Context} $\ast$ \hyperlink{classantlr4_1_1ParserInterpreter_a451ec3d6780fe95f9396ffbe582edec2}{get\+Root\+Context} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_af8d466e659e6a0fa3257cbd2e553b825}\label{classantlr4_1_1ParserInterpreter_af8d466e659e6a0fa3257cbd2e553b825}} 
+virtual atn\+::\+A\+T\+N\+State $\ast$ {\bfseries get\+A\+T\+N\+State} ()
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a266e656481c12b349e82d874df829a2f}\label{classantlr4_1_1ParserInterpreter_a266e656481c12b349e82d874df829a2f}} 
+virtual void {\bfseries visit\+State} (atn\+::\+A\+T\+N\+State $\ast$p)
+\item 
+size\+\_\+t \hyperlink{classantlr4_1_1ParserInterpreter_a61520ac161a5ad617c73885ad18956dd}{visit\+Decision\+State} (\hyperlink{classantlr4_1_1atn_1_1DecisionState}{atn\+::\+Decision\+State} $\ast$p)
+\item 
+\hyperlink{classantlr4_1_1InterpreterRuleContext}{Interpreter\+Rule\+Context} $\ast$ \hyperlink{classantlr4_1_1ParserInterpreter_a0ca4deabd05eb912676a73827edc83a1}{create\+Interpreter\+Rule\+Context} (\hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} $\ast$parent, size\+\_\+t invoking\+State\+Number, size\+\_\+t rule\+Index)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_ab81fb46675112d434449dc40b3a2fa1e}\label{classantlr4_1_1ParserInterpreter_ab81fb46675112d434449dc40b3a2fa1e}} 
+virtual void {\bfseries visit\+Rule\+Stop\+State} (atn\+::\+A\+T\+N\+State $\ast$p)
+\item 
+void \hyperlink{classantlr4_1_1ParserInterpreter_af76ec70c5be8d476a610b0cb85d2e696}{recover} (Recognition\+Exception \&e)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_afb4052f60c5bd70bfd0e533f4edb92c9}\label{classantlr4_1_1ParserInterpreter_afb4052f60c5bd70bfd0e533f4edb92c9}} 
+\hyperlink{classantlr4_1_1Token}{Token} $\ast$ {\bfseries recover\+Inline} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a914bed1028d39c8ba2205a5fbdfef1d6}\label{classantlr4_1_1ParserInterpreter_a914bed1028d39c8ba2205a5fbdfef1d6}} 
+const std\+::string {\bfseries \+\_\+grammar\+File\+Name}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_ae20d82145b4b89b7ac7226254680de6a}\label{classantlr4_1_1ParserInterpreter_ae20d82145b4b89b7ac7226254680de6a}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries \+\_\+token\+Names}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a62b9e4f6cea861ca20e9c78e2f2e39b1}\label{classantlr4_1_1ParserInterpreter_a62b9e4f6cea861ca20e9c78e2f2e39b1}} 
+const atn\+::\+A\+TN \& {\bfseries \+\_\+atn}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_af92b2be8ed21eae5d60e1052f088381f}\label{classantlr4_1_1ParserInterpreter_af92b2be8ed21eae5d60e1052f088381f}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries \+\_\+rule\+Names}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a4261d4f61c8cea8b9a5f2a452cbdd6e1}\label{classantlr4_1_1ParserInterpreter_a4261d4f61c8cea8b9a5f2a452cbdd6e1}} 
+std\+::vector$<$ \hyperlink{classantlr4_1_1dfa_1_1DFA}{dfa\+::\+D\+FA} $>$ {\bfseries \+\_\+decision\+To\+D\+FA}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a68efbb2f03878252767f3fc94c2d3444}\label{classantlr4_1_1ParserInterpreter_a68efbb2f03878252767f3fc94c2d3444}} 
+atn\+::\+Prediction\+Context\+Cache {\bfseries \+\_\+shared\+Context\+Cache}
+\item 
+std\+::stack$<$ std\+::pair$<$ \hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} $\ast$, size\+\_\+t $>$ $>$ \hyperlink{classantlr4_1_1ParserInterpreter_abfa9731e87e83124dd86ab5d001049d1}{\+\_\+parent\+Context\+Stack}
+\item 
+int \hyperlink{classantlr4_1_1ParserInterpreter_a2e21041c627adc5d8a21dd9e3f544e34}{\+\_\+override\+Decision} = -\/1
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a6f0707e3a02df052f8b713aef403e093}\label{classantlr4_1_1ParserInterpreter_a6f0707e3a02df052f8b713aef403e093}} 
+size\+\_\+t {\bfseries \+\_\+override\+Decision\+Input\+Index} = I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+D\+EX
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a46022fc5efc016e4cb808cb1988ae6da}\label{classantlr4_1_1ParserInterpreter_a46022fc5efc016e4cb808cb1988ae6da}} 
+size\+\_\+t {\bfseries \+\_\+override\+Decision\+Alt} = I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+D\+EX
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a7e972c20a2d191f6625837a9cb198dfe}\label{classantlr4_1_1ParserInterpreter_a7e972c20a2d191f6625837a9cb198dfe}} 
+bool {\bfseries \+\_\+override\+Decision\+Reached} = false
+\item 
+Ref$<$ \hyperlink{classantlr4_1_1InterpreterRuleContext}{Interpreter\+Rule\+Context} $>$ \hyperlink{classantlr4_1_1ParserInterpreter_a6380e8d9f1a250454fe1299845a57f6f}{\+\_\+override\+Decision\+Root}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a2b66f66b952a27fa58a111c4440c3f0c}\label{classantlr4_1_1ParserInterpreter_a2b66f66b952a27fa58a111c4440c3f0c}} 
+\hyperlink{classantlr4_1_1InterpreterRuleContext}{Interpreter\+Rule\+Context} $\ast$ {\bfseries \+\_\+root\+Context}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A parser simulator that mimics what A\+N\+T\+LR\textquotesingle{}s generated parser code does. A Parser\+A\+T\+N\+Simulator is used to make predictions via adaptive\+Predict but this class moves a pointer through the A\+TN to simulate parsing. Parser\+A\+T\+N\+Simulator just makes us efficient rather than having to backtrack, for example. 
+
+This properly creates parse trees even for left recursive rules.
+
+We rely on the left recursive rule invocation and special predicate transitions to make left recursive rules work.
+
+See Test\+Parser\+Interpreter for examples. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_abf60cba91e262b5384871b3b7412367f}\label{classantlr4_1_1ParserInterpreter_abf60cba91e262b5384871b3b7412367f}} 
+\index{antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}!add\+Decision\+Override@{add\+Decision\+Override}}
+\index{add\+Decision\+Override@{add\+Decision\+Override}!antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}}
+\subsubsection{\texorpdfstring{add\+Decision\+Override()}{addDecisionOverride()}}
+{\footnotesize\ttfamily void Parser\+Interpreter\+::add\+Decision\+Override (\begin{DoxyParamCaption}\item[{int}]{decision,  }\item[{int}]{token\+Index,  }\item[{int}]{forced\+Alt }\end{DoxyParamCaption})}
+
+Override this parser interpreters normal decision-\/making process at a particular decision and input token index. Instead of allowing the adaptive prediction mechanism to choose the first alternative within a block that leads to a successful parse, force it to take the alternative, 1..n for n alternatives.
+
+As an implementation limitation right now, you can only specify one override. This is sufficient to allow construction of different parse trees for ambiguous input. It means re-\/parsing the entire input in general because you\textquotesingle{}re never sure where an ambiguous sequence would live in the various parse trees. For example, in one interpretation, an ambiguous input sequence would be matched completely in expression but in another it could match all the way back to the root.
+
+s \+: e \textquotesingle{}!\textquotesingle{}? ; e \+: ID $\vert$ ID \textquotesingle{}!\textquotesingle{} ;
+
+Here, x! can be matched as (s (e ID) !) or (s (e ID !)). In the first case, the ambiguous sequence is fully contained only by the root. In the second case, the ambiguous sequences fully contained within just e, as in\+: (e ID !).
+
+Rather than trying to optimize this and make some intelligent decisions for optimization purposes, I settled on just re-\/parsing the whole input and then using \{link Trees\+::get\+Root\+Of\+Subtree\+Enclosing\+Region\} to find the minimal subtree that contains the ambiguous sequence. I originally tried to record the call stack at the point the parser detected and ambiguity but left recursive rules create a parse tree stack that does not reflect the actual call stack. That impedance mismatch was enough to make it it challenging to restart the parser at a deeply nested rule invocation.
+
+Only parser interpreters can override decisions so as to avoid inserting override checking code in the critical A\+L\+L($\ast$) prediction execution path.
+
+\begin{DoxySince}{Since}
+4.\+5.\+1 
+\end{DoxySince}
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a0ca4deabd05eb912676a73827edc83a1}\label{classantlr4_1_1ParserInterpreter_a0ca4deabd05eb912676a73827edc83a1}} 
+\index{antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}!create\+Interpreter\+Rule\+Context@{create\+Interpreter\+Rule\+Context}}
+\index{create\+Interpreter\+Rule\+Context@{create\+Interpreter\+Rule\+Context}!antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}}
+\subsubsection{\texorpdfstring{create\+Interpreter\+Rule\+Context()}{createInterpreterRuleContext()}}
+{\footnotesize\ttfamily \hyperlink{classantlr4_1_1InterpreterRuleContext}{Interpreter\+Rule\+Context} $\ast$ Parser\+Interpreter\+::create\+Interpreter\+Rule\+Context (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} $\ast$}]{parent,  }\item[{size\+\_\+t}]{invoking\+State\+Number,  }\item[{size\+\_\+t}]{rule\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Provide simple \char`\"{}factory\char`\"{} for \hyperlink{classantlr4_1_1InterpreterRuleContext}{Interpreter\+Rule\+Context}\textquotesingle{}s. \begin{DoxySince}{Since}
+4.\+5.\+1 
+\end{DoxySince}
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a14fc40b7791578d486eacffd2c5bb483}\label{classantlr4_1_1ParserInterpreter_a14fc40b7791578d486eacffd2c5bb483}} 
+\index{antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}!get\+Grammar\+File\+Name@{get\+Grammar\+File\+Name}}
+\index{get\+Grammar\+File\+Name@{get\+Grammar\+File\+Name}!antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}}
+\subsubsection{\texorpdfstring{get\+Grammar\+File\+Name()}{getGrammarFileName()}}
+{\footnotesize\ttfamily std\+::string Parser\+Interpreter\+::get\+Grammar\+File\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+For debugging and other purposes, might want the grammar name. Have A\+N\+T\+LR generate an implementation for this method. 
+
+
+
+Implements \hyperlink{classantlr4_1_1Recognizer_a41d77f1ad38c68b4208d26c070fd2cc7}{antlr4\+::\+Recognizer}.
+
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a451ec3d6780fe95f9396ffbe582edec2}\label{classantlr4_1_1ParserInterpreter_a451ec3d6780fe95f9396ffbe582edec2}} 
+\index{antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}!get\+Root\+Context@{get\+Root\+Context}}
+\index{get\+Root\+Context@{get\+Root\+Context}!antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}}
+\subsubsection{\texorpdfstring{get\+Root\+Context()}{getRootContext()}}
+{\footnotesize\ttfamily \hyperlink{classantlr4_1_1InterpreterRuleContext}{Interpreter\+Rule\+Context} $\ast$ Parser\+Interpreter\+::get\+Root\+Context (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return the root of the parse, which can be useful if the parser bails out. You still can access the top node. Note that, because of the way left recursive rules add children, it\textquotesingle{}s possible that the root will not have any children if the start rule immediately called and left recursive rule that fails.
+
+\begin{DoxySince}{Since}
+4.\+5.\+1 
+\end{DoxySince}
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a8aaa489bc12ef24e3808ecfc41609869}\label{classantlr4_1_1ParserInterpreter_a8aaa489bc12ef24e3808ecfc41609869}} 
+\index{antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}!get\+Token\+Names@{get\+Token\+Names}}
+\index{get\+Token\+Names@{get\+Token\+Names}!antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}}
+\subsubsection{\texorpdfstring{get\+Token\+Names()}{getTokenNames()}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::string $>$ \& Parser\+Interpreter\+::get\+Token\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Used to print out token names like ID during debugging and error reporting. The generated parsers implement a method that overrides this to point to their String\mbox{[}\mbox{]} token\+Names.
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000010}{Deprecated}]Use \hyperlink{classantlr4_1_1ParserInterpreter_af8009dbf9445325303ebc59350a7d137}{get\+Vocabulary()} instead. \end{DoxyRefDesc}
+
+
+Implements \hyperlink{classantlr4_1_1Recognizer_aef9436cfc73e828229b90a57c8ff2493}{antlr4\+::\+Recognizer}.
+
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_af8009dbf9445325303ebc59350a7d137}\label{classantlr4_1_1ParserInterpreter_af8009dbf9445325303ebc59350a7d137}} 
+\index{antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}!get\+Vocabulary@{get\+Vocabulary}}
+\index{get\+Vocabulary@{get\+Vocabulary}!antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}}
+\subsubsection{\texorpdfstring{get\+Vocabulary()}{getVocabulary()}}
+{\footnotesize\ttfamily const dfa\+::\+Vocabulary \& Parser\+Interpreter\+::get\+Vocabulary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Get the vocabulary used by the recognizer.
+
+\begin{DoxyReturn}{Returns}
+A \hyperlink{}{Vocabulary} instance providing information about the vocabulary used by the grammar. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classantlr4_1_1Recognizer_aae7ec953d3f35749e62ccb96fa3e0946}{antlr4\+::\+Recognizer}.
+
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_af76ec70c5be8d476a610b0cb85d2e696}\label{classantlr4_1_1ParserInterpreter_af76ec70c5be8d476a610b0cb85d2e696}} 
+\index{antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}!recover@{recover}}
+\index{recover@{recover}!antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}}
+\subsubsection{\texorpdfstring{recover()}{recover()}}
+{\footnotesize\ttfamily void Parser\+Interpreter\+::recover (\begin{DoxyParamCaption}\item[{Recognition\+Exception \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Rely on the error handler for this parser but, if no tokens are consumed to recover, add an error node. Otherwise, nothing is seen in the parse tree. \mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a61520ac161a5ad617c73885ad18956dd}\label{classantlr4_1_1ParserInterpreter_a61520ac161a5ad617c73885ad18956dd}} 
+\index{antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}!visit\+Decision\+State@{visit\+Decision\+State}}
+\index{visit\+Decision\+State@{visit\+Decision\+State}!antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}}
+\subsubsection{\texorpdfstring{visit\+Decision\+State()}{visitDecisionState()}}
+{\footnotesize\ttfamily size\+\_\+t Parser\+Interpreter\+::visit\+Decision\+State (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1atn_1_1DecisionState}{atn\+::\+Decision\+State} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Method \hyperlink{classantlr4_1_1ParserInterpreter_a61520ac161a5ad617c73885ad18956dd}{visit\+Decision\+State()} is called when the interpreter reaches a decision state (instance of Decision\+State). It gives an opportunity for subclasses to track interesting things. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a2e21041c627adc5d8a21dd9e3f544e34}\label{classantlr4_1_1ParserInterpreter_a2e21041c627adc5d8a21dd9e3f544e34}} 
+\index{antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}!\+\_\+override\+Decision@{\+\_\+override\+Decision}}
+\index{\+\_\+override\+Decision@{\+\_\+override\+Decision}!antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}}
+\subsubsection{\texorpdfstring{\+\_\+override\+Decision}{\_overrideDecision}}
+{\footnotesize\ttfamily int antlr4\+::\+Parser\+Interpreter\+::\+\_\+override\+Decision = -\/1\hspace{0.3cm}{\ttfamily [protected]}}
+
+We need a map from (decision,input\+Index)-\/$>$forced alt for computing ambiguous parse trees. For now, we allow exactly one override. \mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_a6380e8d9f1a250454fe1299845a57f6f}\label{classantlr4_1_1ParserInterpreter_a6380e8d9f1a250454fe1299845a57f6f}} 
+\index{antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}!\+\_\+override\+Decision\+Root@{\+\_\+override\+Decision\+Root}}
+\index{\+\_\+override\+Decision\+Root@{\+\_\+override\+Decision\+Root}!antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}}
+\subsubsection{\texorpdfstring{\+\_\+override\+Decision\+Root}{\_overrideDecisionRoot}}
+{\footnotesize\ttfamily Ref$<$\hyperlink{classantlr4_1_1InterpreterRuleContext}{Interpreter\+Rule\+Context}$>$ antlr4\+::\+Parser\+Interpreter\+::\+\_\+override\+Decision\+Root\hspace{0.3cm}{\ttfamily [protected]}}
+
+What is the current context when we override a decision? This tells us what the root of the parse tree is when using override for an ambiguity/lookahead check. \mbox{\Hypertarget{classantlr4_1_1ParserInterpreter_abfa9731e87e83124dd86ab5d001049d1}\label{classantlr4_1_1ParserInterpreter_abfa9731e87e83124dd86ab5d001049d1}} 
+\index{antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}!\+\_\+parent\+Context\+Stack@{\+\_\+parent\+Context\+Stack}}
+\index{\+\_\+parent\+Context\+Stack@{\+\_\+parent\+Context\+Stack}!antlr4\+::\+Parser\+Interpreter@{antlr4\+::\+Parser\+Interpreter}}
+\subsubsection{\texorpdfstring{\+\_\+parent\+Context\+Stack}{\_parentContextStack}}
+{\footnotesize\ttfamily std\+::stack$<$std\+::pair$<$\hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} $\ast$, size\+\_\+t$>$ $>$ antlr4\+::\+Parser\+Interpreter\+::\+\_\+parent\+Context\+Stack\hspace{0.3cm}{\ttfamily [protected]}}
+
+This stack corresponds to the \+\_\+parentctx, \+\_\+parent\+State pair of locals that would exist on call stack frames with a recursive descent parser; in the generated function for a left-\/recursive rule you\textquotesingle{}d see\+:
+
+private E\+Context e(int \+\_\+p) throws Recognition\+Exception \{ \hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} \+\_\+parentctx = \+\_\+ctx; // Pair.\+a int \+\_\+parent\+State = get\+State(); // Pair.\+b ... \}
+
+Those values are used to create new recursive rule invocation contexts associated with left operand of an alt like \char`\"{}expr \textquotesingle{}$\ast$\textquotesingle{} expr\char`\"{}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Parser\+Interpreter.\+h\item 
+Parser\+Interpreter.\+cpp\end{DoxyCompactItemize}

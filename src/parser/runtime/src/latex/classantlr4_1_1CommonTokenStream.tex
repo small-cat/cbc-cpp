@@ -1,0 +1,122 @@
+\hypertarget{classantlr4_1_1CommonTokenStream}{}\section{antlr4\+:\+:Common\+Token\+Stream Class Reference}
+\label{classantlr4_1_1CommonTokenStream}\index{antlr4\+::\+Common\+Token\+Stream@{antlr4\+::\+Common\+Token\+Stream}}
+
+
+{\ttfamily \#include $<$Common\+Token\+Stream.\+h$>$}
+
+
+
+Inheritance diagram for antlr4\+:\+:Common\+Token\+Stream\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classantlr4_1_1CommonTokenStream__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for antlr4\+:\+:Common\+Token\+Stream\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{classantlr4_1_1CommonTokenStream__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classantlr4_1_1CommonTokenStream_a70ef318ad41bc2f99f44549027f886e1}{Common\+Token\+Stream} (\hyperlink{classantlr4_1_1TokenSource}{Token\+Source} $\ast$token\+Source)
+\item 
+\hyperlink{classantlr4_1_1CommonTokenStream_a3565e4d1910fb5e13b49d6a1f12e5cd7}{Common\+Token\+Stream} (\hyperlink{classantlr4_1_1TokenSource}{Token\+Source} $\ast$token\+Source, size\+\_\+t \hyperlink{classantlr4_1_1CommonTokenStream_aad59d04a125961d8ba1cffdf4a1a0bcf}{channel})
+\item 
+\mbox{\Hypertarget{classantlr4_1_1CommonTokenStream_ab92b8381589e1a5aacf6e7ffdcf89dfc}\label{classantlr4_1_1CommonTokenStream_ab92b8381589e1a5aacf6e7ffdcf89dfc}} 
+virtual \hyperlink{classantlr4_1_1Token}{Token} $\ast$ {\bfseries LT} (ssize\+\_\+t k) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1CommonTokenStream_aafecb98aeb51496b59bc3bb19e228128}\label{classantlr4_1_1CommonTokenStream_aafecb98aeb51496b59bc3bb19e228128}} 
+virtual int \hyperlink{classantlr4_1_1CommonTokenStream_aafecb98aeb51496b59bc3bb19e228128}{get\+Number\+Of\+On\+Channel\+Tokens} ()
+\begin{DoxyCompactList}\small\item\em Count E\+OF just once. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1CommonTokenStream_a5b8a9ff0beab08b379df20c5306b98cc}\label{classantlr4_1_1CommonTokenStream_a5b8a9ff0beab08b379df20c5306b98cc}} 
+virtual ssize\+\_\+t {\bfseries adjust\+Seek\+Index} (size\+\_\+t i) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1CommonTokenStream_a2efe72e48498674a5db9d664aaea9d65}\label{classantlr4_1_1CommonTokenStream_a2efe72e48498674a5db9d664aaea9d65}} 
+virtual \hyperlink{classantlr4_1_1Token}{Token} $\ast$ {\bfseries LB} (size\+\_\+t k) override
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \hyperlink{classantlr4_1_1CommonTokenStream_aad59d04a125961d8ba1cffdf4a1a0bcf}{channel}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class extends \hyperlink{classantlr4_1_1BufferedTokenStream}{Buffered\+Token\+Stream} with functionality to filter token streams to tokens on a particular channel (tokens where \hyperlink{classantlr4_1_1Token_a92991c0566e4cb00ae2c5f9e7d8fe6b4}{Token\#get\+Channel} returns a particular value).
+
+This token stream provides access to all tokens by index or when calling methods like \hyperlink{}{get\+Text}. The channel filtering is only used for code accessing tokens via the lookahead methods \hyperlink{}{LA}, \hyperlink{}{LT}, and \hyperlink{}{LB}.
+
+By default, tokens are placed on the default channel (\hyperlink{classantlr4_1_1Token_a699cbc56affbddc079561e175cba8435}{Token\#\+D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+A\+N\+N\+EL}), but may be reassigned by using the 
+\begin{DoxyCode}
+->channel(HIDDEN) 
+\end{DoxyCode}
+ lexer command, or by using an embedded action to call \hyperlink{}{Lexer\#set\+Channel}. 
+
+Note\+: lexer rules which use the
+\begin{DoxyCode}
+->skip 
+\end{DoxyCode}
+ lexer command or call \hyperlink{classantlr4_1_1Lexer_a8d2585d70adce01584a505a25c3e179d}{Lexer\#skip} do not produce tokens at all, so input text matched by such a rule will not be available as part of the token stream, regardless of channel.
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classantlr4_1_1CommonTokenStream_a70ef318ad41bc2f99f44549027f886e1}\label{classantlr4_1_1CommonTokenStream_a70ef318ad41bc2f99f44549027f886e1}} 
+\index{antlr4\+::\+Common\+Token\+Stream@{antlr4\+::\+Common\+Token\+Stream}!Common\+Token\+Stream@{Common\+Token\+Stream}}
+\index{Common\+Token\+Stream@{Common\+Token\+Stream}!antlr4\+::\+Common\+Token\+Stream@{antlr4\+::\+Common\+Token\+Stream}}
+\subsubsection{\texorpdfstring{Common\+Token\+Stream()}{CommonTokenStream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Common\+Token\+Stream\+::\+Common\+Token\+Stream (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1TokenSource}{Token\+Source} $\ast$}]{token\+Source }\end{DoxyParamCaption})}
+
+Constructs a new \hyperlink{classantlr4_1_1CommonTokenStream}{Common\+Token\+Stream} using the specified token source and the default token channel (\hyperlink{classantlr4_1_1Token_a699cbc56affbddc079561e175cba8435}{Token\#\+D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+A\+N\+N\+EL}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em token\+Source} & The token source. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classantlr4_1_1CommonTokenStream_a3565e4d1910fb5e13b49d6a1f12e5cd7}\label{classantlr4_1_1CommonTokenStream_a3565e4d1910fb5e13b49d6a1f12e5cd7}} 
+\index{antlr4\+::\+Common\+Token\+Stream@{antlr4\+::\+Common\+Token\+Stream}!Common\+Token\+Stream@{Common\+Token\+Stream}}
+\index{Common\+Token\+Stream@{Common\+Token\+Stream}!antlr4\+::\+Common\+Token\+Stream@{antlr4\+::\+Common\+Token\+Stream}}
+\subsubsection{\texorpdfstring{Common\+Token\+Stream()}{CommonTokenStream()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Common\+Token\+Stream\+::\+Common\+Token\+Stream (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1TokenSource}{Token\+Source} $\ast$}]{token\+Source,  }\item[{size\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+Constructs a new \hyperlink{classantlr4_1_1CommonTokenStream}{Common\+Token\+Stream} using the specified token source and filtering tokens to the specified channel. Only tokens whose \hyperlink{classantlr4_1_1Token_a92991c0566e4cb00ae2c5f9e7d8fe6b4}{Token\#get\+Channel} matches
+\begin{DoxyCode}
+\hyperlink{classantlr4_1_1CommonTokenStream_aad59d04a125961d8ba1cffdf4a1a0bcf}{channel} 
+\end{DoxyCode}
+ or have the \hyperlink{classantlr4_1_1Token_a518342431db9dd9d982880a59ef0e4f4}{Token\#get\+Type} equal to \hyperlink{}{Token\#\+E\+OF} will be returned by the token stream lookahead methods.
+
+
+\begin{DoxyParams}{Parameters}
+{\em token\+Source} & The token source. \\
+\hline
+{\em channel} & The channel to use for filtering tokens. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classantlr4_1_1CommonTokenStream_aad59d04a125961d8ba1cffdf4a1a0bcf}\label{classantlr4_1_1CommonTokenStream_aad59d04a125961d8ba1cffdf4a1a0bcf}} 
+\index{antlr4\+::\+Common\+Token\+Stream@{antlr4\+::\+Common\+Token\+Stream}!channel@{channel}}
+\index{channel@{channel}!antlr4\+::\+Common\+Token\+Stream@{antlr4\+::\+Common\+Token\+Stream}}
+\subsubsection{\texorpdfstring{channel}{channel}}
+{\footnotesize\ttfamily size\+\_\+t antlr4\+::\+Common\+Token\+Stream\+::channel\hspace{0.3cm}{\ttfamily [protected]}}
+
+Specifies the channel to use for filtering tokens.
+
+The default value is \hyperlink{classantlr4_1_1Token_a699cbc56affbddc079561e175cba8435}{Token\#\+D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+A\+N\+N\+EL}, which matches the default channel assigned to tokens created by the lexer.
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Common\+Token\+Stream.\+h\item 
+Common\+Token\+Stream.\+cpp\end{DoxyCompactItemize}

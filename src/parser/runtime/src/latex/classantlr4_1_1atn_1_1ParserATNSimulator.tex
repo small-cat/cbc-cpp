@@ -1,0 +1,368 @@
+\hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator}{}\section{antlr4\+:\+:atn\+:\+:Parser\+A\+T\+N\+Simulator Class Reference}
+\label{classantlr4_1_1atn_1_1ParserATNSimulator}\index{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator@{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator}}
+
+
+{\ttfamily \#include $<$Parser\+A\+T\+N\+Simulator.\+h$>$}
+
+
+
+Inheritance diagram for antlr4\+:\+:atn\+:\+:Parser\+A\+T\+N\+Simulator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{classantlr4_1_1atn_1_1ParserATNSimulator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for antlr4\+:\+:atn\+:\+:Parser\+A\+T\+N\+Simulator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classantlr4_1_1atn_1_1ParserATNSimulator__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a3a4a291fbbd42c48c1b604b68f52925a}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a3a4a291fbbd42c48c1b604b68f52925a}} 
+\hyperlink{classantlr4_1_1atn_1_1ParserATNSimulator_a3a4a291fbbd42c48c1b604b68f52925a}{Parser\+A\+T\+N\+Simulator} (const A\+TN \&atn, std\+::vector$<$ \hyperlink{classantlr4_1_1dfa_1_1DFA}{dfa\+::\+D\+FA} $>$ \&decision\+To\+D\+FA, Prediction\+Context\+Cache \&shared\+Context\+Cache)
+\begin{DoxyCompactList}\small\item\em Testing only! \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_aee56c1f43a9dd6385b13aead6021cc3e}\label{classantlr4_1_1atn_1_1ParserATNSimulator_aee56c1f43a9dd6385b13aead6021cc3e}} 
+{\bfseries Parser\+A\+T\+N\+Simulator} (\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$parser, const A\+TN \&atn, std\+::vector$<$ \hyperlink{classantlr4_1_1dfa_1_1DFA}{dfa\+::\+D\+FA} $>$ \&decision\+To\+D\+FA, Prediction\+Context\+Cache \&shared\+Context\+Cache)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a05c8564d19c23bdb33d53008d823c387}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a05c8564d19c23bdb33d53008d823c387}} 
+virtual void {\bfseries reset} () override
+\item 
+virtual void \hyperlink{classantlr4_1_1atn_1_1ParserATNSimulator_a846da7dc607b212d443cb401f5830bae}{clear\+D\+FA} () override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a80d4e987d48fc4d0b506184670a8a1e5}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a80d4e987d48fc4d0b506184670a8a1e5}} 
+virtual size\+\_\+t {\bfseries adaptive\+Predict} (Token\+Stream $\ast$input, size\+\_\+t decision, \hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} $\ast$outer\+Context)
+\item 
+bool \hyperlink{classantlr4_1_1atn_1_1ParserATNSimulator_a3212501674dd0323d4875461304d976c}{can\+Drop\+Loop\+Entry\+Edge\+In\+Left\+Recursive\+Rule} (\hyperlink{classantlr4_1_1atn_1_1ATNConfig}{A\+T\+N\+Config} $\ast$config) const
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a183b00733905fd53dc42e8e2655c5853}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a183b00733905fd53dc42e8e2655c5853}} 
+virtual std\+::string {\bfseries get\+Rule\+Name} (size\+\_\+t index)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a75c127196f9e2214fe8451d680bdb5e3}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a75c127196f9e2214fe8451d680bdb5e3}} 
+virtual Ref$<$ \hyperlink{classantlr4_1_1atn_1_1ATNConfig}{A\+T\+N\+Config} $>$ {\bfseries precedence\+Transition} (Ref$<$ \hyperlink{classantlr4_1_1atn_1_1ATNConfig}{A\+T\+N\+Config} $>$ const \&config, \hyperlink{classantlr4_1_1atn_1_1PrecedencePredicateTransition}{Precedence\+Predicate\+Transition} $\ast$pt, bool collect\+Predicates, bool in\+Context, bool full\+Ctx)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a0b5fc9f6a099bdc9931f9afc50f35232}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a0b5fc9f6a099bdc9931f9afc50f35232}} 
+void {\bfseries set\+Prediction\+Mode} (Prediction\+Mode new\+Mode)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a6b226f17f38266404b543d286717b28d}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a6b226f17f38266404b543d286717b28d}} 
+Prediction\+Mode {\bfseries get\+Prediction\+Mode} ()
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_ac76320b0c4de94dc4e4615346c659f0b}\label{classantlr4_1_1atn_1_1ParserATNSimulator_ac76320b0c4de94dc4e4615346c659f0b}} 
+\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$ {\bfseries get\+Parser} ()
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a5f79c144aff232c37c906060e84a3d3f}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a5f79c144aff232c37c906060e84a3d3f}} 
+virtual std\+::string {\bfseries get\+Token\+Name} (size\+\_\+t t)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a51b55922ce19b4812b517f717233495a}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a51b55922ce19b4812b517f717233495a}} 
+virtual std\+::string {\bfseries get\+Lookahead\+Name} (Token\+Stream $\ast$input)
+\item 
+virtual void \hyperlink{classantlr4_1_1atn_1_1ParserATNSimulator_a17be01f2a7db2f2c18c973cc2799a5a0}{dump\+Dead\+End\+Configs} (\hyperlink{classantlr4_1_1NoViableAltException}{No\+Viable\+Alt\+Exception} \&nvae)
+\begin{DoxyCompactList}\small\item\em Used for debugging in adaptive\+Predict around exec\+A\+TN but I cut it out for clarity now that alg. works well. We can leave this \char`\"{}dead\char`\"{} code for a bit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a1e32f99f820baf3079b4bb631e5ada4f}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a1e32f99f820baf3079b4bb631e5ada4f}} 
+std\+::vector$<$ \hyperlink{classantlr4_1_1dfa_1_1DFA}{dfa\+::\+D\+FA} $>$ \& {\bfseries decision\+To\+D\+FA}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a8c639842e974461b22d4b4c314ee4d1d}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a8c639842e974461b22d4b4c314ee4d1d}} 
+static const bool {\bfseries T\+U\+R\+N\+\_\+\+O\+F\+F\+\_\+\+L\+R\+\_\+\+L\+O\+O\+P\+\_\+\+E\+N\+T\+R\+Y\+\_\+\+B\+R\+A\+N\+C\+H\+\_\+\+O\+PT} = Parser\+A\+T\+N\+Simulator\+::get\+Lr\+Loop\+Setting()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual size\+\_\+t \hyperlink{classantlr4_1_1atn_1_1ParserATNSimulator_ac7fbaf0a637744b43e6709660a5b12f2}{exec\+A\+TN} (\hyperlink{classantlr4_1_1dfa_1_1DFA}{dfa\+::\+D\+FA} \&dfa, dfa\+::\+D\+F\+A\+State $\ast$s0, Token\+Stream $\ast$input, size\+\_\+t start\+Index, \hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} $\ast$outer\+Context)
+\begin{DoxyCompactList}\small\item\em Performs A\+TN simulation to compute a predicted alternative based upon the remaining input, but also updates the D\+FA cache to avoid having to traverse the A\+TN again for the same input sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_ad4351ce091415097bb205d647cecfb86}\label{classantlr4_1_1atn_1_1ParserATNSimulator_ad4351ce091415097bb205d647cecfb86}} 
+\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$const {\bfseries parser}
+\item 
+\hyperlink{classantlr4_1_1atn_1_1PredictionContextMergeCache}{Prediction\+Context\+Merge\+Cache} \hyperlink{classantlr4_1_1atn_1_1ParserATNSimulator_aa4d885910cc6f113c761a232d297e8e4}{merge\+Cache}
+\begin{DoxyCompactList}\small\item\em Each prediction operation uses a cache for merge of prediction contexts. Don\textquotesingle{}t keep around as it wastes huge amounts of memory. The merge cache isn\textquotesingle{}t synchronized but we\textquotesingle{}re ok since two threads shouldn\textquotesingle{}t reuse same parser/atnsim object because it can only handle one input at a time. This maps graphs a and b to merged result c. (a,b)-\/$>$c. We can avoid the merge if we ever see a and b again. Note that (b,a)-\/$>$c should also be examined during cache lookup. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a823106102e611d8c746145640956c34f}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a823106102e611d8c746145640956c34f}} 
+Token\+Stream $\ast$ {\bfseries \+\_\+input}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_ad970329e7a96edbc93ce38604608f0b2}\label{classantlr4_1_1atn_1_1ParserATNSimulator_ad970329e7a96edbc93ce38604608f0b2}} 
+size\+\_\+t {\bfseries \+\_\+start\+Index}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_ad32cd2d2a9fdee36456898fba307f03b}\label{classantlr4_1_1atn_1_1ParserATNSimulator_ad32cd2d2a9fdee36456898fba307f03b}} 
+\hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} $\ast$ {\bfseries \+\_\+outer\+Context}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_aa4900c86546ea8b582b5ebb935c142d8}\label{classantlr4_1_1atn_1_1ParserATNSimulator_aa4900c86546ea8b582b5ebb935c142d8}} 
+\hyperlink{classantlr4_1_1dfa_1_1DFA}{dfa\+::\+D\+FA} $\ast$ {\bfseries \+\_\+dfa}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The embodiment of the adaptive L\+L($\ast$), A\+L\+L($\ast$), parsing strategy.
+
+The basic complexity of the adaptive strategy makes it harder to understand. We begin with A\+TN simulation to build paths in a D\+FA. Subsequent prediction requests go through the D\+FA first. If they reach a state without an edge for the current symbol, the algorithm fails over to the A\+TN simulation to complete the D\+FA path for the current input (until it finds a conflict state or uniquely predicting state).
+
+All of that is done without using the outer context because we want to create a D\+FA that is not dependent upon the rule invocation stack when we do a prediction. One D\+FA works in all contexts. We avoid using context not necessarily because it\textquotesingle{}s slower, although it can be, but because of the D\+FA caching problem. The closure routine only considers the rule invocation stack created during prediction beginning in the decision rule. For example, if prediction occurs without invoking another rule\textquotesingle{}s A\+TN, there are no context stacks in the configurations. When lack of context leads to a conflict, we don\textquotesingle{}t know if it\textquotesingle{}s an ambiguity or a weakness in the strong L\+L($\ast$) parsing strategy (versus full L\+L($\ast$)).
+
+When S\+LL yields a configuration set with conflict, we rewind the input and retry the A\+TN simulation, this time using full outer context without adding to the D\+FA. Configuration context stacks will be the full invocation stacks from the start rule. If we get a conflict using full context, then we can definitively say we have a true ambiguity for that input sequence. If we don\textquotesingle{}t get a conflict, it implies that the decision is sensitive to the outer context. (It is not context-\/sensitive in the sense of context-\/sensitive grammars.)
+
+The next time we reach this D\+FA state with an S\+LL conflict, through D\+FA simulation, we will again retry the A\+TN simulation using full context mode. This is slow because we can\textquotesingle{}t save the results and have to \char`\"{}interpret\char`\"{} the A\+TN each time we get that input.
+
+{\bfseries C\+A\+C\+H\+I\+NG F\+U\+LL C\+O\+N\+T\+E\+XT P\+R\+E\+D\+I\+C\+T\+I\+O\+NS}
+
+We could cache results from full context to predicted alternative easily and that saves a lot of time but doesn\textquotesingle{}t work in presence of predicates. The set of visible predicates from the A\+TN start state changes depending on the context, because closure can fall off the end of a rule. I tried to cache tuples (stack context, semantic context, predicted alt) but it was slower than interpreting and much more complicated. Also required a huge amount of memory. The goal is not to create the world\textquotesingle{}s fastest parser anyway. I\textquotesingle{}d like to keep this algorithm simple. By launching multiple threads, we can improve the speed of parsing across a large number of files.
+
+There is no strict ordering between the amount of input used by S\+LL vs LL, which makes it really hard to build a cache for full context. Let\textquotesingle{}s say that we have input A B C that leads to an S\+LL conflict with full context X. That implies that using X we might only use A B but we could also use A B C D to resolve conflict. Input A B C D could predict alternative 1 in one position in the input and A B C E could predict alternative 2 in another position in input. The conflicting S\+LL configurations could still be non-\/unique in the full context prediction, which would lead us to requiring more input than the original A B C. To make a prediction cache work, we have to track the exact input used during the previous prediction. That amounts to a cache that maps X to a specific D\+FA for that context.
+
+Something should be done for left-\/recursive expression predictions. They are likely L\+L(1) + pred eval. Easier to do the whole S\+LL unless error and retry with full LL thing Sam does.
+
+{\bfseries A\+V\+O\+I\+D\+I\+NG F\+U\+LL C\+O\+N\+T\+E\+XT P\+R\+E\+D\+I\+C\+T\+I\+ON}
+
+We avoid doing full context retry when the outer context is empty, we did not dip into the outer context by falling off the end of the decision state rule, or when we force S\+LL mode.
+
+As an example of the not dip into outer context case, consider as super constructor calls versus function calls. One grammar might look like this\+:
+
+
+\begin{DoxyPre}
+ctorBody
+  : '\{' superCall? stat* '\}'
+  ;
+\end{DoxyPre}
+
+
+Or, you might see something like
+
+
+\begin{DoxyPre}
+stat
+  : superCall ';'
+  | expression ';'
+  | ...
+  ;
+\end{DoxyPre}
+
+
+In both cases I believe that no closure operations will dip into the outer context. In the first case ctor\+Body in the worst case will stop at the \textquotesingle{}\}\textquotesingle{}. In the 2nd case it should stop at the \textquotesingle{};\textquotesingle{}. Both cases should stay within the entry rule and not dip into the outer context.
+
+{\bfseries P\+R\+E\+D\+I\+C\+A\+T\+ES}
+
+Predicates are always evaluated if present in either S\+LL or LL both. S\+LL and LL simulation deals with predicates differently. S\+LL collects predicates as it performs closure operations like A\+N\+T\+LR v3 did. It delays predicate evaluation until it reaches and accept state. This allows us to cache the S\+LL A\+TN simulation whereas, if we had evaluated predicates on-\/the-\/fly during closure, the D\+FA state configuration sets would be different and we couldn\textquotesingle{}t build up a suitable D\+FA.
+
+When building a D\+FA accept state during A\+TN simulation, we evaluate any predicates and return the sole semantically valid alternative. If there is more than 1 alternative, we report an ambiguity. If there are 0 alternatives, we throw an exception. Alternatives without predicates act like they have true predicates. The simple way to think about it is to strip away all alternatives with false predicates and choose the minimum alternative that remains.
+
+When we start in the D\+FA and reach an accept state that\textquotesingle{}s predicated, we test those and return the minimum semantically viable alternative. If no alternatives are viable, we throw an exception.
+
+During full LL A\+TN simulation, closure always evaluates predicates and on-\/the-\/fly. This is crucial to reducing the configuration set size during closure. It hits a landmine when parsing with the Java grammar, for example, without this on-\/the-\/fly evaluation.
+
+{\bfseries S\+H\+A\+R\+I\+NG D\+FA}
+
+All instances of the same parser share the same decision D\+F\+As through a static field. Each instance gets its own A\+TN simulator but they share the same \hyperlink{}{decision\+To\+D\+FA} field. They also share a \hyperlink{}{Prediction\+Context\+Cache} object that makes sure that all \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} objects are shared among the D\+FA states. This makes a big size difference.
+
+{\bfseries T\+H\+R\+E\+AD S\+A\+F\+E\+TY}
+
+The \hyperlink{classantlr4_1_1atn_1_1ParserATNSimulator}{Parser\+A\+T\+N\+Simulator} locks on the \hyperlink{}{decision\+To\+D\+FA} field when it adds a new D\+FA object to that array. \hyperlink{}{add\+D\+F\+A\+Edge} locks on the D\+FA for the current decision when setting the \hyperlink{}{D\+F\+A\+State\#edges} field. \hyperlink{}{add\+D\+F\+A\+State} locks on the D\+FA for the current decision when looking up a D\+FA state to see if it already exists. We must make sure that all requests to add D\+FA states that are equivalent result in the same shared D\+FA object. This is because lots of threads will be trying to update the D\+FA at once. The \hyperlink{}{add\+D\+F\+A\+State} method also locks inside the D\+FA lock but this time on the shared context cache when it rebuilds the configurations\textquotesingle{} \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} objects using cached subgraphs/nodes. No other locking occurs, even during D\+FA simulation. This is safe as long as we can guarantee that all threads referencing 
+\begin{DoxyCode}
+s.edge[t] 
+\end{DoxyCode}
+ get the same physical target \hyperlink{}{D\+F\+A\+State}, or 
+\begin{DoxyCode}
+null 
+\end{DoxyCode}
+ . Once into the D\+FA, the D\+FA simulation does not reference the \hyperlink{}{D\+F\+A\#states} map. It follows the \hyperlink{}{D\+F\+A\+State\#edges} field to new targets. The D\+FA simulator will either find \hyperlink{}{D\+F\+A\+State\#edges} to be 
+\begin{DoxyCode}
+null 
+\end{DoxyCode}
+ , to be non-\/
+\begin{DoxyCode}
+null 
+\end{DoxyCode}
+ and
+\begin{DoxyCode}
+dfa.edges[t] 
+\end{DoxyCode}
+ null, or 
+\begin{DoxyCode}
+dfa.edges[t] 
+\end{DoxyCode}
+ to be non-\/null. The \hyperlink{}{add\+D\+F\+A\+Edge} method could be racing to set the field but in either case the D\+FA simulator works; if
+\begin{DoxyCode}
+null 
+\end{DoxyCode}
+ , and requests A\+TN simulation. It could also race trying to get
+\begin{DoxyCode}
+dfa.edges[t] 
+\end{DoxyCode}
+ , but either way it will work because it\textquotesingle{}s not doing a test and set operation.
+
+{\bfseries Starting with S\+LL then failing to combined S\+L\+L/\+LL (Two-\/\+Stage Parsing)}
+
+Sam pointed out that if S\+LL does not give a syntax error, then there is no point in doing full LL, which is slower. We only have to try LL if we get a syntax error. For maximum speed, Sam starts the parser set to pure S\+LL mode with the \hyperlink{}{Bail\+Error\+Strategy}\+:
+
+
+\begin{DoxyPre}
+parser.\hyperlink{classantlr4_1_1Recognizer_a926f7b518ef08afd27eb9ab1af2e2757}{ getInterpreter()}.\hyperlink{}{ setPredictionMode}
+\begin{DoxyCode}
+( 
+\end{DoxyCode}
+ \hyperlink{ad9285036b2a01af0109507c442ea0e25aae2ecfbd95d475ddf08876080d57e3d9}{PredictionMode#SLL}
+\begin{DoxyCode}
+) 
+\end{DoxyCode}
+ ;
+parser.\hyperlink{}{ setErrorHandler}(new \hyperlink{}{BailErrorStrategy}());
+\end{DoxyPre}
+
+
+If it does not get a syntax error, then we\textquotesingle{}re done. If it does get a syntax error, we need to retry with the combined S\+L\+L/\+LL strategy.
+
+The reason this works is as follows. If there are no S\+LL conflicts, then the grammar is S\+LL (at least for that input set). If there is an S\+LL conflict, the full LL analysis must yield a set of viable alternatives which is a subset of the alternatives reported by S\+LL. If the LL set is a singleton, then the grammar is LL but not S\+LL. If the LL set is the same size as the S\+LL set, the decision is S\+LL. If the LL set has size $>$ 1, then that decision is truly ambiguous on the current input. If the LL set is smaller, then the S\+LL conflict resolution might choose an alternative that the full LL would rule out as a possibility based upon better context information. If that\textquotesingle{}s the case, then the S\+LL parse will definitely get an error because the full LL analysis says it\textquotesingle{}s not viable. If S\+LL conflict resolution chooses an alternative within the LL set, them both S\+LL and LL would choose the same alternative because they both choose the minimum of multiple conflicting alternatives.
+
+Let\textquotesingle{}s say we have a set of S\+LL conflicting alternatives
+\begin{DoxyCode}
+\{1, 2, 3\} 
+\end{DoxyCode}
+ and a smaller LL set called {\itshape s}. If {\itshape s} is
+\begin{DoxyCode}
+\{2, 3\} 
+\end{DoxyCode}
+ , then S\+LL parsing will get an error because S\+LL will pursue alternative 1. If {\itshape s} is
+\begin{DoxyCode}
+\{1, 2\} 
+\end{DoxyCode}
+ or
+\begin{DoxyCode}
+\{1, 3\} 
+\end{DoxyCode}
+ then both S\+LL and LL will choose the same alternative because alternative one is the minimum of either set. If {\itshape s} is
+\begin{DoxyCode}
+\{2\} 
+\end{DoxyCode}
+ or
+\begin{DoxyCode}
+\{3\} 
+\end{DoxyCode}
+ then S\+LL will get a syntax error. If {\itshape s} is
+\begin{DoxyCode}
+\{1\} 
+\end{DoxyCode}
+ then S\+LL will succeed.
+
+Of course, if the input is invalid, then we will get an error for sure in both S\+LL and LL parsing. Erroneous input will therefore require 2 passes over the input.
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a3212501674dd0323d4875461304d976c}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a3212501674dd0323d4875461304d976c}} 
+\index{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator@{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator}!can\+Drop\+Loop\+Entry\+Edge\+In\+Left\+Recursive\+Rule@{can\+Drop\+Loop\+Entry\+Edge\+In\+Left\+Recursive\+Rule}}
+\index{can\+Drop\+Loop\+Entry\+Edge\+In\+Left\+Recursive\+Rule@{can\+Drop\+Loop\+Entry\+Edge\+In\+Left\+Recursive\+Rule}!antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator@{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator}}
+\subsubsection{\texorpdfstring{can\+Drop\+Loop\+Entry\+Edge\+In\+Left\+Recursive\+Rule()}{canDropLoopEntryEdgeInLeftRecursiveRule()}}
+{\footnotesize\ttfamily bool Parser\+A\+T\+N\+Simulator\+::can\+Drop\+Loop\+Entry\+Edge\+In\+Left\+Recursive\+Rule (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1atn_1_1ATNConfig}{A\+T\+N\+Config} $\ast$}]{config }\end{DoxyParamCaption}) const}
+
+Implements first-\/edge (loop entry) elimination as an optimization during closure operations. See antlr/antlr4\#1398.
+
+The optimization is to avoid adding the loop entry config when the exit path can only lead back to the same \hyperlink{classantlr4_1_1atn_1_1StarLoopEntryState}{Star\+Loop\+Entry\+State} after popping context at the rule end state (traversing only epsilon edges, so we\textquotesingle{}re still in closure, in this same rule).
+
+We need to detect any state that can reach loop entry on epsilon w/o exiting rule. We don\textquotesingle{}t have to look at F\+O\+L\+L\+OW links, just ensure that all stack tops for config refer to key states in LR rule.
+
+To verify we are in the right situation we must first check closure is at a \hyperlink{classantlr4_1_1atn_1_1StarLoopEntryState}{Star\+Loop\+Entry\+State} generated during LR removal. Then we check that each stack top of context is a return state from one of these cases\+:
+
+
+\begin{DoxyEnumerate}
+\item \textquotesingle{}not\textquotesingle{} expr, \textquotesingle{}(\textquotesingle{} type \textquotesingle{})\textquotesingle{} expr. The return state points at loop entry state
+\item expr op expr. The return state is the block end of internal block of (...)$\ast$
+\item \textquotesingle{}between\textquotesingle{} expr \textquotesingle{}and\textquotesingle{} expr. The return state of 2nd expr reference. That state points at block end of internal block of (...)$\ast$.
+\item expr \textquotesingle{}?\textquotesingle{} expr \textquotesingle{}\+:\textquotesingle{} expr. The return state points at block end, which points at loop entry state.
+\end{DoxyEnumerate}
+
+If any is true for each stack top, then closure does not add a config to the current config set for edge\mbox{[}0\mbox{]}, the loop entry branch.
+
+Conditions fail if any context for the current config is\+:
+
+a. empty (we\textquotesingle{}d fall out of expr to do a global F\+O\+L\+L\+OW which could even be to some weird spot in expr) or, b. lies outside of expr or, c. lies within expr but at a state not the \hyperlink{classantlr4_1_1atn_1_1BlockEndState}{Block\+End\+State} generated during LR removal
+
+Do we need to evaluate predicates ever in closure for this case?
+
+No. Predicates, including precedence predicates, are only evaluated when computing a D\+FA start state. I.\+e., only before the lookahead (but not parser) consumes a token.
+
+There are no epsilon edges allowed in LR rule alt blocks or in the \char`\"{}primary\char`\"{} part (ID here). If closure is in \hyperlink{classantlr4_1_1atn_1_1StarLoopEntryState}{Star\+Loop\+Entry\+State} any lookahead operation will have consumed a token as there are no epsilon-\/paths that lead to \hyperlink{classantlr4_1_1atn_1_1StarLoopEntryState}{Star\+Loop\+Entry\+State}. We do not have to evaluate predicates therefore if we are in the generated \hyperlink{classantlr4_1_1atn_1_1StarLoopEntryState}{Star\+Loop\+Entry\+State} of a LR rule. Note that when making a prediction starting at that decision point, decision d=2, compute-\/start-\/state performs closure starting at edges\mbox{[}0\mbox{]}, edges\mbox{[}1\mbox{]} emanating from \hyperlink{classantlr4_1_1atn_1_1StarLoopEntryState}{Star\+Loop\+Entry\+State}. That means it is not performing closure on \hyperlink{classantlr4_1_1atn_1_1StarLoopEntryState}{Star\+Loop\+Entry\+State} during compute-\/start-\/state.
+
+How do we know this always gives same prediction answer?
+
+Without predicates, loop entry and exit paths are ambiguous upon remaining input +b (in, say, a+b). Either paths lead to valid parses. Closure can lead to consuming + immediately or by falling out of this call to expr back into expr and loop back again to \hyperlink{classantlr4_1_1atn_1_1StarLoopEntryState}{Star\+Loop\+Entry\+State} to match +b. In this special case, we choose the more efficient path, which is to take the bypass path.
+
+The lookahead language has not changed because closure chooses one path over the other. Both paths lead to consuming the same remaining input during a lookahead operation. If the next token is an operator, lookahead will enter the choice block with operators. If it is not, lookahead will exit expr. Same as if closure had chosen to enter the choice block immediately.
+
+Closure is examining one config (some loopentrystate, some alt, context) which means it is considering exactly one alt. Closure always copies the same alt to any derived configs.
+
+How do we know this optimization doesn\textquotesingle{}t mess up precedence in our parse trees?
+
+Looking through expr from left edge of stat only has to confirm that an input, say, a+b+c; begins with any valid interpretation of an expression. The precedence actually doesn\textquotesingle{}t matter when making a decision in stat seeing through expr. It is only when parsing rule expr that we must use the precedence to get the right interpretation and, hence, parse tree. \mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a846da7dc607b212d443cb401f5830bae}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a846da7dc607b212d443cb401f5830bae}} 
+\index{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator@{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator}!clear\+D\+FA@{clear\+D\+FA}}
+\index{clear\+D\+FA@{clear\+D\+FA}!antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator@{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator}}
+\subsubsection{\texorpdfstring{clear\+D\+F\+A()}{clearDFA()}}
+{\footnotesize\ttfamily void Parser\+A\+T\+N\+Simulator\+::clear\+D\+FA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Clear the D\+FA cache used by the current instance. Since the D\+FA cache may be shared by multiple A\+TN simulators, this method may affect the performance (but not accuracy) of other parsers which are being used concurrently.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{classantlr4_1_1UnsupportedOperationException}{Unsupported\+Operation\+Exception}} & if the current instance does not support clearing the D\+FA.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySince}{Since}
+4.\+3 
+\end{DoxySince}
+
+
+Reimplemented from \hyperlink{classantlr4_1_1atn_1_1ATNSimulator_a3358fa3e8ebcb4abeeceb914b0b07f10}{antlr4\+::atn\+::\+A\+T\+N\+Simulator}.
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_a17be01f2a7db2f2c18c973cc2799a5a0}\label{classantlr4_1_1atn_1_1ParserATNSimulator_a17be01f2a7db2f2c18c973cc2799a5a0}} 
+\index{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator@{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator}!dump\+Dead\+End\+Configs@{dump\+Dead\+End\+Configs}}
+\index{dump\+Dead\+End\+Configs@{dump\+Dead\+End\+Configs}!antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator@{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator}}
+\subsubsection{\texorpdfstring{dump\+Dead\+End\+Configs()}{dumpDeadEndConfigs()}}
+{\footnotesize\ttfamily void Parser\+A\+T\+N\+Simulator\+::dump\+Dead\+End\+Configs (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1NoViableAltException}{No\+Viable\+Alt\+Exception} \&}]{nvae }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Used for debugging in adaptive\+Predict around exec\+A\+TN but I cut it out for clarity now that alg. works well. We can leave this \char`\"{}dead\char`\"{} code for a bit. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_ac7fbaf0a637744b43e6709660a5b12f2}\label{classantlr4_1_1atn_1_1ParserATNSimulator_ac7fbaf0a637744b43e6709660a5b12f2}} 
+\index{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator@{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator}!exec\+A\+TN@{exec\+A\+TN}}
+\index{exec\+A\+TN@{exec\+A\+TN}!antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator@{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator}}
+\subsubsection{\texorpdfstring{exec\+A\+T\+N()}{execATN()}}
+{\footnotesize\ttfamily size\+\_\+t Parser\+A\+T\+N\+Simulator\+::exec\+A\+TN (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1dfa_1_1DFA}{dfa\+::\+D\+FA} \&}]{dfa,  }\item[{dfa\+::\+D\+F\+A\+State $\ast$}]{s0,  }\item[{Token\+Stream $\ast$}]{input,  }\item[{size\+\_\+t}]{start\+Index,  }\item[{\hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} $\ast$}]{outer\+Context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Performs A\+TN simulation to compute a predicted alternative based upon the remaining input, but also updates the D\+FA cache to avoid having to traverse the A\+TN again for the same input sequence. 
+
+There are some key conditions we\textquotesingle{}re looking for after computing a new set of A\+TN configs (proposed D\+FA state)\+: if the set is empty, there is no viable alternative for current symbol does the state uniquely predict an alternative? does the state have a conflict that would prevent us from putting it on the work list?
+
+We also have some key operations to do\+: add an edge from previous D\+FA state to potentially new D\+FA state, D, upon current symbol but only if adding to work list, which means in all cases except no viable alternative (and possibly non-\/greedy decisions?) collecting predicates and adding semantic context to D\+FA accept states adding rule context to context-\/sensitive D\+FA accept states consuming an input symbol reporting a conflict reporting an ambiguity reporting a context sensitivity reporting insufficient predicates
+
+cover these cases\+: dead end single alt single alt + preds conflict conflict + preds 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParserATNSimulator_aa4d885910cc6f113c761a232d297e8e4}\label{classantlr4_1_1atn_1_1ParserATNSimulator_aa4d885910cc6f113c761a232d297e8e4}} 
+\index{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator@{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator}!merge\+Cache@{merge\+Cache}}
+\index{merge\+Cache@{merge\+Cache}!antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator@{antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator}}
+\subsubsection{\texorpdfstring{merge\+Cache}{mergeCache}}
+{\footnotesize\ttfamily \hyperlink{classantlr4_1_1atn_1_1PredictionContextMergeCache}{Prediction\+Context\+Merge\+Cache} antlr4\+::atn\+::\+Parser\+A\+T\+N\+Simulator\+::merge\+Cache\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Each prediction operation uses a cache for merge of prediction contexts. Don\textquotesingle{}t keep around as it wastes huge amounts of memory. The merge cache isn\textquotesingle{}t synchronized but we\textquotesingle{}re ok since two threads shouldn\textquotesingle{}t reuse same parser/atnsim object because it can only handle one input at a time. This maps graphs a and b to merged result c. (a,b)-\/$>$c. We can avoid the merge if we ever see a and b again. Note that (b,a)-\/$>$c should also be examined during cache lookup. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+atn/Parser\+A\+T\+N\+Simulator.\+h\item 
+atn/Parser\+A\+T\+N\+Simulator.\+cpp\end{DoxyCompactItemize}

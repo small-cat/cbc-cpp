@@ -1,0 +1,78 @@
+\hypertarget{classantlr4_1_1ConsoleErrorListener}{}\section{antlr4\+:\+:Console\+Error\+Listener Class Reference}
+\label{classantlr4_1_1ConsoleErrorListener}\index{antlr4\+::\+Console\+Error\+Listener@{antlr4\+::\+Console\+Error\+Listener}}
+
+
+Inheritance diagram for antlr4\+:\+:Console\+Error\+Listener\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classantlr4_1_1ConsoleErrorListener__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for antlr4\+:\+:Console\+Error\+Listener\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{classantlr4_1_1ConsoleErrorListener__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classantlr4_1_1ConsoleErrorListener_ac8ba720010f28a83cae7c150c6f1775b}{syntax\+Error} (\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$recognizer, \hyperlink{classantlr4_1_1Token}{Token} $\ast$offending\+Symbol, size\+\_\+t line, size\+\_\+t char\+Position\+In\+Line, const std\+::string \&msg, std\+::exception\+\_\+ptr e) override
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classantlr4_1_1ConsoleErrorListener}{Console\+Error\+Listener} \hyperlink{classantlr4_1_1ConsoleErrorListener_a61b93f6c4f075888001972f35698d5ff}{I\+N\+S\+T\+A\+N\+CE}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1ConsoleErrorListener_ac8ba720010f28a83cae7c150c6f1775b}\label{classantlr4_1_1ConsoleErrorListener_ac8ba720010f28a83cae7c150c6f1775b}} 
+\index{antlr4\+::\+Console\+Error\+Listener@{antlr4\+::\+Console\+Error\+Listener}!syntax\+Error@{syntax\+Error}}
+\index{syntax\+Error@{syntax\+Error}!antlr4\+::\+Console\+Error\+Listener@{antlr4\+::\+Console\+Error\+Listener}}
+\subsubsection{\texorpdfstring{syntax\+Error()}{syntaxError()}}
+{\footnotesize\ttfamily void Console\+Error\+Listener\+::syntax\+Error (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$}]{recognizer,  }\item[{\hyperlink{classantlr4_1_1Token}{Token} $\ast$}]{offending\+Symbol,  }\item[{size\+\_\+t}]{line,  }\item[{size\+\_\+t}]{char\+Position\+In\+Line,  }\item[{const std\+::string \&}]{msg,  }\item[{std\+::exception\+\_\+ptr}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+This implementation prints messages to \hyperlink{}{System\#err} containing the values of
+\begin{DoxyCode}
+line 
+\end{DoxyCode}
+ ,
+\begin{DoxyCode}
+charPositionInLine 
+\end{DoxyCode}
+ , and
+\begin{DoxyCode}
+msg 
+\end{DoxyCode}
+ using the following format.
+
+
+\begin{DoxyPre}
+line {\itshape line}:{\itshape charPositionInLine} {\itshape msg}
+\end{DoxyPre}
+ 
+
+Reimplemented from \hyperlink{classantlr4_1_1BaseErrorListener}{antlr4\+::\+Base\+Error\+Listener}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classantlr4_1_1ConsoleErrorListener_a61b93f6c4f075888001972f35698d5ff}\label{classantlr4_1_1ConsoleErrorListener_a61b93f6c4f075888001972f35698d5ff}} 
+\index{antlr4\+::\+Console\+Error\+Listener@{antlr4\+::\+Console\+Error\+Listener}!I\+N\+S\+T\+A\+N\+CE@{I\+N\+S\+T\+A\+N\+CE}}
+\index{I\+N\+S\+T\+A\+N\+CE@{I\+N\+S\+T\+A\+N\+CE}!antlr4\+::\+Console\+Error\+Listener@{antlr4\+::\+Console\+Error\+Listener}}
+\subsubsection{\texorpdfstring{I\+N\+S\+T\+A\+N\+CE}{INSTANCE}}
+{\footnotesize\ttfamily \hyperlink{classantlr4_1_1ConsoleErrorListener}{Console\+Error\+Listener} Console\+Error\+Listener\+::\+I\+N\+S\+T\+A\+N\+CE\hspace{0.3cm}{\ttfamily [static]}}
+
+Provides a default instance of \hyperlink{classantlr4_1_1ConsoleErrorListener}{Console\+Error\+Listener}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Console\+Error\+Listener.\+h\item 
+Console\+Error\+Listener.\+cpp\end{DoxyCompactItemize}

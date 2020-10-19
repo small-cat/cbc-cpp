@@ -1,0 +1,131 @@
+\hypertarget{classantlr4_1_1CommonTokenFactory}{}\section{antlr4\+:\+:Common\+Token\+Factory Class Reference}
+\label{classantlr4_1_1CommonTokenFactory}\index{antlr4\+::\+Common\+Token\+Factory@{antlr4\+::\+Common\+Token\+Factory}}
+
+
+{\ttfamily \#include $<$Common\+Token\+Factory.\+h$>$}
+
+
+
+Inheritance diagram for antlr4\+:\+:Common\+Token\+Factory\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{classantlr4_1_1CommonTokenFactory__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for antlr4\+:\+:Common\+Token\+Factory\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{classantlr4_1_1CommonTokenFactory__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classantlr4_1_1CommonTokenFactory_a580c068f46164c58052858432bbf974c}{Common\+Token\+Factory} (bool \hyperlink{classantlr4_1_1CommonTokenFactory_a944c106da2cf4638ea989bcb20b482df}{copy\+Text})
+\item 
+\hyperlink{classantlr4_1_1CommonTokenFactory_a4bf0a30d96f0239d56c72d0b5dc634f7}{Common\+Token\+Factory} ()
+\item 
+virtual std\+::unique\+\_\+ptr$<$ \hyperlink{classantlr4_1_1CommonToken}{Common\+Token} $>$ \hyperlink{classantlr4_1_1CommonTokenFactory_ae5b0ee244ce69cf24a71c81167328be1}{create} (std\+::pair$<$ \hyperlink{classantlr4_1_1TokenSource}{Token\+Source} $\ast$, Char\+Stream $\ast$$>$ source, size\+\_\+t type, const std\+::string \&text, size\+\_\+t channel, size\+\_\+t start, size\+\_\+t stop, size\+\_\+t line, size\+\_\+t char\+Position\+In\+Line) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1CommonTokenFactory_a9b21aad910d0976a291c7b4aed688aad}\label{classantlr4_1_1CommonTokenFactory_a9b21aad910d0976a291c7b4aed688aad}} 
+virtual std\+::unique\+\_\+ptr$<$ \hyperlink{classantlr4_1_1CommonToken}{Common\+Token} $>$ \hyperlink{classantlr4_1_1CommonTokenFactory_a9b21aad910d0976a291c7b4aed688aad}{create} (size\+\_\+t type, const std\+::string \&text) override
+\begin{DoxyCompactList}\small\item\em Generically useful. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const Ref$<$ \hyperlink{classantlr4_1_1TokenFactory}{Token\+Factory}$<$ \hyperlink{classantlr4_1_1CommonToken}{Common\+Token} $>$ $>$ \hyperlink{classantlr4_1_1CommonTokenFactory_a141e9716e14a7b5c43a6d0bd3db82bcd}{D\+E\+F\+A\+U\+LT} = std\+::make\+\_\+shared$<$\hyperlink{classantlr4_1_1CommonTokenFactory}{Common\+Token\+Factory}$>$()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const bool \hyperlink{classantlr4_1_1CommonTokenFactory_a944c106da2cf4638ea989bcb20b482df}{copy\+Text}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This default implementation of \hyperlink{classantlr4_1_1TokenFactory}{Token\+Factory} creates \hyperlink{classantlr4_1_1CommonToken}{Common\+Token} objects. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classantlr4_1_1CommonTokenFactory_a580c068f46164c58052858432bbf974c}\label{classantlr4_1_1CommonTokenFactory_a580c068f46164c58052858432bbf974c}} 
+\index{antlr4\+::\+Common\+Token\+Factory@{antlr4\+::\+Common\+Token\+Factory}!Common\+Token\+Factory@{Common\+Token\+Factory}}
+\index{Common\+Token\+Factory@{Common\+Token\+Factory}!antlr4\+::\+Common\+Token\+Factory@{antlr4\+::\+Common\+Token\+Factory}}
+\subsubsection{\texorpdfstring{Common\+Token\+Factory()}{CommonTokenFactory()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Common\+Token\+Factory\+::\+Common\+Token\+Factory (\begin{DoxyParamCaption}\item[{bool}]{copy\+Text }\end{DoxyParamCaption})}
+
+Constructs a \hyperlink{classantlr4_1_1CommonTokenFactory}{Common\+Token\+Factory} with the specified value for \hyperlink{classantlr4_1_1CommonTokenFactory_a944c106da2cf4638ea989bcb20b482df}{copy\+Text}.
+
+When
+\begin{DoxyCode}
+\hyperlink{classantlr4_1_1CommonTokenFactory_a944c106da2cf4638ea989bcb20b482df}{copyText} 
+\end{DoxyCode}
+ is
+\begin{DoxyCode}
+\textcolor{keyword}{false} 
+\end{DoxyCode}
+ , the \hyperlink{classantlr4_1_1CommonTokenFactory_a141e9716e14a7b5c43a6d0bd3db82bcd}{D\+E\+F\+A\+U\+LT} instance should be used instead of constructing a new instance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em copy\+Text} & The value for \hyperlink{classantlr4_1_1CommonTokenFactory_a944c106da2cf4638ea989bcb20b482df}{copy\+Text}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classantlr4_1_1CommonTokenFactory_a4bf0a30d96f0239d56c72d0b5dc634f7}\label{classantlr4_1_1CommonTokenFactory_a4bf0a30d96f0239d56c72d0b5dc634f7}} 
+\index{antlr4\+::\+Common\+Token\+Factory@{antlr4\+::\+Common\+Token\+Factory}!Common\+Token\+Factory@{Common\+Token\+Factory}}
+\index{Common\+Token\+Factory@{Common\+Token\+Factory}!antlr4\+::\+Common\+Token\+Factory@{antlr4\+::\+Common\+Token\+Factory}}
+\subsubsection{\texorpdfstring{Common\+Token\+Factory()}{CommonTokenFactory()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Common\+Token\+Factory\+::\+Common\+Token\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructs a \hyperlink{classantlr4_1_1CommonTokenFactory}{Common\+Token\+Factory} with \hyperlink{classantlr4_1_1CommonTokenFactory_a944c106da2cf4638ea989bcb20b482df}{copy\+Text} set to 
+\begin{DoxyCode}
+\textcolor{keyword}{false} 
+\end{DoxyCode}
+ .
+
+The \hyperlink{classantlr4_1_1CommonTokenFactory_a141e9716e14a7b5c43a6d0bd3db82bcd}{D\+E\+F\+A\+U\+LT} instance should be used instead of calling this directly.
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1CommonTokenFactory_ae5b0ee244ce69cf24a71c81167328be1}\label{classantlr4_1_1CommonTokenFactory_ae5b0ee244ce69cf24a71c81167328be1}} 
+\index{antlr4\+::\+Common\+Token\+Factory@{antlr4\+::\+Common\+Token\+Factory}!create@{create}}
+\index{create@{create}!antlr4\+::\+Common\+Token\+Factory@{antlr4\+::\+Common\+Token\+Factory}}
+\subsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \hyperlink{classantlr4_1_1CommonToken}{Common\+Token} $>$ Common\+Token\+Factory\+::create (\begin{DoxyParamCaption}\item[{std\+::pair$<$ \hyperlink{classantlr4_1_1TokenSource}{Token\+Source} $\ast$, Char\+Stream $\ast$$>$}]{source,  }\item[{size\+\_\+t}]{type,  }\item[{const std\+::string \&}]{text,  }\item[{size\+\_\+t}]{channel,  }\item[{size\+\_\+t}]{start,  }\item[{size\+\_\+t}]{stop,  }\item[{size\+\_\+t}]{line,  }\item[{size\+\_\+t}]{char\+Position\+In\+Line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+This is the method used to create tokens in the lexer and in the error handling strategy. If text!=null, than the start and stop positions are wiped to -\/1 in the text override is set in the \hyperlink{classantlr4_1_1CommonToken}{Common\+Token}. 
+
+Implements \hyperlink{classantlr4_1_1TokenFactory_a25efd6b38907e594ddc848887fbd7303}{antlr4\+::\+Token\+Factory$<$ Common\+Token $>$}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classantlr4_1_1CommonTokenFactory_a944c106da2cf4638ea989bcb20b482df}\label{classantlr4_1_1CommonTokenFactory_a944c106da2cf4638ea989bcb20b482df}} 
+\index{antlr4\+::\+Common\+Token\+Factory@{antlr4\+::\+Common\+Token\+Factory}!copy\+Text@{copy\+Text}}
+\index{copy\+Text@{copy\+Text}!antlr4\+::\+Common\+Token\+Factory@{antlr4\+::\+Common\+Token\+Factory}}
+\subsubsection{\texorpdfstring{copy\+Text}{copyText}}
+{\footnotesize\ttfamily const bool antlr4\+::\+Common\+Token\+Factory\+::copy\+Text\hspace{0.3cm}{\ttfamily [protected]}}
+
+Indicates whether \hyperlink{classantlr4_1_1CommonToken_a2963f31fa12fdb1c5c26711004177554}{Common\+Token\#set\+Text} should be called after constructing tokens to explicitly set the text. This is useful for cases where the input stream might not be able to provide arbitrary substrings of text from the input after the lexer creates a token (e.\+g. the implementation of \hyperlink{}{Char\+Stream\#get\+Text} in \hyperlink{}{Unbuffered\+Char\+Stream} throws an \hyperlink{classantlr4_1_1UnsupportedOperationException}{Unsupported\+Operation\+Exception}). Explicitly setting the token text allows \hyperlink{classantlr4_1_1Token_ae288d9f2d72d0209a24e0cc5215e8844}{Token\#get\+Text} to be called at any time regardless of the input stream implementation.
+
+The default value is
+\begin{DoxyCode}
+\textcolor{keyword}{false} 
+\end{DoxyCode}
+ to avoid the performance and memory overhead of copying text for every token unless explicitly requested.\mbox{\Hypertarget{classantlr4_1_1CommonTokenFactory_a141e9716e14a7b5c43a6d0bd3db82bcd}\label{classantlr4_1_1CommonTokenFactory_a141e9716e14a7b5c43a6d0bd3db82bcd}} 
+\index{antlr4\+::\+Common\+Token\+Factory@{antlr4\+::\+Common\+Token\+Factory}!D\+E\+F\+A\+U\+LT@{D\+E\+F\+A\+U\+LT}}
+\index{D\+E\+F\+A\+U\+LT@{D\+E\+F\+A\+U\+LT}!antlr4\+::\+Common\+Token\+Factory@{antlr4\+::\+Common\+Token\+Factory}}
+\subsubsection{\texorpdfstring{D\+E\+F\+A\+U\+LT}{DEFAULT}}
+{\footnotesize\ttfamily const Ref$<$ \hyperlink{classantlr4_1_1TokenFactory}{Token\+Factory}$<$ \hyperlink{classantlr4_1_1CommonToken}{Common\+Token} $>$ $>$ Common\+Token\+Factory\+::\+D\+E\+F\+A\+U\+LT = std\+::make\+\_\+shared$<$\hyperlink{classantlr4_1_1CommonTokenFactory}{Common\+Token\+Factory}$>$()\hspace{0.3cm}{\ttfamily [static]}}
+
+The default \hyperlink{classantlr4_1_1CommonTokenFactory}{Common\+Token\+Factory} instance.
+
+This token factory does not explicitly copy token text when constructing tokens.
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Common\+Token\+Factory.\+h\item 
+Common\+Token\+Factory.\+cpp\end{DoxyCompactItemize}

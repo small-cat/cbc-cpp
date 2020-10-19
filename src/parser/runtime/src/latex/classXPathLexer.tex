@@ -1,0 +1,138 @@
+\hypertarget{classXPathLexer}{}\section{X\+Path\+Lexer Class Reference}
+\label{classXPathLexer}\index{X\+Path\+Lexer@{X\+Path\+Lexer}}
+
+
+Inheritance diagram for X\+Path\+Lexer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classXPathLexer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for X\+Path\+Lexer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{classXPathLexer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classXPathLexer_a319782eda7dff4d3e3f9d4a69a00b266}\label{classXPathLexer_a319782eda7dff4d3e3f9d4a69a00b266}} 
+enum \{ \newline
+{\bfseries T\+O\+K\+E\+N\+\_\+\+R\+EF} = 1, 
+{\bfseries R\+U\+L\+E\+\_\+\+R\+EF} = 2, 
+{\bfseries A\+N\+Y\+W\+H\+E\+RE} = 3, 
+{\bfseries R\+O\+OT} = 4, 
+\newline
+{\bfseries W\+I\+L\+D\+C\+A\+RD} = 5, 
+{\bfseries B\+A\+NG} = 6, 
+{\bfseries ID} = 7, 
+{\bfseries S\+T\+R\+I\+NG} = 8
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classXPathLexer_a86da2f3416d5f572235c249863610c8b}\label{classXPathLexer_a86da2f3416d5f572235c249863610c8b}} 
+{\bfseries X\+Path\+Lexer} (antlr4\+::\+Char\+Stream $\ast$input)
+\item 
+virtual std\+::string \hyperlink{classXPathLexer_aa212943fac87921b6793fda3b6dae10f}{get\+Grammar\+File\+Name} () const override
+\begin{DoxyCompactList}\small\item\em For debugging and other purposes, might want the grammar name. Have A\+N\+T\+LR generate an implementation for this method. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classXPathLexer_a0e6dcedfc42e02c2cf3f0d40ed5ea5a3}\label{classXPathLexer_a0e6dcedfc42e02c2cf3f0d40ed5ea5a3}} 
+virtual const std\+::vector$<$ std\+::string $>$ \& {\bfseries get\+Rule\+Names} () const override
+\item 
+\mbox{\Hypertarget{classXPathLexer_a38173fc37660e52b56a052adc21a9496}\label{classXPathLexer_a38173fc37660e52b56a052adc21a9496}} 
+virtual const std\+::vector$<$ std\+::string $>$ \& {\bfseries get\+Channel\+Names} () const override
+\item 
+\mbox{\Hypertarget{classXPathLexer_a2901d6cf7543e6b0a7336f962b042af8}\label{classXPathLexer_a2901d6cf7543e6b0a7336f962b042af8}} 
+virtual const std\+::vector$<$ std\+::string $>$ \& {\bfseries get\+Mode\+Names} () const override
+\item 
+virtual const std\+::vector$<$ std\+::string $>$ \& \hyperlink{classXPathLexer_a6d2373c466f6a3d92ced0a2d79380a0d}{get\+Token\+Names} () const override
+\item 
+virtual antlr4\+::dfa\+::\+Vocabulary \& \hyperlink{classXPathLexer_acf45ddece8356cd0fcaa1189687c1f64}{get\+Vocabulary} () const override
+\item 
+virtual const std\+::vector$<$ uint16\+\_\+t $>$ \hyperlink{classXPathLexer_a59ee9cba029ff18c8468321b75da8f66}{get\+Serialized\+A\+TN} () const override
+\begin{DoxyCompactList}\small\item\em If this recognizer was generated, it will have a serialized A\+TN representation of the grammar. 
+
+For interpreters, we don\textquotesingle{}t know their serialized A\+TN despite having created the interpreter from it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classXPathLexer_aa666e42449466c1524c3b2a02e2c1b7c}\label{classXPathLexer_aa666e42449466c1524c3b2a02e2c1b7c}} 
+virtual const antlr4\+::atn\+::\+A\+TN \& {\bfseries get\+A\+TN} () const override
+\item 
+\mbox{\Hypertarget{classXPathLexer_ae56d96954dd9727bbebe547c56718c74}\label{classXPathLexer_ae56d96954dd9727bbebe547c56718c74}} 
+virtual void {\bfseries action} (\hyperlink{classantlr4_1_1RuleContext}{antlr4\+::\+Rule\+Context} $\ast$context, size\+\_\+t rule\+Index, size\+\_\+t action\+Index) override
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classXPathLexer_aa212943fac87921b6793fda3b6dae10f}\label{classXPathLexer_aa212943fac87921b6793fda3b6dae10f}} 
+\index{X\+Path\+Lexer@{X\+Path\+Lexer}!get\+Grammar\+File\+Name@{get\+Grammar\+File\+Name}}
+\index{get\+Grammar\+File\+Name@{get\+Grammar\+File\+Name}!X\+Path\+Lexer@{X\+Path\+Lexer}}
+\subsubsection{\texorpdfstring{get\+Grammar\+File\+Name()}{getGrammarFileName()}}
+{\footnotesize\ttfamily std\+::string X\+Path\+Lexer\+::get\+Grammar\+File\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+For debugging and other purposes, might want the grammar name. Have A\+N\+T\+LR generate an implementation for this method. 
+
+
+
+Implements \hyperlink{classantlr4_1_1Recognizer_a41d77f1ad38c68b4208d26c070fd2cc7}{antlr4\+::\+Recognizer}.
+
+\mbox{\Hypertarget{classXPathLexer_a59ee9cba029ff18c8468321b75da8f66}\label{classXPathLexer_a59ee9cba029ff18c8468321b75da8f66}} 
+\index{X\+Path\+Lexer@{X\+Path\+Lexer}!get\+Serialized\+A\+TN@{get\+Serialized\+A\+TN}}
+\index{get\+Serialized\+A\+TN@{get\+Serialized\+A\+TN}!X\+Path\+Lexer@{X\+Path\+Lexer}}
+\subsubsection{\texorpdfstring{get\+Serialized\+A\+T\+N()}{getSerializedATN()}}
+{\footnotesize\ttfamily const std\+::vector$<$ uint16\+\_\+t $>$ X\+Path\+Lexer\+::get\+Serialized\+A\+TN (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+If this recognizer was generated, it will have a serialized A\+TN representation of the grammar. 
+
+For interpreters, we don\textquotesingle{}t know their serialized A\+TN despite having created the interpreter from it. 
+
+
+
+Reimplemented from \hyperlink{classantlr4_1_1Recognizer_a06b4b78084e75ebafbbd86008914fb51}{antlr4\+::\+Recognizer}.
+
+\mbox{\Hypertarget{classXPathLexer_a6d2373c466f6a3d92ced0a2d79380a0d}\label{classXPathLexer_a6d2373c466f6a3d92ced0a2d79380a0d}} 
+\index{X\+Path\+Lexer@{X\+Path\+Lexer}!get\+Token\+Names@{get\+Token\+Names}}
+\index{get\+Token\+Names@{get\+Token\+Names}!X\+Path\+Lexer@{X\+Path\+Lexer}}
+\subsubsection{\texorpdfstring{get\+Token\+Names()}{getTokenNames()}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::string $>$ \& X\+Path\+Lexer\+::get\+Token\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Used to print out token names like ID during debugging and error reporting. The generated parsers implement a method that overrides this to point to their String\mbox{[}\mbox{]} token\+Names.
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000010}{Deprecated}]Use \hyperlink{classXPathLexer_acf45ddece8356cd0fcaa1189687c1f64}{get\+Vocabulary()} instead. \end{DoxyRefDesc}
+
+
+Implements \hyperlink{classantlr4_1_1Recognizer_aef9436cfc73e828229b90a57c8ff2493}{antlr4\+::\+Recognizer}.
+
+\mbox{\Hypertarget{classXPathLexer_acf45ddece8356cd0fcaa1189687c1f64}\label{classXPathLexer_acf45ddece8356cd0fcaa1189687c1f64}} 
+\index{X\+Path\+Lexer@{X\+Path\+Lexer}!get\+Vocabulary@{get\+Vocabulary}}
+\index{get\+Vocabulary@{get\+Vocabulary}!X\+Path\+Lexer@{X\+Path\+Lexer}}
+\subsubsection{\texorpdfstring{get\+Vocabulary()}{getVocabulary()}}
+{\footnotesize\ttfamily dfa\+::\+Vocabulary \& X\+Path\+Lexer\+::get\+Vocabulary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Get the vocabulary used by the recognizer.
+
+\begin{DoxyReturn}{Returns}
+A \hyperlink{}{Vocabulary} instance providing information about the vocabulary used by the grammar. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classantlr4_1_1Recognizer_aae7ec953d3f35749e62ccb96fa3e0946}{antlr4\+::\+Recognizer}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+tree/xpath/X\+Path\+Lexer.\+h\item 
+tree/xpath/X\+Path\+Lexer.\+cpp\end{DoxyCompactItemize}

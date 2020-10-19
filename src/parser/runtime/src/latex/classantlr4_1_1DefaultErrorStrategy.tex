@@ -1,0 +1,171 @@
+\hypertarget{classantlr4_1_1DefaultErrorStrategy}{}\section{antlr4\+:\+:Default\+Error\+Strategy Class Reference}
+\label{classantlr4_1_1DefaultErrorStrategy}\index{antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}}
+
+
+{\ttfamily \#include $<$Default\+Error\+Strategy.\+h$>$}
+
+
+
+Inheritance diagram for antlr4\+:\+:Default\+Error\+Strategy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classantlr4_1_1DefaultErrorStrategy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for antlr4\+:\+:Default\+Error\+Strategy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classantlr4_1_1DefaultErrorStrategy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1DefaultErrorStrategy_ae33bdf3cec035b4232bc7b00cccdb76a}\label{classantlr4_1_1DefaultErrorStrategy_ae33bdf3cec035b4232bc7b00cccdb76a}} 
+{\bfseries Default\+Error\+Strategy} (\hyperlink{classantlr4_1_1DefaultErrorStrategy}{Default\+Error\+Strategy} const \&other)=delete
+\item 
+\mbox{\Hypertarget{classantlr4_1_1DefaultErrorStrategy_ae0a3e0ea5418c980a92a471e26ecfb59}\label{classantlr4_1_1DefaultErrorStrategy_ae0a3e0ea5418c980a92a471e26ecfb59}} 
+\hyperlink{classantlr4_1_1DefaultErrorStrategy}{Default\+Error\+Strategy} \& {\bfseries operator=} (\hyperlink{classantlr4_1_1DefaultErrorStrategy}{Default\+Error\+Strategy} const \&other)=delete
+\item 
+virtual void \hyperlink{classantlr4_1_1DefaultErrorStrategy_a09526cdda0619309a8063dbfe8138c2d}{reset} (\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$recognizer) override
+\begin{DoxyCompactList}\small\item\em The default implementation simply calls \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1DefaultErrorStrategy_ae04080b08ef36ab9586fe2273ce960f0}{end\+Error\+Condition}
+
+
+\end{DoxySeeAlso}
+to ensure that the handler is not in error recovery mode. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classantlr4_1_1DefaultErrorStrategy_a354b6e4152a68a2b7d9c1357a49ec3cc}{in\+Error\+Recovery\+Mode} (\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$recognizer) override
+\item 
+virtual void \hyperlink{classantlr4_1_1DefaultErrorStrategy_a9ec4d98c54d479e46909579fb3460300}{report\+Match} (\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$recognizer) override
+\begin{DoxyCompactList}\small\item\em The default implementation simply calls \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1DefaultErrorStrategy_ae04080b08ef36ab9586fe2273ce960f0}{end\+Error\+Condition}
+
+
+\end{DoxySeeAlso}
+. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classantlr4_1_1DefaultErrorStrategy_a6408837d5375351acbcd1595c8d5ab79}{begin\+Error\+Condition} (\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$recognizer)
+\begin{DoxyCompactList}\small\item\em This method is called to enter error recovery mode when a recognition exception is reported. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classantlr4_1_1DefaultErrorStrategy_ae04080b08ef36ab9586fe2273ce960f0}{end\+Error\+Condition} (\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$recognizer)
+\begin{DoxyCompactList}\small\item\em This method is called to leave error recovery mode after recovering from a recognition exception. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classantlr4_1_1DefaultErrorStrategy_a612c641ac64e59200bfeaf1f52b8e31e}{error\+Recovery\+Mode}
+\item 
+int \hyperlink{classantlr4_1_1DefaultErrorStrategy_ac0c7e89ac7e3c12ca0e44f0d2bda5faa}{last\+Error\+Index}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1DefaultErrorStrategy_afe3424fbb3b19bca2a9ce4e9ca281d9a}\label{classantlr4_1_1DefaultErrorStrategy_afe3424fbb3b19bca2a9ce4e9ca281d9a}} 
+\hyperlink{classantlr4_1_1misc_1_1IntervalSet}{misc\+::\+Interval\+Set} {\bfseries last\+Error\+States}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the default implementation of \hyperlink{classantlr4_1_1ANTLRErrorStrategy}{A\+N\+T\+L\+R\+Error\+Strategy} used for error reporting and recovery in A\+N\+T\+LR parsers. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1DefaultErrorStrategy_a6408837d5375351acbcd1595c8d5ab79}\label{classantlr4_1_1DefaultErrorStrategy_a6408837d5375351acbcd1595c8d5ab79}} 
+\index{antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}!begin\+Error\+Condition@{begin\+Error\+Condition}}
+\index{begin\+Error\+Condition@{begin\+Error\+Condition}!antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}}
+\subsubsection{\texorpdfstring{begin\+Error\+Condition()}{beginErrorCondition()}}
+{\footnotesize\ttfamily void Default\+Error\+Strategy\+::begin\+Error\+Condition (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$}]{recognizer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+This method is called to enter error recovery mode when a recognition exception is reported. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em recognizer} & the parser instance \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classantlr4_1_1DefaultErrorStrategy_ae04080b08ef36ab9586fe2273ce960f0}\label{classantlr4_1_1DefaultErrorStrategy_ae04080b08ef36ab9586fe2273ce960f0}} 
+\index{antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}!end\+Error\+Condition@{end\+Error\+Condition}}
+\index{end\+Error\+Condition@{end\+Error\+Condition}!antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}}
+\subsubsection{\texorpdfstring{end\+Error\+Condition()}{endErrorCondition()}}
+{\footnotesize\ttfamily void Default\+Error\+Strategy\+::end\+Error\+Condition (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$}]{recognizer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+This method is called to leave error recovery mode after recovering from a recognition exception. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em recognizer} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classantlr4_1_1DefaultErrorStrategy_a354b6e4152a68a2b7d9c1357a49ec3cc}\label{classantlr4_1_1DefaultErrorStrategy_a354b6e4152a68a2b7d9c1357a49ec3cc}} 
+\index{antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}!in\+Error\+Recovery\+Mode@{in\+Error\+Recovery\+Mode}}
+\index{in\+Error\+Recovery\+Mode@{in\+Error\+Recovery\+Mode}!antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}}
+\subsubsection{\texorpdfstring{in\+Error\+Recovery\+Mode()}{inErrorRecoveryMode()}}
+{\footnotesize\ttfamily bool Default\+Error\+Strategy\+::in\+Error\+Recovery\+Mode (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$}]{recognizer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+
+
+\mbox{\Hypertarget{classantlr4_1_1DefaultErrorStrategy_a9ec4d98c54d479e46909579fb3460300}\label{classantlr4_1_1DefaultErrorStrategy_a9ec4d98c54d479e46909579fb3460300}} 
+\index{antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}!report\+Match@{report\+Match}}
+\index{report\+Match@{report\+Match}!antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}}
+\subsubsection{\texorpdfstring{report\+Match()}{reportMatch()}}
+{\footnotesize\ttfamily void Default\+Error\+Strategy\+::report\+Match (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$}]{recognizer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+The default implementation simply calls \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1DefaultErrorStrategy_ae04080b08ef36ab9586fe2273ce960f0}{end\+Error\+Condition}
+
+
+\end{DoxySeeAlso}
+. 
+
+\mbox{\Hypertarget{classantlr4_1_1DefaultErrorStrategy_a09526cdda0619309a8063dbfe8138c2d}\label{classantlr4_1_1DefaultErrorStrategy_a09526cdda0619309a8063dbfe8138c2d}} 
+\index{antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}!reset@{reset}}
+\index{reset@{reset}!antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Default\+Error\+Strategy\+::reset (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$}]{recognizer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+The default implementation simply calls \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1DefaultErrorStrategy_ae04080b08ef36ab9586fe2273ce960f0}{end\+Error\+Condition}
+
+
+\end{DoxySeeAlso}
+to ensure that the handler is not in error recovery mode. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classantlr4_1_1DefaultErrorStrategy_a612c641ac64e59200bfeaf1f52b8e31e}\label{classantlr4_1_1DefaultErrorStrategy_a612c641ac64e59200bfeaf1f52b8e31e}} 
+\index{antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}!error\+Recovery\+Mode@{error\+Recovery\+Mode}}
+\index{error\+Recovery\+Mode@{error\+Recovery\+Mode}!antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}}
+\subsubsection{\texorpdfstring{error\+Recovery\+Mode}{errorRecoveryMode}}
+{\footnotesize\ttfamily bool antlr4\+::\+Default\+Error\+Strategy\+::error\+Recovery\+Mode\hspace{0.3cm}{\ttfamily [protected]}}
+
+Indicates whether the error strategy is currently \char`\"{}recovering from an
+error\char`\"{}. This is used to suppress reporting multiple error messages while attempting to recover from a detected syntax error.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1DefaultErrorStrategy_a354b6e4152a68a2b7d9c1357a49ec3cc}{in\+Error\+Recovery\+Mode} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classantlr4_1_1DefaultErrorStrategy_ac0c7e89ac7e3c12ca0e44f0d2bda5faa}\label{classantlr4_1_1DefaultErrorStrategy_ac0c7e89ac7e3c12ca0e44f0d2bda5faa}} 
+\index{antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}!last\+Error\+Index@{last\+Error\+Index}}
+\index{last\+Error\+Index@{last\+Error\+Index}!antlr4\+::\+Default\+Error\+Strategy@{antlr4\+::\+Default\+Error\+Strategy}}
+\subsubsection{\texorpdfstring{last\+Error\+Index}{lastErrorIndex}}
+{\footnotesize\ttfamily int antlr4\+::\+Default\+Error\+Strategy\+::last\+Error\+Index\hspace{0.3cm}{\ttfamily [protected]}}
+
+The index into the input stream where the last error occurred. This is used to prevent infinite loops where an error is found but no token is consumed during recovery...another error is found, ad nauseum. This is a failsafe mechanism to guarantee that at least one token/tree node is consumed for two errors. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Default\+Error\+Strategy.\+h\item 
+Default\+Error\+Strategy.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,49 @@
+\hypertarget{classantlr4_1_1tree_1_1ParseTreeListener}{}\section{antlr4\+:\+:tree\+:\+:Parse\+Tree\+Listener Class Reference}
+\label{classantlr4_1_1tree_1_1ParseTreeListener}\index{antlr4\+::tree\+::\+Parse\+Tree\+Listener@{antlr4\+::tree\+::\+Parse\+Tree\+Listener}}
+
+
+{\ttfamily \#include $<$Parse\+Tree\+Listener.\+h$>$}
+
+
+
+Inheritance diagram for antlr4\+:\+:tree\+:\+:Parse\+Tree\+Listener\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classantlr4_1_1tree_1_1ParseTreeListener__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1tree_1_1ParseTreeListener_a1b18d7e13cb0e59cca877c99115da90f}\label{classantlr4_1_1tree_1_1ParseTreeListener_a1b18d7e13cb0e59cca877c99115da90f}} 
+virtual void {\bfseries visit\+Terminal} (\hyperlink{classantlr4_1_1tree_1_1TerminalNode}{Terminal\+Node} $\ast$node)=0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1tree_1_1ParseTreeListener_ad736ceae08c0838ccd34ce716c8ea8cb}\label{classantlr4_1_1tree_1_1ParseTreeListener_ad736ceae08c0838ccd34ce716c8ea8cb}} 
+virtual void {\bfseries visit\+Error\+Node} (\hyperlink{classantlr4_1_1tree_1_1ErrorNode}{Error\+Node} $\ast$node)=0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1tree_1_1ParseTreeListener_adf8725fe1dc794db9b27371350c516dd}\label{classantlr4_1_1tree_1_1ParseTreeListener_adf8725fe1dc794db9b27371350c516dd}} 
+virtual void {\bfseries enter\+Every\+Rule} (\hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} $\ast$ctx)=0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1tree_1_1ParseTreeListener_ab8993be396adf21d7da138f61a8fd38b}\label{classantlr4_1_1tree_1_1ParseTreeListener_ab8993be396adf21d7da138f61a8fd38b}} 
+virtual void {\bfseries exit\+Every\+Rule} (\hyperlink{classantlr4_1_1ParserRuleContext}{Parser\+Rule\+Context} $\ast$ctx)=0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1tree_1_1ParseTreeListener_ae22a09365e3de536613dbe28c03ded9a}\label{classantlr4_1_1tree_1_1ParseTreeListener_ae22a09365e3de536613dbe28c03ded9a}} 
+bool {\bfseries operator==} (const \hyperlink{classantlr4_1_1tree_1_1ParseTreeListener}{Parse\+Tree\+Listener} \&other)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This interface describes the minimal core of methods triggered by \hyperlink{classantlr4_1_1tree_1_1ParseTreeWalker}{Parse\+Tree\+Walker}. E.\+g., \begin{DoxyVerb}ParseTreeWalker walker = new ParseTreeWalker();
+walker.walk(myParseTreeListener, myParseTree); <-- triggers events in your listener
+\end{DoxyVerb}
+
+
+If you want to trigger events in multiple listeners during a single tree walk, you can use the Parse\+Tree\+Dispatcher object available at \begin{DoxyVerb}https://github.com/antlr/antlr4/issues/841\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+tree/Parse\+Tree\+Listener.\+h\item 
+tree/Parse\+Tree\+Listener.\+cpp\end{DoxyCompactItemize}

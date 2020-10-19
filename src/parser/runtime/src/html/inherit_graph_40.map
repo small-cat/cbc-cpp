@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classantlr4_1_1Recognizer.html" title="antlr4::Recognizer" alt="" coords="11,107,139,133"/>
+<area shape="rect" id="node2" href="$classantlr4_1_1Lexer.html" title="antlr4::Lexer" alt="" coords="195,56,289,83"/>
+<area shape="rect" id="node5" href="$classantlr4_1_1Parser.html" title="This is all the parsing support code essentially; most of it is error recovery stuff. " alt="" coords="192,107,292,133"/>
+<area shape="rect" id="node3" href="$classantlr4_1_1LexerInterpreter.html" title="antlr4::LexerInterpreter" alt="" coords="343,5,496,32"/>
+<area shape="rect" id="node4" href="$classXPathLexer.html" title="XPathLexer" alt="" coords="374,56,465,83"/>
+<area shape="rect" id="node6" href="$classantlr4_1_1ParserInterpreter.html" title="A parser simulator that mimics what ANTLR&#39;s generated parser code does. A ParserATNSimulator is used ..." alt="" coords="340,107,499,133"/>
+<area shape="rect" id="node7" href="$classantlr4_1_1TokenSource.html" title="A source of tokens must provide a sequence of tokens via nextToken(), CommonToken, CharStreamand also must reveal it&#39;s source of characters; &#39;s text is computed from a ; it only store indices into the char stream. Errors from the lexer are never passed to the parser. Either you want to keep going or you do not upon token recognition error. If you do not want to continue lexing then you do not want to continue parsing. Just throw an exception not under RecognitionExceptionand Java will naturally toss you all the way out of the recognizers. If you want to continue lexing then you should not throw an exception to the parser–it has already requested a token. Keep lexing until you get a valid one. Just report errors and keep going, looking for a valid token. " alt="" coords="5,56,144,83"/>
+</map>

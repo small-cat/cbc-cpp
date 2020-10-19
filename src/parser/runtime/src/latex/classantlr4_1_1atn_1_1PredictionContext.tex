@@ -1,0 +1,173 @@
+\hypertarget{classantlr4_1_1atn_1_1PredictionContext}{}\section{antlr4\+:\+:atn\+:\+:Prediction\+Context Class Reference}
+\label{classantlr4_1_1atn_1_1PredictionContext}\index{antlr4\+::atn\+::\+Prediction\+Context@{antlr4\+::atn\+::\+Prediction\+Context}}
+
+
+Inheritance diagram for antlr4\+:\+:atn\+:\+:Prediction\+Context\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classantlr4_1_1atn_1_1PredictionContext__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_a423450c9759076efa743d9ecc2c37e56}\label{classantlr4_1_1atn_1_1PredictionContext_a423450c9759076efa743d9ecc2c37e56}} 
+virtual size\+\_\+t {\bfseries size} () const =0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_a55bd645944ae8ef2e078a995b77e7ad5}\label{classantlr4_1_1atn_1_1PredictionContext_a55bd645944ae8ef2e078a995b77e7ad5}} 
+virtual Ref$<$ \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} $>$ {\bfseries get\+Parent} (size\+\_\+t index) const =0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_aa168e57807979310366f45074092bdff}\label{classantlr4_1_1atn_1_1PredictionContext_aa168e57807979310366f45074092bdff}} 
+virtual size\+\_\+t {\bfseries get\+Return\+State} (size\+\_\+t index) const =0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_a94ff0af63e643a2fa1adabe36b874b0a}\label{classantlr4_1_1atn_1_1PredictionContext_a94ff0af63e643a2fa1adabe36b874b0a}} 
+virtual bool {\bfseries operator==} (const \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} \&o) const =0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_a8340faaad50e405fb78d4a100aae6eb6}\label{classantlr4_1_1atn_1_1PredictionContext_a8340faaad50e405fb78d4a100aae6eb6}} 
+virtual bool \hyperlink{classantlr4_1_1atn_1_1PredictionContext_a8340faaad50e405fb78d4a100aae6eb6}{is\+Empty} () const
+\begin{DoxyCompactList}\small\item\em This means only the E\+M\+P\+TY (wildcard? not sure) context is in set. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_aa0d5c0944350e815ae2ddf433f852c94}\label{classantlr4_1_1atn_1_1PredictionContext_aa0d5c0944350e815ae2ddf433f852c94}} 
+virtual bool {\bfseries has\+Empty\+Path} () const
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_ad7ab50fdc4e0e82963dcb641660f4135}\label{classantlr4_1_1atn_1_1PredictionContext_ad7ab50fdc4e0e82963dcb641660f4135}} 
+virtual size\+\_\+t {\bfseries hash\+Code} () const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Ref$<$ \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} $>$ \hyperlink{classantlr4_1_1atn_1_1PredictionContext_acb46f102c66b1ae67b44f092e9d78da4}{from\+Rule\+Context} (const A\+TN \&atn, \hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$outer\+Context)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_a229db841e8d951f20be56c1ad9a9e897}\label{classantlr4_1_1atn_1_1PredictionContext_a229db841e8d951f20be56c1ad9a9e897}} 
+static Ref$<$ \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} $>$ {\bfseries merge} (const Ref$<$ \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} $>$ \&a, const Ref$<$ \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} $>$ \&b, bool root\+Is\+Wildcard, \hyperlink{classantlr4_1_1atn_1_1PredictionContextMergeCache}{Prediction\+Context\+Merge\+Cache} $\ast$merge\+Cache)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_aca6784875c006ea77ef6687e6c316e41}\label{classantlr4_1_1atn_1_1PredictionContext_aca6784875c006ea77ef6687e6c316e41}} 
+const size\+\_\+t {\bfseries id}
+\item 
+const size\+\_\+t \hyperlink{classantlr4_1_1atn_1_1PredictionContext_a2eb2612faaa082712dd779c13f588633}{cached\+Hash\+Code}
+\begin{DoxyCompactList}\small\item\em Stores the computed hash code of this \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context}
+
+
+\end{DoxySeeAlso}
+. The hash code is computed in parts to match the following reference algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const Ref$<$ \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} $>$ \hyperlink{classantlr4_1_1atn_1_1PredictionContext_a274e7f1ed300832110b4f7b85e0dd1c4}{E\+M\+P\+TY} = std\+::make\+\_\+shared$<$\hyperlink{classantlr4_1_1atn_1_1EmptyPredictionContext}{Empty\+Prediction\+Context}$>$()
+\item 
+static const size\+\_\+t \hyperlink{classantlr4_1_1atn_1_1PredictionContext_af62e1e5dfe54ff75f0c361c62dd1910b}{E\+M\+P\+T\+Y\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+S\+T\+A\+TE} = static\+\_\+cast$<$size\+\_\+t$>$(-\/10)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_a5b37b6d275d527d552b66b266a0f781c}\label{classantlr4_1_1atn_1_1PredictionContext_a5b37b6d275d527d552b66b266a0f781c}} 
+static size\+\_\+t {\bfseries global\+Node\+Count} = 0
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_a7da851951ad2232b4cfb314205d5b932}\label{classantlr4_1_1atn_1_1PredictionContext_a7da851951ad2232b4cfb314205d5b932}} 
+{\bfseries Prediction\+Context} (size\+\_\+t \hyperlink{classantlr4_1_1atn_1_1PredictionContext_a2eb2612faaa082712dd779c13f588633}{cached\+Hash\+Code})
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_adc67a234509845523ffce76efbd0c832}\label{classantlr4_1_1atn_1_1PredictionContext_adc67a234509845523ffce76efbd0c832}} 
+static size\+\_\+t {\bfseries calculate\+Empty\+Hash\+Code} ()
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_aa10edcbcd7db231b01cbb7777d51abe3}\label{classantlr4_1_1atn_1_1PredictionContext_aa10edcbcd7db231b01cbb7777d51abe3}} 
+static size\+\_\+t {\bfseries calculate\+Hash\+Code} (Ref$<$ \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} $>$ parent, size\+\_\+t return\+State)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_af51cc5e6006d55c3cb9d5439cc37aba9}\label{classantlr4_1_1atn_1_1PredictionContext_af51cc5e6006d55c3cb9d5439cc37aba9}} 
+static size\+\_\+t {\bfseries calculate\+Hash\+Code} (const std\+::vector$<$ Ref$<$ \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} $>$$>$ \&parents, const std\+::vector$<$ size\+\_\+t $>$ \&return\+States)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_acb46f102c66b1ae67b44f092e9d78da4}\label{classantlr4_1_1atn_1_1PredictionContext_acb46f102c66b1ae67b44f092e9d78da4}} 
+\index{antlr4\+::atn\+::\+Prediction\+Context@{antlr4\+::atn\+::\+Prediction\+Context}!from\+Rule\+Context@{from\+Rule\+Context}}
+\index{from\+Rule\+Context@{from\+Rule\+Context}!antlr4\+::atn\+::\+Prediction\+Context@{antlr4\+::atn\+::\+Prediction\+Context}}
+\subsubsection{\texorpdfstring{from\+Rule\+Context()}{fromRuleContext()}}
+{\footnotesize\ttfamily Ref$<$ \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} $>$ Prediction\+Context\+::from\+Rule\+Context (\begin{DoxyParamCaption}\item[{const A\+TN \&}]{atn,  }\item[{\hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$}]{outer\+Context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Convert a \hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} tree to a \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} graph. Return E\+M\+P\+TY if outer\+Context is empty. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_a2eb2612faaa082712dd779c13f588633}\label{classantlr4_1_1atn_1_1PredictionContext_a2eb2612faaa082712dd779c13f588633}} 
+\index{antlr4\+::atn\+::\+Prediction\+Context@{antlr4\+::atn\+::\+Prediction\+Context}!cached\+Hash\+Code@{cached\+Hash\+Code}}
+\index{cached\+Hash\+Code@{cached\+Hash\+Code}!antlr4\+::atn\+::\+Prediction\+Context@{antlr4\+::atn\+::\+Prediction\+Context}}
+\subsubsection{\texorpdfstring{cached\+Hash\+Code}{cachedHashCode}}
+{\footnotesize\ttfamily const size\+\_\+t antlr4\+::atn\+::\+Prediction\+Context\+::cached\+Hash\+Code}
+
+
+
+Stores the computed hash code of this \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context}
+
+
+\end{DoxySeeAlso}
+. The hash code is computed in parts to match the following reference algorithm. 
+
+
+\begin{DoxyPre}
+ private int referenceHashCode() \{
+     int hash = \begin{DoxySeeAlso}{See also}
+MurmurHash::initialize, #INITIAL\_HASH
+
+
+\end{DoxySeeAlso}
+();\end{DoxyPre}
+
+
+
+\begin{DoxyPre}     for (int i = 0; i < \begin{DoxySeeAlso}{See also}
+#size(), MurmurHash::update, #getParent
+
+
+\end{DoxySeeAlso}
+; i++) \{
+         hash = (hash, (i));
+     \}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}     for (int i = 0; i < \begin{DoxySeeAlso}{See also}
+#size(), MurmurHash::update, #getReturnState
+
+
+\end{DoxySeeAlso}
+; i++) \{
+         hash = (hash, (i));
+     \}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}     hash = \begin{DoxySeeAlso}{See also}
+MurmurHash::finish, #size()
+
+
+\end{DoxySeeAlso}
+(hash, 2 * );
+     return hash;
+ \}
+\end{DoxyPre}
+ \mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_a274e7f1ed300832110b4f7b85e0dd1c4}\label{classantlr4_1_1atn_1_1PredictionContext_a274e7f1ed300832110b4f7b85e0dd1c4}} 
+\index{antlr4\+::atn\+::\+Prediction\+Context@{antlr4\+::atn\+::\+Prediction\+Context}!E\+M\+P\+TY@{E\+M\+P\+TY}}
+\index{E\+M\+P\+TY@{E\+M\+P\+TY}!antlr4\+::atn\+::\+Prediction\+Context@{antlr4\+::atn\+::\+Prediction\+Context}}
+\subsubsection{\texorpdfstring{E\+M\+P\+TY}{EMPTY}}
+{\footnotesize\ttfamily const Ref$<$ \hyperlink{classantlr4_1_1atn_1_1PredictionContext}{Prediction\+Context} $>$ Prediction\+Context\+::\+E\+M\+P\+TY = std\+::make\+\_\+shared$<$\hyperlink{classantlr4_1_1atn_1_1EmptyPredictionContext}{Empty\+Prediction\+Context}$>$()\hspace{0.3cm}{\ttfamily [static]}}
+
+Represents \$ in local context prediction, which means wildcard. $\ast$+x = $\ast$. \mbox{\Hypertarget{classantlr4_1_1atn_1_1PredictionContext_af62e1e5dfe54ff75f0c361c62dd1910b}\label{classantlr4_1_1atn_1_1PredictionContext_af62e1e5dfe54ff75f0c361c62dd1910b}} 
+\index{antlr4\+::atn\+::\+Prediction\+Context@{antlr4\+::atn\+::\+Prediction\+Context}!E\+M\+P\+T\+Y\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+S\+T\+A\+TE@{E\+M\+P\+T\+Y\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+S\+T\+A\+TE}}
+\index{E\+M\+P\+T\+Y\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+S\+T\+A\+TE@{E\+M\+P\+T\+Y\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+S\+T\+A\+TE}!antlr4\+::atn\+::\+Prediction\+Context@{antlr4\+::atn\+::\+Prediction\+Context}}
+\subsubsection{\texorpdfstring{E\+M\+P\+T\+Y\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+S\+T\+A\+TE}{EMPTY\_RETURN\_STATE}}
+{\footnotesize\ttfamily const size\+\_\+t antlr4\+::atn\+::\+Prediction\+Context\+::\+E\+M\+P\+T\+Y\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+S\+T\+A\+TE = static\+\_\+cast$<$size\+\_\+t$>$(-\/10)\hspace{0.3cm}{\ttfamily [static]}}
+
+Represents \$ in an array in full context mode, when \$ doesn\textquotesingle{}t mean wildcard\+: \$ + x = \mbox{[}\$,x\mbox{]}. Here, \$ = E\+M\+P\+T\+Y\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+S\+T\+A\+TE. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+atn/Prediction\+Context.\+h\item 
+atn/Prediction\+Context.\+cpp\end{DoxyCompactItemize}

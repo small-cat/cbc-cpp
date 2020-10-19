@@ -1,0 +1,232 @@
+\hypertarget{classantlr4_1_1atn_1_1ParseInfo}{}\section{antlr4\+:\+:atn\+:\+:Parse\+Info Class Reference}
+\label{classantlr4_1_1atn_1_1ParseInfo}\index{antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}}
+
+
+{\ttfamily \#include $<$Parse\+Info.\+h$>$}
+
+
+
+Collaboration diagram for antlr4\+:\+:atn\+:\+:Parse\+Info\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classantlr4_1_1atn_1_1ParseInfo__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_ae69458ea414cbc036298169a5858c5a1}\label{classantlr4_1_1atn_1_1ParseInfo_ae69458ea414cbc036298169a5858c5a1}} 
+{\bfseries Parse\+Info} (\hyperlink{classantlr4_1_1atn_1_1ProfilingATNSimulator}{Profiling\+A\+T\+N\+Simulator} $\ast$atn\+Simulator)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_a0c31ca00048cc8f5d46515cab5a7f277}\label{classantlr4_1_1atn_1_1ParseInfo_a0c31ca00048cc8f5d46515cab5a7f277}} 
+{\bfseries Parse\+Info} (\hyperlink{classantlr4_1_1atn_1_1ParseInfo}{Parse\+Info} const \&)=default
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_adb7e9888f27f508927314b4867b31f9b}\label{classantlr4_1_1atn_1_1ParseInfo_adb7e9888f27f508927314b4867b31f9b}} 
+\hyperlink{classantlr4_1_1atn_1_1ParseInfo}{Parse\+Info} \& {\bfseries operator=} (\hyperlink{classantlr4_1_1atn_1_1ParseInfo}{Parse\+Info} const \&)=default
+\item 
+virtual std\+::vector$<$ \hyperlink{classantlr4_1_1atn_1_1DecisionInfo}{Decision\+Info} $>$ \hyperlink{classantlr4_1_1atn_1_1ParseInfo_a637a7b2c52ca5cd2a3f247ba5de623f7}{get\+Decision\+Info} ()
+\begin{DoxyCompactList}\small\item\em Gets an array of \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo}{Decision\+Info}
+
+
+\end{DoxySeeAlso}
+instances containing the profiling information gathered for each decision in the A\+TN. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ size\+\_\+t $>$ \hyperlink{classantlr4_1_1atn_1_1ParseInfo_a6f9fb6e5fc44568c6e6f0337ff9cb357}{get\+L\+L\+Decisions} ()
+\begin{DoxyCompactList}\small\item\em Gets the decision numbers for decisions that required one or more full-\/context predictions during parsing. These are decisions for which \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a311fb2f2a4f7c6108106b8700f03cb18}{Decision\+Info\+::\+L\+L\+\_\+\+Fallback}
+
+
+\end{DoxySeeAlso}
+is non-\/zero. \end{DoxyCompactList}\item 
+virtual long long \hyperlink{classantlr4_1_1atn_1_1ParseInfo_a8aea8e30f374b00aaf60c0f5a5cddd1e}{get\+Total\+Time\+In\+Prediction} ()
+\begin{DoxyCompactList}\small\item\em Gets the total time spent during prediction across all decisions made during parsing. This value is the sum of \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo_ae758fc847ab20067a1136393a0ae49c3}{Decision\+Info\+::time\+In\+Prediction}
+
+
+\end{DoxySeeAlso}
+for all decisions. \end{DoxyCompactList}\item 
+virtual long long \hyperlink{classantlr4_1_1atn_1_1ParseInfo_ab38049ea664df2514084fd24ee7cdc87}{get\+Total\+S\+L\+L\+Lookahead\+Ops} ()
+\begin{DoxyCompactList}\small\item\em Gets the total number of S\+LL lookahead operations across all decisions made during parsing. This value is the sum of \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a63d0122173acb50fa288e876220cdb90}{Decision\+Info\+::\+S\+L\+L\+\_\+\+Total\+Look}
+
+
+\end{DoxySeeAlso}
+for all decisions. \end{DoxyCompactList}\item 
+virtual long long \hyperlink{classantlr4_1_1atn_1_1ParseInfo_ae5e5cadb9cf4df3fff49583f0c46afc4}{get\+Total\+L\+L\+Lookahead\+Ops} ()
+\begin{DoxyCompactList}\small\item\em Gets the total number of LL lookahead operations across all decisions made during parsing. This value is the sum of \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a74ee8e588415c652036556738bdd2a04}{Decision\+Info\+::\+L\+L\+\_\+\+Total\+Look}
+
+
+\end{DoxySeeAlso}
+for all decisions. \end{DoxyCompactList}\item 
+virtual long long \hyperlink{classantlr4_1_1atn_1_1ParseInfo_a0d67b72cf3de480e3b2142711568129e}{get\+Total\+S\+L\+L\+A\+T\+N\+Lookahead\+Ops} ()
+\begin{DoxyCompactList}\small\item\em Gets the total number of A\+TN lookahead operations for S\+LL prediction across all decisions made during parsing. \end{DoxyCompactList}\item 
+virtual long long \hyperlink{classantlr4_1_1atn_1_1ParseInfo_aa99c2df168f4fe0673b6ae24900a33d9}{get\+Total\+L\+L\+A\+T\+N\+Lookahead\+Ops} ()
+\begin{DoxyCompactList}\small\item\em Gets the total number of A\+TN lookahead operations for LL prediction across all decisions made during parsing. \end{DoxyCompactList}\item 
+virtual long long \hyperlink{classantlr4_1_1atn_1_1ParseInfo_ad96f64c07f563177909d856a40f420fe}{get\+Total\+A\+T\+N\+Lookahead\+Ops} ()
+\begin{DoxyCompactList}\small\item\em Gets the total number of A\+TN lookahead operations for S\+LL and LL prediction across all decisions made during parsing. \end{DoxyCompactList}\item 
+virtual size\+\_\+t \hyperlink{classantlr4_1_1atn_1_1ParseInfo_a7b0cb79517c02b88f2c88a668461f359}{get\+D\+F\+A\+Size} ()
+\begin{DoxyCompactList}\small\item\em Gets the total number of D\+FA states stored in the D\+FA cache for all decisions in the A\+TN. \end{DoxyCompactList}\item 
+virtual size\+\_\+t \hyperlink{classantlr4_1_1atn_1_1ParseInfo_a335833b728bcbe7badebfcd88caf37f3}{get\+D\+F\+A\+Size} (size\+\_\+t decision)
+\begin{DoxyCompactList}\small\item\em Gets the total number of D\+FA states stored in the D\+FA cache for a particular decision. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_a2ec7928b78a8b0fc12fe5435a79132ca}\label{classantlr4_1_1atn_1_1ParseInfo_a2ec7928b78a8b0fc12fe5435a79132ca}} 
+const \hyperlink{classantlr4_1_1atn_1_1ProfilingATNSimulator}{Profiling\+A\+T\+N\+Simulator} $\ast$ {\bfseries \+\_\+atn\+Simulator}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class provides access to specific and aggregate statistics gathered during profiling of a parser. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_a637a7b2c52ca5cd2a3f247ba5de623f7}\label{classantlr4_1_1atn_1_1ParseInfo_a637a7b2c52ca5cd2a3f247ba5de623f7}} 
+\index{antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}!get\+Decision\+Info@{get\+Decision\+Info}}
+\index{get\+Decision\+Info@{get\+Decision\+Info}!antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}}
+\subsubsection{\texorpdfstring{get\+Decision\+Info()}{getDecisionInfo()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{classantlr4_1_1atn_1_1DecisionInfo}{Decision\+Info} $>$ Parse\+Info\+::get\+Decision\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets an array of \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo}{Decision\+Info}
+
+
+\end{DoxySeeAlso}
+instances containing the profiling information gathered for each decision in the A\+TN. 
+
+\begin{DoxyReturn}{Returns}
+An array of \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo}{Decision\+Info}
+
+
+\end{DoxySeeAlso}
+instances, indexed by decision number. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_a7b0cb79517c02b88f2c88a668461f359}\label{classantlr4_1_1atn_1_1ParseInfo_a7b0cb79517c02b88f2c88a668461f359}} 
+\index{antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}!get\+D\+F\+A\+Size@{get\+D\+F\+A\+Size}}
+\index{get\+D\+F\+A\+Size@{get\+D\+F\+A\+Size}!antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}}
+\subsubsection{\texorpdfstring{get\+D\+F\+A\+Size()}{getDFASize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily size\+\_\+t Parse\+Info\+::get\+D\+F\+A\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the total number of D\+FA states stored in the D\+FA cache for all decisions in the A\+TN. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_a335833b728bcbe7badebfcd88caf37f3}\label{classantlr4_1_1atn_1_1ParseInfo_a335833b728bcbe7badebfcd88caf37f3}} 
+\index{antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}!get\+D\+F\+A\+Size@{get\+D\+F\+A\+Size}}
+\index{get\+D\+F\+A\+Size@{get\+D\+F\+A\+Size}!antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}}
+\subsubsection{\texorpdfstring{get\+D\+F\+A\+Size()}{getDFASize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily size\+\_\+t Parse\+Info\+::get\+D\+F\+A\+Size (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{decision }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the total number of D\+FA states stored in the D\+FA cache for a particular decision. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_a6f9fb6e5fc44568c6e6f0337ff9cb357}\label{classantlr4_1_1atn_1_1ParseInfo_a6f9fb6e5fc44568c6e6f0337ff9cb357}} 
+\index{antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}!get\+L\+L\+Decisions@{get\+L\+L\+Decisions}}
+\index{get\+L\+L\+Decisions@{get\+L\+L\+Decisions}!antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}}
+\subsubsection{\texorpdfstring{get\+L\+L\+Decisions()}{getLLDecisions()}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ Parse\+Info\+::get\+L\+L\+Decisions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the decision numbers for decisions that required one or more full-\/context predictions during parsing. These are decisions for which \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a311fb2f2a4f7c6108106b8700f03cb18}{Decision\+Info\+::\+L\+L\+\_\+\+Fallback}
+
+
+\end{DoxySeeAlso}
+is non-\/zero. 
+
+\begin{DoxyReturn}{Returns}
+A list of decision numbers which required one or more full-\/context predictions during parsing. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_ad96f64c07f563177909d856a40f420fe}\label{classantlr4_1_1atn_1_1ParseInfo_ad96f64c07f563177909d856a40f420fe}} 
+\index{antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}!get\+Total\+A\+T\+N\+Lookahead\+Ops@{get\+Total\+A\+T\+N\+Lookahead\+Ops}}
+\index{get\+Total\+A\+T\+N\+Lookahead\+Ops@{get\+Total\+A\+T\+N\+Lookahead\+Ops}!antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}}
+\subsubsection{\texorpdfstring{get\+Total\+A\+T\+N\+Lookahead\+Ops()}{getTotalATNLookaheadOps()}}
+{\footnotesize\ttfamily long long Parse\+Info\+::get\+Total\+A\+T\+N\+Lookahead\+Ops (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the total number of A\+TN lookahead operations for S\+LL and LL prediction across all decisions made during parsing. 
+
+This value is the sum of \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1ParseInfo_a0d67b72cf3de480e3b2142711568129e}{get\+Total\+S\+L\+L\+A\+T\+N\+Lookahead\+Ops}, \hyperlink{classantlr4_1_1atn_1_1ParseInfo_aa99c2df168f4fe0673b6ae24900a33d9}{get\+Total\+L\+L\+A\+T\+N\+Lookahead\+Ops}
+
+
+\end{DoxySeeAlso}
+and .\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_aa99c2df168f4fe0673b6ae24900a33d9}\label{classantlr4_1_1atn_1_1ParseInfo_aa99c2df168f4fe0673b6ae24900a33d9}} 
+\index{antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}!get\+Total\+L\+L\+A\+T\+N\+Lookahead\+Ops@{get\+Total\+L\+L\+A\+T\+N\+Lookahead\+Ops}}
+\index{get\+Total\+L\+L\+A\+T\+N\+Lookahead\+Ops@{get\+Total\+L\+L\+A\+T\+N\+Lookahead\+Ops}!antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}}
+\subsubsection{\texorpdfstring{get\+Total\+L\+L\+A\+T\+N\+Lookahead\+Ops()}{getTotalLLATNLookaheadOps()}}
+{\footnotesize\ttfamily long long Parse\+Info\+::get\+Total\+L\+L\+A\+T\+N\+Lookahead\+Ops (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the total number of A\+TN lookahead operations for LL prediction across all decisions made during parsing. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_ae5e5cadb9cf4df3fff49583f0c46afc4}\label{classantlr4_1_1atn_1_1ParseInfo_ae5e5cadb9cf4df3fff49583f0c46afc4}} 
+\index{antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}!get\+Total\+L\+L\+Lookahead\+Ops@{get\+Total\+L\+L\+Lookahead\+Ops}}
+\index{get\+Total\+L\+L\+Lookahead\+Ops@{get\+Total\+L\+L\+Lookahead\+Ops}!antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}}
+\subsubsection{\texorpdfstring{get\+Total\+L\+L\+Lookahead\+Ops()}{getTotalLLLookaheadOps()}}
+{\footnotesize\ttfamily long long Parse\+Info\+::get\+Total\+L\+L\+Lookahead\+Ops (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the total number of LL lookahead operations across all decisions made during parsing. This value is the sum of \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a74ee8e588415c652036556738bdd2a04}{Decision\+Info\+::\+L\+L\+\_\+\+Total\+Look}
+
+
+\end{DoxySeeAlso}
+for all decisions. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_a0d67b72cf3de480e3b2142711568129e}\label{classantlr4_1_1atn_1_1ParseInfo_a0d67b72cf3de480e3b2142711568129e}} 
+\index{antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}!get\+Total\+S\+L\+L\+A\+T\+N\+Lookahead\+Ops@{get\+Total\+S\+L\+L\+A\+T\+N\+Lookahead\+Ops}}
+\index{get\+Total\+S\+L\+L\+A\+T\+N\+Lookahead\+Ops@{get\+Total\+S\+L\+L\+A\+T\+N\+Lookahead\+Ops}!antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}}
+\subsubsection{\texorpdfstring{get\+Total\+S\+L\+L\+A\+T\+N\+Lookahead\+Ops()}{getTotalSLLATNLookaheadOps()}}
+{\footnotesize\ttfamily long long Parse\+Info\+::get\+Total\+S\+L\+L\+A\+T\+N\+Lookahead\+Ops (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the total number of A\+TN lookahead operations for S\+LL prediction across all decisions made during parsing. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_ab38049ea664df2514084fd24ee7cdc87}\label{classantlr4_1_1atn_1_1ParseInfo_ab38049ea664df2514084fd24ee7cdc87}} 
+\index{antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}!get\+Total\+S\+L\+L\+Lookahead\+Ops@{get\+Total\+S\+L\+L\+Lookahead\+Ops}}
+\index{get\+Total\+S\+L\+L\+Lookahead\+Ops@{get\+Total\+S\+L\+L\+Lookahead\+Ops}!antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}}
+\subsubsection{\texorpdfstring{get\+Total\+S\+L\+L\+Lookahead\+Ops()}{getTotalSLLLookaheadOps()}}
+{\footnotesize\ttfamily long long Parse\+Info\+::get\+Total\+S\+L\+L\+Lookahead\+Ops (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the total number of S\+LL lookahead operations across all decisions made during parsing. This value is the sum of \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo_a63d0122173acb50fa288e876220cdb90}{Decision\+Info\+::\+S\+L\+L\+\_\+\+Total\+Look}
+
+
+\end{DoxySeeAlso}
+for all decisions. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ParseInfo_a8aea8e30f374b00aaf60c0f5a5cddd1e}\label{classantlr4_1_1atn_1_1ParseInfo_a8aea8e30f374b00aaf60c0f5a5cddd1e}} 
+\index{antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}!get\+Total\+Time\+In\+Prediction@{get\+Total\+Time\+In\+Prediction}}
+\index{get\+Total\+Time\+In\+Prediction@{get\+Total\+Time\+In\+Prediction}!antlr4\+::atn\+::\+Parse\+Info@{antlr4\+::atn\+::\+Parse\+Info}}
+\subsubsection{\texorpdfstring{get\+Total\+Time\+In\+Prediction()}{getTotalTimeInPrediction()}}
+{\footnotesize\ttfamily long long Parse\+Info\+::get\+Total\+Time\+In\+Prediction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the total time spent during prediction across all decisions made during parsing. This value is the sum of \begin{DoxySeeAlso}{See also}
+\hyperlink{classantlr4_1_1atn_1_1DecisionInfo_ae758fc847ab20067a1136393a0ae49c3}{Decision\+Info\+::time\+In\+Prediction}
+
+
+\end{DoxySeeAlso}
+for all decisions. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+atn/Parse\+Info.\+h\item 
+atn/Parse\+Info.\+cpp\end{DoxyCompactItemize}

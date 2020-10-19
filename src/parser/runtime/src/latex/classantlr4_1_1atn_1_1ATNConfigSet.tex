@@ -1,0 +1,81 @@
+\hypertarget{classantlr4_1_1atn_1_1ATNConfigSet}{}\section{antlr4\+:\+:atn\+:\+:A\+T\+N\+Config\+Set Class Reference}
+\label{classantlr4_1_1atn_1_1ATNConfigSet}\index{antlr4\+::atn\+::\+A\+T\+N\+Config\+Set@{antlr4\+::atn\+::\+A\+T\+N\+Config\+Set}}
+
+
+{\ttfamily \#include $<$A\+T\+N\+Config\+Set.\+h$>$}
+
+
+
+Inheritance diagram for antlr4\+:\+:atn\+:\+:A\+T\+N\+Config\+Set\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classantlr4_1_1atn_1_1ATNConfigSet__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for antlr4\+:\+:atn\+:\+:A\+T\+N\+Config\+Set\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{classantlr4_1_1atn_1_1ATNConfigSet__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ATNConfigSet_a69c297789ef198d08b6690587b74b44a}\label{classantlr4_1_1atn_1_1ATNConfigSet_a69c297789ef198d08b6690587b74b44a}} 
+{\bfseries A\+T\+N\+Config\+Set} (bool \hyperlink{classantlr4_1_1atn_1_1ATNConfigSet_af5ef274bd4b6185f2865add7f943633c}{full\+Ctx}=true)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ATNConfigSet_a22c2e827ee70c41d4a6ef326e211ea4d}\label{classantlr4_1_1atn_1_1ATNConfigSet_a22c2e827ee70c41d4a6ef326e211ea4d}} 
+{\bfseries A\+T\+N\+Config\+Set} (const Ref$<$ \hyperlink{classantlr4_1_1atn_1_1ATNConfigSet}{A\+T\+N\+Config\+Set} $>$ \&old)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ATNConfigSet_aa2fc9693c9586947a34877d179020f73}\label{classantlr4_1_1atn_1_1ATNConfigSet_aa2fc9693c9586947a34877d179020f73}} 
+virtual bool {\bfseries add} (const Ref$<$ \hyperlink{classantlr4_1_1atn_1_1ATNConfig}{A\+T\+N\+Config} $>$ \&config)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ATNConfigSet_a5404495afc6bb7823429d202a1625bdc}\label{classantlr4_1_1atn_1_1ATNConfigSet_a5404495afc6bb7823429d202a1625bdc}} 
+std\+::vector$<$ Ref$<$ \hyperlink{classantlr4_1_1atn_1_1ATNConfig}{A\+T\+N\+Config} $>$ $>$ \hyperlink{classantlr4_1_1atn_1_1ATNConfigSet_a5404495afc6bb7823429d202a1625bdc}{configs}
+\begin{DoxyCompactList}\small\item\em Track the elements as they are added to the set; supports get(i) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ATNConfigSet_abbb020e6f64f01e7bd959551afb1fc93}\label{classantlr4_1_1atn_1_1ATNConfigSet_abbb020e6f64f01e7bd959551afb1fc93}} 
+size\+\_\+t {\bfseries unique\+Alt}
+\item 
+\hyperlink{classantlrcpp_1_1BitSet}{antlrcpp\+::\+Bit\+Set} \hyperlink{classantlr4_1_1atn_1_1ATNConfigSet_a37b30c5a21147bdc63325cffd2f99041}{conflicting\+Alts}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ATNConfigSet_acf4dc336b07151064e0acdd84d5a6dcc}\label{classantlr4_1_1atn_1_1ATNConfigSet_acf4dc336b07151064e0acdd84d5a6dcc}} 
+bool {\bfseries has\+Semantic\+Context}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ATNConfigSet_a8ed06e3a821509fe0f003c00e2a14676}\label{classantlr4_1_1atn_1_1ATNConfigSet_a8ed06e3a821509fe0f003c00e2a14676}} 
+bool {\bfseries dips\+Into\+Outer\+Context}
+\item 
+const bool \hyperlink{classantlr4_1_1atn_1_1ATNConfigSet_af5ef274bd4b6185f2865add7f943633c}{full\+Ctx}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Specialized set that can track info about the set, with support for combining similar configurations using a graph-\/structured stack. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1ATNConfigSet_a37b30c5a21147bdc63325cffd2f99041}\label{classantlr4_1_1atn_1_1ATNConfigSet_a37b30c5a21147bdc63325cffd2f99041}} 
+\index{antlr4\+::atn\+::\+A\+T\+N\+Config\+Set@{antlr4\+::atn\+::\+A\+T\+N\+Config\+Set}!conflicting\+Alts@{conflicting\+Alts}}
+\index{conflicting\+Alts@{conflicting\+Alts}!antlr4\+::atn\+::\+A\+T\+N\+Config\+Set@{antlr4\+::atn\+::\+A\+T\+N\+Config\+Set}}
+\subsubsection{\texorpdfstring{conflicting\+Alts}{conflictingAlts}}
+{\footnotesize\ttfamily \hyperlink{classantlrcpp_1_1BitSet}{antlrcpp\+::\+Bit\+Set} antlr4\+::atn\+::\+A\+T\+N\+Config\+Set\+::conflicting\+Alts}
+
+Currently this is only used when we detect S\+LL conflict; this does not necessarily represent the ambiguous alternatives. In fact, I should also point out that this seems to include predicated alternatives that have predicates that evaluate to false. Computed in compute\+Target\+State(). \mbox{\Hypertarget{classantlr4_1_1atn_1_1ATNConfigSet_af5ef274bd4b6185f2865add7f943633c}\label{classantlr4_1_1atn_1_1ATNConfigSet_af5ef274bd4b6185f2865add7f943633c}} 
+\index{antlr4\+::atn\+::\+A\+T\+N\+Config\+Set@{antlr4\+::atn\+::\+A\+T\+N\+Config\+Set}!full\+Ctx@{full\+Ctx}}
+\index{full\+Ctx@{full\+Ctx}!antlr4\+::atn\+::\+A\+T\+N\+Config\+Set@{antlr4\+::atn\+::\+A\+T\+N\+Config\+Set}}
+\subsubsection{\texorpdfstring{full\+Ctx}{fullCtx}}
+{\footnotesize\ttfamily const bool antlr4\+::atn\+::\+A\+T\+N\+Config\+Set\+::full\+Ctx}
+
+Indicates that this configuration set is part of a full context LL prediction. It will be used to determine how to merge \$. With S\+LL it\textquotesingle{}s a wildcard whereas it is not for LL context merge. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+atn/A\+T\+N\+Config\+Set.\+h\item 
+atn/A\+T\+N\+Config\+Set.\+cpp\end{DoxyCompactItemize}

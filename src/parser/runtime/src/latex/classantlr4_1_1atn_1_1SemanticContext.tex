@@ -1,0 +1,297 @@
+\hypertarget{classantlr4_1_1atn_1_1SemanticContext}{}\section{antlr4\+:\+:atn\+:\+:Semantic\+Context Class Reference}
+\label{classantlr4_1_1atn_1_1SemanticContext}\index{antlr4\+::atn\+::\+Semantic\+Context@{antlr4\+::atn\+::\+Semantic\+Context}}
+
+
+{\ttfamily \#include $<$Semantic\+Context.\+h$>$}
+
+
+
+Inheritance diagram for antlr4\+:\+:atn\+:\+:Semantic\+Context\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classantlr4_1_1atn_1_1SemanticContext__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for antlr4\+:\+:atn\+:\+:Semantic\+Context\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classantlr4_1_1atn_1_1SemanticContext__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structantlr4_1_1atn_1_1SemanticContext_1_1Comparer}{Comparer}
+\item 
+struct \hyperlink{structantlr4_1_1atn_1_1SemanticContext_1_1Hasher}{Hasher}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a7f2ee5eb7e0604f7923fdfafccd64979}\label{classantlr4_1_1atn_1_1SemanticContext_a7f2ee5eb7e0604f7923fdfafccd64979}} 
+using {\bfseries Set} = std\+::unordered\+\_\+set$<$ Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$, \hyperlink{structantlr4_1_1atn_1_1SemanticContext_1_1Hasher}{Hasher}, \hyperlink{structantlr4_1_1atn_1_1SemanticContext_1_1Comparer}{Comparer} $>$
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_ac08c09d5e71f61632683d179839286bb}\label{classantlr4_1_1atn_1_1SemanticContext_ac08c09d5e71f61632683d179839286bb}} 
+virtual size\+\_\+t {\bfseries hash\+Code} () const =0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a090303bb78b1261298a5affb3f2e318e}\label{classantlr4_1_1atn_1_1SemanticContext_a090303bb78b1261298a5affb3f2e318e}} 
+virtual std\+::string {\bfseries to\+String} () const =0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a815a63f3e7564e93ea52c2612b5bec55}\label{classantlr4_1_1atn_1_1SemanticContext_a815a63f3e7564e93ea52c2612b5bec55}} 
+virtual bool {\bfseries operator==} (const \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} \&other) const =0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a34e978e8cd0b7cbdafbaa8e5a8091903}\label{classantlr4_1_1atn_1_1SemanticContext_a34e978e8cd0b7cbdafbaa8e5a8091903}} 
+virtual bool {\bfseries operator!=} (const \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} \&other) const
+\item 
+virtual bool \hyperlink{classantlr4_1_1atn_1_1SemanticContext_a77bcdcfae815a6497ed281445417f699}{eval} (\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$parser, \hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$parser\+Call\+Stack)=0
+\begin{DoxyCompactList}\small\item\em For context independent predicates, we evaluate them without a local context (i.\+e., null context). That way, we can evaluate them without having to create proper rule-\/specific context during prediction (as opposed to the parser, which creates them naturally). In a practical sense, this avoids a cast exception from \hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} to myrule\+Context. 
+
+For context dependent predicates, we must pass in a local context so that references such as \$arg evaluate properly as \+\_\+localctx.\+arg. We only capture context dependent predicates in the context in which we begin prediction, so we passed in the outer context here in case of context dependent predicate evaluation. \end{DoxyCompactList}\item 
+virtual Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext_a09cae49496728bdd0aa3147ffdc152cb}{eval\+Precedence} (\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$parser, \hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$parser\+Call\+Stack)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_ac9cc627e265603c153838f62b56f3e99}\label{classantlr4_1_1atn_1_1SemanticContext_ac9cc627e265603c153838f62b56f3e99}} 
+{\bfseries Predicate} (size\+\_\+t rule\+Index, size\+\_\+t pred\+Index, bool is\+Ctx\+Dependent)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_aaf020c5b73a8d0216f8423acd5d4cea8}\label{classantlr4_1_1atn_1_1SemanticContext_aaf020c5b73a8d0216f8423acd5d4cea8}} 
+virtual bool {\bfseries eval} (\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$parser, \hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$parser\+Call\+Stack) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a82a09a52cfc8030b1c33f1eaadad539a}\label{classantlr4_1_1atn_1_1SemanticContext_a82a09a52cfc8030b1c33f1eaadad539a}} 
+virtual size\+\_\+t {\bfseries hash\+Code} () const override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a1400e1ca84faec671a3756ff0b9f4734}\label{classantlr4_1_1atn_1_1SemanticContext_a1400e1ca84faec671a3756ff0b9f4734}} 
+virtual bool {\bfseries operator==} (const \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} \&other) const override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a2a712638848af9bc2c996bda844eb15b}\label{classantlr4_1_1atn_1_1SemanticContext_a2a712638848af9bc2c996bda844eb15b}} 
+virtual std\+::string {\bfseries to\+String} () const override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a4f10c58d91b681e4346cbd000b6c48b3}\label{classantlr4_1_1atn_1_1SemanticContext_a4f10c58d91b681e4346cbd000b6c48b3}} 
+{\bfseries Precedence\+Predicate} (int precedence)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_aaf020c5b73a8d0216f8423acd5d4cea8}\label{classantlr4_1_1atn_1_1SemanticContext_aaf020c5b73a8d0216f8423acd5d4cea8}} 
+virtual bool {\bfseries eval} (\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$parser, \hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$parser\+Call\+Stack) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a813c90739c89d03f17bf38ae5cbaa3dc}\label{classantlr4_1_1atn_1_1SemanticContext_a813c90739c89d03f17bf38ae5cbaa3dc}} 
+virtual Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ {\bfseries eval\+Precedence} (\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$parser, \hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$parser\+Call\+Stack) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a8c652840222e22e8fdc4dd348b00a153}\label{classantlr4_1_1atn_1_1SemanticContext_a8c652840222e22e8fdc4dd348b00a153}} 
+virtual int {\bfseries compare\+To} (Precedence\+Predicate $\ast$o)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a82a09a52cfc8030b1c33f1eaadad539a}\label{classantlr4_1_1atn_1_1SemanticContext_a82a09a52cfc8030b1c33f1eaadad539a}} 
+virtual size\+\_\+t {\bfseries hash\+Code} () const override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a1400e1ca84faec671a3756ff0b9f4734}\label{classantlr4_1_1atn_1_1SemanticContext_a1400e1ca84faec671a3756ff0b9f4734}} 
+virtual bool {\bfseries operator==} (const \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} \&other) const override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a2a712638848af9bc2c996bda844eb15b}\label{classantlr4_1_1atn_1_1SemanticContext_a2a712638848af9bc2c996bda844eb15b}} 
+virtual std\+::string {\bfseries to\+String} () const override
+\item 
+virtual std\+::vector$<$ Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ $>$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext_ae47c3a65cf405cecabf3f9c109ca6690}{get\+Operands} () const =0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_ac490980398ebba9a265420d20fd14764}\label{classantlr4_1_1atn_1_1SemanticContext_ac490980398ebba9a265420d20fd14764}} 
+{\bfseries A\+ND} (Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ const \&a, Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ const \&b)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_ab1584465b3b88d7f75f030a24482fd13}\label{classantlr4_1_1atn_1_1SemanticContext_ab1584465b3b88d7f75f030a24482fd13}} 
+virtual std\+::vector$<$ Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ $>$ {\bfseries get\+Operands} () const override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a1400e1ca84faec671a3756ff0b9f4734}\label{classantlr4_1_1atn_1_1SemanticContext_a1400e1ca84faec671a3756ff0b9f4734}} 
+virtual bool {\bfseries operator==} (const \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} \&other) const override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a82a09a52cfc8030b1c33f1eaadad539a}\label{classantlr4_1_1atn_1_1SemanticContext_a82a09a52cfc8030b1c33f1eaadad539a}} 
+virtual size\+\_\+t {\bfseries hash\+Code} () const override
+\item 
+virtual bool \hyperlink{classantlr4_1_1atn_1_1SemanticContext_aaf020c5b73a8d0216f8423acd5d4cea8}{eval} (\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$parser, \hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$parser\+Call\+Stack) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a813c90739c89d03f17bf38ae5cbaa3dc}\label{classantlr4_1_1atn_1_1SemanticContext_a813c90739c89d03f17bf38ae5cbaa3dc}} 
+virtual Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ {\bfseries eval\+Precedence} (\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$parser, \hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$parser\+Call\+Stack) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a2a712638848af9bc2c996bda844eb15b}\label{classantlr4_1_1atn_1_1SemanticContext_a2a712638848af9bc2c996bda844eb15b}} 
+virtual std\+::string {\bfseries to\+String} () const override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_ace16c047124bb5e9fb62145e0b282a11}\label{classantlr4_1_1atn_1_1SemanticContext_ace16c047124bb5e9fb62145e0b282a11}} 
+{\bfseries OR} (Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ const \&a, Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ const \&b)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_ab1584465b3b88d7f75f030a24482fd13}\label{classantlr4_1_1atn_1_1SemanticContext_ab1584465b3b88d7f75f030a24482fd13}} 
+virtual std\+::vector$<$ Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ $>$ {\bfseries get\+Operands} () const override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a1400e1ca84faec671a3756ff0b9f4734}\label{classantlr4_1_1atn_1_1SemanticContext_a1400e1ca84faec671a3756ff0b9f4734}} 
+virtual bool {\bfseries operator==} (const \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} \&other) const override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a82a09a52cfc8030b1c33f1eaadad539a}\label{classantlr4_1_1atn_1_1SemanticContext_a82a09a52cfc8030b1c33f1eaadad539a}} 
+virtual size\+\_\+t {\bfseries hash\+Code} () const override
+\item 
+virtual bool \hyperlink{classantlr4_1_1atn_1_1SemanticContext_aaf020c5b73a8d0216f8423acd5d4cea8}{eval} (\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$parser, \hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$parser\+Call\+Stack) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a813c90739c89d03f17bf38ae5cbaa3dc}\label{classantlr4_1_1atn_1_1SemanticContext_a813c90739c89d03f17bf38ae5cbaa3dc}} 
+virtual Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ {\bfseries eval\+Precedence} (\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$parser, \hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$parser\+Call\+Stack) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a2a712638848af9bc2c996bda844eb15b}\label{classantlr4_1_1atn_1_1SemanticContext_a2a712638848af9bc2c996bda844eb15b}} 
+virtual std\+::string {\bfseries to\+String} () const override
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_ae5fa5f9f1afcb130e72a863261dfdf17}\label{classantlr4_1_1atn_1_1SemanticContext_ae5fa5f9f1afcb130e72a863261dfdf17}} 
+static Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ {\bfseries And} (Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ const \&a, Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ const \&b)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_ac3f8e16f8e36c133d7f00c12f4dbb713}\label{classantlr4_1_1atn_1_1SemanticContext_ac3f8e16f8e36c133d7f00c12f4dbb713}} 
+static Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext_ac3f8e16f8e36c133d7f00c12f4dbb713}{Or} (Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ const \&a, Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ const \&b)
+\begin{DoxyCompactList}\small\item\em See also\+: Parser\+A\+T\+N\+Simulator\+::get\+Preds\+For\+Ambig\+Alts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_aaa69247b8b3438faa30bdf602e069d9c}\label{classantlr4_1_1atn_1_1SemanticContext_aaa69247b8b3438faa30bdf602e069d9c}} 
+const size\+\_\+t {\bfseries rule\+Index}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a2652c6e126c20b53d778bb47ecfd10f0}\label{classantlr4_1_1atn_1_1SemanticContext_a2652c6e126c20b53d778bb47ecfd10f0}} 
+const size\+\_\+t {\bfseries pred\+Index}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_aa1b978bf67f2afd84ade39551069caac}\label{classantlr4_1_1atn_1_1SemanticContext_aa1b978bf67f2afd84ade39551069caac}} 
+const bool {\bfseries is\+Ctx\+Dependent}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a282c15dd847543c2b65f902afdf6dde4}\label{classantlr4_1_1atn_1_1SemanticContext_a282c15dd847543c2b65f902afdf6dde4}} 
+const int {\bfseries precedence}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_ad10b5a57a36aa9b51eb943fe20b9a178}\label{classantlr4_1_1atn_1_1SemanticContext_ad10b5a57a36aa9b51eb943fe20b9a178}} 
+std\+::vector$<$ Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ $>$ {\bfseries opnds}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext_a1c9db994b89d06e9d8969e78050aeff5}{N\+O\+NE} = std\+::make\+\_\+shared$<$Predicate$>$(I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+D\+EX, I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+D\+EX, false)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_ae6b503f70a95cd1ddf8bdf8c95c3992c}\label{classantlr4_1_1atn_1_1SemanticContext_ae6b503f70a95cd1ddf8bdf8c95c3992c}} 
+{\bfseries Predicate} ()
+\item 
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_ae637856c52152446144e87c312da587a}\label{classantlr4_1_1atn_1_1SemanticContext_ae637856c52152446144e87c312da587a}} 
+{\bfseries Precedence\+Predicate} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A tree structure used to record the semantic context in which an A\+TN configuration is valid. It\textquotesingle{}s either a single predicate, a conjunction \char`\"{}p1 \&\& p2\char`\"{}, or a sum of products \char`\"{}p1$\vert$$\vert$p2\char`\"{}.
+
+I have scoped the A\+ND, OR, and Predicate subclasses of \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} within the scope of this outer class.
+
+This is the base class for semantic context \char`\"{}operators\char`\"{}, which operate on a collection of semantic context \char`\"{}operands\char`\"{}.
+
+\begin{DoxySince}{Since}
+4.\+3
+\end{DoxySince}
+A semantic context which is true whenever none of the contained contexts is false.
+
+A semantic context which is true whenever at least one of the contained contexts is true. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a77bcdcfae815a6497ed281445417f699}\label{classantlr4_1_1atn_1_1SemanticContext_a77bcdcfae815a6497ed281445417f699}} 
+\index{antlr4\+::atn\+::\+Semantic\+Context@{antlr4\+::atn\+::\+Semantic\+Context}!eval@{eval}}
+\index{eval@{eval}!antlr4\+::atn\+::\+Semantic\+Context@{antlr4\+::atn\+::\+Semantic\+Context}}
+\subsubsection{\texorpdfstring{eval()}{eval()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily virtual bool antlr4\+::atn\+::\+Semantic\+Context\+::eval (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$}]{parser,  }\item[{\hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$}]{parser\+Call\+Stack }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+For context independent predicates, we evaluate them without a local context (i.\+e., null context). That way, we can evaluate them without having to create proper rule-\/specific context during prediction (as opposed to the parser, which creates them naturally). In a practical sense, this avoids a cast exception from \hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} to myrule\+Context. 
+
+For context dependent predicates, we must pass in a local context so that references such as \$arg evaluate properly as \+\_\+localctx.\+arg. We only capture context dependent predicates in the context in which we begin prediction, so we passed in the outer context here in case of context dependent predicate evaluation. 
+
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_aaf020c5b73a8d0216f8423acd5d4cea8}\label{classantlr4_1_1atn_1_1SemanticContext_aaf020c5b73a8d0216f8423acd5d4cea8}} 
+\index{antlr4\+::atn\+::\+Semantic\+Context@{antlr4\+::atn\+::\+Semantic\+Context}!eval@{eval}}
+\index{eval@{eval}!antlr4\+::atn\+::\+Semantic\+Context@{antlr4\+::atn\+::\+Semantic\+Context}}
+\subsubsection{\texorpdfstring{eval()}{eval()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily virtual bool antlr4\+::atn\+::\+Semantic\+Context\+::eval (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$}]{parser,  }\item[{\hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$}]{parser\+Call\+Stack }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+The evaluation of predicates by this context is short-\/circuiting, but unordered.\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_aaf020c5b73a8d0216f8423acd5d4cea8}\label{classantlr4_1_1atn_1_1SemanticContext_aaf020c5b73a8d0216f8423acd5d4cea8}} 
+\index{antlr4\+::atn\+::\+Semantic\+Context@{antlr4\+::atn\+::\+Semantic\+Context}!eval@{eval}}
+\index{eval@{eval}!antlr4\+::atn\+::\+Semantic\+Context@{antlr4\+::atn\+::\+Semantic\+Context}}
+\subsubsection{\texorpdfstring{eval()}{eval()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily virtual bool antlr4\+::atn\+::\+Semantic\+Context\+::eval (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$}]{parser,  }\item[{\hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$}]{parser\+Call\+Stack }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+The evaluation of predicates by this context is short-\/circuiting, but unordered. \mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a09cae49496728bdd0aa3147ffdc152cb}\label{classantlr4_1_1atn_1_1SemanticContext_a09cae49496728bdd0aa3147ffdc152cb}} 
+\index{antlr4\+::atn\+::\+Semantic\+Context@{antlr4\+::atn\+::\+Semantic\+Context}!eval\+Precedence@{eval\+Precedence}}
+\index{eval\+Precedence@{eval\+Precedence}!antlr4\+::atn\+::\+Semantic\+Context@{antlr4\+::atn\+::\+Semantic\+Context}}
+\subsubsection{\texorpdfstring{eval\+Precedence()}{evalPrecedence()}}
+{\footnotesize\ttfamily Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ Semantic\+Context\+::eval\+Precedence (\begin{DoxyParamCaption}\item[{\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$}]{parser,  }\item[{\hyperlink{classantlr4_1_1RuleContext}{Rule\+Context} $\ast$}]{parser\+Call\+Stack }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Evaluate the precedence predicates for the context and reduce the result.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parser} & The parser instance. \\
+\hline
+{\em parser\+Call\+Stack} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The simplified semantic context after precedence predicates are evaluated, which will be one of the following values. 
+\begin{DoxyItemize}
+\item \hyperlink{classantlr4_1_1atn_1_1SemanticContext_a1c9db994b89d06e9d8969e78050aeff5}{N\+O\+NE}\+: if the predicate simplifies to
+\begin{DoxyCode}
+\textcolor{keyword}{true} 
+\end{DoxyCode}
+ after precedence predicates are evaluated. 
+\item 
+\begin{DoxyCode}
+null 
+\end{DoxyCode}
+ \+: if the predicate simplifies to
+\begin{DoxyCode}
+\textcolor{keyword}{false} 
+\end{DoxyCode}
+ after precedence predicates are evaluated. 
+\item 
+\begin{DoxyCode}
+\textcolor{keyword}{this} 
+\end{DoxyCode}
+ \+: if the semantic context is not changed as a result of precedence predicate evaluation. 
+\item A non-\/
+\begin{DoxyCode}
+null 
+\end{DoxyCode}
+ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context}\+: the new simplified semantic context after precedence predicates are evaluated. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_ae47c3a65cf405cecabf3f9c109ca6690}\label{classantlr4_1_1atn_1_1SemanticContext_ae47c3a65cf405cecabf3f9c109ca6690}} 
+\index{antlr4\+::atn\+::\+Semantic\+Context@{antlr4\+::atn\+::\+Semantic\+Context}!get\+Operands@{get\+Operands}}
+\index{get\+Operands@{get\+Operands}!antlr4\+::atn\+::\+Semantic\+Context@{antlr4\+::atn\+::\+Semantic\+Context}}
+\subsubsection{\texorpdfstring{get\+Operands()}{getOperands()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$Ref$<$\hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context}$>$ $>$ antlr4\+::atn\+::\+Semantic\+Context\+::get\+Operands (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Gets the operands for the semantic context operator.
+
+\begin{DoxyReturn}{Returns}
+a collection of \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} operands for the operator.
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+4.\+3 
+\end{DoxySince}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classantlr4_1_1atn_1_1SemanticContext_a1c9db994b89d06e9d8969e78050aeff5}\label{classantlr4_1_1atn_1_1SemanticContext_a1c9db994b89d06e9d8969e78050aeff5}} 
+\index{antlr4\+::atn\+::\+Semantic\+Context@{antlr4\+::atn\+::\+Semantic\+Context}!N\+O\+NE@{N\+O\+NE}}
+\index{N\+O\+NE@{N\+O\+NE}!antlr4\+::atn\+::\+Semantic\+Context@{antlr4\+::atn\+::\+Semantic\+Context}}
+\subsubsection{\texorpdfstring{N\+O\+NE}{NONE}}
+{\footnotesize\ttfamily const Ref$<$ \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context} $>$ Semantic\+Context\+::\+N\+O\+NE = std\+::make\+\_\+shared$<$Predicate$>$(I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+D\+EX, I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+D\+EX, false)\hspace{0.3cm}{\ttfamily [static]}}
+
+The default \hyperlink{classantlr4_1_1atn_1_1SemanticContext}{Semantic\+Context}, which is semantically equivalent to a predicate of the form
+\begin{DoxyCode}
+? 
+\end{DoxyCode}
+ . 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+atn/Semantic\+Context.\+h\item 
+atn/Semantic\+Context.\+cpp\end{DoxyCompactItemize}

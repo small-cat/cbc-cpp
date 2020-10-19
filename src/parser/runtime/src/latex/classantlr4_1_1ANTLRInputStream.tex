@@ -1,0 +1,144 @@
+\hypertarget{classantlr4_1_1ANTLRInputStream}{}\section{antlr4\+:\+:A\+N\+T\+L\+R\+Input\+Stream Class Reference}
+\label{classantlr4_1_1ANTLRInputStream}\index{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream@{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream}}
+
+
+Inheritance diagram for antlr4\+:\+:A\+N\+T\+L\+R\+Input\+Stream\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{classantlr4_1_1ANTLRInputStream__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for antlr4\+:\+:A\+N\+T\+L\+R\+Input\+Stream\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{classantlr4_1_1ANTLRInputStream__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_a94e7ae64a3b2d80f911fdb81807efd74}\label{classantlr4_1_1ANTLRInputStream_a94e7ae64a3b2d80f911fdb81807efd74}} 
+{\bfseries A\+N\+T\+L\+R\+Input\+Stream} (const std\+::string \&input=\char`\"{}\char`\"{})
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_aba79908d868c1cd00081885d8ff968e7}\label{classantlr4_1_1ANTLRInputStream_aba79908d868c1cd00081885d8ff968e7}} 
+{\bfseries A\+N\+T\+L\+R\+Input\+Stream} (const char data\+\_\+\mbox{[}$\,$\mbox{]}, size\+\_\+t number\+Of\+Actual\+Chars\+In\+Array)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_aef56607c326c48eebce3bf7202608240}\label{classantlr4_1_1ANTLRInputStream_aef56607c326c48eebce3bf7202608240}} 
+{\bfseries A\+N\+T\+L\+R\+Input\+Stream} (std\+::istream \&stream)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_ae962ece9c34a19c1aeb5100ccab8b81a}\label{classantlr4_1_1ANTLRInputStream_ae962ece9c34a19c1aeb5100ccab8b81a}} 
+virtual void {\bfseries load} (const std\+::string \&input)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_a5806e604d09aaffa6a0d818024c30484}\label{classantlr4_1_1ANTLRInputStream_a5806e604d09aaffa6a0d818024c30484}} 
+virtual void {\bfseries load} (std\+::istream \&stream)
+\item 
+virtual void \hyperlink{classantlr4_1_1ANTLRInputStream_a3bb10995cd48f3fe06f6399a43d4bbb9}{reset} ()
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_a8edddb1d103e27801c98211acf482f67}\label{classantlr4_1_1ANTLRInputStream_a8edddb1d103e27801c98211acf482f67}} 
+virtual void {\bfseries consume} () override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_afa8fc0a6689cc0ce807dfc06c89bae9d}\label{classantlr4_1_1ANTLRInputStream_afa8fc0a6689cc0ce807dfc06c89bae9d}} 
+virtual size\+\_\+t {\bfseries LA} (ssize\+\_\+t i) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_ad7f3adaa1b600c90f0f59531ef4b75a1}\label{classantlr4_1_1ANTLRInputStream_ad7f3adaa1b600c90f0f59531ef4b75a1}} 
+virtual size\+\_\+t {\bfseries LT} (ssize\+\_\+t i)
+\item 
+virtual size\+\_\+t \hyperlink{classantlr4_1_1ANTLRInputStream_a4c9a7beab5662a33a537fa49fc27db9f}{index} () override
+\begin{DoxyCompactList}\small\item\em Return the current input symbol index 0..n where n indicates the last symbol has been read. The index is the index of char to be returned from L\+A(1). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_ae96b37a6b345a0f637058890d4c97cf6}\label{classantlr4_1_1ANTLRInputStream_ae96b37a6b345a0f637058890d4c97cf6}} 
+virtual size\+\_\+t {\bfseries size} () override
+\item 
+virtual ssize\+\_\+t \hyperlink{classantlr4_1_1ANTLRInputStream_a5a1520d6417bef7e06cb8d524ec6f76c}{mark} () override
+\begin{DoxyCompactList}\small\item\em mark/release do nothing; we have entire buffer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_ab376abfc892d24098cc45fc3917acac0}\label{classantlr4_1_1ANTLRInputStream_ab376abfc892d24098cc45fc3917acac0}} 
+virtual void {\bfseries release} (ssize\+\_\+t marker) override
+\item 
+virtual void \hyperlink{classantlr4_1_1ANTLRInputStream_ac46f2e88f0772bc65b537781a2341010}{seek} (size\+\_\+t \hyperlink{classantlr4_1_1ANTLRInputStream_a4c9a7beab5662a33a537fa49fc27db9f}{index}) override
+\begin{DoxyCompactList}\small\item\em consume() ahead until p==index; can\textquotesingle{}t just set p=index as we must update line and char\+Position\+In\+Line. If we seek backwards, just set p \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_a24450f62298de76d6a8bc251540d79c2}\label{classantlr4_1_1ANTLRInputStream_a24450f62298de76d6a8bc251540d79c2}} 
+virtual std\+::string {\bfseries get\+Text} (const \hyperlink{classantlr4_1_1misc_1_1Interval}{misc\+::\+Interval} \&interval) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_a4f2208f3974b6c153bf561d0addb88f3}\label{classantlr4_1_1ANTLRInputStream_a4f2208f3974b6c153bf561d0addb88f3}} 
+virtual std\+::string {\bfseries get\+Source\+Name} () const override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_a93b3e3b667734ad0c4cf4c5058e9b7cb}\label{classantlr4_1_1ANTLRInputStream_a93b3e3b667734ad0c4cf4c5058e9b7cb}} 
+virtual std\+::string {\bfseries to\+String} () const override
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_a484ecb90c871af2b7ccd364720caf4ee}\label{classantlr4_1_1ANTLRInputStream_a484ecb90c871af2b7ccd364720caf4ee}} 
+std\+::string \hyperlink{classantlr4_1_1ANTLRInputStream_a484ecb90c871af2b7ccd364720caf4ee}{name}
+\begin{DoxyCompactList}\small\item\em What is name or source of this char stream? \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_ad5187c1a38d8118cb4814db0b8178a6b}\label{classantlr4_1_1ANTLRInputStream_ad5187c1a38d8118cb4814db0b8178a6b}} 
+U\+T\+F32\+String \hyperlink{classantlr4_1_1ANTLRInputStream_ad5187c1a38d8118cb4814db0b8178a6b}{\+\_\+data}
+\begin{DoxyCompactList}\small\item\em The data being scanned. \end{DoxyCompactList}\item 
+size\+\_\+t \hyperlink{classantlr4_1_1ANTLRInputStream_a9499bf048c340771ad5f899a721c7f8d}{p}
+\begin{DoxyCompactList}\small\item\em 0..n-\/1 index into string of next char \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_a4c9a7beab5662a33a537fa49fc27db9f}\label{classantlr4_1_1ANTLRInputStream_a4c9a7beab5662a33a537fa49fc27db9f}} 
+\index{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream@{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream}!index@{index}}
+\index{index@{index}!antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream@{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream}}
+\subsubsection{\texorpdfstring{index()}{index()}}
+{\footnotesize\ttfamily size\+\_\+t A\+N\+T\+L\+R\+Input\+Stream\+::index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Return the current input symbol index 0..n where n indicates the last symbol has been read. The index is the index of char to be returned from L\+A(1). 
+
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_a5a1520d6417bef7e06cb8d524ec6f76c}\label{classantlr4_1_1ANTLRInputStream_a5a1520d6417bef7e06cb8d524ec6f76c}} 
+\index{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream@{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream}!mark@{mark}}
+\index{mark@{mark}!antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream@{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream}}
+\subsubsection{\texorpdfstring{mark()}{mark()}}
+{\footnotesize\ttfamily ssize\+\_\+t A\+N\+T\+L\+R\+Input\+Stream\+::mark (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+mark/release do nothing; we have entire buffer 
+
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_a3bb10995cd48f3fe06f6399a43d4bbb9}\label{classantlr4_1_1ANTLRInputStream_a3bb10995cd48f3fe06f6399a43d4bbb9}} 
+\index{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream@{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream}!reset@{reset}}
+\index{reset@{reset}!antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream@{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void A\+N\+T\+L\+R\+Input\+Stream\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Reset the stream so that it\textquotesingle{}s in the same state it was when the object was created {\itshape except} the data array is not touched. \mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_ac46f2e88f0772bc65b537781a2341010}\label{classantlr4_1_1ANTLRInputStream_ac46f2e88f0772bc65b537781a2341010}} 
+\index{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream@{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream}!seek@{seek}}
+\index{seek@{seek}!antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream@{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream}}
+\subsubsection{\texorpdfstring{seek()}{seek()}}
+{\footnotesize\ttfamily void A\+N\+T\+L\+R\+Input\+Stream\+::seek (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+consume() ahead until p==index; can\textquotesingle{}t just set p=index as we must update line and char\+Position\+In\+Line. If we seek backwards, just set p 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classantlr4_1_1ANTLRInputStream_a9499bf048c340771ad5f899a721c7f8d}\label{classantlr4_1_1ANTLRInputStream_a9499bf048c340771ad5f899a721c7f8d}} 
+\index{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream@{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream}!p@{p}}
+\index{p@{p}!antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream@{antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream}}
+\subsubsection{\texorpdfstring{p}{p}}
+{\footnotesize\ttfamily size\+\_\+t antlr4\+::\+A\+N\+T\+L\+R\+Input\+Stream\+::p\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+0..n-\/1 index into string of next char 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+A\+N\+T\+L\+R\+Input\+Stream.\+h\item 
+A\+N\+T\+L\+R\+Input\+Stream.\+cpp\end{DoxyCompactItemize}

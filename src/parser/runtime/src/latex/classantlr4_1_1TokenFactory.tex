@@ -1,0 +1,40 @@
+\hypertarget{classantlr4_1_1TokenFactory}{}\section{antlr4\+:\+:Token\+Factory$<$ Symbol $>$ Class Template Reference}
+\label{classantlr4_1_1TokenFactory}\index{antlr4\+::\+Token\+Factory$<$ Symbol $>$@{antlr4\+::\+Token\+Factory$<$ Symbol $>$}}
+
+
+{\ttfamily \#include $<$Token\+Factory.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::unique\+\_\+ptr$<$ Symbol $>$ \hyperlink{classantlr4_1_1TokenFactory_a25efd6b38907e594ddc848887fbd7303}{create} (std\+::pair$<$ \hyperlink{classantlr4_1_1TokenSource}{Token\+Source} $\ast$, Char\+Stream $\ast$$>$ source, size\+\_\+t type, const std\+::string \&text, size\+\_\+t channel, size\+\_\+t start, size\+\_\+t stop, size\+\_\+t line, size\+\_\+t char\+Position\+In\+Line)=0
+\item 
+\mbox{\Hypertarget{classantlr4_1_1TokenFactory_a43347835d5d4f2184156ed7427e23a1b}\label{classantlr4_1_1TokenFactory_a43347835d5d4f2184156ed7427e23a1b}} 
+virtual std\+::unique\+\_\+ptr$<$ Symbol $>$ \hyperlink{classantlr4_1_1TokenFactory_a43347835d5d4f2184156ed7427e23a1b}{create} (size\+\_\+t type, const std\+::string \&text)=0
+\begin{DoxyCompactList}\small\item\em Generically useful. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Symbol$>$\newline
+class antlr4\+::\+Token\+Factory$<$ Symbol $>$}
+
+The default mechanism for creating tokens. It\textquotesingle{}s used by default in \hyperlink{classantlr4_1_1Lexer}{Lexer} and the error handling strategy (to create missing tokens). Notifying the parser of a new factory means that it notifies it\textquotesingle{}s token source and error strategy. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classantlr4_1_1TokenFactory_a25efd6b38907e594ddc848887fbd7303}\label{classantlr4_1_1TokenFactory_a25efd6b38907e594ddc848887fbd7303}} 
+\index{antlr4\+::\+Token\+Factory@{antlr4\+::\+Token\+Factory}!create@{create}}
+\index{create@{create}!antlr4\+::\+Token\+Factory@{antlr4\+::\+Token\+Factory}}
+\subsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily template$<$typename Symbol$>$ \\
+virtual std\+::unique\+\_\+ptr$<$Symbol$>$ \hyperlink{classantlr4_1_1TokenFactory}{antlr4\+::\+Token\+Factory}$<$ Symbol $>$\+::create (\begin{DoxyParamCaption}\item[{std\+::pair$<$ \hyperlink{classantlr4_1_1TokenSource}{Token\+Source} $\ast$, Char\+Stream $\ast$$>$}]{source,  }\item[{size\+\_\+t}]{type,  }\item[{const std\+::string \&}]{text,  }\item[{size\+\_\+t}]{channel,  }\item[{size\+\_\+t}]{start,  }\item[{size\+\_\+t}]{stop,  }\item[{size\+\_\+t}]{line,  }\item[{size\+\_\+t}]{char\+Position\+In\+Line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+This is the method used to create tokens in the lexer and in the error handling strategy. If text!=null, than the start and stop positions are wiped to -\/1 in the text override is set in the \hyperlink{classantlr4_1_1CommonToken}{Common\+Token}. 
+
+Implemented in \hyperlink{classantlr4_1_1CommonTokenFactory_ae5b0ee244ce69cf24a71c81167328be1}{antlr4\+::\+Common\+Token\+Factory}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+support/Declarations.\+h\item 
+Token\+Factory.\+h\end{DoxyCompactItemize}

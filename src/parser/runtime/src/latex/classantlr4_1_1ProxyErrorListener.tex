@@ -1,0 +1,59 @@
+\hypertarget{classantlr4_1_1ProxyErrorListener}{}\section{antlr4\+:\+:Proxy\+Error\+Listener Class Reference}
+\label{classantlr4_1_1ProxyErrorListener}\index{antlr4\+::\+Proxy\+Error\+Listener@{antlr4\+::\+Proxy\+Error\+Listener}}
+
+
+{\ttfamily \#include $<$Proxy\+Error\+Listener.\+h$>$}
+
+
+
+Inheritance diagram for antlr4\+:\+:Proxy\+Error\+Listener\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{classantlr4_1_1ProxyErrorListener__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for antlr4\+:\+:Proxy\+Error\+Listener\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{classantlr4_1_1ProxyErrorListener__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ProxyErrorListener_a972056883899e3280b0aaf7d7fdaa963}\label{classantlr4_1_1ProxyErrorListener_a972056883899e3280b0aaf7d7fdaa963}} 
+void {\bfseries add\+Error\+Listener} (\hyperlink{classantlr4_1_1ANTLRErrorListener}{A\+N\+T\+L\+R\+Error\+Listener} $\ast$listener)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ProxyErrorListener_a5a830328aed09a28de5be14da8131a07}\label{classantlr4_1_1ProxyErrorListener_a5a830328aed09a28de5be14da8131a07}} 
+void {\bfseries remove\+Error\+Listener} (\hyperlink{classantlr4_1_1ANTLRErrorListener}{A\+N\+T\+L\+R\+Error\+Listener} $\ast$listener)
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ProxyErrorListener_ad48444aa51a8b4e4f08fa847ba7f82f2}\label{classantlr4_1_1ProxyErrorListener_ad48444aa51a8b4e4f08fa847ba7f82f2}} 
+void {\bfseries remove\+Error\+Listeners} ()
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ProxyErrorListener_a4c3323723f9ea559b0daa6202b426d4b}\label{classantlr4_1_1ProxyErrorListener_a4c3323723f9ea559b0daa6202b426d4b}} 
+void {\bfseries syntax\+Error} (\hyperlink{classantlr4_1_1Recognizer}{Recognizer} $\ast$recognizer, \hyperlink{classantlr4_1_1Token}{Token} $\ast$offending\+Symbol, size\+\_\+t line, size\+\_\+t char\+Position\+In\+Line, const std\+::string \&msg, std\+::exception\+\_\+ptr e) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ProxyErrorListener_aa7b84282b79cd8512a09116f86a780d2}\label{classantlr4_1_1ProxyErrorListener_aa7b84282b79cd8512a09116f86a780d2}} 
+virtual void {\bfseries report\+Ambiguity} (\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$recognizer, const \hyperlink{classantlr4_1_1dfa_1_1DFA}{dfa\+::\+D\+FA} \&dfa, size\+\_\+t start\+Index, size\+\_\+t stop\+Index, bool exact, const \hyperlink{classantlrcpp_1_1BitSet}{antlrcpp\+::\+Bit\+Set} \&ambig\+Alts, \hyperlink{classantlr4_1_1atn_1_1ATNConfigSet}{atn\+::\+A\+T\+N\+Config\+Set} $\ast$configs) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ProxyErrorListener_ada4685c32424c820dcfec5862d822869}\label{classantlr4_1_1ProxyErrorListener_ada4685c32424c820dcfec5862d822869}} 
+virtual void {\bfseries report\+Attempting\+Full\+Context} (\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$recognizer, const \hyperlink{classantlr4_1_1dfa_1_1DFA}{dfa\+::\+D\+FA} \&dfa, size\+\_\+t start\+Index, size\+\_\+t stop\+Index, const \hyperlink{classantlrcpp_1_1BitSet}{antlrcpp\+::\+Bit\+Set} \&conflicting\+Alts, \hyperlink{classantlr4_1_1atn_1_1ATNConfigSet}{atn\+::\+A\+T\+N\+Config\+Set} $\ast$configs) override
+\item 
+\mbox{\Hypertarget{classantlr4_1_1ProxyErrorListener_a56e2d5665e2077a9adc67ae70e1deb2a}\label{classantlr4_1_1ProxyErrorListener_a56e2d5665e2077a9adc67ae70e1deb2a}} 
+virtual void {\bfseries report\+Context\+Sensitivity} (\hyperlink{classantlr4_1_1Parser}{Parser} $\ast$recognizer, const \hyperlink{classantlr4_1_1dfa_1_1DFA}{dfa\+::\+D\+FA} \&dfa, size\+\_\+t start\+Index, size\+\_\+t stop\+Index, size\+\_\+t prediction, \hyperlink{classantlr4_1_1atn_1_1ATNConfigSet}{atn\+::\+A\+T\+N\+Config\+Set} $\ast$configs) override
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This implementation of \hyperlink{classantlr4_1_1ANTLRErrorListener}{A\+N\+T\+L\+R\+Error\+Listener} dispatches all calls to a collection of delegate listeners. This reduces the effort required to support multiple listeners. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Proxy\+Error\+Listener.\+h\item 
+Proxy\+Error\+Listener.\+cpp\end{DoxyCompactItemize}
