@@ -29,7 +29,19 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitImport_name(SesameParser::Import_nameContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitName(SesameParser::NameContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitFunc_decl(SesameParser::Func_declContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitVar_decl(SesameParser::Var_declContext *ctx) override {
     return visitChildren(ctx);
   }
 

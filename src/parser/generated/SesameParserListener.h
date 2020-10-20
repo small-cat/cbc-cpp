@@ -25,8 +25,17 @@ public:
   virtual void enterImport_stmt(SesameParser::Import_stmtContext *ctx) = 0;
   virtual void exitImport_stmt(SesameParser::Import_stmtContext *ctx) = 0;
 
+  virtual void enterImport_name(SesameParser::Import_nameContext *ctx) = 0;
+  virtual void exitImport_name(SesameParser::Import_nameContext *ctx) = 0;
+
   virtual void enterName(SesameParser::NameContext *ctx) = 0;
   virtual void exitName(SesameParser::NameContext *ctx) = 0;
+
+  virtual void enterFunc_decl(SesameParser::Func_declContext *ctx) = 0;
+  virtual void exitFunc_decl(SesameParser::Func_declContext *ctx) = 0;
+
+  virtual void enterVar_decl(SesameParser::Var_declContext *ctx) = 0;
+  virtual void exitVar_decl(SesameParser::Var_declContext *ctx) = 0;
 
   virtual void enterTop_def(SesameParser::Top_defContext *ctx) = 0;
   virtual void exitTop_def(SesameParser::Top_defContext *ctx) = 0;

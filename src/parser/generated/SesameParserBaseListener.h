@@ -27,8 +27,17 @@ public:
   virtual void enterImport_stmt(SesameParser::Import_stmtContext * /*ctx*/) override { }
   virtual void exitImport_stmt(SesameParser::Import_stmtContext * /*ctx*/) override { }
 
+  virtual void enterImport_name(SesameParser::Import_nameContext * /*ctx*/) override { }
+  virtual void exitImport_name(SesameParser::Import_nameContext * /*ctx*/) override { }
+
   virtual void enterName(SesameParser::NameContext * /*ctx*/) override { }
   virtual void exitName(SesameParser::NameContext * /*ctx*/) override { }
+
+  virtual void enterFunc_decl(SesameParser::Func_declContext * /*ctx*/) override { }
+  virtual void exitFunc_decl(SesameParser::Func_declContext * /*ctx*/) override { }
+
+  virtual void enterVar_decl(SesameParser::Var_declContext * /*ctx*/) override { }
+  virtual void exitVar_decl(SesameParser::Var_declContext * /*ctx*/) override { }
 
   virtual void enterTop_def(SesameParser::Top_defContext * /*ctx*/) override { }
   virtual void exitTop_def(SesameParser::Top_defContext * /*ctx*/) override { }

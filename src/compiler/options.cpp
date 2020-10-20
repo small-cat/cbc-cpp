@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <getopt.h>
 
+extern char* optarg;
 namespace compiler {
 
 const std::string Options::DEFAULT_LINKER_OUTPUT = "a.out";
@@ -110,7 +111,6 @@ sysdep::LinkerOptions Options::ld_options() {
 }
 
 void Options::ParseArgs(int argc, char* argv[]) {
-  extern char* optarg;
   int ret = 0;
   std::string optstring = ":Sco:O::v:I:l:L:";
   static struct option long_options[] = {
@@ -208,7 +208,8 @@ void Options::ParseArgs(int argc, char* argv[]) {
         }
         break;
       case 307:
-        printf("cbc VERSION 1.0.0\n");
+        printf("%s VERSION %s\n", AX(PROGNAME), AX(PROG_VERSION));
+        exit(EXIT_SUCCESS);
         break;
       case 308:
         PrintUsage();
@@ -294,6 +295,7 @@ void Options::ParseArgs(int argc, char* argv[]) {
         break;
       default:
         printf("?? getopt_long_only returned character code 0%o ??\n", ret);
+        exit(EXIT_FAILURE);
         break;
     }
   } // end while
@@ -328,8 +330,8 @@ void Options::AddLdArg(const std::string& arg) {
   ld_args_.push_back(arg);
 }
 
-void PrintUsage() {
-  printf("Usage: cbc [options] file...\n");
+void Options::PrintUsage() {
+  printf("Usage: sesame [options] file...\n");
   printf("Global Options:\n");
   printf("  --check-syntax   Checks syntax and quit.\n");
   printf("  --dump-tokens    Dumps tokens and quit.\n");

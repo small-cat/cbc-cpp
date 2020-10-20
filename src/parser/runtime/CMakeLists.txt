@@ -1,25 +1,25 @@
 
 include_directories(
-  ${PROJECT_SOURCE_DIR}/runtime/src
-  ${PROJECT_SOURCE_DIR}/runtime/src/atn
-  ${PROJECT_SOURCE_DIR}/runtime/src/dfa
-  ${PROJECT_SOURCE_DIR}/runtime/src/misc
-  ${PROJECT_SOURCE_DIR}/runtime/src/support
-  ${PROJECT_SOURCE_DIR}/runtime/src/tree
-  ${PROJECT_SOURCE_DIR}/runtime/src/tree/pattern
-  ${PROJECT_SOURCE_DIR}/runtime/src/tree/xpath
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/atn
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/dfa
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/misc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/support
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/tree
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/tree/pattern
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/tree/xpath
 )
 
 
 file(GLOB libantlrcpp_SRC
-  "${PROJECT_SOURCE_DIR}/runtime/src/*.cpp"
-  "${PROJECT_SOURCE_DIR}/runtime/src/atn/*.cpp"
-  "${PROJECT_SOURCE_DIR}/runtime/src/dfa/*.cpp"
-  "${PROJECT_SOURCE_DIR}/runtime/src/misc/*.cpp"
-  "${PROJECT_SOURCE_DIR}/runtime/src/support/*.cpp"
-  "${PROJECT_SOURCE_DIR}/runtime/src/tree/*.cpp"
-  "${PROJECT_SOURCE_DIR}/runtime/src/tree/pattern/*.cpp"
-  "${PROJECT_SOURCE_DIR}/runtime/src/tree/xpath/*.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/atn/*.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/dfa/*.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/misc/*.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/support/*.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/tree/*.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/tree/pattern/*.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/tree/xpath/*.cpp"
 )
 
 add_library(antlr4_shared SHARED ${libantlrcpp_SRC})
@@ -72,7 +72,7 @@ install(TARGETS antlr4_static
         DESTINATION lib
         EXPORT antlr4-targets)
 
-install(DIRECTORY "${PROJECT_SOURCE_DIR}/runtime/src/" 
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/src/" 
         DESTINATION "include/antlr4-runtime"
         COMPONENT dev 
         FILES_MATCHING PATTERN "*.h"

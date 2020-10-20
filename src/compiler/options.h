@@ -21,6 +21,17 @@
 #include "../sysdep/assembler_options.h"
 #include "../sysdep/linker_options.h"
 
+#define PROGNAME "sesame"
+
+#define AX(X) AX_(X)
+#define AX_(X) #X
+
+#ifdef SVERSION
+#define PROG_VERSION AX(SVERSION)
+#else
+#define PROG_VERSION "0.0.1"
+#endif
+
 namespace compiler {
 
 class Options {

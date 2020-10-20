@@ -1,8 +1,0 @@
-22/09/2020 20:58:59 Jona <mblrwuzy@gmail.com>
-
-	* add SesameLexer.g4 and SesameParser.g4
-	* test all the test files in cbc and
-
-25/09/2020 13:27:38 Jona <mblrwuzy@gmail.com>
-
-	* add ast infrastructure

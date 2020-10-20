@@ -27,6 +27,10 @@ compilation_unit
     : import_stmt* top_def+
     ;
 
+declaration_file
+    : import_stmt* (func_decl | var_decl | def_const | def_struct | def_union | s_typedef)*
+    ;
+
 // import stdio -> #include <stdio.h>
 // import sys.types -> #include <sys/types.h>
 import_stmt
@@ -39,6 +43,14 @@ import_name
 
 name 
     : IDENTIFIER
+    ;
+
+func_decl
+    : S_EXTERN typeref name LPAREN params RPAREN SEMI
+    ;
+
+var_decl
+    : S_EXTERN type name SEMI
     ;
 
 top_def

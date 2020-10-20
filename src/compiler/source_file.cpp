@@ -8,7 +8,7 @@
  * @brief : source file definitions
 */
 #include "source_file.h"
-#include "utils/string_utils.hpp"
+#include "../utils/string_utils.hpp"
 
 namespace compiler {
 SourceFile::SourceFile(std::string filename) : original_name_(filename), current_name_(filename) {}

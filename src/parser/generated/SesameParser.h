@@ -34,19 +34,20 @@ public:
 
   enum {
     RuleCompilation_unit = 0, RuleDeclaration_file = 1, RuleImport_stmt = 2, 
-    RuleName = 3, RuleTop_def = 4, RuleDef_func = 5, RuleStorage = 6, RuleParams = 7, 
-    RuleFixed_params = 8, RuleParam = 9, RuleBlock = 10, RuleDef_vars = 11, 
-    RuleAssign_expr = 12, RuleDef_const = 13, RuleDef_struct = 14, RuleDef_union = 15, 
-    RuleMember_list = 16, RuleSlot = 17, RuleS_typedef = 18, RuleType = 19, 
-    RuleTyperef = 20, RuleTyperef_base = 21, RuleParam_typerefs = 22, RuleFixed_param_typerefs = 23, 
-    RuleStmts = 24, RuleStmt = 25, RuleLabeled_stmt = 26, RuleIf_stmt = 27, 
-    RuleWhile_stmt = 28, RuleDo_while_stmt = 29, RuleFor_stmt = 30, RuleSwitch_stmt = 31, 
-    RuleCase_clauses = 32, RuleCase_clause = 33, RuleCases = 34, RuleDefault_clause = 35, 
-    RuleCase_body = 36, RuleBreak_stmt = 37, RuleContinue_stmt = 38, RuleGoto_stmt = 39, 
-    RuleReturn_stmt = 40, RuleExpr = 41, RuleOpassign_op = 42, RuleExpr10 = 43, 
-    RuleExpr8 = 44, RuleExpr7 = 45, RuleLogical_op = 46, RuleExpr6 = 47, 
-    RuleExpr5 = 48, RuleExpr4 = 49, RuleExpr3 = 50, RuleExpr2 = 51, RuleExpr1 = 52, 
-    RuleTerm = 53, RuleUnary = 54, RulePostfix = 55, RuleArgs = 56, RulePrimary = 57
+    RuleImport_name = 3, RuleName = 4, RuleFunc_decl = 5, RuleVar_decl = 6, 
+    RuleTop_def = 7, RuleDef_func = 8, RuleStorage = 9, RuleParams = 10, 
+    RuleFixed_params = 11, RuleParam = 12, RuleBlock = 13, RuleDef_vars = 14, 
+    RuleAssign_expr = 15, RuleDef_const = 16, RuleDef_struct = 17, RuleDef_union = 18, 
+    RuleMember_list = 19, RuleSlot = 20, RuleS_typedef = 21, RuleType = 22, 
+    RuleTyperef = 23, RuleTyperef_base = 24, RuleParam_typerefs = 25, RuleFixed_param_typerefs = 26, 
+    RuleStmts = 27, RuleStmt = 28, RuleLabeled_stmt = 29, RuleIf_stmt = 30, 
+    RuleWhile_stmt = 31, RuleDo_while_stmt = 32, RuleFor_stmt = 33, RuleSwitch_stmt = 34, 
+    RuleCase_clauses = 35, RuleCase_clause = 36, RuleCases = 37, RuleDefault_clause = 38, 
+    RuleCase_body = 39, RuleBreak_stmt = 40, RuleContinue_stmt = 41, RuleGoto_stmt = 42, 
+    RuleReturn_stmt = 43, RuleExpr = 44, RuleOpassign_op = 45, RuleExpr10 = 46, 
+    RuleExpr8 = 47, RuleExpr7 = 48, RuleLogical_op = 49, RuleExpr6 = 50, 
+    RuleExpr5 = 51, RuleExpr4 = 52, RuleExpr3 = 53, RuleExpr2 = 54, RuleExpr1 = 55, 
+    RuleTerm = 56, RuleUnary = 57, RulePostfix = 58, RuleArgs = 59, RulePrimary = 60
   };
 
   SesameParser(antlr4::TokenStream *input);
@@ -62,7 +63,10 @@ public:
   class Compilation_unitContext;
   class Declaration_fileContext;
   class Import_stmtContext;
+  class Import_nameContext;
   class NameContext;
+  class Func_declContext;
+  class Var_declContext;
   class Top_defContext;
   class Def_funcContext;
   class StorageContext;
@@ -140,6 +144,20 @@ public:
   public:
     Declaration_fileContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    std::vector<Import_stmtContext *> import_stmt();
+    Import_stmtContext* import_stmt(size_t i);
+    std::vector<Func_declContext *> func_decl();
+    Func_declContext* func_decl(size_t i);
+    std::vector<Var_declContext *> var_decl();
+    Var_declContext* var_decl(size_t i);
+    std::vector<Def_constContext *> def_const();
+    Def_constContext* def_const(size_t i);
+    std::vector<Def_structContext *> def_struct();
+    Def_structContext* def_struct(size_t i);
+    std::vector<Def_unionContext *> def_union();
+    Def_unionContext* def_union(size_t i);
+    std::vector<S_typedefContext *> s_typedef();
+    S_typedefContext* s_typedef(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -155,9 +173,24 @@ public:
     Import_stmtContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *S_IMPORT();
+    Import_nameContext *import_name();
+    antlr4::tree::TerminalNode *SEMI();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Import_stmtContext* import_stmt();
+
+  class  Import_nameContext : public antlr4::ParserRuleContext {
+  public:
+    Import_nameContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
     std::vector<NameContext *> name();
     NameContext* name(size_t i);
-    antlr4::tree::TerminalNode *SEMI();
     std::vector<antlr4::tree::TerminalNode *> PERIOD();
     antlr4::tree::TerminalNode* PERIOD(size_t i);
 
@@ -168,7 +201,7 @@ public:
    
   };
 
-  Import_stmtContext* import_stmt();
+  Import_nameContext* import_name();
 
   class  NameContext : public antlr4::ParserRuleContext {
   public:
@@ -184,6 +217,45 @@ public:
   };
 
   NameContext* name();
+
+  class  Func_declContext : public antlr4::ParserRuleContext {
+  public:
+    Func_declContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *S_EXTERN();
+    TyperefContext *typeref();
+    NameContext *name();
+    antlr4::tree::TerminalNode *LPAREN();
+    ParamsContext *params();
+    antlr4::tree::TerminalNode *RPAREN();
+    antlr4::tree::TerminalNode *SEMI();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Func_declContext* func_decl();
+
+  class  Var_declContext : public antlr4::ParserRuleContext {
+  public:
+    Var_declContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *S_EXTERN();
+    TypeContext *type();
+    NameContext *name();
+    antlr4::tree::TerminalNode *SEMI();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Var_declContext* var_decl();
 
   class  Top_defContext : public antlr4::ParserRuleContext {
   public:

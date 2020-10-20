@@ -26,7 +26,13 @@ public:
 
     virtual antlrcpp::Any visitImport_stmt(SesameParser::Import_stmtContext *context) = 0;
 
+    virtual antlrcpp::Any visitImport_name(SesameParser::Import_nameContext *context) = 0;
+
     virtual antlrcpp::Any visitName(SesameParser::NameContext *context) = 0;
+
+    virtual antlrcpp::Any visitFunc_decl(SesameParser::Func_declContext *context) = 0;
+
+    virtual antlrcpp::Any visitVar_decl(SesameParser::Var_declContext *context) = 0;
 
     virtual antlrcpp::Any visitTop_def(SesameParser::Top_defContext *context) = 0;
 
