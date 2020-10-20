@@ -1,7 +1,0 @@
-<map id="antlr4::Recognizer" name="antlr4::Recognizer">
-<area shape="rect" id="node2" href="$classantlr4_1_1Lexer.html" title="antlr4::Lexer" alt="" coords="181,80,276,107"/>
-<area shape="rect" id="node5" href="$classantlr4_1_1Parser.html" title="This is all the parsing support code essentially; most of it is error recovery stuff. " alt="" coords="313,80,413,107"/>
-<area shape="rect" id="node3" href="$classantlr4_1_1LexerInterpreter.html" title="antlr4::LexerInterpreter" alt="" coords="5,155,159,181"/>
-<area shape="rect" id="node4" href="$classXPathLexer.html" title="XPathLexer" alt="" coords="183,155,274,181"/>
-<area shape="rect" id="node6" href="$classantlr4_1_1ParserInterpreter.html" title="A parser simulator that mimics what ANTLR&#39;s generated parser code does. A ParserATNSimulator is used ..." alt="" coords="299,155,457,181"/>
-</map>

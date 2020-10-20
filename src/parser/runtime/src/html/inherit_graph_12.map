@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classantlr4_1_1atn_1_1ATNSimulator.html" title="antlr4::atn::ATNSimulator" alt="" coords="5,5,176,32"/>
-<area shape="rect" id="node2" href="$classantlr4_1_1atn_1_1ParserATNSimulator.html" title="antlr4::atn::ParserATNSimulator" alt="" coords="224,5,432,32"/>
-<area shape="rect" id="node3" href="$classantlr4_1_1atn_1_1ProfilingATNSimulator.html" title="antlr4::atn::ProfilingATNSimulator" alt="" coords="480,5,697,32"/>
-</map>

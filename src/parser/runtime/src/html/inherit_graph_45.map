@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classantlr4_1_1tree_1_1ParseTreeListener.html" title="antlr4::tree::ParseTreeListener" alt="" coords="5,35,204,61"/>
-<area shape="rect" id="node2" href="$classantlr4_1_1Parser_1_1TraceListener.html" title="antlr4::Parser::TraceListener" alt="" coords="252,5,439,32"/>
-<area shape="rect" id="node3" href="$classantlr4_1_1Parser_1_1TrimToSizeListener.html" title="antlr4::Parser::TrimToSize\lListener" alt="" coords="258,57,433,98"/>
-</map>

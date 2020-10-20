@@ -1,5 +1,0 @@
-<map id="antlr4::atn::PredictionContext" name="antlr4::atn::PredictionContext">
-<area shape="rect" id="node2" href="$classantlr4_1_1atn_1_1ArrayPredictionContext.html" title="antlr4::atn::ArrayPrediction\lContext" alt="" coords="5,80,183,121"/>
-<area shape="rect" id="node3" href="$classantlr4_1_1atn_1_1SingletonPredictionContext.html" title="antlr4::atn::SingletonPrediction\lContext" alt="" coords="207,80,407,121"/>
-<area shape="rect" id="node4" href="$classantlr4_1_1atn_1_1EmptyPredictionContext.html" title="antlr4::atn::EmptyPrediction\lContext" alt="" coords="215,169,399,211"/>
-</map>

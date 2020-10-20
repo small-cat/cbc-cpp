@@ -1,6 +1,0 @@
-<map id="antlr4::ANTLRErrorListener" name="antlr4::ANTLRErrorListener">
-<area shape="rect" id="node2" href="$classantlr4_1_1BaseErrorListener.html" title="antlr4::BaseErrorListener" alt="" coords="115,80,282,107"/>
-<area shape="rect" id="node5" href="$classantlr4_1_1ProxyErrorListener.html" title="antlr4::ProxyErrorListener" alt="" coords="307,80,477,107"/>
-<area shape="rect" id="node3" href="$classantlr4_1_1ConsoleErrorListener.html" title="antlr4::ConsoleErrorListener" alt="" coords="5,162,189,189"/>
-<area shape="rect" id="node4" href="$classantlr4_1_1tree_1_1xpath_1_1XPathLexerErrorListener.html" title="antlr4::tree::xpath\l::XPathLexerErrorListener" alt="" coords="214,155,386,196"/>
-</map>

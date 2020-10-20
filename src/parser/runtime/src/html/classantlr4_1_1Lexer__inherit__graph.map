@@ -1,6 +1,0 @@
-<map id="antlr4::Lexer" name="antlr4::Lexer">
-<area shape="rect" id="node4" href="$classantlr4_1_1LexerInterpreter.html" title="antlr4::LexerInterpreter" alt="" coords="5,155,159,181"/>
-<area shape="rect" id="node5" href="$classXPathLexer.html" title="XPathLexer" alt="" coords="183,155,274,181"/>
-<area shape="rect" id="node2" href="$classantlr4_1_1Recognizer.html" title="antlr4::Recognizer" alt="" coords="13,5,141,32"/>
-<area shape="rect" id="node3" href="$classantlr4_1_1TokenSource.html" title="A source of tokens must provide a sequence of tokens via nextToken(), CommonToken, CharStreamand also must reveal it&#39;s source of characters; &#39;s text is computed from a ; it only store indices into the char stream. Errors from the lexer are never passed to the parser. Either you want to keep going or you do not upon token recognition error. If you do not want to continue lexing then you do not want to continue parsing. Just throw an exception not under RecognitionExceptionand Java will naturally toss you all the way out of the recognizers. If you want to continue lexing then you should not throw an exception to the parser–it has already requested a token. Keep lexing until you get a valid one. Just report errors and keep going, looking for a valid token. " alt="" coords="165,5,303,32"/>
-</map>

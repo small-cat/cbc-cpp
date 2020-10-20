@@ -1,4 +1,0 @@
-<map id="antlr4::Parser" name="antlr4::Parser">
-<area shape="rect" id="node3" href="$classantlr4_1_1ParserInterpreter.html" title="A parser simulator that mimics what ANTLR&#39;s generated parser code does. A ParserATNSimulator is used ..." alt="" coords="5,155,164,181"/>
-<area shape="rect" id="node2" href="$classantlr4_1_1Recognizer.html" title="antlr4::Recognizer" alt="" coords="21,5,149,32"/>
-</map>

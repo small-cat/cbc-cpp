@@ -1,6 +1,0 @@
-<map id="antlr4::tree::TerminalNode" name="antlr4::tree::TerminalNode">
-<area shape="rect" id="node3" href="$classantlr4_1_1tree_1_1ErrorNode.html" title="antlr4::tree::ErrorNode" alt="" coords="5,155,156,181"/>
-<area shape="rect" id="node5" href="$classantlr4_1_1tree_1_1TerminalNodeImpl.html" title="antlr4::tree::TerminalNodeImpl" alt="" coords="180,155,379,181"/>
-<area shape="rect" id="node2" href="$classantlr4_1_1tree_1_1ParseTree.html" title="antlr4::tree::ParseTree" alt="" coords="103,5,255,32"/>
-<area shape="rect" id="node4" href="$classantlr4_1_1tree_1_1ErrorNodeImpl.html" title="Represents a token that was consumed during resynchronization rather than during a valid match operat..." alt="" coords="91,229,267,256"/>
-</map>

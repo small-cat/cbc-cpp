@@ -1,3 +1,0 @@
-<map id="antlr4::atn::RuleTransition" name="antlr4::atn::RuleTransition">
-<area shape="rect" id="node2" href="$classantlr4_1_1atn_1_1Transition.html" title="An ATN transition between any two ATN states. Subclasses define atom, set, epsilon, action, predicate, rule transitions. This is a one way link. It emanates from a state (usually via a list of transitions) and has a target state. Since we never have to change the ATN transitions once we construct it, we can fix these transitions as specific classes. The DFA transitions on the other hand need to update the labels as it adds transitions to the states. We&#39;ll use the term Edge for the DFA to distinguish them from ATN transitions. " alt="" coords="19,5,164,32"/>
-</map>
