@@ -14,6 +14,8 @@
 #include <iostream>
 #include <fstream>
 
+#include "node.hpp"
+
 namespace ast {
 class Dumper  {
 public:
@@ -33,7 +35,7 @@ public:
   const static std::string INDENT_STRING;
 private:
   int indent_;
-  std::fstream* stream_;
+  std::ostream* stream_;
 };
 } /* end ast */
 

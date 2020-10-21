@@ -2,15 +2,31 @@
 #define __FUNCALL_NODE_H__
 
 #include "expr_node.hpp"
+#include "../../type/function_type.hpp"
+
+#include <vector>
 
 namespace ast {
 class FuncallNode : public ExprNode {
 public:
-  FuncallNode();
+  FuncallNode(ExprNode* expr, std::vector<ExprNode*> args);
   virtual ~FuncallNode();
 
+  ExprNode* expr();
+  type::Type* type();
+  type::FunctionType* GetFunctionType();
+  long NumOfArgs();
+  std::vector<ExprNode*> args();
+
+  // void ReplaceArgs(std::vector<ExprNode*> args);  // called by TypeChecker
+
+  Location* location();
+  void _dump(Dumper* d);
+
+  //void Accept(ASTVisitor* visitor);
 private:
-  /* data */
+  ExprNode* expr_;              // function name expression
+  std::vector<ExprNode*> args_; // arguments
 };
 } /* end ast */
 

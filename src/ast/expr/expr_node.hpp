@@ -10,17 +10,17 @@
 #ifndef __EXPR_NODE_H__
 #define __EXPR_NODE_H__
 
-#include "node.hpp"
+#include "../node.hpp"
 
 namespace ast {
 class ExprNode : public Node {
 public:
-  ExprNode();
-  virtual ~ExprNode();
+  ExprNode() {}
+  virtual ~ExprNode() {}
 
   virtual std::string GetClass() { return ""; }
-  virtual Type* type() = 0;
-  Type* OriginalType() { return type(); }
+  virtual type::Type* type() = 0;
+  type::Type* OriginalType() { return type(); }
 
   long AllocSize() { return type()->AllocSize(); }
 

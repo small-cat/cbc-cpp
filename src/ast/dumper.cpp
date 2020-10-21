@@ -37,7 +37,7 @@ void Dumper::UnIndent() {
 void Dumper::PrintIndent() {
   int n = indent_;
   while (n > 0) {
-    stream_ << INDENT_STRING;
+    *stream_ << INDENT_STRING;
     n--;
   }
 }
