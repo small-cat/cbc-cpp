@@ -10,10 +10,11 @@
 #ifndef __NODE_H__
 #define __NODE_H__
 
-#include "dumper.h"
 #include "location.hpp"
 
 namespace ast {
+
+class Dumper;
 
 class Node  {
 public:
@@ -21,12 +22,9 @@ public:
   virtual ~Node() {}
 
   virtual Location* location() = 0;
-  void Dump(Dumper* d) {
-    d->PrintClass(this, location());
-    _dump(d);
-  }
+  virtual void Dump(ast::Dumper* d) = 0;
 
-  virtual void _dump(Dumper* d) = 0;
+  virtual std::string GetClass() = 0;
 };
 } /* end ast */
 

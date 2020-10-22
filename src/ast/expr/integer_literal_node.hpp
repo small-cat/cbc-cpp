@@ -6,11 +6,14 @@
 namespace ast {
 class IntegerLiteralNode : public LiteralNode {
 public:
-  IntegerLiteralNode();
+  IntegerLiteralNode(Location* l, type::TypeRef* tr, long val);
   virtual ~IntegerLiteralNode();
 
+  long value();
+  void _dump(Dumper* d);
+  // void accept();
 private:
-  /* data */
+  long value_;
 };
 } /* end ast */
 

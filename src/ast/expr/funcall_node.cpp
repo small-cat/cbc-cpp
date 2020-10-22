@@ -1,4 +1,5 @@
 #include "funcall_node.hpp"
+#include "../../type/pointer_type.hpp"
 
 namespace ast {
 FuncallNode::FuncallNode(ExprNode* expr, std::vector<ExprNode*> args) : expr_(expr) {
@@ -24,7 +25,7 @@ std::vector<ExprNode*> FuncallNode::args() {
  * @date 21/10/2020 15:40:25 
 */ 
 type::Type* FuncallNode::type() {
-  return GetFunctionType()->ReturnType();
+  return GetFunctionType()->return_type();
 }
 
 /**
@@ -36,7 +37,7 @@ type::Type* FuncallNode::type() {
  * @date 21/10/2020 15:45:05 
 */ 
 type::FunctionType* FuncallNode::GetFunctionType() {
-  return expr->type()->GetPointerType()->BaseType()->GetFunctionType();
+  return expr_->type()->GetPointerType()->base_type()->GetFunctionType();
 }
 
 long FuncallNode::NumOfArgs() {
@@ -44,12 +45,13 @@ long FuncallNode::NumOfArgs() {
 }
 
 Location* FuncallNode::location() {
-  return expr->location();
+  return expr_->location();
 }
 
 void FuncallNode::_dump(Dumper* d) {
   d->PrintMember("expr", expr_);
-  d->PrintNodeList("args", args_);
+  // @todo { not implement Node List Dump }
+  //d->PrintNodeList("args", args_);
 }
 
 } /* end ast */

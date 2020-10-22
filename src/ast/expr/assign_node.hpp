@@ -6,11 +6,10 @@
 namespace ast {
 class AssignNode : public AbstractAssignNode {
 public:
-  AssignNode();
-  virtual ~AssignNode();
+  AssignNode(ExprNode* l, ExprNode* r) : AbstractAssignNode(l, r) {}
+  virtual ~AssignNode() {}
 
-private:
-  /* data */
+  // void accept();
 };
 } /* end ast */
 

@@ -11,6 +11,8 @@
 #define __EXPR_NODE_H__
 
 #include "../node.hpp"
+#include "../dumper.h"
+#include "../../type/type.hpp"
 
 namespace ast {
 class ExprNode : public Node {
@@ -32,7 +34,13 @@ public:
   bool IsCallable() { return type()->IsCallable(); }
   bool IsPointer() { return type()->IsPointer(); }
 
-  virtual void Accept(ASTVisitor* visitor) = 0;
+  virtual void Dump(Dumper* d) {
+    d->PrintClass(this, location());
+    _dump(d);
+  }
+
+  virtual void _dump(Dumper* d) = 0;
+  //virtual void Accept(ASTVisitor* visitor) = 0;
 };
 } /* end ast */
 

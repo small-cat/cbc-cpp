@@ -12,8 +12,8 @@
 #define __TYPE_NODE_H__
 
 #include "../node.hpp"
-#include "type/type_ref.hpp"
-#include "type/type.hpp"
+#include "../../type/type_ref.hpp"
+#include "../../type/type.hpp"
 
 namespace ast {
 class TypeNode : public Node {

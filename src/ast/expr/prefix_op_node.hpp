@@ -6,11 +6,10 @@
 namespace ast {
 class PrefixOpNode : public UnaryArithmeticOpNode {
 public:
-  PrefixOpNode();
-  virtual ~PrefixOpNode();
+  PrefixOpNode(std::string op, ExprNode* e) : UnaryArithmeticOpNode(op, e) {}
+  virtual ~PrefixOpNode() {}
 
-private:
-  /* data */
+  // void accept();
 };
 } /* end ast */
 

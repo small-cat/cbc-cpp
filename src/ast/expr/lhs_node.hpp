@@ -11,6 +11,7 @@
 #define __LHS_NODE_H__
 
 #include "expr_node.hpp"
+#include "../../type/type.hpp"
 
 namespace ast {
 class LHSNode : public ExprNode {
@@ -18,15 +19,15 @@ public:
   LHSNode() : type_(nullptr), original_type_(nullptr) {}
   virtual ~LHSNode();
 
-  void SetType(Type* type) {
+  void SetType(type::Type* type) {
     type_ = type;
   }
 
-  Type* type() {
+  type::Type* type() {
     return type_ == nullptr ? original_type_ : type_;
   }
 
-  virtual Type* original_type() = 0;
+  virtual type::Type* original_type() = 0;
 
   long AllocSize() { return original_type_->AllocSize(); }
   bool IsLValue() { return true; }
@@ -36,8 +37,8 @@ public:
   }
 
 private:
-  Type* type_;
-  Type* original_type_;
+  type::Type* type_;
+  type::Type* original_type_;
 };
 } /* end ast */
 

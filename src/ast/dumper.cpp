@@ -2,7 +2,7 @@
 
 namespace ast {
 
-std::string Dumper::INDENT_STRING = "  ";
+const std::string Dumper::INDENT_STRING = "  ";
 
 Dumper::Dumper(std::fstream* fs) : indent_(0), stream_(fs) {}
 Dumper::~Dumper() {}
@@ -16,13 +16,15 @@ Dumper::~Dumper() {}
 */ 
 void Dumper::PrintClass(Node* node, Location* loc) {
   // @todo { not implelemented }
+  PrintIndent();
+  *stream_ << ("<<" + node->GetClass() + ">>" + "(" + loc->ToString() + ")");
 }
 
-void Dumper::PrintNodeList(const std::string& name, std::list<Node*> nodes) {
+void Dumper::PrintNodeList(const std::string& name, std::vector<Node*> nodes) {
   // @todo {  things to be done }
 }
 
-void Dumper::PrintMember() {
+void Dumper::PrintMember(const std::string& name, Node* node) {
   // @todo {  things to be done }
 }
 

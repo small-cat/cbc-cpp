@@ -5,12 +5,14 @@
  * @author: Jona 
  * @email : wuzhenyu@secsmart.net
  * @date  : 2020-09-24
- * @brief : pointer member
+ * @brief : pointer member : expr_->member_
 */
 #ifndef __PTR_MEMBER_NODE_H__
 #define __PTR_MEMBER_NODE_H__
 
 #include "lhs_node.hpp"
+#include "../../type/type.hpp"
+#include "../../type/composite_type.hpp"
 
 namespace ast {
 class ExprNode;
@@ -19,16 +21,16 @@ public:
   PtrMemberNode(ExprNode* e, std::string m);
   virtual ~PtrMemberNode();
 
-  CompositeType DereferedCompositeType();
-  Type DereferedType();
+  type::CompositeType* DereferedCompositeType();
+  type::Type* DereferedType();
   ExprNode* expr();
   std::string member();
 
   long Offset();
-  Type* original_type();
-  Location* location();
+  type::Type* OriginalType();
 
-  void Dump(Dumper* d);
+  Location* location();
+  void _dump(Dumper* d);
 
 private:
   ExprNode* expr_;

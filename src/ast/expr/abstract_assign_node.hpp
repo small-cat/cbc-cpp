@@ -16,11 +16,18 @@
 namespace ast {
 class AbstractAssignNode : public ExprNode {
 public:
-  AbstractAssignNode();
-  virtual ~AbstractAssignNode();
+  AbstractAssignNode(ExprNode* l, ExprNode* r) : lhs_(l), rhs_(r) {}
+  virtual ~AbstractAssignNode() {}
 
+  type::Type type() { return lhs_->type(); }
+  ExprNode* lhs() { return lhs_; }
+  ExprNode* rhs() { return rhs_; }
+  void SetRHS(ExprNode* r) { rhs_ = r; }
+  Location* location() { return lhs_->location(); }
+  void _dump(Dumper* d) {}
 private:
-  /* data */
+  ExprNode* lhs_;
+  ExprNode* rhs_;
 };
 } /* end ast */
 

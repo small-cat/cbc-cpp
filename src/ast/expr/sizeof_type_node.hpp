@@ -2,15 +2,25 @@
 #define __SIZEOF_TYPE_NODE_H__
 
 #include "expr_node.hpp"
+#include "../type/type_node.hpp"
 
 namespace ast {
 class SizeofTypeNode : public ExprNode {
 public:
-  SizeofTypeNode();
+  SizeofTypeNode(TypeNode* op, type::TypeRef* tr);
   virtual ~SizeofTypeNode();
 
+  type::Type* OperandType();
+  TypeNode* OperandTypeNode();
+  type::Type* type();
+  TypeNode* type_node();
+  Location* location();
+  void _dump(Dumper* d);
+
+  // void accept();
 private:
-  /* data */
+  TypeNode* operand_;     // type of operand
+  TypeNode* type_node_;   // return type
 };
 } /* end ast */
 

@@ -2,6 +2,7 @@
 #define __FUNCTION_TYPE_H__
 
 #include "type.hpp"
+#include "param_types.hpp"
 
 namespace type {
 class FunctionType : public Type {
@@ -47,7 +48,7 @@ public:
     std::string res = return_type_->ToString();
     std::string sep {""};
     res += "(";
-    for (auto& t : param_types_->types()) {
+    for (auto& t : param_types_->Types()) {
       res += sep;
       res += t->ToString();
       sep = ", ";

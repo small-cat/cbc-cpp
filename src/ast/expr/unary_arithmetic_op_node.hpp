@@ -6,11 +6,18 @@
 namespace ast {
 class UnaryArithmeticOpNode : public UnaryOpNode {
 public:
-  UnaryArithmeticOpNode(arguments);
-  virtual ~UnaryArithmeticOpNode();
+  UnaryArithmeticOpNode(std::string op, ExprNode* e) : UnaryOpNode(op, e), amount_(1) {}
+  virtual ~UnaryArithmeticOpNode() {}
 
+  long amount() {
+    return amount_;
+  }
+
+  void SetAmount(long a) {
+    amount_ = a;
+  }
 private:
-  /* data */
+  long amount_;
 };
 } /* end ast */
 

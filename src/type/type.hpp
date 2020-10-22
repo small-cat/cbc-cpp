@@ -30,7 +30,7 @@ public:
   virtual long AllocSize() { return false; }
   virtual long Alignment() {return false; }
   virtual bool IsSameType(Type* other) = 0;
-  eirtual std::string ToString() = 0;
+  virtual std::string ToString() = 0;
 
   virtual bool IsVoid() { return false; }
   virtual bool IsInt() { return false; }

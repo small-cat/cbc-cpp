@@ -6,11 +6,8 @@
 namespace ast {
 class LogicalAndNode : public BinaryOpNode {
 public:
-  LogicalAndNode();
-  virtual ~LogicalAndNode();
-
-private:
-  /* data */
+  LogicalAndNode(ExprNode* l, ExprNode* r) : BinaryOpNode(l, "&&", r) {}
+  virtual ~LogicalAndNode() {}
 };
 } /* end ast */
 

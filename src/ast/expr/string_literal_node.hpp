@@ -6,11 +6,15 @@
 namespace ast {
 class StringLiteralNode : public LiteralNode {
 public:
-  StringLiteralNode();
+  StringLiteralNode(Location* l, type::TypeRef* tr, std::string val);
   virtual ~StringLiteralNode();
 
+  std::string value();
+  void _dump(Dumper* d);
+  // void accept();
 private:
-  /* data */
+  std::string value_;
+  // entity::ConstantEntry* entry_;
 };
 } /* end ast */
 

@@ -2,15 +2,28 @@
 #define __UNARY_OP_NODE_H__
 
 #include "expr_node.hpp"
+#include "../../type/type.hpp"
 
 namespace ast {
 class UnaryOpNode : public ExprNode {
 public:
-  UnaryOpNode();
+  UnaryOpNode(std::string op, ExprNode* e);
   virtual ~UnaryOpNode();
 
+  std::string UnaryOpNodeOperator();
+  type::Type* type();
+  void SetOpType(type::Type* t);
+  type::Type* op_type();
+  ExprNode* expr();
+  void SetExpr(ExprNode* e);
+  Location* location();
+  void _dump(Dumper* d);
+
+  // void accept();
 private:
-  /* data */
+  std::string operator_;
+  ExprNode* expr_;
+  type::Type* op_type_;
 };
 } /* end ast */
 

@@ -13,6 +13,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 #include "node.hpp"
 
@@ -23,10 +24,10 @@ public:
   virtual ~Dumper();
 
   void PrintClass(Node* node, Location* loc);
-  void PrintNodeList(const std::string& name, std::list<Node*> nodes);
+  void PrintNodeList(const std::string& name, std::vector<Node*> nodes);
 
   // for int long boolean Type TypeRef
-  void PrintMember();
+  void PrintMember(const std::string& name, Node* node);
 
   void Indent();
   void UnIndent();

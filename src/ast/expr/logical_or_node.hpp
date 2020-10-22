@@ -6,11 +6,10 @@
 namespace ast {
 class LogicalOrNode : public BinaryOpNode {
 public:
-  LogicalOrNode();
-  virtual ~LogicalOrNode();
+  LogicalOrNode(ExprNode* l, ExprNode* r) : BinaryOpNode(l, "||", r) {}
+  virtual ~LogicalOrNode() {}
 
-private:
-  /* data */
+  // void accept();
 };
 } /* end ast */
 

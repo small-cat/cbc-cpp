@@ -1,3 +1,13 @@
+/**
+ * @copyright (c) Copyright 2020 . All Rights Reserved.
+ * @license
+ * @file  : aref_node.hpp
+ * @author: Jona 
+ * @email : wuzhenyu@secsmart.net
+ * @date  : 2020-10-22
+ * @brief : array node definitions
+*/
+
 #ifndef __AREF_NODE_H__
 #define __AREF_NODE_H__
 
@@ -6,11 +16,23 @@
 namespace ast {
 class ARefNode : public LHSNode {
 public:
-  ARefNode();
+  ARefNode(ExprNode* e, ExprNode* i);
   virtual ~ARefNode();
 
+  ExprNode* expr();
+  ExprNode* index();
+
+  bool IsMultiDimension();
+  ExprNode* base_expr();
+  long ElementSize();
+  long Length();
+  type::Type* OriginalType();
+  Location* location();
+  void _dump(Dumper* d);
+  // void accept();
 private:
-  /* data */
+  ExprNode* expr_;
+  ExprNode* index_;     // like expr_[index_]
 };
 } /* end ast */
 

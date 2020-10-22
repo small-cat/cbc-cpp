@@ -2,23 +2,28 @@
 #define __MEMBER_NODE_H__
 
 #include "lhs_node.hpp"
+#include "../../type/type.hpp"
+#include "../../type/composite_type.hpp"
 
 namespace ast {
 class ExprNode;
 class MemberNode : public LHSNode {
 public:
-  MemberNode(arguments);
+  MemberNode(ExprNode* e, std::string m);
   virtual ~MemberNode();
 
-  MemberNode(ExprNode expr, String member);
-  CompositeType* BaseType();
+  type::CompositeType* BaseType();
   ExprNode* expr();
   std::string member();
   long Offset();
-  Type* original_type();
+  type::Type* OriginalType();
   Location* location();
-  void Dump(Dumper* d);
-  void accept(ASTVisitor visitor);
+  void _dump(Dumper* d);
+  // void accept(ASTVisitor visitor);
+
+private:
+  ExprNode* expr_;
+  std::string member_;    // expr_.member_
 };
 } /* end ast */
 
