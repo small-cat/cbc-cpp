@@ -1,8 +1,10 @@
 #include "type_definition_node.hpp"
 
 namespace ast {
+using type::Type;
+using type::TypeRef;
 
-TypeDefinitionNode::TypeDefinitionNode(Location* l, TypeRef* ref, std::string name)
+TypeDefinitionNode::TypeDefinitionNode(Location* l, type::TypeRef* ref, std::string name)
   : name_(name), location_(l) {
     type_node_ = new TypeNode(ref);
   }
@@ -28,7 +30,7 @@ TypeNode* TypeDefinitionNode::type_node() {
 }
 
 TypeRef* TypeDefinitionNode::TypeRef() {
-  return type_node_->typeref();
+  return type_node_->type_ref();
 }
 
 Type* TypeDefinitionNode::Type() {

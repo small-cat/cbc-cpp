@@ -30,7 +30,7 @@ public:
 
   void Dump(Dumper* d);
 
-  TypeNode Accept(ASTVisitor* visitor);
+  // void Accept(ASTVisitor* visitor);
 private:
   type::TypeRef* type_ref_;
   type::Type* type_;

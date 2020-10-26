@@ -2,7 +2,9 @@
 
 namespace ast {
 
-TypeDefNode::TypeDefNode(Location* l, TypeRef* real, std::string name) : TypeDefinitionNode(l, new UserTypeRef(name), name) {
+// UserTypeRef 不能直接这样作为参数，要在传入参数的时候，直接传递
+TypeDefNode::TypeDefNode(Location* l, type::TypeRef* real, type::UserTypeRef* user_ref, std::string name) 
+  : TypeDefinitionNode(l, user_ref, name) {
   real_ = new TypeNode(real);
 }
 
@@ -22,16 +24,16 @@ TypeNode* TypeDefNode::RealTypeNode() {
   return real_;
 }
 
-Type* TypeDefNode::RealType() {
+type::Type* TypeDefNode::RealType() {
   return real_->type();
 }
 
-TypeRef* TypeDefNode::RealTypeRef() {
-  return real_->typeref();
+type::TypeRef* TypeDefNode::RealTypeRef() {
+  return real_->type_ref();
 }
 
-Type* TypeDefNode::DefiningType() {
-  return new UserType(name(), RealTypeNode(), location());
+type::Type* TypeDefNode::DefiningType() {
+  return new type::UserType(name(), RealTypeNode(), location());
 }
 
 } /* end ast */

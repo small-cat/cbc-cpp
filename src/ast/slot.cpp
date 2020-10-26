@@ -8,11 +8,11 @@ TypeNode* SlotNode::type_node() {
   return type_node_;
 }
 
-TypeRef* SlotNode::GetTypeRef() {
+type::TypeRef* SlotNode::GetTypeRef() {
   return type_node_->type_ref();
 }
 
-type::Type* type() {
+type::Type* SlotNode::type() {
   return type_node_->type();
 }
 
@@ -21,7 +21,7 @@ std::string SlotNode::name() {
 }
 
 long SlotNode::Size() {
-  return type()->size();
+  return type()->Size();
 }
 
 long SlotNode::AllocSize() {
@@ -40,7 +40,7 @@ void SlotNode::SetOffset(long off) {
   offset_ = off;
 }
 
-Location* SlotNode::Location() {
+Location* SlotNode::location() {
   return type_node_->location();
 }
 

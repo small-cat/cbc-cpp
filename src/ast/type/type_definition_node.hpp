@@ -2,18 +2,19 @@
 #define __TYPE_DEFINITION_NODE_H__
 
 #include "../node.hpp"
+#include "../type/type_node.hpp"
 
 namespace ast {
 class TypeDefinitionNode : public Node {
 public:
-  TypeDefinitionNode(Location* l, TypeRef* ref, std::string name);
+  TypeDefinitionNode(Location* l, type::TypeRef* ref, std::string name);
   virtual ~TypeDefinitionNode();
 
   std::string name();
   Location* location();
   TypeNode* type_node();
-  TypeRef* TypeRef();
-  Type* Type();
+  type::TypeRef* TypeRef();
+  type::Type* Type();
 
 private:
   std::string name_;

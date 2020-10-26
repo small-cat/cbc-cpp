@@ -3,15 +3,16 @@
 
 #include "composite_type.hpp"
 
-// @todo { not implement UnionType }
 namespace type {
 class UnionType : public CompositeType {
 public:
-  UnionType() {}
-  virtual ~UnionType() {}
+  UnionType(std::string n, std::vector<ast::SlotNode*> membs, ast::Location* l);
+  virtual ~UnionType(); 
 
-private:
-  /* data */
+  bool IsUnion();
+  bool IsSameType(Type* other);
+  void ComputeOffsets();
+  std::string ToString();
 };
 } /* end type */
 

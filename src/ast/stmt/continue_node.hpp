@@ -6,11 +6,12 @@
 namespace ast {
 class ContinueNode : public StmtNode {
 public:
-  ContinueNode();
-  virtual ~ContinueNode();
+  ContinueNode(Location* l) : StmtNode(l) {}
+  virtual ~ContinueNode() {}
 
-private:
-  /* data */
+  void _dump(Dumper* d) { /* @todo { not implement _dump } */ }
+
+  // void accept();
 };
 } /* end ast */
 

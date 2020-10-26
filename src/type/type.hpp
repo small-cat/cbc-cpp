@@ -10,6 +10,9 @@
 #ifndef __TYPE_HPP__
 #define __TYPE_HPP__
 
+#include <string>
+#include <iostream>
+
 namespace type {
 class IntegerType;
 class PointerType;
@@ -54,7 +57,10 @@ public:
   virtual bool IsCompatible(Type* other) = 0;
   virtual bool IsCastableTo(Type* target) = 0;
 
-  virtual Type* base_type() = 0;
+  virtual Type* base_type() { 
+    std::cout << "#base_type called for undereferable type" << std::endl;
+    return nullptr; 
+  }
 
   // Cast methods
   IntegerType*   GetIntegerType()   { return (IntegerType*)this; }

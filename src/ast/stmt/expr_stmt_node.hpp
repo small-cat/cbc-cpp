@@ -2,15 +2,21 @@
 #define __EXPR_STMT_NODE_H__
 
 #include "stmt_node.hpp"
+#include "../expr/expr_node.hpp"
 
 namespace ast {
 class ExprStmtNode : public StmtNode {
 public:
-  ExprStmtNode();
+  ExprStmtNode(Location* l, ExprNode* e);
   virtual ~ExprStmtNode();
 
+  ExprNode* expr();
+  void SetExpr(ExprNode* e);
+  void _dump(Dumper* d);
+
+  // void accept();
 private:
-  /* data */
+  ExprNode* expr_;
 };
 } /* end ast */
 

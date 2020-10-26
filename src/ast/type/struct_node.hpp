@@ -6,9 +6,14 @@
 namespace ast {
 class StructTypeNode : public CompositeTypeDefinitionNode {
 public:
-  StructTypeNode();
+  StructTypeNode(Location* l, type::TypeRef* tr, std::string n, std::vector<SlotNode*> membs);
   virtual ~StructTypeNode();
 
+  std::string Kind();
+  bool IsStruct();
+  type::Type* DefiningType();
+
+  // void accept();
 private:
   /* data */
 };

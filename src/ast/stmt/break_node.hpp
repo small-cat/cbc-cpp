@@ -6,11 +6,11 @@
 namespace ast {
 class BreakNode : public StmtNode {
 public:
-  BreakNode();
-  virtual ~BreakNode();
+  BreakNode(Location* l) : StmtNode(l) {}
+  virtual ~BreakNode() {}
 
-private:
-  /* data */
+  void _dump(Dumper* d) { /* @todo { not implement _dump } */ }
+  // void accept();
 };
 } /* end ast */
 

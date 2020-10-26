@@ -1,5 +1,7 @@
 #include "type_node.hpp"
 
+#include <iostream>
+
 namespace ast {
 using type::TypeRef;
 using type::Type;
@@ -28,7 +30,8 @@ bool TypeNode::IsResolved() {
 
 void TypeNode::SetType(Type* t) {
   if (type_ != nullptr) {
-    throw RuntimeException("TypeNode#SetType called twice");
+    // throw RuntimeException("TypeNode#SetType called twice");
+    std::cout << "Error: TypeNode#SetType called twice" << std::endl;
   }
 
   type_ = t;
@@ -42,8 +45,10 @@ void TypeNode::Dump(Dumper* d) {
   // @todo {  things to be done }
 }
 
+/*
 TypeNode TypeNode::Accept(ASTVisitor* visitor) {
   throw RuntimeException("do not call TypeNode#Accept");
 }
+*/
 
 } /* end ast */

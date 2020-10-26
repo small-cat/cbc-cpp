@@ -2,15 +2,21 @@
 #define __WHILE_NODE_H__
 
 #include "stmt_node.hpp"
+#include "../expr/expr_node.hpp"
 
 namespace ast {
 class WhileNode : public StmtNode {
 public:
-  WhileNode();
+  WhileNode(Location* l, ExprNode* c, StmtNode* b);
   virtual ~WhileNode();
 
+  ExprNode* cond();
+  StmtNode* body();
+  void _dump(Dumper* d);
+  // void accept();
 private:
-  /* data */
+  ExprNode* cond_;
+  StmtNode* body_;
 };
 } /* end ast */
 

@@ -12,15 +12,17 @@
 #define __STMT_NODE_H__
 
 #include "../node.hpp"
+#include "../location.hpp"
 
 namespace ast {
 class StmtNode : public Node {
 public:
-  StmtNode();
-  virtual ~StmtNode();
+  StmtNode(Location* l) : location_(l) {}
+  virtual ~StmtNode() {}
 
+  Location* location() { return location_; }
 private:
-  /* data */
+  Location* location_;
 };
 } /* end ast */
 

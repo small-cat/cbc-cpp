@@ -3,6 +3,7 @@
 
 #include "node.hpp"
 #include "type/type_node.hpp"
+#include "../type/type_ref.hpp"
 
 namespace ast {
 class SlotNode : public Node {
@@ -11,7 +12,7 @@ public:
   virtual ~SlotNode();
 
   TypeNode* type_node();
-  TypeRef GetTypeRef();
+  type::TypeRef* GetTypeRef();
   type::Type* type();
   std::string name();
   long Size();

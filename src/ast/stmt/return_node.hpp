@@ -2,15 +2,19 @@
 #define __RETURN_NODE_H__
 
 #include "stmt_node.hpp"
+#include "../expr/expr_node.hpp"
 
 namespace ast {
 class ReturnNode : public StmtNode {
 public:
-  ReturnNode();
-  virtual ~ReturnNode();
+  ReturnNode(Location* l, ExprNode* e) : StmtNode(l), expr_(e) {}
+  virtual ~ReturnNode() {}
 
+  ExprNode* expr() { return expr_; }
+  void SetExpr(ExprNode* e) { expr_ = e; }
+  void _dump(Dumper* d) { /* @todo { not implement _dump }*/ }
 private:
-  /* data */
+  ExprNode* expr_;
 };
 } /* end ast */
 

@@ -22,9 +22,9 @@ public:
   virtual ~Node() {}
 
   virtual Location* location() = 0;
-  virtual void Dump(ast::Dumper* d) = 0;
+  virtual void _dump(ast::Dumper* d) {}
 
-  virtual std::string GetClass() = 0;
+  // virtual std::string GetClass() = 0;
 };
 } /* end ast */
 
