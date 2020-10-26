@@ -28,7 +28,7 @@ public:
   void SetType(type::Type* t);
   Location* location();
 
-  void Dump(Dumper* d);
+  void _dump(Dumper* d);
 
   // void Accept(ASTVisitor* visitor);
 private:

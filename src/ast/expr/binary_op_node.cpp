@@ -42,6 +42,6 @@ Location* BinaryOpNode::location() {
 }
 
 void BinaryOpNode::_dump(Dumper* d) {
-  // @todo {  things to be done }
+  // @todo {  _dump }
 }
 } /* end ast */

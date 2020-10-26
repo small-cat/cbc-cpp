@@ -3,11 +3,12 @@
 
 #include "expr_node.hpp"
 #include "../type/type_node.hpp"
+#include "../../type/type_ref.hpp"
 
 namespace ast {
 class SizeofExprNode : public ExprNode {
 public:
-  SizeofExprNode(ExprNode* e, TypeRef* tr);
+  SizeofExprNode(ExprNode* e, type::TypeRef* tr);
   virtual ~SizeofExprNode();
 
   ExprNode* expr();

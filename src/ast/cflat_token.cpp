@@ -7,6 +7,7 @@ CflatToken::CflatToken(std::string str, std::size_t i, std::size_t l, std::size_
 
 CflatToken::~CflatToken() {}
 
+// antlr4::Token::getText()
 std::string CflatToken::text() {
   return text_;
 }
@@ -15,6 +16,7 @@ void CflatToken::SetText(std::string str) {
   text_ = str;
 }
 
+// antlr4::Token::getTokenIndex()
 std::size_t CflatToken::index() {
   return index_;
 }
@@ -23,6 +25,7 @@ void CflatToken::SetIndex(std::size_t i) {
   index_ = i;
 }
 
+// antlr4::Token::getLine()
 std::size_t CflatToken::line_no() {
   return line_no_;
 }
@@ -31,6 +34,7 @@ void CflatToken::SetLineNo(std::size_t l) {
   line_no_ = l;
 }
 
+// antlr4::Token::getStartIndex()
 std::size_t CflatToken::start() {
   return start_;
 }
@@ -39,6 +43,7 @@ void CflatToken::SetStart(std::size_t s) {
   start_ = s;
 }
 
+// antlr4::Token::getStopIndex()
 std::size_t CflatToken::end() {
   return end_;
 }

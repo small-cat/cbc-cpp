@@ -41,8 +41,8 @@ Location* TypeNode::location() {
   return type_ref_ == nullptr ? nullptr : type_ref_->location();
 }
 
-void TypeNode::Dump(Dumper* d) {
-  // @todo {  things to be done }
+void TypeNode::_dump(Dumper* d) {
+  // @todo { _dump }
 }
 
 /*

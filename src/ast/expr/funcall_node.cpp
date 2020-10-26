@@ -49,9 +49,9 @@ Location* FuncallNode::location() {
 }
 
 void FuncallNode::_dump(Dumper* d) {
-  d->PrintMember("expr", expr_);
-  // @todo { not implement Node List Dump }
-  //d->PrintNodeList("args", args_);
+  // @todo { not implement _dump }
+  // d->PrintMember("expr", expr_);
+  // d->PrintNodeList("args", args_);
 }
 
 } /* end ast */

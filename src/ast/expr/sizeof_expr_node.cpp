@@ -1,7 +1,7 @@
 #include "sizeof_expr_node.hpp"
 
 namespace ast {
-SizeofExprNode::SizeofExprNode(ExprNode* e, TypeRef* tr) : expr_(e) {
+SizeofExprNode::SizeofExprNode(ExprNode* e, type::TypeRef* tr) : expr_(e) {
   type_node_ = new TypeNode(tr);
 }
 
@@ -34,6 +34,6 @@ Location* SizeofExprNode::location() {
 }
 
 void SizeofExprNode::_dump(Dumper* d) {
-  // @todo {  things to be done }
+  // @todo { not implement _dump }
 }
 } /* end type */

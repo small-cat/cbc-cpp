@@ -11,20 +11,26 @@
 #define __ERROR_HANDLER_H__
 
 #include <string>
+#include <iostream>
+
+#include "../ast/location.hpp"
 
 namespace utils {
 class ErrorHandler  {
 public:
   ErrorHandler(std::string prog_id);
+  ErrorHandler(std::string prog_id, std::ostream* out);
   virtual ~ErrorHandler();
 
-  void error(const std::string& msg);
-  void warn(const std::string& msg);
+  void Error(const std::string& msg);
+  void Warn(const std::string& msg);
 
   // with locations
-  // void error(Location* loc, const std::string& msg);
-  // void warn(Location* loc, const std::string& msg);
+  void Error(ast::Location* loc, const std::string& msg);
+  void Warn(ast::Location* loc, const std::string& msg);
+  bool ErrorOccured();
 private:
+  std::ostream* out_;
   std::string program_id_;
   long error_;
   long warning_;

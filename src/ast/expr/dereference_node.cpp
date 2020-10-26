@@ -21,6 +21,6 @@ Location* DereferenceNode::location() {
 }
 
 void DereferenceNode::_dump(Dumper* d) {
-  // @todo {  things to be done }
+  // @todo { _dump }
 }
 } /* end ast */

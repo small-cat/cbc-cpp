@@ -8,8 +8,8 @@
 namespace ast {
 class BlockNode : public StmtNode {
 public:
-  BlockNode();
-  virtual ~BlockNode();
+  BlockNode() {}
+  virtual ~BlockNode() {}
 
 private:
   std::vector<StmtNode*> stmt_;

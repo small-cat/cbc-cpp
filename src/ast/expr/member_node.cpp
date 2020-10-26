@@ -17,13 +17,11 @@ std::string MemberNode::member() {
 }
 
 long MemberNode::Offset() {
-  // @todo { not implement }
-  return 0;
+  return BaseType()->MemberOffset(member_);
 }
 
 type::Type* MemberNode::OriginalType() {
-  // @todo { not implement }
-  return nullptr;
+  return BaseType()->MemberType(member_);
 }
 
 Location* MemberNode::location() {

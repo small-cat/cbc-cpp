@@ -31,12 +31,10 @@ Location* PtrMemberNode::location() {
 void PtrMemberNode::_dump(Dumper* d) {}
 
 long PtrMemberNode::Offset() {
-  // @todo { not implement }
-  return 0;
+  return DereferedCompositeType()->MemberOffset(member_);
 }
 
 type::Type* PtrMemberNode::OriginalType() {
-  // @todo { not implement }
-  return nullptr;
+  return DereferedCompositeType()->MemberType(member_);
 }
 } /* end ast */

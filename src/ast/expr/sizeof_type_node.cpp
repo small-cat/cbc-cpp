@@ -34,6 +34,6 @@ Location* SizeofTypeNode::location() {
 }
 
 void SizeofTypeNode::_dump(Dumper* d) {
-  // @todo {  things to be done }
+  // @todo { not implement _dump }
 }
 } /* end ty */
