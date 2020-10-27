@@ -2,6 +2,7 @@
 #define __VARIABLE_NODE_H__
 
 #include "lhs_node.hpp"
+#include "../../entity/entity.h"
 
 namespace ast {
 class VariableNode : public LHSNode {
@@ -26,7 +27,7 @@ public:
 private:
   Location* location_;
   std::string name_;
-  // Entity* entity_; // @todo { 当前输出 ast，不处理ir或者实际类型 }
+  entity::Entity* entity_; 
 };
 } /* end ast */
 
