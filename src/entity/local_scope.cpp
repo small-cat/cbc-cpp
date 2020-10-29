@@ -13,7 +13,7 @@ bool LocalScope::IsTopLevel() {
 }
 
 TopLevelScope* LocalScope::GetTopLevelScope() {
-  return parent_->TopLevel();
+  return parent_->GetTopLevelScope();
 }
 
 Scope* LocalScope::GetParent() {
@@ -140,6 +140,18 @@ void LocalScope::CollectScope(std::vector<LocalScope*>& buf) {
 
 std::map<std::string, DefinedVariable*> LocalScope::variables() {
   return variables_;
+}
+
+void LocalScope::CheckReferences(utils::ErrorHandler* h) {
+  for (auto iter = variables_.begin(); iter != variables_.end(); iter++) {
+    if (!iter->second->IsRefered()) {
+      h->Warn(iter->second->GetLocation(), "unused variable: " + iter->second->name());
+    }
+  }
+
+  for (auto lc : children()) {
+    lc->CheckReferences(h);
+  }
 }
 
 } /* end entity */

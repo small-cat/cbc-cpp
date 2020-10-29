@@ -2,7 +2,7 @@
 #define __PARAM_SLOTS_H__
 
 #include <iostream>
-#include <list>
+#include <vector>
 #include "../ast/location.cpp"
 
 namespace type {
@@ -10,15 +10,15 @@ namespace type {
 template<typename T>
 class ParamSlots {
 public:
-  ParamSlots(std::list<T*> param_desc) : location_(nullptr), vararg_(false) {
+  ParamSlots(std::vector<T*> param_desc) : location_(nullptr), vararg_(false) {
     param_descriptors_.swap(param_desc);
   }
 
-  ParamSlots(ast::Location* l, std::list<T*> param_desc) : location_(l), vararg_(false) {
+  ParamSlots(ast::Location* l, std::vector<T*> param_desc) : location_(l), vararg_(false) {
     param_descriptors_.swap(param_desc);
   }
 
-  ParamSlots(ast::Location* l, std::list<T*> param_desc, bool var) : location_(l), vararg_(var) {
+  ParamSlots(ast::Location* l, std::vector<T*> param_desc, bool var) : location_(l), vararg_(var) {
     param_descriptors_.swap(param_desc);
   }
 
@@ -36,10 +36,10 @@ public:
   void AcceptVararg() { vararg_ = true; }
   bool vararg() { return vararg_; }
   ast::Location* location() { return location_; }
-  std::list<T*> Params() { return param_descriptors_; }
+  std::vector<T*> ParamDecs() { return param_descriptors_; }
 private:
   ast::Location* location_;
-  std::list<T*> param_descriptors_;
+  std::vector<T*> param_descriptors_;
   bool vararg_;
 };
 

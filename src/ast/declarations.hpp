@@ -13,32 +13,43 @@
 #include <string>
 #include <vector>
 
+#include "type/type_node.hpp"
+#include "type/typedef_node.hpp"
+#include "type/struct_node.hpp"
+#include "type/union_node.hpp"
+
+#include "../entity/defined_variable.h"
+#include "../entity/defined_function.h"
+#include "../entity/constant.hpp"
+#include "../entity/undefined_function.h"
+#include "../entity/undefined_variable.h"
+
 namespace ast {
 class Declarations {
 public:
   Declarations();
   virtual ~Declarations();
 
-  std::vector<TypedefNode*> typedefs();
-  void AddDefvar(DefinedVariable* var);
-  void AddDefvars(std::vector<DefinedVariable*> vars);
-  std::vector<DefinedVariable*> defvars();
+  std::vector<TypeDefNode*> typedefs();
+  void AddDefvar(entity::DefinedVariable* var);
+  void AddDefvars(std::vector<entity::DefinedVariable*> vars);
+  std::vector<entity::DefinedVariable*> defvars();
 
-  void AddDefun(DefinedFunction* fun);
-  void AddConstant(Constant* cons);
-  void AddStruct(StructTypeNode* s);
-  void AddUnion(UnionTypeNode* u);
-  void AddTypedef(TypedefNode* t);
+  void AddDefun(entity::DefinedFunction* fun);
+  void AddConstant(entity::Constant* cons);
+  void AddStruct(ast::StructTypeNode* s);
+  void AddUnion(ast::UnionTypeNode* u);
+  void AddTypedef(TypeDefNode* t);
 
 private:
-  std::vector<DefinedVariable*> defvars_;
-  std::vector<UndefinedVariable*> vardecls_;
-  std::vector<DefinedFunction*> defuns_;
-  std::vector<UndefinedFunction*> funcdecls_;
-  std::vector<Constant*> constants_;
+  std::vector<entity::DefinedVariable*> defvars_;
+  std::vector<entity::UndefinedVariable*> vardecls_;
+  std::vector<entity::DefinedFunction*> defuns_;
+  std::vector<entity::UndefinedFunction*> funcdecls_;
+  std::vector<entity::Constant*> constants_;
   std::vector<StructTypeNode*> def_structs_;
   std::vector<UnionTypeNode*> def_unions_;
-  std::vector<TypedefNode*> typedefs_;
+  std::vector<TypeDefNode*> typedefs_;
 };
 } /* end ast */
 

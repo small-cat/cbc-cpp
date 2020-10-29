@@ -7,6 +7,7 @@
 #include "defined_variable.h"
 #include "../utils/error_handler.h"
 #include "../type/type.hpp"
+#include "top_level_scope.h"
 
 namespace entity {
 class LocalScope : public Scope {

@@ -17,7 +17,7 @@ Dumper::~Dumper() {}
 void Dumper::PrintClass(Node* node, Location* loc) {
   // @todo { not implelemented }
   PrintIndent();
-  *stream_ << ("<<" + node->GetClass() + ">>" + "(" + loc->ToString() + ")");
+  // *stream_ << ("<<" + node->GetClass() + ">>" + "(" + loc->ToString() + ")");
 }
 
 void Dumper::PrintNodeList(const std::string& name, std::vector<Node*> nodes) {

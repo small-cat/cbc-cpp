@@ -7,10 +7,10 @@ namespace type {
 
 class ParamTypes : public ParamSlots<Type> {
 public:
-  ParamTypes(ast::Location* l, std::list<Type*> param_desc, bool var) : ParamSlots<Type>(l, param_desc, var) {}
+  ParamTypes(ast::Location* l, std::vector<Type*> param_desc, bool var) : ParamSlots<Type>(l, param_desc, var) {}
   virtual ~ParamTypes() {}
 
-  std::list<Type*> Types() {
+  std::vector<Type*> Types() {
     return Params();
   }
 

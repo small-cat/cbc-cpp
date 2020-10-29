@@ -9,6 +9,7 @@
 namespace entity {
 
 class LocalScope;
+class TopLevelScope;
 
 class Scope {
 public:

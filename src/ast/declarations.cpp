@@ -5,41 +5,41 @@ namespace ast {
 Declarations::Declarations() {}
 Declarations::~Declarations() {}
 
-std::vector<TypedefNode*> Declarations::typedefs() {
+std::vector<TypeDefNode*> Declarations::typedefs() {
   return typedefs_;
 }
 
-void Declarations::AddDefvar(DefinedVariable* var) {
+void Declarations::AddDefvar(entity::DefinedVariable* var) {
   defvars_.push_back(var);
 }
 
-void Declarations::AddDefvars(std::vector<DefinedVariable*> vars) {
+void Declarations::AddDefvars(std::vector<entity::DefinedVariable*> vars) {
   for (auto v : vars) {
     defvars_.push_back(v);
   }
 }
 
-std::vector<DefinedVariable*> Declarations::defvars() {
+std::vector<entity::DefinedVariable*> Declarations::defvars() {
   return defvars_;
 }
 
-void Declarations::AddDefun(DefinedFunction* fun) {
+void Declarations::AddDefun(entity::DefinedFunction* fun) {
   defuns_.push_back(fun);
 }
 
-void Declarations::AddConstant(Constant* cons) {
+void Declarations::AddConstant(entity::Constant* cons) {
   constants_.push_back(cons);
 }
 
-void Declarations::AddStruct(StructTypeNode* s) {
+void Declarations::AddStruct(ast::StructTypeNode* s) {
   def_structs_.push_back(s);
 }
 
-void Declarations::AddUnion(UnionTypeNode* u) {
+void Declarations::AddUnion(ast::UnionTypeNode* u) {
   def_unions_.push_back(u);
 }
 
-void Declarations::AddTypedef(TypedefNode* t) {
+void Declarations::AddTypedef(TypeDefNode* t) {
   typedefs_.push_back(t);
 }
 
