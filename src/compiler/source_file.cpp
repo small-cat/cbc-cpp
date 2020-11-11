@@ -44,7 +44,7 @@ void SourceFile::SetCurrentName(const std::string& cur) {
 bool SourceFile::IsKnownFileType() {
   std::string ext = ExtName(original_name_);
   for (auto& e : KNOWN_EXTENSIONS) {
-    if (utils::StringUtils::StrCmp(ext, e) == 0) {
+    if (utils::StringUtils::StrCmp(ext, e)) {
       return true;
     }
   }
@@ -53,27 +53,27 @@ bool SourceFile::IsKnownFileType() {
 }
 
 bool SourceFile::IsCFlatSource() {
-  return utils::StringUtils::StrCmp(ExtName(current_name_), EXT_CFLAT_SOURCE) == 0;
+  return utils::StringUtils::StrCmp(ExtName(current_name_), EXT_CFLAT_SOURCE);
 }
 
 bool SourceFile::IsAssemblySource() {
-  return utils::StringUtils::StrCmp(ExtName(current_name_), EXT_ASSEMBLY_SOURCE) == 0;
+  return utils::StringUtils::StrCmp(ExtName(current_name_), EXT_ASSEMBLY_SOURCE);
 }
 
 bool SourceFile::IsObjectFile() {
-  return utils::StringUtils::StrCmp(ExtName(current_name_), EXT_OBJECT_FILE) == 0;
+  return utils::StringUtils::StrCmp(ExtName(current_name_), EXT_OBJECT_FILE);
 }
 
 bool SourceFile::IsSharedLibrary() {
-  return utils::StringUtils::StrCmp(ExtName(current_name_), EXT_SHARED_LIBRARY) == 0;
+  return utils::StringUtils::StrCmp(ExtName(current_name_), EXT_SHARED_LIBRARY);
 }
 
 bool SourceFile::IsStaticLibrary() {
-  return utils::StringUtils::StrCmp(ExtName(current_name_), EXT_STATIC_LIBRARY) == 0;
+  return utils::StringUtils::StrCmp(ExtName(current_name_), EXT_STATIC_LIBRARY);
 }
 
 bool SourceFile::IsExecutable() {
-  return utils::StringUtils::StrCmp(ExtName(current_name_), EXT_EXECUTABLE_FILE) == 0;
+  return utils::StringUtils::StrCmp(ExtName(current_name_), EXT_EXECUTABLE_FILE);
 }
 
 std::string SourceFile::AsmFileName() {

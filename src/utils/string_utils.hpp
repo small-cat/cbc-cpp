@@ -24,7 +24,7 @@ public:
       return false;
     }
 
-    return strcmp(lhs.c_str(), rhs.c_str());
+    return strcmp(lhs.c_str(), rhs.c_str()) == 0;
   }
 
   static bool StrCaseCmp(const std::string& lhs, const std::string& rhs) {
@@ -32,7 +32,7 @@ public:
       return false;
     }
 
-    return strcasecmp(lhs.c_str(), rhs.c_str());
+    return strcasecmp(lhs.c_str(), rhs.c_str()) == 0;
   }
 
   static std::string BaseName(const std::string& path) {
