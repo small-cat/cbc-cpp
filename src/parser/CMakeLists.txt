@@ -22,14 +22,6 @@ foreach(src_file ${antlr4-parser-GENERATED_SRC})
 endforeach(src_file ${antlr4-parser-GENERATED_SRC})
 
 add_custom_target(GenerateParser DEPENDS ${antlr4-parser-GENERATED_SRC})
-# add_custom_command(OUTPUT ${antlr4-parser-GENERATED_SRC}
-#    COMMAND 
-#    ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_SOURCE_DIR}/src/parser/generated/
-#    COMMAND
-#    "${Java_JAVA_EXECUTABLE}" -jar ${ANTLR_JAR_LOCATION} -Werror -Dlanguage=Cpp -listener -visitor -o ${CMAKE_CURRENT_SOURCE_DIR}/src/parser/generated/ -package parser ${CMAKE_CURRENT_SOURCE_DIR}/src/parser/SesameLexer.g4 ${CMAKE_CURRENT_SOURCE_DIR}/src/parser/SesameParser.g4
-#    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-#    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/parser/SesameLexer.g4 ${CMAKE_CURRENT_SOURCE_DIR}/src/parser/SesameParser.g4
-#    )
 
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/runtime/src

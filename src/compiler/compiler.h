@@ -13,6 +13,7 @@
 #include "options.h"
 #include "source_file.h"
 #include "../utils/error_handler.h"
+#include "../ast/ast.hpp"
 
 namespace compiler {
 class Compiler {
@@ -30,6 +31,7 @@ public:
 
   // AST, ASM
   // @todo { ast and asm generated and dump }
+  ast::ASTNode GetAstByParseFile(const std::string& src, Options* opts);
 private:
   utils::ErrorHandler* err_handler_;
 };

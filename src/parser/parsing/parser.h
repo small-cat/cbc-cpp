@@ -13,6 +13,13 @@
 #include <string>
 #include <vector>
 
+#include "antlr4-runtime.h"
+#include "SesameLexer.h"
+#include "SesameParser.h"
+#include "../error_verbose_listener.hpp"
+#include "../../utils/errors.hpp"
+#include "../../ast/ast.hpp"
+
 namespace parser {
 class FileParser {
 public:
@@ -20,8 +27,10 @@ public:
   virtual ~FileParser();
 
   bool ParseFile();
+  ast::ASTNode* BuildAst();
   std::vector<std::string> GetTokenStrings();
 private:
+  SesameParser::Compilation_unitContext* _ParseFile(std::error_code& ec);
   std::string filename_;
   std::vector<std::string> token_strings_; // dump tokens
 };

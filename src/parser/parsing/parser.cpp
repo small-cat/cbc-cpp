@@ -1,14 +1,10 @@
 #include "parser.h"
-#include "antlr4-runtime.h"
-#include "SesameLexer.h"
-#include "SesameParser.h"
-#include "../error_verbose_listener.hpp"
 
 namespace parser {
 FileParser::FileParser(const std::string& filename) : filename_(filename) {}
 FileParser::~FileParser() {}
 
-bool FileParser::ParseFile() {
+SesameParser::Compilation_unitContext* FileParser::_ParseFile(std::error_code& ec) {
   antlr4::ANTLRFileStream input(filename_);
   SesameLexer lexer(&input);
 
@@ -22,7 +18,8 @@ bool FileParser::ParseFile() {
   if (lexer_err.has_error()) {
     std::cout << "token parse failed in file: " << filename_ << std::endl;
     std::cout << "err msg: " << lexer_err.err_message() << std::endl;
-    return false;
+    ec = utils::CompileError::SYNTAX_ERROR;
+    return nullptr;
   }
 
   // get token strings
@@ -63,12 +60,33 @@ bool FileParser::ParseFile() {
   if (parser_err.has_error()) {
     std::cout << "Parser failed in file: " << filename_ << std::endl;
     std::cout << "err msg: " << parser_err.err_message() << std::endl;
-    return false;
+    ec = utils::CompileError::SYNTAX_ERROR;
+    return nullptr;
   }
 
-  return true;
+  return compile_ctx;
 }
 
+bool FileParser::ParseFile() {
+  std::error_code ec;
+  _ParseFile(ec);
+  if (ec) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+ast::ASTNode* FileParser::BuildAst() {
+  std::error_code ec;
+  auto compile_ctx = _ParseFile(ec);
+
+  if (ec) {
+    return nullptr;
+  } else {
+    // todo, build ast
+  }
+}
 std::vector<std::string> FileParser::GetTokenStrings() {
   return token_strings_;
 }
