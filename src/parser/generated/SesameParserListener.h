@@ -37,8 +37,8 @@ public:
   virtual void enterVar_decl(SesameParser::Var_declContext *ctx) = 0;
   virtual void exitVar_decl(SesameParser::Var_declContext *ctx) = 0;
 
-  virtual void enterTop_def(SesameParser::Top_defContext *ctx) = 0;
-  virtual void exitTop_def(SesameParser::Top_defContext *ctx) = 0;
+  virtual void enterTop_defs(SesameParser::Top_defsContext *ctx) = 0;
+  virtual void exitTop_defs(SesameParser::Top_defsContext *ctx) = 0;
 
   virtual void enterDef_func(SesameParser::Def_funcContext *ctx) = 0;
   virtual void exitDef_func(SesameParser::Def_funcContext *ctx) = 0;
@@ -90,6 +90,9 @@ public:
 
   virtual void enterTyperef_base(SesameParser::Typeref_baseContext *ctx) = 0;
   virtual void exitTyperef_base(SesameParser::Typeref_baseContext *ctx) = 0;
+
+  virtual void enterTyperef_precise(SesameParser::Typeref_preciseContext *ctx) = 0;
+  virtual void exitTyperef_precise(SesameParser::Typeref_preciseContext *ctx) = 0;
 
   virtual void enterParam_typerefs(SesameParser::Param_typerefsContext *ctx) = 0;
   virtual void exitParam_typerefs(SesameParser::Param_typerefsContext *ctx) = 0;
@@ -148,8 +151,14 @@ public:
   virtual void enterReturn_stmt(SesameParser::Return_stmtContext *ctx) = 0;
   virtual void exitReturn_stmt(SesameParser::Return_stmtContext *ctx) = 0;
 
-  virtual void enterExpr(SesameParser::ExprContext *ctx) = 0;
-  virtual void exitExpr(SesameParser::ExprContext *ctx) = 0;
+  virtual void enterAssignment_expr(SesameParser::Assignment_exprContext *ctx) = 0;
+  virtual void exitAssignment_expr(SesameParser::Assignment_exprContext *ctx) = 0;
+
+  virtual void enterOp_assign_expr(SesameParser::Op_assign_exprContext *ctx) = 0;
+  virtual void exitOp_assign_expr(SesameParser::Op_assign_exprContext *ctx) = 0;
+
+  virtual void enterExpression_10(SesameParser::Expression_10Context *ctx) = 0;
+  virtual void exitExpression_10(SesameParser::Expression_10Context *ctx) = 0;
 
   virtual void enterOpassign_op(SesameParser::Opassign_opContext *ctx) = 0;
   virtual void exitOpassign_op(SesameParser::Opassign_opContext *ctx) = 0;
@@ -157,11 +166,23 @@ public:
   virtual void enterExpr10(SesameParser::Expr10Context *ctx) = 0;
   virtual void exitExpr10(SesameParser::Expr10Context *ctx) = 0;
 
+  virtual void enterExpr9(SesameParser::Expr9Context *ctx) = 0;
+  virtual void exitExpr9(SesameParser::Expr9Context *ctx) = 0;
+
+  virtual void enterLogic_or_rhs(SesameParser::Logic_or_rhsContext *ctx) = 0;
+  virtual void exitLogic_or_rhs(SesameParser::Logic_or_rhsContext *ctx) = 0;
+
   virtual void enterExpr8(SesameParser::Expr8Context *ctx) = 0;
   virtual void exitExpr8(SesameParser::Expr8Context *ctx) = 0;
 
+  virtual void enterLogic_and_rhs(SesameParser::Logic_and_rhsContext *ctx) = 0;
+  virtual void exitLogic_and_rhs(SesameParser::Logic_and_rhsContext *ctx) = 0;
+
   virtual void enterExpr7(SesameParser::Expr7Context *ctx) = 0;
   virtual void exitExpr7(SesameParser::Expr7Context *ctx) = 0;
+
+  virtual void enterBinary_op_rhs(SesameParser::Binary_op_rhsContext *ctx) = 0;
+  virtual void exitBinary_op_rhs(SesameParser::Binary_op_rhsContext *ctx) = 0;
 
   virtual void enterLogical_op(SesameParser::Logical_opContext *ctx) = 0;
   virtual void exitLogical_op(SesameParser::Logical_opContext *ctx) = 0;
@@ -169,29 +190,80 @@ public:
   virtual void enterExpr6(SesameParser::Expr6Context *ctx) = 0;
   virtual void exitExpr6(SesameParser::Expr6Context *ctx) = 0;
 
+  virtual void enterBit_or_rhs(SesameParser::Bit_or_rhsContext *ctx) = 0;
+  virtual void exitBit_or_rhs(SesameParser::Bit_or_rhsContext *ctx) = 0;
+
   virtual void enterExpr5(SesameParser::Expr5Context *ctx) = 0;
   virtual void exitExpr5(SesameParser::Expr5Context *ctx) = 0;
+
+  virtual void enterXor_rhs(SesameParser::Xor_rhsContext *ctx) = 0;
+  virtual void exitXor_rhs(SesameParser::Xor_rhsContext *ctx) = 0;
 
   virtual void enterExpr4(SesameParser::Expr4Context *ctx) = 0;
   virtual void exitExpr4(SesameParser::Expr4Context *ctx) = 0;
 
+  virtual void enterBit_and_rhs(SesameParser::Bit_and_rhsContext *ctx) = 0;
+  virtual void exitBit_and_rhs(SesameParser::Bit_and_rhsContext *ctx) = 0;
+
   virtual void enterExpr3(SesameParser::Expr3Context *ctx) = 0;
   virtual void exitExpr3(SesameParser::Expr3Context *ctx) = 0;
+
+  virtual void enterShift_op_rhs(SesameParser::Shift_op_rhsContext *ctx) = 0;
+  virtual void exitShift_op_rhs(SesameParser::Shift_op_rhsContext *ctx) = 0;
 
   virtual void enterExpr2(SesameParser::Expr2Context *ctx) = 0;
   virtual void exitExpr2(SesameParser::Expr2Context *ctx) = 0;
 
+  virtual void enterAdd_sub_rhs(SesameParser::Add_sub_rhsContext *ctx) = 0;
+  virtual void exitAdd_sub_rhs(SesameParser::Add_sub_rhsContext *ctx) = 0;
+
   virtual void enterExpr1(SesameParser::Expr1Context *ctx) = 0;
   virtual void exitExpr1(SesameParser::Expr1Context *ctx) = 0;
+
+  virtual void enterMulti_div_mod_rhs(SesameParser::Multi_div_mod_rhsContext *ctx) = 0;
+  virtual void exitMulti_div_mod_rhs(SesameParser::Multi_div_mod_rhsContext *ctx) = 0;
 
   virtual void enterTerm(SesameParser::TermContext *ctx) = 0;
   virtual void exitTerm(SesameParser::TermContext *ctx) = 0;
 
-  virtual void enterUnary(SesameParser::UnaryContext *ctx) = 0;
-  virtual void exitUnary(SesameParser::UnaryContext *ctx) = 0;
+  virtual void enterInc_expr(SesameParser::Inc_exprContext *ctx) = 0;
+  virtual void exitInc_expr(SesameParser::Inc_exprContext *ctx) = 0;
+
+  virtual void enterDec_expr(SesameParser::Dec_exprContext *ctx) = 0;
+  virtual void exitDec_expr(SesameParser::Dec_exprContext *ctx) = 0;
+
+  virtual void enterPositive_expr(SesameParser::Positive_exprContext *ctx) = 0;
+  virtual void exitPositive_expr(SesameParser::Positive_exprContext *ctx) = 0;
+
+  virtual void enterNegative_expr(SesameParser::Negative_exprContext *ctx) = 0;
+  virtual void exitNegative_expr(SesameParser::Negative_exprContext *ctx) = 0;
+
+  virtual void enterLogic_not_expr(SesameParser::Logic_not_exprContext *ctx) = 0;
+  virtual void exitLogic_not_expr(SesameParser::Logic_not_exprContext *ctx) = 0;
+
+  virtual void enterBit_not_expr(SesameParser::Bit_not_exprContext *ctx) = 0;
+  virtual void exitBit_not_expr(SesameParser::Bit_not_exprContext *ctx) = 0;
+
+  virtual void enterDereference_expr(SesameParser::Dereference_exprContext *ctx) = 0;
+  virtual void exitDereference_expr(SesameParser::Dereference_exprContext *ctx) = 0;
+
+  virtual void enterAddr_expr(SesameParser::Addr_exprContext *ctx) = 0;
+  virtual void exitAddr_expr(SesameParser::Addr_exprContext *ctx) = 0;
+
+  virtual void enterSizeof_type_expr(SesameParser::Sizeof_type_exprContext *ctx) = 0;
+  virtual void exitSizeof_type_expr(SesameParser::Sizeof_type_exprContext *ctx) = 0;
+
+  virtual void enterSizeof_expr(SesameParser::Sizeof_exprContext *ctx) = 0;
+  virtual void exitSizeof_expr(SesameParser::Sizeof_exprContext *ctx) = 0;
+
+  virtual void enterUnary_postfix_expr(SesameParser::Unary_postfix_exprContext *ctx) = 0;
+  virtual void exitUnary_postfix_expr(SesameParser::Unary_postfix_exprContext *ctx) = 0;
 
   virtual void enterPostfix(SesameParser::PostfixContext *ctx) = 0;
   virtual void exitPostfix(SesameParser::PostfixContext *ctx) = 0;
+
+  virtual void enterPostfix_option(SesameParser::Postfix_optionContext *ctx) = 0;
+  virtual void exitPostfix_option(SesameParser::Postfix_optionContext *ctx) = 0;
 
   virtual void enterArgs(SesameParser::ArgsContext *ctx) = 0;
   virtual void exitArgs(SesameParser::ArgsContext *ctx) = 0;

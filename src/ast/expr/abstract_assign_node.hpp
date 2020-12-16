@@ -19,7 +19,7 @@ public:
   AbstractAssignNode(ExprNode* l, ExprNode* r) : lhs_(l), rhs_(r) {}
   virtual ~AbstractAssignNode() {}
 
-  type::Type type() { return lhs_->type(); }
+  type::Type* type() { return lhs_->type(); }
   ExprNode* lhs() { return lhs_; }
   ExprNode* rhs() { return rhs_; }
   void SetRHS(ExprNode* r) { rhs_ = r; }

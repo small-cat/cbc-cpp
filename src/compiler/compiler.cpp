@@ -94,11 +94,13 @@ bool Compiler::CheckSyntax(Options* opts) {
 */ 
 void Compiler::Compile(const std::string& src, const std::string& dest, Options* opts) {
   // @todo { compile something }
-  ast::ASTNode ast = GetAstByParseFile(src, opts);
+  ast::ASTNode* ast = GetAstByParseFile(src, opts);
 }
 
-ast::ASTNode Compiler::Compile(const std::string& src, Options* opts) {
+ast::ASTNode* Compiler::GetAstByParseFile(const std::string& src, Options* opts) {
   // build ast
+  parser::FileParser fp(src);
+  return fp.BuildAst();
 }
 
 } /* end compiler */

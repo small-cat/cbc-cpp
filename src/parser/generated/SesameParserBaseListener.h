@@ -39,8 +39,8 @@ public:
   virtual void enterVar_decl(SesameParser::Var_declContext * /*ctx*/) override { }
   virtual void exitVar_decl(SesameParser::Var_declContext * /*ctx*/) override { }
 
-  virtual void enterTop_def(SesameParser::Top_defContext * /*ctx*/) override { }
-  virtual void exitTop_def(SesameParser::Top_defContext * /*ctx*/) override { }
+  virtual void enterTop_defs(SesameParser::Top_defsContext * /*ctx*/) override { }
+  virtual void exitTop_defs(SesameParser::Top_defsContext * /*ctx*/) override { }
 
   virtual void enterDef_func(SesameParser::Def_funcContext * /*ctx*/) override { }
   virtual void exitDef_func(SesameParser::Def_funcContext * /*ctx*/) override { }
@@ -92,6 +92,9 @@ public:
 
   virtual void enterTyperef_base(SesameParser::Typeref_baseContext * /*ctx*/) override { }
   virtual void exitTyperef_base(SesameParser::Typeref_baseContext * /*ctx*/) override { }
+
+  virtual void enterTyperef_precise(SesameParser::Typeref_preciseContext * /*ctx*/) override { }
+  virtual void exitTyperef_precise(SesameParser::Typeref_preciseContext * /*ctx*/) override { }
 
   virtual void enterParam_typerefs(SesameParser::Param_typerefsContext * /*ctx*/) override { }
   virtual void exitParam_typerefs(SesameParser::Param_typerefsContext * /*ctx*/) override { }
@@ -150,8 +153,14 @@ public:
   virtual void enterReturn_stmt(SesameParser::Return_stmtContext * /*ctx*/) override { }
   virtual void exitReturn_stmt(SesameParser::Return_stmtContext * /*ctx*/) override { }
 
-  virtual void enterExpr(SesameParser::ExprContext * /*ctx*/) override { }
-  virtual void exitExpr(SesameParser::ExprContext * /*ctx*/) override { }
+  virtual void enterAssignment_expr(SesameParser::Assignment_exprContext * /*ctx*/) override { }
+  virtual void exitAssignment_expr(SesameParser::Assignment_exprContext * /*ctx*/) override { }
+
+  virtual void enterOp_assign_expr(SesameParser::Op_assign_exprContext * /*ctx*/) override { }
+  virtual void exitOp_assign_expr(SesameParser::Op_assign_exprContext * /*ctx*/) override { }
+
+  virtual void enterExpression_10(SesameParser::Expression_10Context * /*ctx*/) override { }
+  virtual void exitExpression_10(SesameParser::Expression_10Context * /*ctx*/) override { }
 
   virtual void enterOpassign_op(SesameParser::Opassign_opContext * /*ctx*/) override { }
   virtual void exitOpassign_op(SesameParser::Opassign_opContext * /*ctx*/) override { }
@@ -159,11 +168,23 @@ public:
   virtual void enterExpr10(SesameParser::Expr10Context * /*ctx*/) override { }
   virtual void exitExpr10(SesameParser::Expr10Context * /*ctx*/) override { }
 
+  virtual void enterExpr9(SesameParser::Expr9Context * /*ctx*/) override { }
+  virtual void exitExpr9(SesameParser::Expr9Context * /*ctx*/) override { }
+
+  virtual void enterLogic_or_rhs(SesameParser::Logic_or_rhsContext * /*ctx*/) override { }
+  virtual void exitLogic_or_rhs(SesameParser::Logic_or_rhsContext * /*ctx*/) override { }
+
   virtual void enterExpr8(SesameParser::Expr8Context * /*ctx*/) override { }
   virtual void exitExpr8(SesameParser::Expr8Context * /*ctx*/) override { }
 
+  virtual void enterLogic_and_rhs(SesameParser::Logic_and_rhsContext * /*ctx*/) override { }
+  virtual void exitLogic_and_rhs(SesameParser::Logic_and_rhsContext * /*ctx*/) override { }
+
   virtual void enterExpr7(SesameParser::Expr7Context * /*ctx*/) override { }
   virtual void exitExpr7(SesameParser::Expr7Context * /*ctx*/) override { }
+
+  virtual void enterBinary_op_rhs(SesameParser::Binary_op_rhsContext * /*ctx*/) override { }
+  virtual void exitBinary_op_rhs(SesameParser::Binary_op_rhsContext * /*ctx*/) override { }
 
   virtual void enterLogical_op(SesameParser::Logical_opContext * /*ctx*/) override { }
   virtual void exitLogical_op(SesameParser::Logical_opContext * /*ctx*/) override { }
@@ -171,29 +192,80 @@ public:
   virtual void enterExpr6(SesameParser::Expr6Context * /*ctx*/) override { }
   virtual void exitExpr6(SesameParser::Expr6Context * /*ctx*/) override { }
 
+  virtual void enterBit_or_rhs(SesameParser::Bit_or_rhsContext * /*ctx*/) override { }
+  virtual void exitBit_or_rhs(SesameParser::Bit_or_rhsContext * /*ctx*/) override { }
+
   virtual void enterExpr5(SesameParser::Expr5Context * /*ctx*/) override { }
   virtual void exitExpr5(SesameParser::Expr5Context * /*ctx*/) override { }
+
+  virtual void enterXor_rhs(SesameParser::Xor_rhsContext * /*ctx*/) override { }
+  virtual void exitXor_rhs(SesameParser::Xor_rhsContext * /*ctx*/) override { }
 
   virtual void enterExpr4(SesameParser::Expr4Context * /*ctx*/) override { }
   virtual void exitExpr4(SesameParser::Expr4Context * /*ctx*/) override { }
 
+  virtual void enterBit_and_rhs(SesameParser::Bit_and_rhsContext * /*ctx*/) override { }
+  virtual void exitBit_and_rhs(SesameParser::Bit_and_rhsContext * /*ctx*/) override { }
+
   virtual void enterExpr3(SesameParser::Expr3Context * /*ctx*/) override { }
   virtual void exitExpr3(SesameParser::Expr3Context * /*ctx*/) override { }
+
+  virtual void enterShift_op_rhs(SesameParser::Shift_op_rhsContext * /*ctx*/) override { }
+  virtual void exitShift_op_rhs(SesameParser::Shift_op_rhsContext * /*ctx*/) override { }
 
   virtual void enterExpr2(SesameParser::Expr2Context * /*ctx*/) override { }
   virtual void exitExpr2(SesameParser::Expr2Context * /*ctx*/) override { }
 
+  virtual void enterAdd_sub_rhs(SesameParser::Add_sub_rhsContext * /*ctx*/) override { }
+  virtual void exitAdd_sub_rhs(SesameParser::Add_sub_rhsContext * /*ctx*/) override { }
+
   virtual void enterExpr1(SesameParser::Expr1Context * /*ctx*/) override { }
   virtual void exitExpr1(SesameParser::Expr1Context * /*ctx*/) override { }
+
+  virtual void enterMulti_div_mod_rhs(SesameParser::Multi_div_mod_rhsContext * /*ctx*/) override { }
+  virtual void exitMulti_div_mod_rhs(SesameParser::Multi_div_mod_rhsContext * /*ctx*/) override { }
 
   virtual void enterTerm(SesameParser::TermContext * /*ctx*/) override { }
   virtual void exitTerm(SesameParser::TermContext * /*ctx*/) override { }
 
-  virtual void enterUnary(SesameParser::UnaryContext * /*ctx*/) override { }
-  virtual void exitUnary(SesameParser::UnaryContext * /*ctx*/) override { }
+  virtual void enterInc_expr(SesameParser::Inc_exprContext * /*ctx*/) override { }
+  virtual void exitInc_expr(SesameParser::Inc_exprContext * /*ctx*/) override { }
+
+  virtual void enterDec_expr(SesameParser::Dec_exprContext * /*ctx*/) override { }
+  virtual void exitDec_expr(SesameParser::Dec_exprContext * /*ctx*/) override { }
+
+  virtual void enterPositive_expr(SesameParser::Positive_exprContext * /*ctx*/) override { }
+  virtual void exitPositive_expr(SesameParser::Positive_exprContext * /*ctx*/) override { }
+
+  virtual void enterNegative_expr(SesameParser::Negative_exprContext * /*ctx*/) override { }
+  virtual void exitNegative_expr(SesameParser::Negative_exprContext * /*ctx*/) override { }
+
+  virtual void enterLogic_not_expr(SesameParser::Logic_not_exprContext * /*ctx*/) override { }
+  virtual void exitLogic_not_expr(SesameParser::Logic_not_exprContext * /*ctx*/) override { }
+
+  virtual void enterBit_not_expr(SesameParser::Bit_not_exprContext * /*ctx*/) override { }
+  virtual void exitBit_not_expr(SesameParser::Bit_not_exprContext * /*ctx*/) override { }
+
+  virtual void enterDereference_expr(SesameParser::Dereference_exprContext * /*ctx*/) override { }
+  virtual void exitDereference_expr(SesameParser::Dereference_exprContext * /*ctx*/) override { }
+
+  virtual void enterAddr_expr(SesameParser::Addr_exprContext * /*ctx*/) override { }
+  virtual void exitAddr_expr(SesameParser::Addr_exprContext * /*ctx*/) override { }
+
+  virtual void enterSizeof_type_expr(SesameParser::Sizeof_type_exprContext * /*ctx*/) override { }
+  virtual void exitSizeof_type_expr(SesameParser::Sizeof_type_exprContext * /*ctx*/) override { }
+
+  virtual void enterSizeof_expr(SesameParser::Sizeof_exprContext * /*ctx*/) override { }
+  virtual void exitSizeof_expr(SesameParser::Sizeof_exprContext * /*ctx*/) override { }
+
+  virtual void enterUnary_postfix_expr(SesameParser::Unary_postfix_exprContext * /*ctx*/) override { }
+  virtual void exitUnary_postfix_expr(SesameParser::Unary_postfix_exprContext * /*ctx*/) override { }
 
   virtual void enterPostfix(SesameParser::PostfixContext * /*ctx*/) override { }
   virtual void exitPostfix(SesameParser::PostfixContext * /*ctx*/) override { }
+
+  virtual void enterPostfix_option(SesameParser::Postfix_optionContext * /*ctx*/) override { }
+  virtual void exitPostfix_option(SesameParser::Postfix_optionContext * /*ctx*/) override { }
 
   virtual void enterArgs(SesameParser::ArgsContext * /*ctx*/) override { }
   virtual void exitArgs(SesameParser::ArgsContext * /*ctx*/) override { }

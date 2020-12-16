@@ -9,7 +9,7 @@ options {
 }
 
 compilation_unit
-    : import_stmt* top_def+
+    : import_stmt* top_defs
     ;
 
 declaration_file
@@ -38,13 +38,13 @@ var_decl
     : S_EXTERN type name SEMI
     ;
 
-top_def
-    : def_func
+top_defs
+    : (def_func
     | def_vars
     | def_const
     | def_struct
     | def_union
-    | s_typedef
+    | s_typedef)*
     ;
 
 def_func
@@ -112,11 +112,7 @@ type
     ;
 
 typeref
-    : typeref_base (LBRACKET RBRACKET               // []
-                   | LBRACKET INTEGER RBRACKET      // [2]
-                   | ASTERISK                       // pointer  
-                   | LPAREN param_typerefs RPAREN   // function pointer
-                   )*
+    : typeref_base typeref_precise*
     ;
 
 typeref_base
@@ -132,6 +128,12 @@ typeref_base
     | S_STRUCT IDENTIFIER
     | S_UNION IDENTIFIER
     | IDENTIFIER    // here, the type named identifier must be typedef
+    ;
+
+typeref_precise
+    : LBRACKET INTEGER? RBRACKET      // [2]
+    | ASTERISK                       // pointer  
+    | LPAREN param_typerefs RPAREN   // function pointer
     ;
 
 param_typerefs
@@ -226,9 +228,9 @@ return_stmt
 
 // expression definitions
 expr
-    : term EQUAL expr   // assign equation
-    | term opassign_op expr
-    | expr10
+    : term EQUAL expr        # assignment_expr
+    | term opassign_op expr  # op_assign_expr
+    | expr10                 # expression_10
     ;
 
 // += -= *= /= %= |= ^= <<= >>=
@@ -248,7 +250,7 @@ opassign_op
 // the number means the privileges of expression
 // the lower the number is, the higher the privilege is
 expr10
-    : expr8 (QUESTION expr COLON expr10)?   // 三目操作符, cond ? a : b
+    : expr9 (QUESTION expr COLON expr10)?   // 三目操作符, cond ? a : b
     ;
 
 // 二元运算符的优先级
@@ -264,12 +266,29 @@ expr10
 // | 1     | * / %           |
 
 // expr9
+
+expr9
+    : lhs=expr8 (LOGIC_OR logic_or_rhs)*
+    ;
+
+logic_or_rhs
+    : expr8
+    ;
+
 expr8
-    : expr7 ((LOGIC_OR | LOGIC_AND) expr7)*
+    : lhs=expr7 (LOGIC_AND logic_and_rhs)*
+    ;
+
+logic_and_rhs
+    : expr7
     ;
 
 expr7
-    : expr6 (logical_op expr6)*
+    : lhs=expr6 binary_op_rhs*
+    ;
+
+binary_op_rhs
+    : logical_op expr6
     ;
 
 logical_op
@@ -282,27 +301,51 @@ logical_op
     ;
 
 expr6
-    : expr5 (BAR expr5)*
+    : lhs=expr5 (BAR bit_or_rhs)*
+    ;
+
+bit_or_rhs
+    : expr5
     ;
 
 expr5
-    : expr4 (CARRET_OPERATOR_PART expr4)*
+    : lhs=expr4 (CARRET_OPERATOR_PART xor_rhs)*
+    ;
+
+xor_rhs
+    : expr4
     ;
 
 expr4
-    : expr3 (AMPERSAND expr3)*
+    : lhs=expr3 (AMPERSAND bit_and_rhs)*
+    ;
+
+bit_and_rhs
+    : expr3
     ;
 
 expr3
-    : expr2 ((LSHIFT | RSHIFT) expr2)*
+    : lhs=expr2 shift_op_rhs*
+    ;
+
+shift_op_rhs
+    : (LSHIFT | RSHIFT) expr2
     ;
 
 expr2
-    : expr1 ((PLUS | MINUS) expr1)*
+    : lhs=expr1 add_sub_rhs*
+    ;
+
+add_sub_rhs
+    : tk=(PLUS | MINUS) expr1
     ;
 
 expr1
-    : term ((ASTERISK | SOLIDUS | PERCENT) term)*
+    : lhs=term multi_div_mod_rhs*
+    ;
+
+multi_div_mod_rhs
+    : tk=(ASTERISK | SOLIDUS | PERCENT) term
     ;
 
 term
@@ -311,27 +354,30 @@ term
     ;
 
 unary
-    : PLUS PLUS unary               // ++a
-    | MINUS MINUS unary             // --a
-    | PLUS term                     // +a
-    | MINUS term                    // -a
-    | EXCLAMATION_OPERATOR term     // ! not
-    | TILDE_OPERATOR term           // ~
-    | ASTERISK term                 // dereference pointer
-    | AMPERSAND term                // & get addr
-    | S_SIZEOF LPAREN type RPAREN   // sizeof(a)
-    | S_SIZEOF unary                // sizeof a
-    | postfix
+    : PLUS PLUS unary               # inc_expr          // ++a
+    | MINUS MINUS unary             # dec_expr          // --a
+    | PLUS term                     # positive_expr     // +a
+    | MINUS term                    # negative_expr     // -a
+    | EXCLAMATION_OPERATOR term     # logic_not_expr    // ! not
+    | TILDE_OPERATOR term           # bit_not_expr      // ~
+    | ASTERISK term                 # dereference_expr  // dereference pointer
+    | AMPERSAND term                # addr_expr         // & get addr
+    | S_SIZEOF LPAREN type RPAREN   # sizeof_type_expr // sizeof(a)
+    | S_SIZEOF unary                # sizeof_expr       // sizeof a
+    | postfix                       # unary_postfix_expr
     ;
 
 postfix
-    : primary ( PLUS PLUS               // a++
-              | MINUS MINUS             // a--
-              | LBRACKET expr RBRACKET  // [a]
-              | PERIOD name             // .a
-              | POINTER_REF name        // ->a
-              | LPAREN args? RPAREN      // (a, b, c)
-              )*
+    : primary postfix_option*
+    ;
+
+postfix_option
+    : PLUS PLUS               // a++
+    | MINUS MINUS             // a--
+    | LBRACKET expr RBRACKET  // [a]
+    | PERIOD memb1=name             // .a
+    | POINTER_REF memb2=name        // ->a
+    | LPAREN args? RPAREN      // (a, b, c)
     ;
 
 args

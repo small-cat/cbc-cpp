@@ -4,9 +4,10 @@
 #include "parameter.h"
 #include "../type/param_slots.hpp"
 #include "../ast/location.hpp"
+#include "../type/param_type_ref.hpp"
 
 namespace entity {
-class Params : type::ParamSlots<Parameter> {
+class Params : public type::ParamSlots<Parameter> {
 public:
   Params(ast::Location* l, std::vector<Parameter*> parameters);
   virtual ~Params();
@@ -14,7 +15,7 @@ public:
   std::vector<Parameter*> GetParameters();
 
   // @todo { not implement functions below }
-  // type::ParamTypeRefs* GetParameterTypeRefs();
+  type::ParamTypeRefs* GetParameterTypeRefs();
   // void _dump(); // @todo { _dump }
 private:
   /* data */

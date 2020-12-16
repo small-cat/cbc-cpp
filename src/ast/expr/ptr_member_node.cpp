@@ -34,7 +34,7 @@ long PtrMemberNode::Offset() {
   return DereferedCompositeType()->MemberOffset(member_);
 }
 
-type::Type* PtrMemberNode::OriginalType() {
+type::Type* PtrMemberNode::original_type() {
   return DereferedCompositeType()->MemberType(member_);
 }
 } /* end ast */

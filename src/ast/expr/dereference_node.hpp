@@ -20,7 +20,7 @@ public:
   DereferenceNode(ExprNode* e);
   virtual ~DereferenceNode();
 
-  type::Type* OriginalType();
+  type::Type* original_type();
   ExprNode* expr();
   void SetExpr(ExprNode* e);
   Location* location();

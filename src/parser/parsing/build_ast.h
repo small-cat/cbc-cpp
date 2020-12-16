@@ -1,0 +1,102 @@
+/** 
+* @copyright (c) Copyright, All Rights Reserved.
+* @license
+* @file: build_ast.h
+* @author: Jona
+* @email: mblrwuzy@gmail.com
+* @date: 2020/12/15
+* @brief: Build ast from antlr4 visitor
+*/
+#ifndef BUILD_AST_H
+#define BUILD_AST_H
+
+#include "../generated/SesameLexer.h"
+#include "../generated/SesameParser.h"
+#include "../generated/SesameParserBaseVisitor.h"
+
+#include "../../ast/ast.hpp"
+#include "../../entity/defined_variable.h"
+
+namespace parser {
+class BuildAstVisitor : public SesameParserBaseVisitor {
+public:
+  BuildAstVisitor(SesameParser* parser, std::string fname);
+  virtual ~BuildAstVisitor();
+
+  virtual antlrcpp::Any visitCompilation_unit(SesameParser::Compilation_unitContext * ctx);
+  virtual antlrcpp::Any visitTop_defs(SesameParser::Top_defsContext * ctx);
+
+  // build defined funtion
+  virtual antlrcpp::Any visitDef_func(SesameParser::Def_funcContext * ctx);
+  virtual antlrcpp::Any visitTyperef(SesameParser::TyperefContext * ctx);
+  virtual antlrcpp::Any visitParam_typerefs(SesameParser::Param_typerefsContext * ctx);
+  virtual antlrcpp::Any visitFixed_param_typerefs(SesameParser::Fixed_param_typerefsContext * ctx);
+  virtual antlrcpp::Any visitParams(SesameParser::ParamsContext * ctx);
+  virtual antlrcpp::Any visitFixed_params(SesameParser::Fixed_paramsContext * ctx);
+  virtual antlrcpp::Any visitParam(SesameParser::ParamContext * ctx);
+  virtual antlrcpp::Any visitType(SesameParser::TypeContext * ctx);
+  virtual antlrcpp::Any visitBlock(SesameParser::BlockContext * ctx);
+
+  // build defined variables
+  virtual antlrcpp::Any visitDef_vars(SesameParser::Def_varsContext * ctx);
+
+  // build defined constant
+  virtual antlrcpp::Any visitDef_const(SesameParser::Def_constContext * ctx);
+
+  // build defined struct
+  virtual antlrcpp::Any visitDef_struct(SesameParser::Def_structContext * ctx);
+
+  // build defined union
+  virtual antlrcpp::Any visitDef_union(SesameParser::Def_unionContext * ctx);
+  virtual antlrcpp::Any visitMember_list(SesameParser::Member_listContext * ctx);
+  virtual antlrcpp::Any visitSlot(SesameParser::SlotContext * ctx);
+
+  // build typedef
+  virtual antlrcpp::Any visitS_typedef(SesameParser::S_typedefContext * ctx);
+
+  // build expression
+  virtual antlrcpp::Any visitExpr(SesameParser::ExprContext * ctx);
+  virtual antlrcpp::Any visitAssignment_expr(SesameParser::Assignment_exprContext * ctx);
+  virtual antlrcpp::Any visitOp_assign_expr(SesameParser::Op_assign_exprContext * ctx);
+  virtual antlrcpp::Any visitExpression_10(SesameParser::Expression_10Context * ctx);
+  virtual antlrcpp::Any visitExpr10(SesameParser::Expr10Context * ctx);
+  virtual antlrcpp::Any visitExpr9(SesameParser::Expr9Context * ctx);
+  virtual antlrcpp::Any visitExpr8(SesameParser::Expr8Context * ctx);
+  virtual antlrcpp::Any visitExpr7(SesameParser::Expr7Context * ctx);
+  virtual antlrcpp::Any visitExpr6(SesameParser::Expr6Context * ctx);
+  virtual antlrcpp::Any visitExpr5(SesameParser::Expr5Context * ctx);
+  virtual antlrcpp::Any visitExpr4(SesameParser::Expr4Context * ctx);
+  virtual antlrcpp::Any visitExpr3(SesameParser::Expr3Context * ctx);
+  virtual antlrcpp::Any visitExpr2(SesameParser::Expr2Context * ctx);
+  virtual antlrcpp::Any visitExpr1(SesameParser::Expr1Context * ctx);
+  virtual antlrcpp::Any visitTerm(SesameParser::TermContext * ctx);
+  // unary expr
+  virtual antlrcpp::Any visitInc_expr(SesameParser::Inc_exprContext * ctx);
+  virtual antlrcpp::Any visitDec_expr(SesameParser::Dec_exprContext * ctx);
+  virtual antlrcpp::Any visitPositive_expr(SesameParser::Positive_exprContext * ctx);
+  virtual antlrcpp::Any visitNegative_expr(SesameParser::Negative_exprContext * ctx);
+  virtual antlrcpp::Any visitLogic_not_expr(SesameParser::Logic_not_exprContext * ctx);
+  virtual antlrcpp::Any visitBit_not_expr(SesameParser::Bit_not_exprContext * ctx);
+  virtual antlrcpp::Any visitDereference_expr(SesameParser::Dereference_exprContext * ctx);
+  virtual antlrcpp::Any visitAddr_expr(SesameParser::Addr_exprContext * ctx);
+  virtual antlrcpp::Any visitSizeof_type_expr(SesameParser::Sizeof_type_exprContext * ctx);
+  virtual antlrcpp::Any visitSizeof_expr(SesameParser::Sizeof_exprContext * ctx);
+  virtual antlrcpp::Any visitUnary_postfix_expr(SesameParser::Unary_postfix_exprContext * ctx);
+  virtual antlrcpp::Any visitPostfix(SesameParser::PostfixContext * ctx);
+
+  virtual antlrcpp::Any visitDeclaration_file(SesameParser::Declaration_fileContext *ctx);
+
+  void AddImportFile(const std::string& fname);
+  ast::CflatToken* GetCFlatToken(antlr4::Token* t);
+private:
+  SesameParser* parser_;
+  antlr4::TokenStream* tokens_;
+  std::string filename_;
+  std::vector<std::string> import_files_;
+
+  std::vector<entity::DefinedVariable*> defined_vars_;  // for def_vars only
+  std::vector<ast::SlotNode*> member_list_; // for member_list
+};
+} /* parser */
+
+#endif

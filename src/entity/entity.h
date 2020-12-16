@@ -39,8 +39,8 @@ public:
   // void _dump(ast::Dumper* d);
 private:
   std::string name_;              // symbol name
-  bool is_private_;
-  ast::TypeNode* type_node_;
+  bool is_private_;               // attribute
+  ast::TypeNode* type_node_;      // type: typename and type definition
   long refered_;
   // MemoryReference* memref_;    // defined in asm
   // Operand* address_;

@@ -20,7 +20,7 @@ long MemberNode::Offset() {
   return BaseType()->MemberOffset(member_);
 }
 
-type::Type* MemberNode::OriginalType() {
+type::Type* MemberNode::original_type() {
   return BaseType()->MemberType(member_);
 }
 

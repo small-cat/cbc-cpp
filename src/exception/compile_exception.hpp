@@ -2,6 +2,7 @@
 #define __COMPILEEXCEPTION_H__
 
 #include <exception>
+#include <iostream>
 
 class CompileException : public std::exception {
 public:

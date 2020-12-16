@@ -34,12 +34,20 @@ public:
   void AddDefvar(entity::DefinedVariable* var);
   void AddDefvars(std::vector<entity::DefinedVariable*> vars);
   std::vector<entity::DefinedVariable*> defvars();
+  std::vector<entity::UndefinedVariable*> vardecls();
+  std::vector<entity::DefinedFunction*> defuns();
+  std::vector<entity::UndefinedFunction*> funcdecls();
+  std::vector<entity::Constant*> constants();
+  std::vector<StructTypeNode*> def_structs();
+  std::vector<UnionTypeNode*> def_unions();
 
   void AddDefun(entity::DefinedFunction* fun);
   void AddConstant(entity::Constant* cons);
   void AddStruct(ast::StructTypeNode* s);
   void AddUnion(ast::UnionTypeNode* u);
   void AddTypedef(TypeDefNode* t);
+
+  void Add(Declarations* decls);
 
 private:
   std::vector<entity::DefinedVariable*> defvars_;

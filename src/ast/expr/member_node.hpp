@@ -16,7 +16,7 @@ public:
   ExprNode* expr();
   std::string member();
   long Offset();
-  type::Type* OriginalType();
+  type::Type* original_type();
   Location* location();
   void _dump(Dumper* d);
   // void accept(ASTVisitor visitor);

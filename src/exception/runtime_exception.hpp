@@ -11,6 +11,7 @@
 #define __PARSER_EXCEPTIONS_H__
 
 #include <exception>
+#include <iostream>
 
 class RuntimeException : public std::exception {
 public:

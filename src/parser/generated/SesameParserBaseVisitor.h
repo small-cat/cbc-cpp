@@ -45,7 +45,7 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitTop_def(SesameParser::Top_defContext *ctx) override {
+  virtual antlrcpp::Any visitTop_defs(SesameParser::Top_defsContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -114,6 +114,10 @@ public:
   }
 
   virtual antlrcpp::Any visitTyperef_base(SesameParser::Typeref_baseContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitTyperef_precise(SesameParser::Typeref_preciseContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -193,7 +197,15 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitExpr(SesameParser::ExprContext *ctx) override {
+  virtual antlrcpp::Any visitAssignment_expr(SesameParser::Assignment_exprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitOp_assign_expr(SesameParser::Op_assign_exprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitExpression_10(SesameParser::Expression_10Context *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -205,11 +217,27 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitExpr9(SesameParser::Expr9Context *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitLogic_or_rhs(SesameParser::Logic_or_rhsContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitExpr8(SesameParser::Expr8Context *ctx) override {
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitLogic_and_rhs(SesameParser::Logic_and_rhsContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitExpr7(SesameParser::Expr7Context *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitBinary_op_rhs(SesameParser::Binary_op_rhsContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -221,7 +249,15 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitBit_or_rhs(SesameParser::Bit_or_rhsContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitExpr5(SesameParser::Expr5Context *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitXor_rhs(SesameParser::Xor_rhsContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -229,7 +265,15 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitBit_and_rhs(SesameParser::Bit_and_rhsContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitExpr3(SesameParser::Expr3Context *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitShift_op_rhs(SesameParser::Shift_op_rhsContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -237,7 +281,15 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitAdd_sub_rhs(SesameParser::Add_sub_rhsContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitExpr1(SesameParser::Expr1Context *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitMulti_div_mod_rhs(SesameParser::Multi_div_mod_rhsContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -245,11 +297,55 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitUnary(SesameParser::UnaryContext *ctx) override {
+  virtual antlrcpp::Any visitInc_expr(SesameParser::Inc_exprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitDec_expr(SesameParser::Dec_exprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitPositive_expr(SesameParser::Positive_exprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitNegative_expr(SesameParser::Negative_exprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitLogic_not_expr(SesameParser::Logic_not_exprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitBit_not_expr(SesameParser::Bit_not_exprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitDereference_expr(SesameParser::Dereference_exprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitAddr_expr(SesameParser::Addr_exprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitSizeof_type_expr(SesameParser::Sizeof_type_exprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitSizeof_expr(SesameParser::Sizeof_exprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitUnary_postfix_expr(SesameParser::Unary_postfix_exprContext *ctx) override {
     return visitChildren(ctx);
   }
 
   virtual antlrcpp::Any visitPostfix(SesameParser::PostfixContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitPostfix_option(SesameParser::Postfix_optionContext *ctx) override {
     return visitChildren(ctx);
   }
 

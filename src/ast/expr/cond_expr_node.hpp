@@ -9,7 +9,7 @@ public:
   CondExprNode(ExprNode* c, ExprNode* t, ExprNode* e) : cond_(c), then_expr_(t), else_expr_(e) {}
   virtual ~CondExprNode() {}
 
-  type::Type* Type() {
+  type::Type* type() {
     return then_expr_->type();
   }
 
@@ -18,7 +18,7 @@ public:
   ExprNode* else_expr() { return else_expr_; }
   void SetThen(ExprNode* t) { then_expr_ = t; }
   void SetElse(ExprNode* e) { else_expr_ = e; }
-  Location* location() { return cond->location(); }
+  Location* location() { return cond_->location(); }
 
   void _dump(Dumper* d) {
     d->PrintMember("Cond", cond_);

@@ -4,7 +4,7 @@ namespace ast {
 DereferenceNode::DereferenceNode(ExprNode* e) : expr_(e) {}
 DereferenceNode::~DereferenceNode() {}
 
-type::Type* DereferenceNode::OriginalType() {
+type::Type* DereferenceNode::original_type() {
   return expr_->type()->base_type();
 }
 

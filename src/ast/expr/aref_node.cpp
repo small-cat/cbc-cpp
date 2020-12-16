@@ -30,7 +30,7 @@ long ARefNode::Length() {
   ((type::ArrayType*)(expr_->OriginalType()))->length();
 }
 
-type::Type* ARefNode::OriginalType() {
+type::Type* ARefNode::original_type() {
   return expr_->OriginalType()->base_type();
 }
 

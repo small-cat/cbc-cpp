@@ -34,7 +34,7 @@ public:
 
     virtual antlrcpp::Any visitVar_decl(SesameParser::Var_declContext *context) = 0;
 
-    virtual antlrcpp::Any visitTop_def(SesameParser::Top_defContext *context) = 0;
+    virtual antlrcpp::Any visitTop_defs(SesameParser::Top_defsContext *context) = 0;
 
     virtual antlrcpp::Any visitDef_func(SesameParser::Def_funcContext *context) = 0;
 
@@ -69,6 +69,8 @@ public:
     virtual antlrcpp::Any visitTyperef(SesameParser::TyperefContext *context) = 0;
 
     virtual antlrcpp::Any visitTyperef_base(SesameParser::Typeref_baseContext *context) = 0;
+
+    virtual antlrcpp::Any visitTyperef_precise(SesameParser::Typeref_preciseContext *context) = 0;
 
     virtual antlrcpp::Any visitParam_typerefs(SesameParser::Param_typerefsContext *context) = 0;
 
@@ -108,35 +110,81 @@ public:
 
     virtual antlrcpp::Any visitReturn_stmt(SesameParser::Return_stmtContext *context) = 0;
 
-    virtual antlrcpp::Any visitExpr(SesameParser::ExprContext *context) = 0;
+    virtual antlrcpp::Any visitAssignment_expr(SesameParser::Assignment_exprContext *context) = 0;
+
+    virtual antlrcpp::Any visitOp_assign_expr(SesameParser::Op_assign_exprContext *context) = 0;
+
+    virtual antlrcpp::Any visitExpression_10(SesameParser::Expression_10Context *context) = 0;
 
     virtual antlrcpp::Any visitOpassign_op(SesameParser::Opassign_opContext *context) = 0;
 
     virtual antlrcpp::Any visitExpr10(SesameParser::Expr10Context *context) = 0;
 
+    virtual antlrcpp::Any visitExpr9(SesameParser::Expr9Context *context) = 0;
+
+    virtual antlrcpp::Any visitLogic_or_rhs(SesameParser::Logic_or_rhsContext *context) = 0;
+
     virtual antlrcpp::Any visitExpr8(SesameParser::Expr8Context *context) = 0;
 
+    virtual antlrcpp::Any visitLogic_and_rhs(SesameParser::Logic_and_rhsContext *context) = 0;
+
     virtual antlrcpp::Any visitExpr7(SesameParser::Expr7Context *context) = 0;
+
+    virtual antlrcpp::Any visitBinary_op_rhs(SesameParser::Binary_op_rhsContext *context) = 0;
 
     virtual antlrcpp::Any visitLogical_op(SesameParser::Logical_opContext *context) = 0;
 
     virtual antlrcpp::Any visitExpr6(SesameParser::Expr6Context *context) = 0;
 
+    virtual antlrcpp::Any visitBit_or_rhs(SesameParser::Bit_or_rhsContext *context) = 0;
+
     virtual antlrcpp::Any visitExpr5(SesameParser::Expr5Context *context) = 0;
+
+    virtual antlrcpp::Any visitXor_rhs(SesameParser::Xor_rhsContext *context) = 0;
 
     virtual antlrcpp::Any visitExpr4(SesameParser::Expr4Context *context) = 0;
 
+    virtual antlrcpp::Any visitBit_and_rhs(SesameParser::Bit_and_rhsContext *context) = 0;
+
     virtual antlrcpp::Any visitExpr3(SesameParser::Expr3Context *context) = 0;
+
+    virtual antlrcpp::Any visitShift_op_rhs(SesameParser::Shift_op_rhsContext *context) = 0;
 
     virtual antlrcpp::Any visitExpr2(SesameParser::Expr2Context *context) = 0;
 
+    virtual antlrcpp::Any visitAdd_sub_rhs(SesameParser::Add_sub_rhsContext *context) = 0;
+
     virtual antlrcpp::Any visitExpr1(SesameParser::Expr1Context *context) = 0;
+
+    virtual antlrcpp::Any visitMulti_div_mod_rhs(SesameParser::Multi_div_mod_rhsContext *context) = 0;
 
     virtual antlrcpp::Any visitTerm(SesameParser::TermContext *context) = 0;
 
-    virtual antlrcpp::Any visitUnary(SesameParser::UnaryContext *context) = 0;
+    virtual antlrcpp::Any visitInc_expr(SesameParser::Inc_exprContext *context) = 0;
+
+    virtual antlrcpp::Any visitDec_expr(SesameParser::Dec_exprContext *context) = 0;
+
+    virtual antlrcpp::Any visitPositive_expr(SesameParser::Positive_exprContext *context) = 0;
+
+    virtual antlrcpp::Any visitNegative_expr(SesameParser::Negative_exprContext *context) = 0;
+
+    virtual antlrcpp::Any visitLogic_not_expr(SesameParser::Logic_not_exprContext *context) = 0;
+
+    virtual antlrcpp::Any visitBit_not_expr(SesameParser::Bit_not_exprContext *context) = 0;
+
+    virtual antlrcpp::Any visitDereference_expr(SesameParser::Dereference_exprContext *context) = 0;
+
+    virtual antlrcpp::Any visitAddr_expr(SesameParser::Addr_exprContext *context) = 0;
+
+    virtual antlrcpp::Any visitSizeof_type_expr(SesameParser::Sizeof_type_exprContext *context) = 0;
+
+    virtual antlrcpp::Any visitSizeof_expr(SesameParser::Sizeof_exprContext *context) = 0;
+
+    virtual antlrcpp::Any visitUnary_postfix_expr(SesameParser::Unary_postfix_exprContext *context) = 0;
 
     virtual antlrcpp::Any visitPostfix(SesameParser::PostfixContext *context) = 0;
+
+    virtual antlrcpp::Any visitPostfix_option(SesameParser::Postfix_optionContext *context) = 0;
 
     virtual antlrcpp::Any visitArgs(SesameParser::ArgsContext *context) = 0;
 

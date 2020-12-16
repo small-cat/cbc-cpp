@@ -26,7 +26,7 @@ public:
   ExprNode* base_expr();
   long ElementSize();
   long Length();
-  type::Type* OriginalType();
+  type::Type* original_type();
   Location* location();
   void _dump(Dumper* d);
   // void accept();

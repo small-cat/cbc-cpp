@@ -1,3 +1,13 @@
+/** 
+* @copyright (c) Copyright, All Rights Reserved.
+* @license
+* @file: param_type_ref.hpp
+* @author: Jona
+* @email: mblrwuzy@gmail.com
+* @date: 2020/12/15
+* @brief: 参数定义，TypeRef 仅仅是类型的名称和location，vararg 为true，表示接受可变参数，即参数末尾为 ... 形式
+*/
+
 #ifndef __PARAM_TYPE_REF_H__
 #define __PARAM_TYPE_REF_H__
 

@@ -20,7 +20,10 @@ public:
   virtual ~TypeRef();
 
   ast::Location* location();
+  void SetLocation(ast::Location* l);
   // HashCode
+
+  virtual std::string ToString();
 private:
   ast::Location* location_;
 };
