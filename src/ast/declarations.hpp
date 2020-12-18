@@ -41,6 +41,8 @@ public:
   std::vector<StructTypeNode*> def_structs();
   std::vector<UnionTypeNode*> def_unions();
 
+  void AddDeclVar(entity::UndefinedVariable* undef_var);
+  void AddDeclFun(entity::UndefinedFunction* undef_fun);
   void AddDefun(entity::DefinedFunction* fun);
   void AddConstant(entity::Constant* cons);
   void AddStruct(ast::StructTypeNode* s);

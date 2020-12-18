@@ -27,7 +27,7 @@ public:
   Type() {}
   virtual ~Type() {}
 
-  static long SizeUnknown;
+  const static long SizeUnknown = -1;
 
   virtual long Size() = 0;
   virtual long AllocSize() { return false; }
@@ -71,8 +71,6 @@ public:
   CompositeType* GetCompositeType() { return (CompositeType*)this; }
   ArrayType*     GetArrayType()     { return (ArrayType*)this; }
 };
-
-long Type::SizeUnknown = -1;
 } /* end type */
 
 #endif /* __TYPE_HPP__ */

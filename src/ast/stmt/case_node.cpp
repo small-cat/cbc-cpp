@@ -13,7 +13,7 @@ std::vector<ExprNode*> CaseNode::values() {
 }
 
 bool CaseNode::IsDefault() {
-  return values_->empty();
+  return values_.empty();
 }
 
 BlockNode* CaseNode::body() {

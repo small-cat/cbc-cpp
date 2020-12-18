@@ -4,9 +4,9 @@ namespace ast {
 Location::Location(std::string name, CflatToken* t) : source_name_(name),
                                                       token_(t) {}
 
-Location::Location(std::string name, std::string text, std::size_t i, std::size_t l, std::size_t s, std::size_t e) 
+Location::Location(std::string name, std::string text, std::size_t i, std::size_t l, std::size_t s, std::size_t e, std::size_t pil) 
   : source_name_(name) {
-    token_ = new CflatToken(text, i, l, s, e);
+    token_ = new CflatToken(text, i, l, s, e, pil);
   }
 
 Location::~Location() {
@@ -30,7 +30,7 @@ int Location::LineNo() {
 }
 
 int Location::Column() {
-  return token_->start();
+  return token_->position_in_line(); 
 }
 
 std::string Location::Line() {
@@ -38,7 +38,7 @@ std::string Location::Line() {
 }
 
 std::string Location::ToString() {
-  return source_name_ + ":" + Line();
+  return source_name_ + ", line " + Line() + ", column " + std::to_string(Column());
 }
 
 } /* end ast */

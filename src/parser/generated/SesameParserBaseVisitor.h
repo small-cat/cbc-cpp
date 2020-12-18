@@ -25,6 +25,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitDeclaration_stmt(SesameParser::Declaration_stmtContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitImport_stmt(SesameParser::Import_stmtContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -113,7 +117,39 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitTyperef_base(SesameParser::Typeref_baseContext *ctx) override {
+  virtual antlrcpp::Any visitTyperef_void(SesameParser::Typeref_voidContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitTyperef_char(SesameParser::Typeref_charContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitTyperef_short(SesameParser::Typeref_shortContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitTyperef_int(SesameParser::Typeref_intContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitTyperef_long(SesameParser::Typeref_longContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitTyperef_unsigned(SesameParser::Typeref_unsignedContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitTyperef_struct(SesameParser::Typeref_structContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitTyperef_union(SesameParser::Typeref_unionContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitTyperef_usertype(SesameParser::Typeref_usertypeContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -138,6 +174,10 @@ public:
   }
 
   virtual antlrcpp::Any visitLabeled_stmt(SesameParser::Labeled_stmtContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitExpr_stmt(SesameParser::Expr_stmtContext *ctx) override {
     return visitChildren(ctx);
   }
 

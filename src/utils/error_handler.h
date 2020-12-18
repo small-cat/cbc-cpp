@@ -30,8 +30,8 @@ public:
   void Warn(ast::Location* loc, const std::string& msg);
   bool ErrorOccured();
 private:
-  std::ostream* out_;
   std::string program_id_;
+  std::ostream* out_;
   long error_;
   long warning_;
 };

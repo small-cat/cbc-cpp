@@ -18,4 +18,14 @@ void ASTNode::AddDeclarations(Declarations* decl) {
   // add defvars defuncs, constants, structs unions typedefs
 }
 
+void ASTNode::SetTokenStrings(std::vector<std::string> sv) {
+  token_strings_.swap(sv);
+}
+
+void ASTNode::DumpTokens() {
+  for (auto& t : token_strings_) {
+    std::cout << t << std::endl;
+  }
+}
+
 } /* end as */

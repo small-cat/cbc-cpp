@@ -52,7 +52,7 @@ Entity* LocalScope::Get(std::string n) {
   if (search == variables_.end()) {
     return parent_->Get(n);
   } else {
-    search->second;
+    return search->second;
   }
 }
 

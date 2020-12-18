@@ -102,7 +102,7 @@ std::string SourceFile::ExtName(const std::string& path) {
   if (pos == std::string::npos) {
     return "";
   } else {
-    return path.substr(pos+1);
+    return path.substr(pos);
   }
 }
 

@@ -19,6 +19,7 @@
 #include "../error_verbose_listener.hpp"
 #include "../../utils/errors.hpp"
 #include "../../ast/ast.hpp"
+#include "build_ast.h"
 
 namespace parser {
 class FileParser {
@@ -30,7 +31,7 @@ public:
   ast::ASTNode* BuildAst();
   std::vector<std::string> GetTokenStrings();
 private:
-  SesameParser::Compilation_unitContext* _ParseFile(std::error_code& ec);
+  ast::ASTNode* _ParseFile(std::error_code& ec, bool check);
   std::string filename_;
   std::vector<std::string> token_strings_; // dump tokens
 };

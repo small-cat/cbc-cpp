@@ -95,12 +95,29 @@ bool Compiler::CheckSyntax(Options* opts) {
 void Compiler::Compile(const std::string& src, const std::string& dest, Options* opts) {
   // @todo { compile something }
   ast::ASTNode* ast = GetAstByParseFile(src, opts);
+  if (DumpAst(ast, opts->mode())) return;
 }
 
 ast::ASTNode* Compiler::GetAstByParseFile(const std::string& src, Options* opts) {
   // build ast
   parser::FileParser fp(src);
   return fp.BuildAst();
+}
+
+bool Compiler::DumpAst(ast::ASTNode* ast, CompilerMode mode) {
+  switch(mode.mode()) {
+    case CompilerMode::Mode::DumpAST:
+      // @todo[UNIMPLEMENT]/2020/12/17: dump the whole ast to console
+      // ast->dump();
+      return true;
+    case CompilerMode::Mode::DumpTokens:
+      ast->DumpTokens();
+      return true;
+    default:
+      return false;
+  }
+
+  return false;
 }
 
 } /* end compiler */

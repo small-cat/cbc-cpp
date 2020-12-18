@@ -3,24 +3,23 @@
 
 #include "lhs_node.hpp"
 #include "../../entity/entity.h"
+#include "../../entity/defined_variable.h"
 
 namespace ast {
 class VariableNode : public LHSNode {
 public:
   VariableNode(Location* l, std::string n);
-  // VariableNode(DefinedVariable var);
+  VariableNode(entity::DefinedVariable* var);
   virtual ~VariableNode();
 
   std::string name();
   
-  /*
   bool IsResolved();
-  Entity entity();
-  void SetEntity();
+  entity::Entity* entity();
+  void SetEntity(entity::DefinedVariable* var);
   TypeNode* type_node();
   bool IsParameter();
-  type::Type* OrigialType();
-  */
+  type::Type* original_type();
 
   Location* location();
   void _dump(Dumper* d);

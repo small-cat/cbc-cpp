@@ -32,6 +32,7 @@ public:
   // AST, ASM
   // @todo { ast and asm generated and dump }
   ast::ASTNode* GetAstByParseFile(const std::string& src, Options* opts);
+  bool DumpAst(ast::ASTNode* ast, CompilerMode mode);
 private:
   utils::ErrorHandler* err_handler_;
 };

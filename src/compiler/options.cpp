@@ -112,7 +112,7 @@ sysdep::LinkerOptions Options::ld_options() {
 
 void Options::ParseArgs(int argc, char* argv[]) {
   int ret = 0;
-  std::string optstring = ":Sco:O::v:I:l:L:";
+  std::string optstring = ":Sco:O::vI:l:L:";
   static struct option long_options[] = {
     {"check-syntax",  no_argument,       0, 300},
     {"dump-tokens",   no_argument,       0, 301},
@@ -292,7 +292,8 @@ void Options::ParseArgs(int argc, char* argv[]) {
 
       case '?':
         printf("extraneous argument\n");
-        break;
+        PrintUsage();
+        exit(EXIT_SUCCESS);
       default:
         printf("?? getopt_long_only returned character code 0%o ??\n", ret);
         exit(EXIT_FAILURE);
@@ -330,8 +331,25 @@ void Options::AddLdArg(const std::string& arg) {
   ld_args_.push_back(arg);
 }
 
+void Options::HelloSesame() {
+  printf("   .--,       .--,\n");
+  printf("  ( (  \\.---./  ) )\n");
+  printf("   '.__/o   o\\__.'\n");
+  printf("      {=  ^  =}\n");
+  printf("       >  -  <\n");
+  printf(" __.\"\"`-------`\"\".__\n");
+  printf("/         #         \\\n");
+  printf("\\       HELLO       /\n");
+  printf("/      SESAME!      \\\n");
+  printf("\\___________________/\n");
+  printf("     ___)( )(___\n");
+  printf("    (((__) (__)))\n");
+  printf("\n");
+}
+
 void Options::PrintUsage() {
-  printf("Usage: sesame [options] file...\n");
+  HelloSesame();
+  printf("\n");
   printf("Global Options:\n");
   printf("  --check-syntax   Checks syntax and quit.\n");
   printf("  --dump-tokens    Dumps tokens and quit.\n");
@@ -392,6 +410,7 @@ void Options::PrintUsage() {
 void Options::ParseError(const std::string& msg) {
   // throw parse error
   std::cout << "Parse Error: " << msg << std::endl;
+  exit(EXIT_FAILURE);
 }
 
 void Options::Split(const std::string& s, std::vector<std::string>& sv, const char delim) {

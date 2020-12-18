@@ -4,7 +4,7 @@ namespace parser {
 FileParser::FileParser(const std::string& filename) : filename_(filename) {}
 FileParser::~FileParser() {}
 
-SesameParser::Compilation_unitContext* FileParser::_ParseFile(std::error_code& ec) {
+ast::ASTNode* FileParser::_ParseFile(std::error_code& ec, bool check) {
   antlr4::ANTLRFileStream input(filename_);
   SesameLexer lexer(&input);
 
@@ -64,12 +64,20 @@ SesameParser::Compilation_unitContext* FileParser::_ParseFile(std::error_code& e
     return nullptr;
   }
 
-  return compile_ctx;
+  if (check) {
+    // check syntax only
+    return nullptr;
+  }
+
+  BuildAstVisitor ast_visitor(&parser, filename_);
+
+  // @todo[UNIMPLEMENT]/2020/12/17: 没有对 import files 进行处理
+  return ast_visitor.visitCompilation_unit(compile_ctx);
 }
 
 bool FileParser::ParseFile() {
   std::error_code ec;
-  _ParseFile(ec);
+  _ParseFile(ec, true);
   if (ec) {
     return false;
   } else {
@@ -79,12 +87,13 @@ bool FileParser::ParseFile() {
 
 ast::ASTNode* FileParser::BuildAst() {
   std::error_code ec;
-  auto compile_ctx = _ParseFile(ec);
+  auto sesame_ast = _ParseFile(ec, false);
 
   if (ec) {
     return nullptr;
   } else {
-    // todo, build ast
+    sesame_ast->SetTokenStrings(token_strings_); // save token strings to ast
+    return sesame_ast;
   }
 }
 std::vector<std::string> FileParser::GetTokenStrings() {

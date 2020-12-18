@@ -29,7 +29,7 @@ class CompileErrorCategory : public std::error_category {
     virtual std::string message(int err) const override {
       auto err_val = static_cast<CompileError>(err);
       switch (err_val) {
-        CompileError::SYNTAX_ERROR:
+        case CompileError::SYNTAX_ERROR:
           return "Syntax Error";
         default:
           return "Unknown Error";

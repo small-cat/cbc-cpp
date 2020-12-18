@@ -11,7 +11,7 @@ public:
   virtual ~ParamTypes() {}
 
   std::vector<Type*> Types() {
-    return Params();
+    return ParamDecs();
   }
 
   bool IsSameType(ParamTypes* t) {
@@ -23,9 +23,9 @@ public:
       return false;
     }
 
-    auto it1 = Params().begin();
-    auto it2 = t->Params().begin();
-    while (it1 != Params().end() && it2 != t->Params().end()) {
+    auto it1 = Types().begin();
+    auto it2 = t->Types().begin();
+    while (it1 != Types().end() && it2 != t->Types().end()) {
       if (!(*it1)->IsSameType(*it2)) {
         return false;
       }

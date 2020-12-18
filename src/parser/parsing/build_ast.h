@@ -16,6 +16,7 @@
 
 #include "../../ast/ast.hpp"
 #include "../../entity/defined_variable.h"
+#include "../../ast/expr/integer_literal_node.hpp"
 
 namespace parser {
 class BuildAstVisitor : public SesameParserBaseVisitor {
@@ -30,6 +31,16 @@ public:
   virtual antlrcpp::Any visitDef_func(SesameParser::Def_funcContext * ctx);
   virtual antlrcpp::Any visitTyperef(SesameParser::TyperefContext * ctx);
   virtual antlrcpp::Any visitParam_typerefs(SesameParser::Param_typerefsContext * ctx);
+  virtual antlrcpp::Any visitTyperef_void(SesameParser::Typeref_voidContext * ctx);
+  virtual antlrcpp::Any visitTyperef_char(SesameParser::Typeref_charContext * ctx);
+  virtual antlrcpp::Any visitTyperef_short(SesameParser::Typeref_shortContext * ctx);
+  virtual antlrcpp::Any visitTyperef_int(SesameParser::Typeref_intContext * ctx);
+  virtual antlrcpp::Any visitTyperef_long(SesameParser::Typeref_longContext * ctx);
+  virtual antlrcpp::Any visitTyperef_unsigned(SesameParser::Typeref_unsignedContext * ctx);
+  virtual antlrcpp::Any visitTyperef_struct(SesameParser::Typeref_structContext * ctx);
+  virtual antlrcpp::Any visitTyperef_union(SesameParser::Typeref_unionContext * ctx);
+  virtual antlrcpp::Any visitTyperef_usertype(SesameParser::Typeref_usertypeContext * ctx);
+
   virtual antlrcpp::Any visitFixed_param_typerefs(SesameParser::Fixed_param_typerefsContext * ctx);
   virtual antlrcpp::Any visitParams(SesameParser::ParamsContext * ctx);
   virtual antlrcpp::Any visitFixed_params(SesameParser::Fixed_paramsContext * ctx);
@@ -55,7 +66,6 @@ public:
   virtual antlrcpp::Any visitS_typedef(SesameParser::S_typedefContext * ctx);
 
   // build expression
-  virtual antlrcpp::Any visitExpr(SesameParser::ExprContext * ctx);
   virtual antlrcpp::Any visitAssignment_expr(SesameParser::Assignment_exprContext * ctx);
   virtual antlrcpp::Any visitOp_assign_expr(SesameParser::Op_assign_exprContext * ctx);
   virtual antlrcpp::Any visitExpression_10(SesameParser::Expression_10Context * ctx);
@@ -83,19 +93,42 @@ public:
   virtual antlrcpp::Any visitSizeof_expr(SesameParser::Sizeof_exprContext * ctx);
   virtual antlrcpp::Any visitUnary_postfix_expr(SesameParser::Unary_postfix_exprContext * ctx);
   virtual antlrcpp::Any visitPostfix(SesameParser::PostfixContext * ctx);
+  virtual antlrcpp::Any visitPrimary(SesameParser::PrimaryContext * ctx);
 
+  // stmt
+  virtual antlrcpp::Any visitExpr_stmt(SesameParser::Expr_stmtContext* ctx);
+  virtual antlrcpp::Any visitLabeled_stmt(SesameParser::Labeled_stmtContext * ctx);
+  virtual antlrcpp::Any visitIf_stmt(SesameParser::If_stmtContext * ctx);
+  virtual antlrcpp::Any visitWhile_stmt(SesameParser::While_stmtContext * ctx);
+  virtual antlrcpp::Any visitDo_while_stmt(SesameParser::Do_while_stmtContext * ctx);
+  virtual antlrcpp::Any visitFor_stmt(SesameParser::For_stmtContext * ctx);
+  virtual antlrcpp::Any visitSwitch_stmt(SesameParser::Switch_stmtContext * ctx);
+  virtual antlrcpp::Any visitCase_clause(SesameParser::Case_clauseContext * ctx);
+  virtual antlrcpp::Any visitCase_body(SesameParser::Case_bodyContext * ctx);
+  virtual antlrcpp::Any visitDefault_clause(SesameParser::Default_clauseContext * ctx);
+  virtual antlrcpp::Any visitBreak_stmt(SesameParser::Break_stmtContext * ctx);
+  virtual antlrcpp::Any visitContinue_stmt(SesameParser::Continue_stmtContext * ctx);
+  virtual antlrcpp::Any visitGoto_stmt(SesameParser::Goto_stmtContext * ctx);
+  virtual antlrcpp::Any visitReturn_stmt(SesameParser::Return_stmtContext * ctx);  
+  
+  // import declaration
   virtual antlrcpp::Any visitDeclaration_file(SesameParser::Declaration_fileContext *ctx);
+  virtual antlrcpp::Any visitFunc_decl(SesameParser::Func_declContext * ctx);
+  virtual antlrcpp::Any visitVar_decl(SesameParser::Var_declContext * ctx);
 
   void AddImportFile(const std::string& fname);
-  ast::CflatToken* GetCFlatToken(antlr4::Token* t);
+  std::vector<std::string> import_files();
+  ast::CflatToken* GetCFlatToken(antlr4::Token *t);  ast::IntegerLiteralNode* GetIntegerNode(ast::Location *l, std::string str);
+  long GetIntegerValue(std::string str, ast::Location *l);
+  long GetCharValue(const std::string& str, ast::Location *l);
 private:
   SesameParser* parser_;
   antlr4::TokenStream* tokens_;
   std::string filename_;
   std::vector<std::string> import_files_;
 
-  std::vector<entity::DefinedVariable*> defined_vars_;  // for def_vars only
-  std::vector<ast::SlotNode*> member_list_; // for member_list
+  std::vector<entity::DefinedVariable *> defined_vars_; // for def_vars only
+  std::vector<ast::SlotNode *> member_list_;            // for member_list
 };
 } /* parser */
 

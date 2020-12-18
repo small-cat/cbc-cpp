@@ -69,6 +69,7 @@ public:
   void AddLdArg(const std::string& arg);
   void ParseArgs(int argc, char* argv[]);
   void PrintUsage();
+  void HelloSesame();
 
   void ParseError(const std::string& msg);
 private:

@@ -27,7 +27,7 @@ long ARefNode::ElementSize() {
 }
 
 long ARefNode::Length() {
-  ((type::ArrayType*)(expr_->OriginalType()))->length();
+  return ((type::ArrayType*)(expr_->OriginalType()))->length();
 }
 
 type::Type* ARefNode::original_type() {

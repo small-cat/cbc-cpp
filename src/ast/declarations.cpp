@@ -47,6 +47,14 @@ std::vector<UnionTypeNode*> Declarations::def_unions() {
   return def_unions_;
 }
 
+void Declarations::AddDeclVar(entity::UndefinedVariable* undef_var) {
+  vardecls_.push_back(undef_var);
+}
+
+void Declarations::AddDeclFun(entity::UndefinedFunction* undef_fun) {
+  funcdecls_.push_back(undef_fun);
+}
+
 void Declarations::AddDefun(entity::DefinedFunction* fun) {
   defuns_.push_back(fun);
 }

@@ -1,3 +1,12 @@
+/** 
+* @copyright (c) Copyright, All Rights Reserved.
+* @license
+* @file: build_ast.cpp
+* @author: Jona
+* @email: mblrwuzy@gmail.com
+* @date: 2020/12/18
+* @brief: antlrcpp::Any 类型转换，只能转换成同样的类型，有继承关系的类型都不能转换成功
+*/
 #include "build_ast.h"
 
 #include "../../type/type_ref.hpp"
@@ -10,6 +19,7 @@
 #include "../../type/union_type_ref.h"
 #include "../../type/user_type_ref.hpp"
 #include "../../type/integer_type_ref.h"
+#include "../../type/void_type_ref.hpp"
 #include "../../ast/slot.hpp"
 
 // expr
@@ -31,10 +41,34 @@
 #include "../../ast/expr/member_node.hpp"
 #include "../../ast/expr/ptr_member_node.hpp"
 #include "../../ast/expr/funcall_node.hpp"
-#include ""
-#include "../../ast/expr/integer_literal_node.hpp"
 #include "../../ast/expr/string_literal_node.hpp"
 #include "../../ast/expr/variable_node.hpp"
+
+// stmt node
+#include "../../ast/stmt/stmt_node.hpp"
+#include "../../ast/stmt/block_node.hpp"
+#include "../../ast/stmt/expr_stmt_node.hpp"
+#include "../../ast/stmt/label_node.hpp"
+#include "../../ast/stmt/if_node.hpp"
+#include "../../ast/stmt/while_node.hpp"
+#include "../../ast/stmt/do_while_node.hpp"
+#include "../../ast/stmt/for_node.hpp"
+#include "../../ast/stmt/switch_node.hpp"
+#include "../../ast/stmt/case_node.hpp"
+#include "../../ast/stmt/break_node.hpp"
+#include "../../ast/stmt/continue_node.hpp"
+#include "../../ast/stmt/goto_node.hpp"
+#include "../../ast/stmt/return_node.hpp"
+
+// import declarations
+#include "../../ast/declarations.hpp"
+#include "../../entity/undefined_function.h"
+#include "../../entity/undefined_variable.h"
+
+// utils
+#include "../../utils/string_utils.hpp"
+
+#include <regex>
 
 namespace parser {
 BuildAstVisitor::BuildAstVisitor(SesameParser* parser, std::string fname) 
@@ -48,6 +82,69 @@ void BuildAstVisitor::AddImportFile(const std::string& fname) {
   import_files_.push_back(fname);
 }
 
+std::vector<std::string> BuildAstVisitor::import_files() {
+  return import_files_;
+}
+
+/************************************************************************************
+* @fn GetIntegerValue
+* @brief get long value from string of hex, oct or dec format
+* @param str is a format string like dec, hex or oct
+* @author Jona
+* @date 2020/12/17
+************************************************************************************/
+long BuildAstVisitor::GetIntegerValue(std::string str, ast::Location *l) {
+  // dec: 123UL, 123U, 123L
+  // hex: 0x123, 0X123
+  // oct: 0123
+  if (str.empty() || utils::StringUtils::StrCmp(str, "0")) {
+    return 0;
+  }
+
+  std::regex int_reg("[^0xX][0-9]*");
+  std::smatch int_match;
+  if (std::regex_search(str, int_match, int_reg)) {
+    if(int_match.size() > 1) {
+      std::cout << "Error: at " << l->ToString() << ", " << str << " is not an integer number" << std::endl;
+      // exit program directly, because you don't know what will happen next.
+      exit(EXIT_FAILURE);
+    } else {
+      return std::atol(int_match.str().c_str());
+    }
+  } else {
+    std::cout << "Error: at " << l->ToString() << ", " << str << " is not an integer number" << std::endl;
+    exit(EXIT_FAILURE);
+  }
+}
+
+ast::IntegerLiteralNode* BuildAstVisitor::GetIntegerNode(ast::Location *l, std::string str) {
+  long val = GetIntegerValue(str, l);
+  std::size_t len = str.length();
+  if (str.at(len-1) == 'L' || str.at(len-1) == 'l') {
+    if (str.at(len-2) == 'U' || str.at(len-2) == 'u') {
+      // UL
+      return new ast::IntegerLiteralNode(l, type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_ULONG), val);
+    } else {
+      // L
+      return new ast::IntegerLiteralNode(l, type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_LONG), val);
+    }
+  } else if (str.at(len-1) == 'U' || str.at(len-1) == 'u') {
+    // U
+    return new ast::IntegerLiteralNode(l, type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_UINT), val);
+  } else {
+    return new ast::IntegerLiteralNode(l, type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_INT), val);
+  }
+}
+
+long BuildAstVisitor::GetCharValue(const std::string& str, ast::Location *l) {
+  if (str.length() > 1) {
+    std::cout << "Error: at " << l->ToString() << ", " << str << " is not character" << std::endl;
+    exit(EXIT_FAILURE);
+  }
+
+  return (long)(str.at(0));
+}
+
 /************************************************************************************
 * @fn GetCFlatToken
 * @brief create CflatToken by antlr4 Token
@@ -57,7 +154,7 @@ void BuildAstVisitor::AddImportFile(const std::string& fname) {
 ************************************************************************************/
 ast::CflatToken* BuildAstVisitor::GetCFlatToken(antlr4::Token* t) {
   return new ast::CflatToken(t->getText(), t->getTokenIndex(),
-  t->getCharPositionInLine(), t->getStartIndex(), t->getStopIndex());
+  t->getLine(), t->getStartIndex(), t->getStopIndex(), t->getCharPositionInLine());
 }
 
 /************************************************************************************
@@ -176,6 +273,72 @@ antlrcpp::Any BuildAstVisitor::visitTyperef(SesameParser::TyperefContext * ctx) 
   return (antlrcpp::Any)ref;
 }
 
+antlrcpp::Any BuildAstVisitor::visitTyperef_void(SesameParser::Typeref_voidContext *ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  type::TypeRef* res = new type::VoidTypeRef(new ast::Location(filename_, t));
+  return (antlrcpp::Any)res;
+}
+
+antlrcpp::Any BuildAstVisitor::visitTyperef_char(SesameParser::Typeref_charContext *ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  type::TypeRef* res =  type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_CHAR, new ast::Location(filename_, t));
+  return (antlrcpp::Any)res;
+}
+
+antlrcpp::Any BuildAstVisitor::visitTyperef_short(SesameParser::Typeref_shortContext *ctx) {
+  ast::CflatToken *t = GetCFlatToken(ctx->start);
+  type::TypeRef* res = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_SHORT, new ast::Location(filename_, t));
+  return (antlrcpp::Any)res;
+}
+
+antlrcpp::Any BuildAstVisitor::visitTyperef_int(SesameParser::Typeref_intContext *ctx) {
+  ast::CflatToken *t = GetCFlatToken(ctx->start);
+  type::TypeRef* res = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_INT, new ast::Location(filename_, t));
+
+  return (antlrcpp::Any)res;
+}
+
+antlrcpp::Any BuildAstVisitor::visitTyperef_long(SesameParser::Typeref_longContext *ctx) {
+  ast::CflatToken *t = GetCFlatToken(ctx->start);
+  type::TypeRef* res = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_LONG, new ast::Location(filename_, t));
+  return (antlrcpp::Any)res;
+}
+
+antlrcpp::Any BuildAstVisitor::visitTyperef_unsigned(SesameParser::Typeref_unsignedContext *ctx) {
+  ast::CflatToken *t = GetCFlatToken(ctx->start);
+  type::TypeRef* res = nullptr;
+
+  if (ctx->S_CHAR()) {
+    res = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_UCHAR, new ast::Location(filename_, t));
+  } else if (ctx->S_SHORT()) {
+    res = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_USHORT, new ast::Location(filename_, t));
+  } else if (ctx->S_INT()) {
+    res = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_UINT, new ast::Location(filename_, t));
+  } else if (ctx->S_LONG()) {
+    res = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_ULONG, new ast::Location(filename_, t));
+  }
+
+  return (antlrcpp::Any)res;
+}
+
+antlrcpp::Any BuildAstVisitor::visitTyperef_struct(SesameParser::Typeref_structContext *ctx) {
+  ast::CflatToken *t = GetCFlatToken(ctx->start);
+  std::string name = ctx->IDENTIFIER()->getText();
+  return (antlrcpp::Any)(new type::StructTypeRef(new ast::Location(filename_, t), name));
+}
+
+antlrcpp::Any BuildAstVisitor::visitTyperef_union(SesameParser::Typeref_unionContext *ctx) {
+  ast::CflatToken *t = GetCFlatToken(ctx->start);
+  std::string name = ctx->IDENTIFIER()->getText();
+  return (antlrcpp::Any)(new type::UnionTypeRef(new ast::Location(filename_, t), name));
+}
+
+antlrcpp::Any BuildAstVisitor::visitTyperef_usertype(SesameParser::Typeref_usertypeContext *ctx) {
+  ast::CflatToken *t = GetCFlatToken(ctx->start);
+  std::string user_type_name = ctx->IDENTIFIER()->getText();
+  return (antlrcpp::Any)(new type::UserTypeRef(new ast::Location(filename_, t), user_type_name));
+}
+
 antlrcpp::Any BuildAstVisitor::visitParams(SesameParser::ParamsContext * ctx) {
   if (ctx->S_VOID()) {
     ast::CflatToken* t = GetCFlatToken(ctx->start);
@@ -227,7 +390,7 @@ antlrcpp::Any BuildAstVisitor::visitParam_typerefs(SesameParser::Param_typerefsC
 
 antlrcpp::Any BuildAstVisitor::visitType(SesameParser::TypeContext * ctx) {
   type::TypeRef* ref = (type::TypeRef*)visit(ctx->typeref());
-  return new ast::TypeNode(ref);
+  return (antlrcpp::Any)(new ast::TypeNode(ref));
 }
 
 antlrcpp::Any BuildAstVisitor::visitFixed_param_typerefs(SesameParser::Fixed_param_typerefsContext * ctx) {
@@ -242,7 +405,25 @@ antlrcpp::Any BuildAstVisitor::visitFixed_param_typerefs(SesameParser::Fixed_par
 }
 
 antlrcpp::Any BuildAstVisitor::visitBlock(SesameParser::BlockContext * ctx) {
-  // @todo[UNIMPLEMENT]/2020/12/16: not implement
+  std::vector<entity::DefinedVariable *> defined_var_list; 
+  auto def_vars_list = ctx->def_vars();
+  for (auto& def_var : def_vars_list) {
+    visit(def_var);
+    for (auto& var : defined_vars_) {
+      defined_var_list.push_back(var);
+    }
+  }
+
+  auto stmts_ctx = ctx->stmts();
+  std::vector<ast::StmtNode *> stmt_list;
+  auto stmt_list_ctx = stmts_ctx->stmt();
+  for (auto& st : stmt_list_ctx) {
+    ast::StmtNode* s = (ast::StmtNode *)visit(st);
+    stmt_list.push_back(s);
+  }
+
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  return (antlrcpp::Any)(new ast::BlockNode(new ast::Location(filename_, t), defined_var_list, stmt_list));
 }
 
 /************************************************************************************
@@ -331,7 +512,7 @@ antlrcpp::Any BuildAstVisitor::visitS_typedef(SesameParser::S_typedefContext * c
 }
 
 /************************************************************************************
-* @fn visitExpr
+* @fn 
 * @brief build ast for expression
 * @param
 * @author Jona
@@ -341,7 +522,8 @@ antlrcpp::Any BuildAstVisitor::visitAssignment_expr(SesameParser::Assignment_exp
   ast::ExprNode* lhs = (ast::ExprNode*)visit(ctx->term());
   ast::ExprNode* rhs = (ast::ExprNode*)visit(ctx->expr());;
   
-  return (antlrcpp::Any)(new ast::AssignNode(lhs, rhs));
+  ast::ExprNode* res = new ast::AssignNode(lhs, rhs);
+  return (antlrcpp::Any)res;
 }
 
 antlrcpp::Any BuildAstVisitor::visitOp_assign_expr(SesameParser::Op_assign_exprContext * ctx) {
@@ -350,7 +532,8 @@ antlrcpp::Any BuildAstVisitor::visitOp_assign_expr(SesameParser::Op_assign_exprC
   ast::ExprNode *rhs = (ast::ExprNode *)visit(ctx->expr());
   std::string op_str = tokens_->getText(ctx->opassign_op());
 
-  return (antlrcpp::Any)(new ast::OpAssignNode(lhs, op_str, rhs));
+  ast::ExprNode* res = new ast::OpAssignNode(lhs, op_str, rhs);
+  return (antlrcpp::Any)res;
 }
 
 antlrcpp::Any BuildAstVisitor::visitExpression_10(SesameParser::Expression_10Context * ctx) {
@@ -363,7 +546,7 @@ antlrcpp::Any BuildAstVisitor::visitExpr10(SesameParser::Expr10Context * ctx) {
     // 三目操作符
     ast::ExprNode* then_expr = (ast::ExprNode*)visit(ctx->expr());
     ast::ExprNode* else_expr = (ast::ExprNode*)visit(ctx->expr10());
-    return (antlrcpp::Any)(new ast::CondExprNode(cond, then_expr, else_expr));
+    return (antlrcpp::Any)((ast::ExprNode *)(new ast::CondExprNode(cond, then_expr, else_expr)));
   }
 
   return (antlrcpp::Any)cond;
@@ -488,57 +671,59 @@ antlrcpp::Any BuildAstVisitor::visitTerm(SesameParser::TermContext * ctx) {
 
   ast::TypeNode *tn = (ast::TypeNode *)visit(ctx->type());
   ast::ExprNode *expr = (ast::ExprNode *)visit(ctx->term());
-  return (antlrcpp::Any)(new ast::CastNode(tn, expr));
+  return (antlrcpp::Any)((ast::ExprNode *)(new ast::CastNode(tn, expr)));
 }
 
 antlrcpp::Any BuildAstVisitor::visitInc_expr(SesameParser::Inc_exprContext *ctx) {
   ast::ExprNode *expr = (ast::ExprNode *)visit(ctx->unary());
-  return (antlrcpp::Any)(new ast::PrefixOpNode("++", expr));
+  return (antlrcpp::Any)((ast::ExprNode *)(new ast::PrefixOpNode("++", expr)));
 }
 
 antlrcpp::Any BuildAstVisitor::visitDec_expr(SesameParser::Dec_exprContext *ctx) {
   ast::ExprNode *expr = (ast::ExprNode *)visit(ctx->unary());
-  return (antlrcpp::Any)(new ast::PrefixOpNode("--", expr));
+  return (antlrcpp::Any)((ast::ExprNode *)(new ast::PrefixOpNode("--", expr)));
 }
 
 antlrcpp::Any BuildAstVisitor::visitPositive_expr(SesameParser::Positive_exprContext *ctx) {
   ast::ExprNode *expr = (ast::ExprNode *)visit(ctx->term());
-  return (antlrcpp::Any)(new ast::UnaryOpNode("+", expr));
+  return (antlrcpp::Any)((ast::ExprNode *)(new ast::UnaryOpNode("+", expr)));
 }
 
 antlrcpp::Any BuildAstVisitor::visitNegative_expr(SesameParser::Negative_exprContext *ctx) {
   ast::ExprNode *expr = (ast::ExprNode *)visit(ctx->term());
-  return (antlrcpp::Any)(new ast::UnaryOpNode("-", expr));
+  return (antlrcpp::Any)((ast::ExprNode *)(new ast::UnaryOpNode("-", expr)));
 }
 
 antlrcpp::Any BuildAstVisitor::visitLogic_not_expr(SesameParser::Logic_not_exprContext *ctx) {
   ast::ExprNode *expr = (ast::ExprNode *)visit(ctx->term());
-  return (antlrcpp::Any)(new ast::UnaryOpNode("!", expr));
+  return (antlrcpp::Any)((ast::ExprNode *)(new ast::UnaryOpNode("!", expr)));
 }
 
 antlrcpp::Any BuildAstVisitor::visitBit_not_expr(SesameParser::Bit_not_exprContext *ctx) {
   ast::ExprNode *expr = (ast::ExprNode *)visit(ctx->term());
-  return (antlrcpp::Any)(new ast::UnaryOpNode("~", expr));
+  return (antlrcpp::Any)((ast::ExprNode *)(new ast::UnaryOpNode("~", expr)));
 }
 
 antlrcpp::Any BuildAstVisitor::visitDereference_expr(SesameParser::Dereference_exprContext *ctx) {
   ast::ExprNode *expr = (ast::ExprNode *)visit(ctx->term());
-  return (antlrcpp::Any)(new ast::DereferenceNode(expr));
+  return (antlrcpp::Any)((ast::ExprNode *)(new ast::DereferenceNode(expr)));
 }
 
 antlrcpp::Any BuildAstVisitor::visitAddr_expr(SesameParser::Addr_exprContext *ctx) {
   ast::ExprNode *expr = (ast::ExprNode *)visit(ctx->term());
-  return (antlrcpp::Any)(new ast::AddressNode(expr));
+  return (antlrcpp::Any)((ast::ExprNode *)(new ast::AddressNode(expr)));
 }
 
 antlrcpp::Any BuildAstVisitor::visitSizeof_type_expr(SesameParser::Sizeof_type_exprContext * ctx) {
   ast::TypeNode *tn = (ast::TypeNode *)visit(ctx->type());
-  return (antlrcpp::Any)(new ast::SizeofTypeNode(tn, type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_ULONG)));
+  ast::ExprNode* res = new ast::SizeofTypeNode(tn, type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_ULONG));
+  return (antlrcpp::Any)res;
 }
 
 antlrcpp::Any BuildAstVisitor::visitSizeof_expr(SesameParser::Sizeof_exprContext *ctx) {
   ast::ExprNode *expr = (ast::ExprNode *)visit(ctx->unary());
-  return (antlrcpp::Any)(new ast::SizeofExprNode(expr, type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_ULONG)));
+  ast::ExprNode* res = new ast::SizeofExprNode(expr, type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_ULONG));
+  return (antlrcpp::Any)res;
 }
 
 antlrcpp::Any BuildAstVisitor::visitUnary_postfix_expr(SesameParser::Unary_postfix_exprContext *ctx) {
@@ -595,6 +780,230 @@ antlrcpp::Any BuildAstVisitor::visitPostfix(SesameParser::PostfixContext * ctx) 
   }
 
   return (antlrcpp::Any)expr;
+}
+
+antlrcpp::Any BuildAstVisitor::visitPrimary(SesameParser::PrimaryContext * ctx) {
+  ast::CflatToken *t = GetCFlatToken(ctx->start);
+  ast::Location *l = new ast::Location(filename_, t);
+
+  if (ctx->S_CHARACTER()) {
+    return (antlrcpp::Any)((ast::ExprNode *)(new ast::IntegerLiteralNode(l, type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_CHAR), GetCharValue(ctx->S_CHARACTER()->getText(), l))));
+  }
+
+  if (ctx->S_STRING()) {
+    return (antlrcpp::Any)((ast::ExprNode *)(new ast::StringLiteralNode(l, new type::PointerTypeRef(type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_CHAR)), ctx->S_STRING()->getText())));
+  }
+
+  if (ctx->IDENTIFIER()) {
+    return (antlrcpp::Any)((ast::ExprNode *)(new ast::VariableNode(l, ctx->IDENTIFIER()->getText())));
+  }
+
+  if (ctx->expr()) {
+    return visit(ctx->expr());
+  }
+
+  // INTEGER, HEX, OCT
+  return (antlrcpp::Any)((ast::ExprNode *)GetIntegerNode(l, tokens_->getText(ctx)));
+}
+
+/************************************************************************************
+* @fn 
+* @brief build ast for statement
+* @param
+* @author Jona
+* @date 2020/12/17
+************************************************************************************/
+antlrcpp::Any BuildAstVisitor::visitExpr_stmt(SesameParser::Expr_stmtContext* ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  ast::ExprNode *e = (ast::ExprNode *)visit(ctx->expr());
+  return (antlrcpp::Any)((ast::StmtNode *)(new ast::ExprStmtNode(new ast::Location(filename_, t), e)));
+}
+
+antlrcpp::Any BuildAstVisitor::visitLabeled_stmt(SesameParser::Labeled_stmtContext *ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  auto stmt_node = (ast::StmtNode *)visit(ctx->stmt());
+  return (antlrcpp::Any)((ast::StmtNode *)(new ast::LabelNode(new ast::Location(filename_, t), ctx->label_name->getText(), stmt_node)));
+}
+
+antlrcpp::Any BuildAstVisitor::visitIf_stmt(SesameParser::If_stmtContext *ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  ast::ExprNode* cond = (ast::ExprNode *)visit(ctx->expr());
+  ast::StmtNode* then_body = (ast::StmtNode *)visit(ctx->then_stmt);
+  ast::StmtNode* else_body = nullptr;
+
+  if (ctx->else_stmt) {
+    else_body = (ast::StmtNode *)visit(ctx->else_stmt);
+  }
+
+  return (antlrcpp::Any)((ast::StmtNode *)(new ast::IfNode(new ast::Location(filename_, t), cond, then_body, else_body)));
+}
+
+antlrcpp::Any BuildAstVisitor::visitWhile_stmt(SesameParser::While_stmtContext *ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  ast::ExprNode* cond = (ast::ExprNode *)visit(ctx->expr());
+  ast::StmtNode* st = (ast::StmtNode *)visit(ctx->stmt());
+
+  return (antlrcpp::Any)((ast::StmtNode *)(new ast::WhileNode(new ast::Location(filename_, t), cond, st)));
+}
+
+antlrcpp::Any BuildAstVisitor::visitDo_while_stmt(SesameParser::Do_while_stmtContext *ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  auto e = (ast::ExprNode *)visit(ctx->cond);
+  auto st = (ast::StmtNode *)visit(ctx->body);
+
+  return (antlrcpp::Any)((ast::StmtNode *)(new ast::DoWhileNode(new ast::Location(filename_, t), st, e)));
+}
+
+antlrcpp::Any BuildAstVisitor::visitFor_stmt(SesameParser::For_stmtContext *ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  ast::ExprNode* init_expr = nullptr;
+  ast::ExprNode* cond_expr = nullptr;
+
+  if (ctx->init) {
+    init_expr = (ast::ExprNode *)visit(ctx->init);
+  }
+
+  if (ctx->cond) {
+    cond_expr = (ast::ExprNode *)visit(ctx->cond);
+  }
+
+  ast::ExprNode* incr_expr = (ast::ExprNode *)visit(ctx->incr);
+  ast::StmtNode* st = (ast::StmtNode *)visit(ctx->body);
+
+  return (antlrcpp::Any)((ast::StmtNode *)(new ast::ForNode(new ast::Location(filename_, t), init_expr, cond_expr, incr_expr, st)));
+}
+
+antlrcpp::Any BuildAstVisitor::visitSwitch_stmt(SesameParser::Switch_stmtContext *ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  ast::ExprNode* cond_expr = (ast::ExprNode *)visit(ctx->cond);
+
+  auto case_clauses_ctx = ctx->case_clauses();
+  auto case_list_ctx = case_clauses_ctx->case_clause();
+  auto default_case_ctx = case_clauses_ctx->default_clause();
+
+  std::vector<ast::CaseNode *> case_node_list;
+  for (auto& c : case_list_ctx) {
+    ast::CaseNode* cn = (ast::CaseNode *)visit(c);
+    case_node_list.push_back(cn);
+  }
+
+  if (default_case_ctx) {
+    ast::CaseNode* cn = (ast::CaseNode *)visit(default_case_ctx);
+    case_node_list.push_back(cn);
+  }
+
+  return (antlrcpp::Any)((ast::StmtNode *)(new ast::SwitchNode(new ast::Location(filename_, t), cond_expr, case_node_list)));
+}
+
+antlrcpp::Any BuildAstVisitor::visitCase_clause(SesameParser::Case_clauseContext * ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  auto cases_ctx = ctx->cases();
+  auto primary_ctx = cases_ctx->primary();
+
+  std::vector<ast::ExprNode *> expr_list;
+  for (auto& p : primary_ctx) {
+    ast::ExprNode* e = (ast::ExprNode *)visit(p);
+    expr_list.push_back(e);
+  }
+
+  ast::BlockNode* bn = (ast::BlockNode *)visit(ctx->body);
+  return (antlrcpp::Any)(new ast::CaseNode(new ast::Location(filename_, t), expr_list, bn));
+}
+
+antlrcpp::Any BuildAstVisitor::visitCase_body(SesameParser::Case_bodyContext * ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  auto stmts_ctx = ctx->stmt();
+  std::vector<ast::StmtNode *> stmt_list;
+  std::vector<entity::DefinedVariable *> def_vars;
+
+  for (auto& st : stmts_ctx) {
+    ast::StmtNode* s = (ast::StmtNode *)visit(st);
+    stmt_list.push_back(s);
+  }
+
+  return (antlrcpp::Any)(new ast::BlockNode(new ast::Location(filename_, t), def_vars, stmt_list));
+}
+
+antlrcpp::Any BuildAstVisitor::visitDefault_clause(SesameParser::Default_clauseContext * ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  std::vector<ast::ExprNode *> expr_list;
+  auto bn = (ast::BlockNode *)visit(ctx->body);
+  return (antlrcpp::Any)(new ast::CaseNode(new ast::Location(filename_, t), expr_list, bn));
+}
+
+antlrcpp::Any BuildAstVisitor::visitBreak_stmt(SesameParser::Break_stmtContext *ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  return (antlrcpp::Any)((ast::StmtNode *)(new ast::BreakNode(new ast::Location(filename_, t))));
+}
+
+antlrcpp::Any BuildAstVisitor::visitContinue_stmt(SesameParser::Continue_stmtContext *ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  return (antlrcpp::Any)((ast::StmtNode *)(new ast::ContinueNode(new ast::Location(filename_, t))));
+}
+
+antlrcpp::Any BuildAstVisitor::visitGoto_stmt(SesameParser::Goto_stmtContext *ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  return (antlrcpp::Any)((ast::StmtNode *)(new ast::GotoNode(new ast::Location(filename_, t), ctx->label_name->getText())));
+}
+
+antlrcpp::Any BuildAstVisitor::visitReturn_stmt(SesameParser::Return_stmtContext *ctx) {
+  ast::CflatToken* t = GetCFlatToken(ctx->start);
+  ast::ExprNode* e = nullptr;
+
+  if (ctx->expr()) {
+    e = (ast::ExprNode *)visit(ctx->expr());
+  }
+
+  return (antlrcpp::Any)((ast::StmtNode *)(new ast::ReturnNode(new ast::Location(filename_, t), e)));
+}
+
+antlrcpp::Any BuildAstVisitor::visitDeclaration_file(SesameParser::Declaration_fileContext * ctx) {
+  auto imports_ctx = ctx->import_stmt();
+  for (auto& imp : imports_ctx) {
+    std::string fname = tokens_->getText(imp->import_name());
+    AddImportFile(fname);
+  }
+
+  ast::Declarations* decls_node = new ast::Declarations();
+  auto decls_stmt = ctx->declaration_stmt();
+  for (auto& decl : decls_stmt) {
+    if (decl->func_decl()) {
+      auto decl_fun = (entity::UndefinedFunction *)visit(decl->func_decl());
+      decls_node->AddDeclFun(decl_fun);
+    } else if (decl->var_decl()) {
+      auto decl_var = (entity::UndefinedVariable *)visit(decl->var_decl());
+      decls_node->AddDeclVar(decl_var);
+    } else if (decl->def_const()) {
+      auto def_con = (entity::Constant *)visit(decl->def_const());
+      decls_node->AddConstant(def_con);
+    } else if (decl->def_struct()) {
+      auto def_struct_node = (ast::StructTypeNode *)visit(decl->def_struct());
+      decls_node->AddStruct(def_struct_node);
+    } else if (decl->def_union()) {
+      auto def_union_node = (ast::UnionTypeNode *)visit(decl->def_union());
+      decls_node->AddUnion(def_union_node);
+    } else if (decl->s_typedef()) {
+      auto typedef_node = (ast::TypeDefNode *)visit(decl->s_typedef());
+      decls_node->AddTypedef(typedef_node);
+    }
+  }
+
+  return (antlrcpp::Any)decls_node;
+}
+
+antlrcpp::Any BuildAstVisitor::visitFunc_decl(SesameParser::Func_declContext * ctx) {
+  std::string func_name = tokens_->getText(ctx->name());
+  type::TypeRef* ref = (type::TypeRef *)visit(ctx->typeref());
+  auto pams = (entity::Params *)visit(ctx->params());
+
+  type::TypeRef* tr = new type::FunctionTypeRef(ref, pams->GetParameterTypeRefs());
+  return (antlrcpp::Any)(new entity::UndefinedFunction(new ast::TypeNode(tr), func_name, pams));
+}
+
+antlrcpp::Any BuildAstVisitor::visitVar_decl(SesameParser::Var_declContext * ctx) {
+  auto tn = (ast::TypeNode *)visit(ctx->type());
+  std::string var_name = tokens_->getText(ctx->name());
+  return (antlrcpp::Any)(new entity::UndefinedVariable(tn, var_name));
 }
 
 } /* parser */

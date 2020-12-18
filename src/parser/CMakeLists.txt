@@ -50,6 +50,7 @@ endforeach(src_file ${antlr4-parser_SRC})
 # executable file name
 add_library(sesame_parser SHARED
   ${CMAKE_CURRENT_SOURCE_DIR}/parsing/parser.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/parsing/build_ast.cpp
   ${antlr4-parser_SRC}
   )
 

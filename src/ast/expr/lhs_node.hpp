@@ -17,7 +17,7 @@ namespace ast {
 class LHSNode : public ExprNode {
 public:
   LHSNode() : type_(nullptr), original_type_(nullptr) {}
-  virtual ~LHSNode();
+  virtual ~LHSNode() {}
 
   void SetType(type::Type* type) {
     type_ = type;

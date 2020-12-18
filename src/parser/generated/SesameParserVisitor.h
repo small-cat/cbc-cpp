@@ -24,6 +24,8 @@ public:
 
     virtual antlrcpp::Any visitDeclaration_file(SesameParser::Declaration_fileContext *context) = 0;
 
+    virtual antlrcpp::Any visitDeclaration_stmt(SesameParser::Declaration_stmtContext *context) = 0;
+
     virtual antlrcpp::Any visitImport_stmt(SesameParser::Import_stmtContext *context) = 0;
 
     virtual antlrcpp::Any visitImport_name(SesameParser::Import_nameContext *context) = 0;
@@ -68,7 +70,23 @@ public:
 
     virtual antlrcpp::Any visitTyperef(SesameParser::TyperefContext *context) = 0;
 
-    virtual antlrcpp::Any visitTyperef_base(SesameParser::Typeref_baseContext *context) = 0;
+    virtual antlrcpp::Any visitTyperef_void(SesameParser::Typeref_voidContext *context) = 0;
+
+    virtual antlrcpp::Any visitTyperef_char(SesameParser::Typeref_charContext *context) = 0;
+
+    virtual antlrcpp::Any visitTyperef_short(SesameParser::Typeref_shortContext *context) = 0;
+
+    virtual antlrcpp::Any visitTyperef_int(SesameParser::Typeref_intContext *context) = 0;
+
+    virtual antlrcpp::Any visitTyperef_long(SesameParser::Typeref_longContext *context) = 0;
+
+    virtual antlrcpp::Any visitTyperef_unsigned(SesameParser::Typeref_unsignedContext *context) = 0;
+
+    virtual antlrcpp::Any visitTyperef_struct(SesameParser::Typeref_structContext *context) = 0;
+
+    virtual antlrcpp::Any visitTyperef_union(SesameParser::Typeref_unionContext *context) = 0;
+
+    virtual antlrcpp::Any visitTyperef_usertype(SesameParser::Typeref_usertypeContext *context) = 0;
 
     virtual antlrcpp::Any visitTyperef_precise(SesameParser::Typeref_preciseContext *context) = 0;
 
@@ -81,6 +99,8 @@ public:
     virtual antlrcpp::Any visitStmt(SesameParser::StmtContext *context) = 0;
 
     virtual antlrcpp::Any visitLabeled_stmt(SesameParser::Labeled_stmtContext *context) = 0;
+
+    virtual antlrcpp::Any visitExpr_stmt(SesameParser::Expr_stmtContext *context) = 0;
 
     virtual antlrcpp::Any visitIf_stmt(SesameParser::If_stmtContext *context) = 0;
 

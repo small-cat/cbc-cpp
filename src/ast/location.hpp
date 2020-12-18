@@ -7,7 +7,7 @@ namespace ast {
 class Location {
 public:
   Location(std::string name, CflatToken* t);
-  Location(std::string name, std::string text, std::size_t i, std::size_t l, std::size_t s, std::size_t e);
+  Location(std::string name, std::string text, std::size_t i, std::size_t l, std::size_t s, std::size_t e, std::size_t pil);
   virtual ~Location();
 
   std::string source_name();

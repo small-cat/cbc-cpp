@@ -13,7 +13,11 @@ compilation_unit
     ;
 
 declaration_file
-    : import_stmt* (func_decl | var_decl | def_const | def_struct | def_union | s_typedef)*
+    : import_stmt* declaration_stmt* 
+    ;
+
+declaration_stmt
+    : func_decl | var_decl | def_const | def_struct | def_union | s_typedef
     ;
 
 // import stdio -> #include <stdio.h>
@@ -116,18 +120,15 @@ typeref
     ;
 
 typeref_base
-    : S_VOID
-    | S_CHAR
-    | S_SHORT
-    | S_INT
-    | S_LONG
-    | S_UNSIGNED S_CHAR
-    | S_UNSIGNED S_SHORT
-    | S_UNSIGNED S_INT
-    | S_UNSIGNED S_LONG
-    | S_STRUCT IDENTIFIER
-    | S_UNION IDENTIFIER
-    | IDENTIFIER    // here, the type named identifier must be typedef
+    : S_VOID                # typeref_void
+    | S_CHAR                # typeref_char
+    | S_SHORT               # typeref_short
+    | S_INT                 # typeref_int
+    | S_LONG                # typeref_long
+    | S_UNSIGNED (S_CHAR | S_SHORT | S_INT | S_LONG)     # typeref_unsigned
+    | S_STRUCT IDENTIFIER   # typeref_struct
+    | S_UNION IDENTIFIER    # typeref_union
+    | IDENTIFIER            # typeref_usertype // here, the type named identifier must be typedef
     ;
 
 typeref_precise
@@ -152,7 +153,7 @@ stmts
 stmt
     : SEMI
     | labeled_stmt      // the label for goto
-    | expr SEMI
+    | expr_stmt
     | block
     | if_stmt
     | while_stmt
@@ -169,9 +170,13 @@ labeled_stmt
     : label_name=IDENTIFIER COLON stmt
     ;
 
+expr_stmt
+    : expr SEMI
+    ;
+
 // if (cond) ... else ... 
 if_stmt
-    : S_IF LPAREN expr RPAREN stmt (S_ELSE stmt)?
+    : S_IF LPAREN expr RPAREN then_stmt=stmt (S_ELSE else_stmt=stmt)?
     ;
 
 while_stmt

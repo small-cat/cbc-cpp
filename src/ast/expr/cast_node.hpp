@@ -35,7 +35,7 @@ public:
 
   // void accept(ASTVisitor* visitor);
 private:
-  TypeNode type_node_;
+  TypeNode* type_node_;
   ExprNode* expr_;
 };
 } /* end ast */

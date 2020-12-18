@@ -1,6 +1,9 @@
 #ifndef __AST_H__
 #define __AST_H__
 
+#include <iostream>
+#include <vector>
+
 #include "node.hpp"
 #include "declarations.hpp"
 #include "location.hpp"
@@ -18,11 +21,15 @@ public:
 
   Location* location();
   void AddDeclarations(Declarations* decl);
+
+  void SetTokenStrings(std::vector<std::string> sv);
+  void DumpTokens();
 private:
   Location* location_;
   Declarations* declarations_;
   entity::TopLevelScope* scope_;
   entity::ConstantTable* constant_table_;
+  std::vector<std::string> token_strings_;
 };
 } /* end ast */
 

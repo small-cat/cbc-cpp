@@ -2,8 +2,8 @@
 
 namespace ast {
 CflatToken::CflatToken() : index_(0), line_no_(0), start_(0), end_(0) {}
-CflatToken::CflatToken(std::string str, std::size_t i, std::size_t l, std::size_t s, std::size_t e)
-  : text_(str), index_(i), line_no_(l), start_(s), end_(e) {}
+CflatToken::CflatToken(std::string str, std::size_t i, std::size_t l, std::size_t s, std::size_t e, std::size_t pos_in_line)
+  : text_(str), index_(i), line_no_(l), start_(s), end_(e), pos_in_line_(pos_in_line) {}
 
 CflatToken::~CflatToken() {}
 
@@ -52,9 +52,14 @@ void CflatToken::SetEnd(std::size_t e) {
   end_ = e;
 }
 
+std::size_t CflatToken::position_in_line() {
+  return pos_in_line_;
+}
+
 std::string CflatToken::ToString() {
   // [@103,325:325=' ',<71>,channel=1,23:10]
   return "[@" + std::to_string(index_) + "," + std::to_string(start_) + ":" + 
-    std::to_string(end_) + "='" + text_ + "'" + "," + std::to_string(line_no_) + "]";
+    std::to_string(end_) + "='" + text_ + "'" + "," + std::to_string(line_no_) 
+    + ":" + std::to_string(pos_in_line_) + "]";
 }
 } /* end ast */

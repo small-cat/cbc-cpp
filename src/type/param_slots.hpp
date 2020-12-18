@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include "../ast/location.cpp"
+#include "../ast/location.hpp"
 
 namespace type {
 

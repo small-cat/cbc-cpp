@@ -22,6 +22,9 @@ public:
   virtual void enterDeclaration_file(SesameParser::Declaration_fileContext *ctx) = 0;
   virtual void exitDeclaration_file(SesameParser::Declaration_fileContext *ctx) = 0;
 
+  virtual void enterDeclaration_stmt(SesameParser::Declaration_stmtContext *ctx) = 0;
+  virtual void exitDeclaration_stmt(SesameParser::Declaration_stmtContext *ctx) = 0;
+
   virtual void enterImport_stmt(SesameParser::Import_stmtContext *ctx) = 0;
   virtual void exitImport_stmt(SesameParser::Import_stmtContext *ctx) = 0;
 
@@ -88,8 +91,32 @@ public:
   virtual void enterTyperef(SesameParser::TyperefContext *ctx) = 0;
   virtual void exitTyperef(SesameParser::TyperefContext *ctx) = 0;
 
-  virtual void enterTyperef_base(SesameParser::Typeref_baseContext *ctx) = 0;
-  virtual void exitTyperef_base(SesameParser::Typeref_baseContext *ctx) = 0;
+  virtual void enterTyperef_void(SesameParser::Typeref_voidContext *ctx) = 0;
+  virtual void exitTyperef_void(SesameParser::Typeref_voidContext *ctx) = 0;
+
+  virtual void enterTyperef_char(SesameParser::Typeref_charContext *ctx) = 0;
+  virtual void exitTyperef_char(SesameParser::Typeref_charContext *ctx) = 0;
+
+  virtual void enterTyperef_short(SesameParser::Typeref_shortContext *ctx) = 0;
+  virtual void exitTyperef_short(SesameParser::Typeref_shortContext *ctx) = 0;
+
+  virtual void enterTyperef_int(SesameParser::Typeref_intContext *ctx) = 0;
+  virtual void exitTyperef_int(SesameParser::Typeref_intContext *ctx) = 0;
+
+  virtual void enterTyperef_long(SesameParser::Typeref_longContext *ctx) = 0;
+  virtual void exitTyperef_long(SesameParser::Typeref_longContext *ctx) = 0;
+
+  virtual void enterTyperef_unsigned(SesameParser::Typeref_unsignedContext *ctx) = 0;
+  virtual void exitTyperef_unsigned(SesameParser::Typeref_unsignedContext *ctx) = 0;
+
+  virtual void enterTyperef_struct(SesameParser::Typeref_structContext *ctx) = 0;
+  virtual void exitTyperef_struct(SesameParser::Typeref_structContext *ctx) = 0;
+
+  virtual void enterTyperef_union(SesameParser::Typeref_unionContext *ctx) = 0;
+  virtual void exitTyperef_union(SesameParser::Typeref_unionContext *ctx) = 0;
+
+  virtual void enterTyperef_usertype(SesameParser::Typeref_usertypeContext *ctx) = 0;
+  virtual void exitTyperef_usertype(SesameParser::Typeref_usertypeContext *ctx) = 0;
 
   virtual void enterTyperef_precise(SesameParser::Typeref_preciseContext *ctx) = 0;
   virtual void exitTyperef_precise(SesameParser::Typeref_preciseContext *ctx) = 0;
@@ -108,6 +135,9 @@ public:
 
   virtual void enterLabeled_stmt(SesameParser::Labeled_stmtContext *ctx) = 0;
   virtual void exitLabeled_stmt(SesameParser::Labeled_stmtContext *ctx) = 0;
+
+  virtual void enterExpr_stmt(SesameParser::Expr_stmtContext *ctx) = 0;
+  virtual void exitExpr_stmt(SesameParser::Expr_stmtContext *ctx) = 0;
 
   virtual void enterIf_stmt(SesameParser::If_stmtContext *ctx) = 0;
   virtual void exitIf_stmt(SesameParser::If_stmtContext *ctx) = 0;

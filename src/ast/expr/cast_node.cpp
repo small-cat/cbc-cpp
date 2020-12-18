@@ -23,11 +23,19 @@ bool CastNode::IsLValue() {
 }
 
 bool CastNode::IsAssignable() {
-  return expr_->IsAssignable();
+  return expr_->IsAssignalble();
 }
 
 bool CastNode::IsEffectiveCast() {
-  return type()->size() > expr_->type()->size();
+  return type()->Size() > expr_->type()->Size();
+}
+
+Location* CastNode::location() {
+  return type_node_->location();
+}
+
+void CastNode::_dump(Dumper *d) {
+  // @todo[UNIMPLEMENT]/2020/12/17: dump cast node info to console
 }
 
 } /* end ast */
