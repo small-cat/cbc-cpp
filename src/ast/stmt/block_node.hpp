@@ -23,6 +23,7 @@ public:
   entity::LocalScope* scope() { return scope_; }
   void SetScope(entity::LocalScope* s) { scope_ = s; }
 
+  virtual std::string GetClass() { return "BlockNode"; }
   // @todo { not implement _dump and accept }
   // void _dump(ast::Dumper* d);
   // void accept();

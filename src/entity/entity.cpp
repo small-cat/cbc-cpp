@@ -56,4 +56,21 @@ bool Entity::IsRefered() {
 ast::Location* Entity::GetLocation() {
   return type_node_->location();
 }
+
+/************************************************************************************
+* @fn _dump
+* @brief dump entity info to console
+* @param
+* @author Jona
+* @date 2020/12/18
+************************************************************************************/
+void Entity::Dump(ast::Dumper* d) {
+  d->PrintClass(this, GetLocation());
+  _dump(d);
+}
+
+std::string Entity::GetClass() {
+  return "Entity";
+}
+
 } /* end entity */

@@ -21,6 +21,7 @@ public:
   virtual ~StmtNode() {}
 
   Location* location() { return location_; }
+  virtual std::string GetClass() { return ""; }
 private:
   Location* location_;
 };

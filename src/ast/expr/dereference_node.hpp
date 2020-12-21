@@ -24,6 +24,7 @@ public:
   ExprNode* expr();
   void SetExpr(ExprNode* e);
   Location* location();
+  std::string GetClass();
   void _dump(Dumper* d);
   // void accept();
 private:

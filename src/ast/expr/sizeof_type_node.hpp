@@ -17,6 +17,8 @@ public:
   Location* location();
   void _dump(Dumper* d);
 
+  virtual std::string GetClass();
+
   // void accept();
 private:
   TypeNode* operand_;     // type of operand

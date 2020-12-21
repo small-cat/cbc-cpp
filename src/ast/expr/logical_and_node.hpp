@@ -8,6 +8,8 @@ class LogicalAndNode : public BinaryOpNode {
 public:
   LogicalAndNode(ExprNode* l, ExprNode* r) : BinaryOpNode(l, "&&", r) {}
   virtual ~LogicalAndNode() {}
+
+  std::string GetClass() { return "LogicalAndNode"; }
 };
 } /* end ast */
 

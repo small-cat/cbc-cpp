@@ -5,6 +5,7 @@
 #include "../ast/location.hpp"
 #include "../ast/type/type_node.hpp"
 #include "../type/type.hpp"
+#include "../ast/dumper.h"
 
 namespace entity {
 class Entity  {
@@ -34,9 +35,11 @@ public:
   // void CheckAddress();
 
   ast::Location* GetLocation();
+  virtual std::string GetClass();
 
   // void accept();
-  // void _dump(ast::Dumper* d);
+  void Dump(ast::Dumper* d);
+  virtual void _dump(ast::Dumper* d);
 private:
   bool is_private_;               // attribute
   ast::TypeNode* type_node_;      // type: typename and type definition

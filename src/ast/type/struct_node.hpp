@@ -12,6 +12,7 @@ public:
   std::string Kind();
   bool IsStruct();
   type::Type* DefiningType();
+  virtual std::string GetClass();
 
   // void accept();
 private:

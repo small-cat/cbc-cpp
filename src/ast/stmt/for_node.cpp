@@ -36,6 +36,10 @@ StmtNode* ForNode::body() {
   return body_;
 }
 
+std::string ForNode::GetClass() {
+  return "ForStmtNode";
+}
+
 void ForNode::_dump(Dumper* d) {
   // @todo { not implement _dump }
 }

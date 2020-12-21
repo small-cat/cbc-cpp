@@ -18,6 +18,10 @@ StmtNode* IfNode::else_body() {
   return else_body_;
 }
 
+std::string IfNode::GetClass() {
+  return "IfStmtNode";
+}
+
 void IfNode::_dump(Dumper* d) {
   // @todo { not implement _dump }
 }

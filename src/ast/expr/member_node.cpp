@@ -28,5 +28,16 @@ Location* MemberNode::location() {
   return expr_->location();
 }
 
-void MemberNode::_dump(Dumper* d) {}
+std::string MemberNode::GetClass() {
+  return "MemberNode";
+}
+
+void MemberNode::_dump(Dumper* d) {
+  if (type() != nullptr) {
+    d->PrintMember("Type", type());
+  }
+
+  d->PrintMember("Expr", expr_);
+  d->PrintMember("Member", member_);
+}
 } /* end ast */

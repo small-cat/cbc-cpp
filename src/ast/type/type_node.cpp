@@ -28,6 +28,10 @@ bool TypeNode::IsResolved() {
   return type_ != nullptr;
 }
 
+std::string TypeNode::GetClass() {
+  return "";
+}
+
 void TypeNode::SetType(Type* t) {
   if (type_ != nullptr) {
     // throw RuntimeException("TypeNode#SetType called twice");

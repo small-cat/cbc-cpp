@@ -20,4 +20,9 @@ type::Type* Function::ReturnType() {
 bool Function::IsVoid() {
   return ReturnType()->IsVoid();
 }
+
+std::string Function::GetClass() {
+  return "Function";
+}
+
 } /* end entity */

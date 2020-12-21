@@ -28,6 +28,7 @@ public:
   void SetType(type::Type* t);
   Location* location();
 
+  virtual std::string GetClass();
   void _dump(Dumper* d);
 
   // void Accept(ASTVisitor* visitor);

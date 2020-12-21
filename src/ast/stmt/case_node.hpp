@@ -34,6 +34,7 @@ public:
   // Label* label();
   void _dump(Dumper* d);
   // void accept();
+  virtual std::string GetClass();
 private:
   // Label label_;    // used in assembly code
   std::vector<ExprNode*> values_;

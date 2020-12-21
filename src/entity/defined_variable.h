@@ -26,6 +26,7 @@ public:
   // void SetIR(ir::Expr* ir);
   // ir::Expr* ir();
   
+  std::string GetClass();
   void _dump(ast::Dumper* d);
   // void accept();
 private:

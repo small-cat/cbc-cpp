@@ -27,6 +27,7 @@ public:
   StmtNode* incr();
   StmtNode* body();
 
+  virtual std::string GetClass();
   void _dump(Dumper* d);
   // void accept();
 private:

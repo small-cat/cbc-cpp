@@ -30,6 +30,7 @@ public:
   type::Type* original_type();
 
   Location* location();
+  virtual std::string GetClass();
   void _dump(Dumper* d);
 
 private:

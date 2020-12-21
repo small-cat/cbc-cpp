@@ -7,6 +7,12 @@ StringLiteralNode::~StringLiteralNode() {}
 
 std::string StringLiteralNode::value() { return value_; }
 
-void StringLiteralNode::_dump(Dumper* d) {}
+std::string StringLiteralNode::GetClass() {
+  return "StringLiteralNode";
+}
+
+void StringLiteralNode::_dump(Dumper* d) {
+  d->PrintMember("Value", value_);
+}
   
 } /* end ty */

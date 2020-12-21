@@ -8,6 +8,8 @@ class Variable : public Entity {
 public:
   Variable(bool priv, ast::TypeNode* tn, std::string n) : Entity(priv, tn, n) {}
   virtual ~Variable() {}
+  
+  std::string GetClass() { return "Variable"; }
 };
 } /* end entity */
 

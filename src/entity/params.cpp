@@ -21,4 +21,8 @@ type::ParamTypeRefs* Params::GetParameterTypeRefs() {
 
   return new type::ParamTypeRefs(location(), typeref_list, false); // vararg_ is false when constructure Params
 }
+
+void Params::_dump(ast::Dumper* d) {
+  d->PrintNodeList("Parameters", GetParameters());
+}
 } /* end entity */

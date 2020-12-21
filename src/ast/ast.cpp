@@ -28,4 +28,9 @@ void ASTNode::DumpTokens() {
   }
 }
 
+void ASTNode::DumpAst(Dumper* d) {
+  d->PrintNodeList("variables", declarations_->defvars());
+  d->PrintNodeList("functions", declarations_->defuns());
+}
+
 } /* end as */

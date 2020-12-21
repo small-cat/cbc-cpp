@@ -15,6 +15,10 @@ bool UnionTypeNode::IsUnion() {
   return true;
 }
 
+std::string UnionTypeNode::GetClass() {
+  return "UnionTypeNode";
+}
+
 type::Type* UnionTypeNode::DefiningType() {
   return new type::UnionType(name(), members(), location());
 }

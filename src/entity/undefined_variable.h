@@ -26,7 +26,13 @@ public:
   bool IsInitialized() { return false; }
 
   // @todo { not implement _dump accept }
-  // void _dump();
+  void _dump(ast::Dumper* d) {
+    d->PrintMember("Name", name());
+    d->PrintMember("IsPrivate", is_private());
+    d->PrintMember("TypeNode", type_node());
+  }
+
+  std::string GetClass() { return "UndefinedVariable"; }
   // void accept();
 };
 } /* end entity */

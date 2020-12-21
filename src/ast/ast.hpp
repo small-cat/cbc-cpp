@@ -11,6 +11,7 @@
 #include "../entity/top_level_scope.h"
 #include "../entity/constant.hpp"
 #include "../entity/constant_table.hpp"
+#include "dumper.h"
 
 namespace ast {
 class ASTNode : public Node {
@@ -24,6 +25,7 @@ public:
 
   void SetTokenStrings(std::vector<std::string> sv);
   void DumpTokens();
+  void DumpAst(Dumper* d);
 private:
   Location* location_;
   Declarations* declarations_;

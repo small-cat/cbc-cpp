@@ -9,6 +9,7 @@ public:
   SuffixOpNode(std::string op, ExprNode* e) : UnaryArithmeticOpNode(op, e) {}
   virtual ~SuffixOpNode() {}
 
+  virtual std::string GetClass() { return "SuffixOpNode"; }
   // void accept(ASTVisitor* visitor);
 };
 } /* end ast */

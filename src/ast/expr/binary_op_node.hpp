@@ -30,6 +30,7 @@ public:
   void SetRight(ExprNode* r);
 
   Location* location();
+  virtual std::string GetClass();
   void _dump(Dumper* d);
   // void accept();
 private:

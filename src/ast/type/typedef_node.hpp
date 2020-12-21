@@ -33,6 +33,7 @@ public:
   void Dump(Dumper* d);
   // todo: Accept()
 
+  virtual std::string GetClass();
 private:
   TypeNode* real_;
 };

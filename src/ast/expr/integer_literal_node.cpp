@@ -9,5 +9,12 @@ long IntegerLiteralNode::value() {
   return value_;
 }
 
-void IntegerLiteralNode::_dump(Dumper* d) {}
+std::string IntegerLiteralNode::GetClass() {
+  return "IntegerLiteralNode";
+}
+
+void IntegerLiteralNode::_dump(Dumper* d) {
+  d->PrintMember("TypeNode", type_node());
+  d->PrintMember("Value", value_);
+}
 } /* end type */

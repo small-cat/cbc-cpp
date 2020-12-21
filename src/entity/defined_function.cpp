@@ -30,7 +30,14 @@ std::vector<DefinedVariable*> DefinedFunction::GetLocalVariables() {
   return scope_->AllLocalVariables();
 }
 
+std::string DefinedFunction::GetClass() {
+  return "DefinedFunction";
+}
+
 void DefinedFunction::_dump(ast::Dumper* d) {
-  // @todo { not implement _dump }
+  d->PrintMember("FunctionName", name());
+  d->PrintMember("IsPrivate", is_private());
+  d->PrintMember("Parameters", params_);
+  d->PrintMember("FunctionBody", body_);
 }
 } /* end entity */

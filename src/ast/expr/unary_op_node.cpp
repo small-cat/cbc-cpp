@@ -34,7 +34,12 @@ Location* UnaryOpNode::location() {
 }
 
 void UnaryOpNode::_dump(Dumper* d) {
-  // @todo {  things to be done }
+  d->PrintMember("Operand", operator_);
+  d->PrintMember("Expr", expr_);
+}
+
+std::string UnaryOpNode::GetClass() {
+  return "";
 }
   
 } /* end as */

@@ -24,6 +24,7 @@ public:
   StmtNode* body();
   ExprNode* cond();
   void _dump(Dumper* d);
+  virtual std::string GetClass();
 
   // void accept();
 private:

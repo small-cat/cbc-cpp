@@ -19,6 +19,7 @@ public:
 
   type::Type* ReturnType();
   bool IsVoid();
+  std::string GetClass();
 
   // @todo { not implement calling symbol and label in Function }
   // void SetCallingSymbol(Symbol* s);

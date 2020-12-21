@@ -36,6 +36,8 @@ public:
     return !original_type_->IsArray() && !original_type_->IsFunction();
   }
 
+  std::string GetClass() { return ""; }
+
 private:
   type::Type* type_;
   type::Type* original_type_;

@@ -41,7 +41,13 @@ Location* BinaryOpNode::location() {
   return left_->location();
 }
 
+std::string BinaryOpNode::GetClass() {
+  return "BinaryOpNode";
+}
+
 void BinaryOpNode::_dump(Dumper* d) {
-  // @todo {  _dump }
+  d->PrintMember("Operator", operator_);
+  d->PrintMember("Left", left_);
+  d->PrintMember("Right", right_);
 }
 } /* end ast */

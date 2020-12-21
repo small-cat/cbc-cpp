@@ -44,6 +44,10 @@ Location* SlotNode::location() {
   return type_node_->location();
 }
 
+std::string SlotNode::GetClass() {
+  return "SlotNode";
+}
+
 void SlotNode::_dump(Dumper* d) {
   // @todo {  things to be done }
 }

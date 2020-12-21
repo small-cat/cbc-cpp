@@ -10,6 +10,7 @@ public:
   virtual ~ContinueNode() {}
 
   void _dump(Dumper* d) { /* @todo { not implement _dump } */ }
+  virtual std::string GetClass() { return "ContinueStmtNode"; }
 
   // void accept();
 };

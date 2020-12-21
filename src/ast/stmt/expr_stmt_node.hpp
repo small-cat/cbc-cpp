@@ -13,6 +13,7 @@ public:
   ExprNode* expr();
   void SetExpr(ExprNode* e);
   void _dump(Dumper* d);
+  virtual std::string GetClass();
 
   // void accept();
 private:

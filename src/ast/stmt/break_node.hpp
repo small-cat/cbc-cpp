@@ -11,6 +11,7 @@ public:
 
   void _dump(Dumper* d) { /* @todo { not implement _dump } */ }
   // void accept();
+  virtual std::string GetClass() { return "BreakStmtNode"; }
 };
 } /* end ast */
 

@@ -20,6 +20,7 @@ public:
   virtual ~OpAssignNode() {}
 
   std::string OpAssignOperator() { return operator_; }
+  virtual std::string GetClass() { return "OpAssignNode"; }
 
   // void accept();
 private:

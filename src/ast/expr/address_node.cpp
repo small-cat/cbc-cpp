@@ -29,12 +29,16 @@ Location* AddressNode::location() {
   return expr_->location();
 }
 
+std::string AddressNode::GetClass() {
+  return "AddressNode";
+}
+
 void AddressNode::_dump(Dumper* d) {
   if (type_ != nullptr) {
-    // d->PrintMember("Type", type_);
+    d->PrintMember("Type", type_);
   }
 
-  // d->PrintMember("Expr", expr_);
+  d->PrintMember("Expr", expr_);
 }
 
 } /* end ast */

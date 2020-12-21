@@ -1,3 +1,12 @@
+/** 
+* @copyright (c) Copyright, All Rights Reserved.
+* @license
+* @file: cast_node.cpp
+* @author: Jona
+* @email: mblrwuzy@gmail.com
+* @date: 2020/12/18
+* @brief: type convert
+*/
 #include "cast_node.hpp"
 
 namespace ast {
@@ -34,8 +43,13 @@ Location* CastNode::location() {
   return type_node_->location();
 }
 
+std::string CastNode::GetClass() {
+  return "CaseNode";
+}
+
 void CastNode::_dump(Dumper *d) {
-  // @todo[UNIMPLEMENT]/2020/12/17: dump cast node info to console
+  d->PrintMember("TypeNode", type_node_);
+  d->PrintMember("Expr", expr_);
 }
 
 } /* end ast */

@@ -16,6 +16,7 @@ public:
   void SetType(type::Type* t);
   Location* location();
 
+  std::string GetClass();
   void _dump(Dumper* d);
   //void accept();
 private:

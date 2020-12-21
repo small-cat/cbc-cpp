@@ -14,6 +14,10 @@ StmtNode* WhileNode::body() {
   return body_;
 }
 
+std::string WhileNode::GetClass() {
+  return "WhileStmtNode";
+}
+
 void WhileNode::_dump(Dumper* d) {
   // @todo { not implement _dump }
 }

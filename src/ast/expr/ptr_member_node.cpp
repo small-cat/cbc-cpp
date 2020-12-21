@@ -28,10 +28,21 @@ Location* PtrMemberNode::location() {
   return expr_->location();
 }
 
-void PtrMemberNode::_dump(Dumper* d) {}
+void PtrMemberNode::_dump(Dumper* d) {
+  if (type() != nullptr) {
+    d->PrintMember("Type", type());
+  }
+
+  d->PrintMember("Expr", expr_);
+  d->PrintMember("Member", member_);
+}
 
 long PtrMemberNode::Offset() {
   return DereferedCompositeType()->MemberOffset(member_);
+}
+
+std::string PtrMemberNode::GetClass() {
+  return "PtrMemberNode";
 }
 
 type::Type* PtrMemberNode::original_type() {

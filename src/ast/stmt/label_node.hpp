@@ -27,6 +27,7 @@ public:
   std::string name();
   StmtNode* stmt();
   void _dump(Dumper* d);
+  virtual std::string GetClass();
 
   // void accept();
 private:

@@ -14,6 +14,10 @@ StmtNode* LabelNode::stmt() {
   return stmt_;
 }
 
+std::string LabelNode::GetClass() {
+  return "LabelNode";
+}
+
 void LabelNode::_dump(Dumper* d) {
   // @todo { not implement _dump }
 }

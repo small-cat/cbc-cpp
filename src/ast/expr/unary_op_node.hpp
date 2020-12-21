@@ -19,6 +19,7 @@ public:
   Location* location();
   void _dump(Dumper* d);
 
+  virtual std::string GetClass();
   // void accept();
 private:
   std::string operator_;

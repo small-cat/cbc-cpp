@@ -9,6 +9,8 @@ public:
   AssignNode(ExprNode* l, ExprNode* r) : AbstractAssignNode(l, r) {}
   virtual ~AssignNode() {}
 
+  std::string GetClass() { return "AssignNode"; }
+
   // void accept();
 };
 } /* end ast */

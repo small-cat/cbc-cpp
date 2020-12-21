@@ -8,6 +8,7 @@ class PrefixOpNode : public UnaryArithmeticOpNode {
 public:
   PrefixOpNode(std::string op, ExprNode* e) : UnaryArithmeticOpNode(op, e) {}
   virtual ~PrefixOpNode() {}
+  virtual std::string GetClass() { return "PrefixOpNode"; }
 
   // void accept();
 };

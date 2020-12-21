@@ -31,6 +31,7 @@ public:
   ExprNode* cond();
   std::vector<CaseNode*> cases();
   void _dump(Dumper* d);
+  virtual std::string GetClass();
 private:
   ExprNode* cond_;
   std::vector<CaseNode*> cases_;

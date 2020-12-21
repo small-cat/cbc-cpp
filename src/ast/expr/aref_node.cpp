@@ -38,7 +38,16 @@ Location* ARefNode::location() {
   return expr_->location();
 }
 
+std::string ARefNode::GetClass() {
+  return "ArrayNode";
+}
+
 void ARefNode::_dump(Dumper* d) {
-  // @todo { change dump to visitor pattern }
+  if (type() != nullptr) {
+    d->PrintMember("Type", type());
+  }
+
+  d->PrintMember("Expr", expr_);
+  d->PrintMember("Index", index_);
 }
 } /* end ast */

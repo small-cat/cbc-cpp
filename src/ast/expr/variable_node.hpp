@@ -23,6 +23,7 @@ public:
 
   Location* location();
   void _dump(Dumper* d);
+  virtual std::string GetClass();
 private:
   Location* location_;
   std::string name_;

@@ -12,6 +12,8 @@ public:
   std::string value();
   void _dump(Dumper* d);
   // void accept();
+
+  virtual std::string GetClass();
 private:
   std::string value_;
   // entity::ConstantEntry* entry_;

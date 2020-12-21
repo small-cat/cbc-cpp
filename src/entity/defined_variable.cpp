@@ -42,7 +42,14 @@ void DefinedVariable::SetInitializer(ast::ExprNode* init) {
 }
 
 void DefinedVariable::_dump(ast::Dumper* d) {
-  // @todo { not implement _dump }
+  d->PrintMember("VariableName", name());
+  d->PrintMember("IsPrivate", is_private());
+  d->PrintMember("TypeNode", type_node());
+  d->PrintMember("Initializer", initializer_);
+}
+
+std::string DefinedVariable::GetClass() {
+  return "DefinedVariable";
 }
 
 // void DefinedVariable::SetIR(ir::Expr* ir) {}

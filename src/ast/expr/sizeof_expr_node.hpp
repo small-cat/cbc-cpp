@@ -16,6 +16,7 @@ public:
   type::Type* type();
   TypeNode* type_node();
   Location* location();
+  std::string GetClass();
   void _dump(Dumper* d);
 private:
   ExprNode* expr_;

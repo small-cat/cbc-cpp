@@ -10,6 +10,7 @@ public:
   virtual ~IntegerLiteralNode();
 
   long value();
+  std::string GetClass();
   void _dump(Dumper* d);
   // void accept();
 private:

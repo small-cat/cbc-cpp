@@ -28,6 +28,7 @@ public:
   long Length();
   type::Type* original_type();
   Location* location();
+  std::string GetClass();
   void _dump(Dumper* d);
   // void accept();
 private:

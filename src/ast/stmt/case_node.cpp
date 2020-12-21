@@ -20,6 +20,10 @@ BlockNode* CaseNode::body() {
   return body_;
 }
 
+std::string CaseNode::GetClass() {
+  return "CaseNode";
+}
+
 void CaseNode::_dump(Dumper* d) {
   // @todo { not implement _dump }
 }

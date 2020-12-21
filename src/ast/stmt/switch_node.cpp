@@ -16,6 +16,10 @@ std::vector<CaseNode*> SwitchNode::cases() {
   return cases_;
 }
 
+std::string SwitchNode::GetClass() {
+  return "SwitchStmtNode";
+}
+
 void SwitchNode::_dump(Dumper* d) {
   // @todo { not implement _dump }
 }

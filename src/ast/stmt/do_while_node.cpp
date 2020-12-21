@@ -14,6 +14,10 @@ ExprNode* DoWhileNode::cond() {
   return cond_;
 }
 
+std::string DoWhileNode::GetClass() {
+  return "DoWhileStmtNode";
+}
+
 void DoWhileNode::_dump(Dumper* d) {
   // @todo { not implement _dump }
 }

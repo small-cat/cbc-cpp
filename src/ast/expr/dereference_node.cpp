@@ -20,7 +20,15 @@ Location* DereferenceNode::location() {
   return expr_->location();
 }
 
+std::string DereferenceNode::GetClass() {
+  return "DereferenceNode";
+}
+
 void DereferenceNode::_dump(Dumper* d) {
-  // @todo { _dump }
+  if (type() != nullptr) {
+    d->PrintMember("Type", type());
+  }
+
+  d->PrintMember("Expr", expr_);
 }
 } /* end ast */

@@ -31,6 +31,7 @@ public:
   bool IsEffectiveCast();
 
   Location* location();
+  std::string GetClass();
   void _dump(Dumper* d);
 
   // void accept(ASTVisitor* visitor);

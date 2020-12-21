@@ -21,6 +21,7 @@ public:
   // void ReplaceArgs(std::vector<ExprNode*> args);  // called by TypeChecker
 
   Location* location();
+  std::string GetClass();
   void _dump(Dumper* d);
 
   //void Accept(ASTVisitor* visitor);

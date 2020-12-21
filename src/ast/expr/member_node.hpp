@@ -1,3 +1,12 @@
+/** 
+* @copyright (c) Copyright, All Rights Reserved.
+* @license
+* @file: member_node.hpp
+* @author: Jona
+* @email: mblrwuzy@gmail.com
+* @date: 2020/12/18
+* @brief: member of class, struct or union..., like node.member
+*/
 #ifndef __MEMBER_NODE_H__
 #define __MEMBER_NODE_H__
 
@@ -18,6 +27,7 @@ public:
   long Offset();
   type::Type* original_type();
   Location* location();
+  virtual std::string GetClass();
   void _dump(Dumper* d);
   // void accept(ASTVisitor visitor);
 

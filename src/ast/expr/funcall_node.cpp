@@ -48,10 +48,13 @@ Location* FuncallNode::location() {
   return expr_->location();
 }
 
+std::string FuncallNode::GetClass() {
+  return "FunctioncallNode";
+}
+
 void FuncallNode::_dump(Dumper* d) {
-  // @todo { not implement _dump }
-  // d->PrintMember("expr", expr_);
-  // d->PrintNodeList("args", args_);
+  d->PrintMember("Expr", expr_);
+  d->PrintNodeList("Arguments", args_);
 }
 
 } /* end ast */

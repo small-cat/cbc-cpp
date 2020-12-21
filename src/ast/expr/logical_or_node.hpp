@@ -9,6 +9,7 @@ public:
   LogicalOrNode(ExprNode* l, ExprNode* r) : BinaryOpNode(l, "||", r) {}
   virtual ~LogicalOrNode() {}
 
+  virtual std::string GetClass() { return "LogicalOrNode"; }
   // void accept();
 };
 } /* end ast */

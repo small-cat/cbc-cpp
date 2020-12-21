@@ -10,6 +10,10 @@ void ExprStmtNode::SetExpr(ExprNode* e) {
   expr_ = e;
 }
 
+std::string ExprStmtNode::GetClass() {
+  return "ExprStmtNode";
+}
+
 void ExprStmtNode::_dump(Dumper* d) {
   // @todo { not implement _dump }
 }

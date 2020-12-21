@@ -13,6 +13,7 @@ public:
   ExprNode* cond();
   StmtNode* body();
   void _dump(Dumper* d);
+  virtual std::string GetClass();
   // void accept();
 private:
   ExprNode* cond_;

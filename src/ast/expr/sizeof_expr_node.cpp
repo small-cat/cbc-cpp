@@ -33,7 +33,11 @@ Location* SizeofExprNode::location() {
   return expr_->location();
 }
 
+std::string SizeofExprNode::GetClass() {
+  return "SizeofExprNode";
+}
+
 void SizeofExprNode::_dump(Dumper* d) {
-  // @todo { not implement _dump }
+  d->PrintMember("Expr", expr_);
 }
 } /* end type */

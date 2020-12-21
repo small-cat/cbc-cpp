@@ -21,6 +21,7 @@ public:
   long offset();
   void SetOffset(long off);
   Location* location();
+  std::string GetClass();
   void _dump(Dumper* d);
 private:
   TypeNode* type_node_;

@@ -13,6 +13,7 @@ public:
   ExprNode* expr() { return expr_; }
   void SetExpr(ExprNode* e) { expr_ = e; }
   void _dump(Dumper* d) { /* @todo { not implement _dump }*/ }
+  virtual std::string GetClass() { return "ReturnStmtNode"; }
 private:
   ExprNode* expr_;
 };

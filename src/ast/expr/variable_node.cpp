@@ -36,5 +36,16 @@ Location* VariableNode::location() {
   return location_;
 }
 
-void VariableNode::_dump(Dumper* d) {}
+void VariableNode::_dump(Dumper* d) {
+  if (type() != nullptr) {
+    d->PrintMember("Type", type());
+  }
+
+  d->PrintMember("name", name_, IsResolved());
+}
+
+std::string VariableNode::GetClass() {
+  return "VariableNode";
+}
+
 } /* end type */

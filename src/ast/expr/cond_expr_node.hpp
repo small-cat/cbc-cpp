@@ -20,8 +20,10 @@ public:
   void SetElse(ExprNode* e) { else_expr_ = e; }
   Location* location() { return cond_->location(); }
 
+  std::string GetClass() { return "condition expression"; }
+
   void _dump(Dumper* d) {
-    d->PrintMember("Cond", cond_);
+    d->PrintMember("Condition", cond_);
     d->PrintMember("ThenExpr", then_expr_);
     d->PrintMember("ElseExpr", else_expr_);
   }

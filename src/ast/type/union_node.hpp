@@ -20,6 +20,8 @@ public:
   // defining type
   type::Type* DefiningType();
   // void accept();
+
+  virtual std::string GetClass();
 };
 } /* end ast */
 

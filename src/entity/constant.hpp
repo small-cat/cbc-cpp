@@ -18,8 +18,14 @@ public:
 
   ast::ExprNode* value() { return value_; }
 
+  virtual std::string GetClass() { return "Constant"; }
+
   // @todo { not implement _dump and accept }
-  // void _dump(ast::Dumper* d);
+  void _dump(ast::Dumper* d) {
+    d->PrintMember("Name", name());
+    d->PrintMember("TypeNode", type_node());
+    d->PrintMember("Value", value_);
+  }
   // void accept();
 private:
   // ast::TypeNode* type_node_;    // 常量类型, inherited from Entity

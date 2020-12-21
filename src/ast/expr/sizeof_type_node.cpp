@@ -33,7 +33,11 @@ Location* SizeofTypeNode::location() {
   return operand_->location();
 }
 
+std::string SizeofTypeNode::GetClass() {
+  return "SizeofTypeNode";
+}
+
 void SizeofTypeNode::_dump(Dumper* d) {
-  // @todo { not implement _dump }
+  d->PrintMember("Operand", type());
 }
 } /* end ty */

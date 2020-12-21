@@ -30,6 +30,7 @@ public:
   StmtNode* then_body();
   StmtNode* else_body();
   void _dump(Dumper* d);
+  virtual std::string GetClass();
 
   // void accept();
 private:

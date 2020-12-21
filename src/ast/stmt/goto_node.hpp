@@ -12,6 +12,7 @@ public:
   std::string label_name() { return label_name_; }
   void _dump(Dumper* d) { /* @todo { not implement _dump }*/ }
   // void accept();
+  virtual std::string GetClass() { return "GotoStmtNode"; }
 private:
   std::string label_name_;
 };

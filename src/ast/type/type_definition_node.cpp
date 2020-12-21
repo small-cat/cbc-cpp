@@ -37,4 +37,8 @@ Type* TypeDefinitionNode::Type() {
   return type_node_->type();
 }
 
+std::string TypeDefinitionNode::GetClass() {
+  return "";
+}
+
 } /* end ast */

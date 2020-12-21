@@ -36,4 +36,8 @@ type::Type* TypeDefNode::DefiningType() {
   return new type::UserType(name(), RealTypeNode(), location());
 }
 
+std::string TypeDefNode::GetClass() {
+  return "TypeDefNode";
+}
+
 } /* end ast */

@@ -28,6 +28,7 @@ public:
 
   std::vector<DefinedVariable*> GetLocalVariables();
   void _dump(ast::Dumper* d);
+  std::string GetClass();
   // void accept();
 private:
   Params* params_;

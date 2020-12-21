@@ -15,6 +15,10 @@ bool StructTypeNode::IsStruct() {
   return true;
 }
 
+std::string StructTypeNode::GetClass() {
+  return "StructTypeNode";
+}
+
 type::Type* StructTypeNode::DefiningType() {
   return new type::StructType(name(), members(), location());
 }

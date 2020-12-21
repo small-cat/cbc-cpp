@@ -5,6 +5,7 @@
 #include "../type/param_slots.hpp"
 #include "../ast/location.hpp"
 #include "../type/param_type_ref.hpp"
+#include "../ast/dumper.h"
 
 namespace entity {
 class Params : public type::ParamSlots<Parameter> {
@@ -16,7 +17,7 @@ public:
 
   // @todo { not implement functions below }
   type::ParamTypeRefs* GetParameterTypeRefs();
-  // void _dump(); // @todo { _dump }
+  void _dump(ast::Dumper* d); 
 private:
   /* data */
 };

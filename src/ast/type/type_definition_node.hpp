@@ -15,6 +15,8 @@ public:
   TypeNode* type_node();
   type::TypeRef* TypeRef();
   type::Type* Type();
+  
+  virtual std::string GetClass();
 
 private:
   std::string name_;

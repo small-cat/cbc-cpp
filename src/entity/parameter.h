@@ -10,7 +10,12 @@ public:
   virtual ~Parameter() {}
 
   bool IsParameter() { return true; }
-  void _dump(ast::Dumper* d) { /* @todo { _dump } */ }
+  void _dump(ast::Dumper* d) {
+    d->PrintMember("Name", name());
+    d->PrintMember("TypeNode", type_node());
+  }
+
+  std::string GetClass() { return "Parameter"; }
 private:
   /* data */
 };

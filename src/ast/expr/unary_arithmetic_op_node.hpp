@@ -16,6 +16,8 @@ public:
   void SetAmount(long a) {
     amount_ = a;
   }
+
+  virtual std::string GetClass() { return "UnaryArithmeticOpNode"; }
 private:
   long amount_;
 };
