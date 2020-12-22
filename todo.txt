@@ -1,0 +1,16 @@
+* build ast from antlr4
+  - build ast **DONE**
+  - fix memory leak
+
+* generate ir
+  - design ir structure
+  - build ir
+    - how to process scope ???
+  - dump ir
+
+* optimize
+
+* generate assember code
+
+* link and generate target (use as and ld)
+
