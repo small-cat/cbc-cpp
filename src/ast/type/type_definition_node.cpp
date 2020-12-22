@@ -12,9 +12,13 @@ TypeDefinitionNode::TypeDefinitionNode(Location* l, type::TypeRef* ref, std::str
 TypeDefinitionNode::~TypeDefinitionNode() {
   if (type_node_ != nullptr) {
     delete type_node_;
+    type_node_ = nullptr;
   }
 
-  type_node_ = nullptr;
+  if (nullptr != location_) {
+    delete location_;
+    location_ = nullptr;
+  }
 }
 
 std::string TypeDefinitionNode::name() {

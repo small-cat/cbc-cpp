@@ -4,7 +4,17 @@ namespace ast {
 DoWhileNode::DoWhileNode(Location* l, StmtNode* b, ExprNode* c) : StmtNode(l),
                                                                   body_(b),
                                                                   cond_(c) {}
-DoWhileNode::~DoWhileNode() {}
+DoWhileNode::~DoWhileNode() {
+  if (nullptr != cond_) {
+    delete cond_;
+    cond_ = nullptr;
+  }
+
+  if (nullptr != body_) {
+    delete body_;
+    body_ = nullptr;
+  }
+}
 
 StmtNode* DoWhileNode::body() {
   return body_;

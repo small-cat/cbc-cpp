@@ -6,7 +6,17 @@ SwitchNode::SwitchNode(Location* l, ExprNode* c, std::vector<CaseNode*> cases)
     cases_.swap(cases);
   }
 
-SwitchNode::~SwitchNode() {}
+SwitchNode::~SwitchNode() {
+  if (nullptr != cond_) {
+    delete cond_;
+    cond_ = nullptr;
+  }
+
+  for (auto& c : cases_) {
+    delete c;
+    c = nullptr;
+  }
+}
 
 ExprNode* SwitchNode::cond() {
   return cond_;

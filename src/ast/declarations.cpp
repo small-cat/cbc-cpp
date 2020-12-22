@@ -3,7 +3,47 @@
 namespace ast {
 
 Declarations::Declarations() {}
-Declarations::~Declarations() {}
+Declarations::~Declarations() {
+  for (auto& v : defvars_) {
+    delete v;
+    v = nullptr;
+  }
+
+  for (auto& v : vardecls_) {
+    delete v;
+    v = nullptr;
+  }
+
+  for (auto& f : defuns_) {
+    delete f;
+    f = nullptr;
+  }
+
+  for (auto& f : funcdecls_) {
+    delete f;
+    f = nullptr;
+  }
+
+  for (auto& cons : constants_) {
+    delete cons;
+    cons = nullptr;
+  }
+
+  for (auto& stru : def_structs_) {
+    delete stru;
+    stru = nullptr;
+  }
+
+  for (auto& u : def_unions_) {
+    delete u;
+    u = nullptr;
+  }
+
+  for (auto& tn : typedefs_) {
+    delete tn;
+    tn = nullptr;
+  }
+}
 
 std::vector<TypeDefNode*> Declarations::typedefs() {
   return typedefs_;

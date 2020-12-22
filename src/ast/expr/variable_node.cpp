@@ -1,11 +1,22 @@
 #include "variable_node.hpp"
 
 namespace ast {
-VariableNode::VariableNode(Location* l, std::string n) : location_(l), name_(n) {}
+VariableNode::VariableNode(Location* l, std::string n) : location_(l), name_(n), entity_(nullptr) {}
 VariableNode::VariableNode(entity::DefinedVariable* var) : entity_(var) {
+  location_ = nullptr;
   name_ = var->name();
 }
-VariableNode::~VariableNode() {}
+VariableNode::~VariableNode() {
+  if (nullptr != location_) {
+    delete location_;
+    location_ = nullptr;
+  }
+
+  if (nullptr != entity_) {
+    delete entity_;
+    entity_ = nullptr;
+  }
+}
 
 std::string VariableNode::name() {
   return name_;

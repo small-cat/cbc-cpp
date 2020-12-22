@@ -3,7 +3,17 @@
 
 namespace ast {
 AddressNode::AddressNode(ExprNode* e) : expr_(e), type_(nullptr) {}
-AddressNode::~AddressNode() {}
+AddressNode::~AddressNode() {
+  if (nullptr != expr_) {
+    delete expr_;
+    expr_ = nullptr;
+  }
+
+  if (nullptr != type_) {
+    delete type_;
+    type_ = nullptr;
+  }
+}
 
 ExprNode* AddressNode::expr() {
   return expr_;

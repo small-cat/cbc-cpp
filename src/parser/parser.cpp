@@ -72,7 +72,8 @@ ast::ASTNode* FileParser::_ParseFile(std::error_code& ec, bool check) {
   BuildAstVisitor ast_visitor(&parser, filename_);
 
   // @todo[UNIMPLEMENT]/2020/12/17: 没有对 import files 进行处理
-  return ast_visitor.visitCompilation_unit(compile_ctx);
+  ast::ASTNode* ast = (ast::ASTNode *)(ast_visitor.visitCompilation_unit(compile_ctx));
+  return ast;
 }
 
 bool FileParser::ParseFile() {
@@ -91,10 +92,10 @@ ast::ASTNode* FileParser::BuildAst() {
 
   if (ec) {
     return nullptr;
-  } else {
-    sesame_ast->SetTokenStrings(token_strings_); // save token strings to ast
-    return sesame_ast;
   }
+
+  sesame_ast->SetTokenStrings(token_strings_); // save token strings to ast
+  return sesame_ast;
 }
 std::vector<std::string> FileParser::GetTokenStrings() {
   return token_strings_;

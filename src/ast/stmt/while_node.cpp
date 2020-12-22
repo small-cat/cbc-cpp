@@ -4,7 +4,17 @@ namespace ast {
 WhileNode::WhileNode(Location* l, ExprNode* c, StmtNode* b) 
   : StmtNode(l), cond_(c), body_(b) {}
 
-WhileNode::~WhileNode() {}
+WhileNode::~WhileNode() {
+  if (nullptr != cond_) {
+    delete cond_;
+    cond_ = nullptr;
+  }
+
+  if (nullptr != body_) {
+    delete body_;
+    body_ = nullptr;
+  }
+}
 
 ExprNode* WhileNode::cond() {
   return cond_;

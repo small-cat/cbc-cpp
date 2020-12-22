@@ -2,7 +2,12 @@
 
 namespace ast {
 ExprStmtNode::ExprStmtNode(Location* l, ExprNode* e) : StmtNode(l), expr_(e) {}
-ExprStmtNode::~ExprStmtNode() {}
+ExprStmtNode::~ExprStmtNode() {
+  if (nullptr != expr_) {
+    delete expr_;
+    expr_ = nullptr;
+  }
+}
 
 ExprNode* ExprStmtNode::expr() { return expr_; }
 

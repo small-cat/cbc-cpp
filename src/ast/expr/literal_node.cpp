@@ -8,9 +8,13 @@ LiteralNode::LiteralNode(Location* l, type::TypeRef* tr) : location_(l) {
 LiteralNode::~LiteralNode() {
   if (nullptr != type_node_) {
     delete type_node_;
+    type_node_ = nullptr;
   }
 
-  type_node_ = nullptr;
+  if (nullptr != location_) {
+    delete location_;
+    location_ = nullptr;
+  }
 }
 
 Location* LiteralNode::location() {

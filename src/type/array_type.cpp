@@ -10,7 +10,12 @@ ArrayType::ArrayType(Type* base_type, long pointer_size) : base_type_(base_type)
 ArrayType::ArrayType(Type* base_type, long len, long pointer_size) 
   : base_type_(base_type), length_(len), pointer_size_(pointer_size) {}
 
-ArrayType::~ArrayType() {}
+ArrayType::~ArrayType() {
+  if (nullptr != base_type_) {
+    delete base_type_;
+    base_type_ = nullptr;
+  }
+}
 
 bool ArrayType::IsArray() {
   return true;

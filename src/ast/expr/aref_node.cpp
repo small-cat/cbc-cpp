@@ -4,7 +4,17 @@
 
 namespace ast {
 ARefNode::ARefNode(ExprNode* e, ExprNode* i) : expr_(e), index_(i) {}
-ARefNode::~ARefNode() {}
+ARefNode::~ARefNode() {
+  if (nullptr != expr_) {
+    delete expr_;
+    expr_ = nullptr;
+  }
+
+  if (nullptr != index_) {
+    delete index_;
+    index_ = nullptr;
+  }
+}
 
 ExprNode* ARefNode::expr() {
   return expr_;

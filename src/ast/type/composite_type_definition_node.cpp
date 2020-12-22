@@ -6,7 +6,12 @@ CompositeTypeDefinitionNode::CompositeTypeDefinitionNode(Location* l, type::Type
     members_.swap(m);
   }
 
-CompositeTypeDefinitionNode::~CompositeTypeDefinitionNode() {}
+CompositeTypeDefinitionNode::~CompositeTypeDefinitionNode() {
+  for (auto& m : members_) {
+    delete m;
+    m = nullptr;
+  }
+}
 
 bool CompositeTypeDefinitionNode::IsCompositeType() { return true; }
 std::vector<SlotNode*> CompositeTypeDefinitionNode::members() {

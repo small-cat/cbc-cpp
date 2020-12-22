@@ -22,7 +22,17 @@ public:
     param_descriptors_.swap(param_desc);
   }
 
-  virtual ~ParamSlots() {}
+  virtual ~ParamSlots() {
+    if (nullptr != location_) {
+      delete location_;
+      location_ = nullptr;
+    }
+
+    for (auto& p : param_descriptors_) {
+      delete p;
+      p = nullptr;
+    }
+  }
 
   int Argc() {
     if (vararg_) {

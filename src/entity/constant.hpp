@@ -9,7 +9,12 @@ namespace entity {
 class Constant : public Entity {
 public:
   Constant(ast::TypeNode* tn, std::string n, ast::ExprNode* e) : Entity(true, tn, n), value_(e) {}
-  virtual ~Constant() {}
+  virtual ~Constant() {
+    if (nullptr != value_) {
+      delete value_;
+      value_ = nullptr;
+    }
+  }
 
   bool IsAssignable() { return false; }
   bool IsDefined() { return true; }

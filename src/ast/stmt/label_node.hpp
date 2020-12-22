@@ -29,6 +29,7 @@ public:
   void _dump(Dumper* d);
   virtual std::string GetClass();
 
+  // @todo[UNIMPLEMENT]/2020/12/22: not implement accept
   // void accept();
 private:
   std::string name_;

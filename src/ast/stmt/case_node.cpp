@@ -6,7 +6,17 @@ CaseNode::CaseNode(Location* l, std::vector<ExprNode*> vs, BlockNode* b)
     values_.swap(vs);
   }
 
-CaseNode::~CaseNode() {}
+CaseNode::~CaseNode() {
+  for (auto& v : values_) {
+    delete v;
+    v = nullptr;
+  }
+
+  if (nullptr != body_) {
+    delete body_;
+    body_ = nullptr;
+  }
+}
 
 std::vector<ExprNode*> CaseNode::values() {
   return values_;

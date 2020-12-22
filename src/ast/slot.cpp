@@ -2,7 +2,12 @@
 
 namespace ast {
 SlotNode::SlotNode(TypeNode* t, std::string n) : type_node_(t), name_(n), offset_(0) {}
-SlotNode::~SlotNode() {}
+SlotNode::~SlotNode() {
+  if (nullptr != type_node_) {
+    delete type_node_;
+    type_node_ = nullptr;
+  }
+}
 
 TypeNode* SlotNode::type_node() {
   return type_node_;

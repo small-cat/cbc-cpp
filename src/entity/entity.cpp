@@ -7,7 +7,13 @@ Entity::Entity(bool priv, ast::TypeNode* tn, std::string n) : is_private_(priv),
   refered_ = 0;
 }
 
-Entity::~Entity() {}
+Entity::~Entity() {
+  if (nullptr != type_node_) {
+    delete type_node_;
+  }
+
+  type_node_ = nullptr;
+}
 
 std::string Entity::name() {
   return name_;

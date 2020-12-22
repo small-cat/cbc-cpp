@@ -8,16 +8,26 @@ ForNode::ForNode(Location* l, ExprNode* init, ExprNode* c, ExprNode* incr, StmtN
   }
 
 ForNode::~ForNode() {
-  if (nullptr == init_) {
+  if (nullptr != init_) {
     delete init_;
+    init_ = nullptr;
   }
 
-  if (nullptr == incr_) {
+  if (nullptr != incr_) {
     delete incr_;
+    incr_ = nullptr;
   }
 
-  init_ = nullptr;
-  incr_ = nullptr;
+  if (nullptr != cond_) {
+    delete cond_;
+    cond_ = nullptr;
+  }
+
+  if (nullptr != body_) {
+    delete body_;
+    body_ = nullptr;
+  }
+
 }
 
 StmtNode* ForNode::init() {

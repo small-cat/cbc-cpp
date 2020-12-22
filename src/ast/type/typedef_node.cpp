@@ -11,9 +11,8 @@ TypeDefNode::TypeDefNode(Location* l, type::TypeRef* real, type::UserTypeRef* us
 TypeDefNode::~TypeDefNode() {
   if (real_ != nullptr) {
     delete real_;
+    real_ = nullptr;
   }
-
-  real_ = nullptr;
 }
 
 bool TypeDefNode::IsUserType() {

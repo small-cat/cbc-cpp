@@ -7,7 +7,27 @@ ASTNode::ASTNode(Location* l, Declarations* d) : location_(l), declarations_(d) 
 
 ASTNode::ASTNode(Declarations* d) : declarations_(d) {}
 
-ASTNode::~ASTNode() {}
+ASTNode::~ASTNode() {
+  if (nullptr != location_) {
+    delete location_;
+    location_ = nullptr;
+  }
+
+  if(nullptr != declarations_) {
+    delete declarations_;
+    declarations_ = nullptr;
+  }
+
+  if (nullptr != scope_) {
+    delete scope_;
+    scope_ = nullptr;
+  }
+
+  if (nullptr != constant_table_) {
+    delete constant_table_;
+    constant_table_ = nullptr;
+  }
+}
 
 Location* ASTNode::location() {
   return location_;

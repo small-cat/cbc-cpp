@@ -9,7 +9,24 @@ BinaryOpNode::BinaryOpNode(ExprNode* l, std::string op, ExprNode* r)
 BinaryOpNode::BinaryOpNode(type::Type* t, ExprNode* l, std::string op, ExprNode* r) 
   : operator_(op), left_(l), right_(r), type_(t) {}
 
-BinaryOpNode::~BinaryOpNode() {}
+BinaryOpNode::~BinaryOpNode() {
+  if (nullptr != left_) {
+    delete left_;
+    left_ = nullptr;
+  }
+
+  if (nullptr != right_)
+  {
+    delete right_;
+    right_ = nullptr;
+  }
+
+  if (nullptr != type_)
+  {
+    delete type_;
+    type_ = nullptr;
+  }
+}
 
 std::string BinaryOpNode::BinaryOpOperator() {
   return operator_;

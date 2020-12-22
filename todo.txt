@@ -1,6 +1,6 @@
 * build ast from antlr4
   - build ast **DONE**
-  - fix memory leak
+  - fix memory leak, definitely lost in 1 block but I don't figure it out
 
 * generate ir
   - design ir structure

@@ -10,8 +10,6 @@ std::vector<Parameter*> Params::GetParameters() {
   return ParamDecs();
 }
 
-// // @todo { not implement GetParameterTypeRefs }
-
 type::ParamTypeRefs* Params::GetParameterTypeRefs() {
   std::vector<type::TypeRef*> typeref_list;
   for (auto& p : ParamDecs()) {

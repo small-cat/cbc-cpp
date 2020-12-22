@@ -78,7 +78,7 @@ bool Compiler::CheckSyntax(Options* opts) {
     if (fp.ParseFile()) {
       std::cout << src.Path() << ": Syntax OK" << std::endl;
     } else {
-      std::cout << src.Path() << ": Syntax Error" << std::endl;
+      err_handler_->Error(src.Path() + " Syntax Error");
       syntax_ok = false;
     }
   }
@@ -97,7 +97,12 @@ bool Compiler::CheckSyntax(Options* opts) {
 void Compiler::Compile(const std::string& src, const std::string& dest, Options* opts) {
   // @todo { compile something }
   ast::ASTNode* ast = GetAstByParseFile(src, opts);
+  if (nullptr == ast) {
+    err_handler_->Error("ast build failed");
+  }
+
   if (DumpAst(ast, opts->mode())) return;
+  delete ast;
 }
 
 ast::ASTNode* Compiler::GetAstByParseFile(const std::string& src, Options* opts) {

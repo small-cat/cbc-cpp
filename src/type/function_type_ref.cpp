@@ -5,7 +5,17 @@ FunctionTypeRef::FunctionTypeRef(TypeRef* tr, ParamTypeRefs* param_tr)
   : TypeRef(tr->location()) ,return_type_(tr), params_(param_tr) {
 }
 
-FunctionTypeRef::~FunctionTypeRef() {}
+FunctionTypeRef::~FunctionTypeRef() {
+  if (nullptr != return_type_) {
+    delete return_type_;
+    return_type_ = nullptr;
+  }
+
+  if (nullptr != params_) {
+    delete params_;
+    params_ = nullptr;
+  }
+}
 
 bool FunctionTypeRef::IsFunction() {
   return true;
