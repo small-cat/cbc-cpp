@@ -44,13 +44,12 @@ set(extra_share_compile_flags "")
 set(extra_static_compile_flags "")
 
 set(static_lib_suffix "")
+set(ANTLR_VERSION "4.7.1")
 set_target_properties(antlr4_shared
                       PROPERTIES VERSION   ${ANTLR_VERSION}
                                  SOVERSION ${ANTLR_VERSION}
                                  OUTPUT_NAME antlr4-runtime
                                  LIBRARY_OUTPUT_DIRECTORY ${LIB_OUTPUT_DIR}
-                                 # TODO: test in windows. DLL is treated as runtime.
-                                 # see https://cmake.org/cmake/help/v3.0/prop_tgt/LIBRARY_OUTPUT_DIRECTORY.html
                                  RUNTIME_OUTPUT_DIRECTORY ${LIB_OUTPUT_DIR}
                                  ARCHIVE_OUTPUT_DIRECTORY ${LIB_OUTPUT_DIR}
                                  COMPILE_FLAGS "${disabled_compile_warnings} ${extra_share_compile_flags}")
