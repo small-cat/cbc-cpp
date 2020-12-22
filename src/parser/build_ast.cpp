@@ -137,12 +137,13 @@ ast::IntegerLiteralNode* BuildAstVisitor::GetIntegerNode(ast::Location *l, std::
 }
 
 long BuildAstVisitor::GetCharValue(const std::string& str, ast::Location *l) {
-  if (str.length() > 1) {
+  // char is like 'a'
+  if (str.length() > 3) {
     std::cout << "Error: at " << l->ToString() << ", " << str << " is not character" << std::endl;
     exit(EXIT_FAILURE);
   }
 
-  return (long)(str.at(0));
+  return (long)(str.at(1));
 }
 
 /************************************************************************************
@@ -324,19 +325,19 @@ antlrcpp::Any BuildAstVisitor::visitTyperef_unsigned(SesameParser::Typeref_unsig
 antlrcpp::Any BuildAstVisitor::visitTyperef_struct(SesameParser::Typeref_structContext *ctx) {
   ast::CflatToken *t = GetCFlatToken(ctx->start);
   std::string name = ctx->IDENTIFIER()->getText();
-  return (antlrcpp::Any)(new type::StructTypeRef(new ast::Location(filename_, t), name));
+  return (antlrcpp::Any)((type::TypeRef *)(new type::StructTypeRef(new ast::Location(filename_, t), name)));
 }
 
 antlrcpp::Any BuildAstVisitor::visitTyperef_union(SesameParser::Typeref_unionContext *ctx) {
   ast::CflatToken *t = GetCFlatToken(ctx->start);
   std::string name = ctx->IDENTIFIER()->getText();
-  return (antlrcpp::Any)(new type::UnionTypeRef(new ast::Location(filename_, t), name));
+  return (antlrcpp::Any)((type::TypeRef *)(new type::UnionTypeRef(new ast::Location(filename_, t), name)));
 }
 
 antlrcpp::Any BuildAstVisitor::visitTyperef_usertype(SesameParser::Typeref_usertypeContext *ctx) {
   ast::CflatToken *t = GetCFlatToken(ctx->start);
   std::string user_type_name = ctx->IDENTIFIER()->getText();
-  return (antlrcpp::Any)(new type::UserTypeRef(new ast::Location(filename_, t), user_type_name));
+  return (antlrcpp::Any)((type::TypeRef *)(new type::UserTypeRef(new ast::Location(filename_, t), user_type_name)));
 }
 
 antlrcpp::Any BuildAstVisitor::visitParams(SesameParser::ParamsContext * ctx) {
@@ -418,6 +419,10 @@ antlrcpp::Any BuildAstVisitor::visitBlock(SesameParser::BlockContext * ctx) {
   std::vector<ast::StmtNode *> stmt_list;
   auto stmt_list_ctx = stmts_ctx->stmt();
   for (auto& st : stmt_list_ctx) {
+    if (utils::StringUtils::StrCmp(st->getText(), ";")) {
+      // empty statement
+      continue;
+    }
     ast::StmtNode* s = (ast::StmtNode *)visit(st);
     stmt_list.push_back(s);
   }

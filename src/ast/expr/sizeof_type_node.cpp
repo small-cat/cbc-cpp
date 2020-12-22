@@ -38,6 +38,6 @@ std::string SizeofTypeNode::GetClass() {
 }
 
 void SizeofTypeNode::_dump(Dumper* d) {
-  d->PrintMember("Operand", type());
+  d->PrintMember("Operand", type_node_);
 }
 } /* end ty */

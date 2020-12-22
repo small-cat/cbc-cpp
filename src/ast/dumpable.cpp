@@ -129,7 +129,7 @@ void Dumpable::PrintMember(const std::string &name, type::Type *t) {
 }
 
 void Dumpable::PrintMember(const std::string &name, std::string str, bool is_resolved) {
-  PrintPair(name, str + (is_resolved?":(resolved)":""));
+  PrintPair(name, str + (is_resolved?"(resolved)":""));
 }
 
 void Dumpable::PrintMember(const std::string &name, ast::TypeNode *tn) {
