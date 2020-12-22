@@ -102,6 +102,8 @@ public:
 
     virtual antlrcpp::Any visitExpr_stmt(SesameParser::Expr_stmtContext *context) = 0;
 
+    virtual antlrcpp::Any visitBlock_stmt(SesameParser::Block_stmtContext *context) = 0;
+
     virtual antlrcpp::Any visitIf_stmt(SesameParser::If_stmtContext *context) = 0;
 
     virtual antlrcpp::Any visitWhile_stmt(SesameParser::While_stmtContext *context) = 0;

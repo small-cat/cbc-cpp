@@ -23,6 +23,6 @@ type::ParamTypeRefs* Params::GetParameterTypeRefs() {
 }
 
 void Params::_dump(ast::Dumper* d) {
-  d->PrintNodeList("Parameters", GetParameters());
+  d->PrintNodeList("Params", GetParameters());
 }
 } /* end entity */

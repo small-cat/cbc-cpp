@@ -141,6 +141,9 @@ public:
   virtual void enterExpr_stmt(SesameParser::Expr_stmtContext * /*ctx*/) override { }
   virtual void exitExpr_stmt(SesameParser::Expr_stmtContext * /*ctx*/) override { }
 
+  virtual void enterBlock_stmt(SesameParser::Block_stmtContext * /*ctx*/) override { }
+  virtual void exitBlock_stmt(SesameParser::Block_stmtContext * /*ctx*/) override { }
+
   virtual void enterIf_stmt(SesameParser::If_stmtContext * /*ctx*/) override { }
   virtual void exitIf_stmt(SesameParser::If_stmtContext * /*ctx*/) override { }
 

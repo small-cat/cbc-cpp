@@ -19,6 +19,7 @@ std::string LabelNode::GetClass() {
 }
 
 void LabelNode::_dump(Dumper* d) {
-  // @todo { not implement _dump }
+  d->PrintMember("Label", name_);
+  d->PrintMember("Statement", stmt_);
 }
 } /* end ast */

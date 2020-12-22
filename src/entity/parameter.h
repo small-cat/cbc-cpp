@@ -16,8 +16,6 @@ public:
   }
 
   std::string GetClass() { return "Parameter"; }
-private:
-  /* data */
 };
 } /* end entity */
 

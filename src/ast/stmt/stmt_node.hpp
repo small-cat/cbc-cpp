@@ -22,6 +22,10 @@ public:
 
   Location* location() { return location_; }
   virtual std::string GetClass() { return ""; }
+  void Dump(Dumper* d) {
+    d->PrintClass(this, location_);
+    _dump(d);
+  }
 private:
   Location* location_;
 };

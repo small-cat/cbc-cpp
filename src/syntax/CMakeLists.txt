@@ -31,7 +31,6 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/runtime/src/tree
   ${CMAKE_CURRENT_SOURCE_DIR}/runtime/src/support
   ${CMAKE_CURRENT_SOURCE_DIR}/generated
-  ${CMAKE_CURRENT_SOURCE_DIR}/parsing/
   )
 
 #file(GLOB antlr4-src/parser_SRC "${CMAKE_CURRENT_SOURCE_DIR}/src/parser/generated/*")
@@ -48,17 +47,15 @@ foreach(src_file ${antlr4-parser_SRC})
 endforeach(src_file ${antlr4-parser_SRC})
 
 # executable file name
-add_library(sesame_parser SHARED
-  ${CMAKE_CURRENT_SOURCE_DIR}/parsing/parser.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/parsing/build_ast.cpp
+add_library(sesame_syntax SHARED
   ${antlr4-parser_SRC}
   )
 
-add_dependencies(sesame_parser GenerateParser)
+add_dependencies(sesame_syntax GenerateParser)
 
-target_link_libraries(sesame_parser antlr4_shared)
+target_link_libraries(sesame_syntax antlr4_shared)
 
-install(TARGETS sesame_parser 
+install(TARGETS sesame_syntax
         DESTINATION "share" 
         COMPONENT dev 
         )

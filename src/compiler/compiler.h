@@ -12,8 +12,8 @@
 
 #include "options.h"
 #include "source_file.h"
-#include "../utils/error_handler.h"
-#include "../ast/ast.hpp"
+#include "utils/error_handler.h"
+#include "ast/ast.hpp"
 
 namespace compiler {
 class Compiler {

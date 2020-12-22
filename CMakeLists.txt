@@ -18,15 +18,19 @@ set(CMAKE_CXX_FLAGS_DEBUG     "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g -DDEBUG_0")
 set(CMAKE_CXX_FLAGS_RELEASE   "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 
 include_directories(
-  ${PROJECT_SOURCE_DIR}/src/compiler
-  ${PROJECT_SOURCE_DIR}/src/parser
-  ${PROJECT_SOURCE_DIR}/src/sysdep
-  ${PROJECT_SOURCE_DIR}/src/utils
-  ${PROJECT_SOURCE_DIR}/src/ast
-  ${PROJECT_SOURCE_DIR}/src/type
-  ${PROJECT_SOURCE_DIR}/src/entity
-  ${PROJECT_SOURCE_DIR}/src/parser/runtime/src
-  ${PROJECT_SOURCE_DIR}/src/parser/generated
+  # ${PROJECT_SOURCE_DIR}/src/compiler
+  # ${PROJECT_SOURCE_DIR}/src/parser
+  # ${PROJECT_SOURCE_DIR}/src/sysdep
+  # ${PROJECT_SOURCE_DIR}/src/utils
+  # ${PROJECT_SOURCE_DIR}/src/ast
+  # ${PROJECT_SOURCE_DIR}/src/type
+  # ${PROJECT_SOURCE_DIR}/src/entity
+  # ${PROJECT_SOURCE_DIR}/src/parser
+  # ${PROJECT_SOURCE_DIR}/src/syntax/
+  # ${PROJECT_SOURCE_DIR}/src/syntax/runtime
+
+  ${PROJECT_SOURCE_DIR}/src
+  ${PROJECT_SOURCE_DIR}/src/syntax/runtime/src
   )
 
 file(GLOB_RECURSE COMPILE_SRC "src/compiler/*.cpp")
@@ -36,16 +40,19 @@ file(GLOB_RECURSE UTILS_SRC "src/utils/*.cpp")
 file(GLOB_RECURSE AST_SRC "src/ast/*.cpp")
 file(GLOB_RECURSE TYPE_SRC "src/type/*.cpp")
 file(GLOB_RECURSE ENTITY_SRC "src/entity/*.cpp")
+file(GLOB_RECURSE PARSER_SRC "src/parser/*.cpp")
 
 add_executable(sesame
-  ${COMPILE_SRC}
-  ${MAIN_SRC}
-  ${SYSDEP_SRC}
-  ${UTILS_SRC}
+  ${ENTITY_SRC}
   ${AST_SRC}
   ${TYPE_SRC}
-  ${ENTITY_SRC})
+  ${UTILS_SRC}
+  ${SYSDEP_SRC}
+  ${PARSER_SRC}
+  ${COMPILE_SRC}
+  ${MAIN_SRC}
+)
 
-target_link_libraries(sesame sesame_parser)
+target_link_libraries(sesame sesame_syntax)
 
 add_subdirectory(src)

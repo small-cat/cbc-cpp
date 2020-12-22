@@ -23,7 +23,7 @@ public:
   std::string GetClass() { return "condition expression"; }
 
   void _dump(Dumper* d) {
-    d->PrintMember("Condition", cond_);
+    d->PrintMember("CondExpr", cond_);
     d->PrintMember("ThenExpr", then_expr_);
     d->PrintMember("ElseExpr", else_expr_);
   }

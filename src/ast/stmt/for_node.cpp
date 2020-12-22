@@ -41,6 +41,9 @@ std::string ForNode::GetClass() {
 }
 
 void ForNode::_dump(Dumper* d) {
-  // @todo { not implement _dump }
+  d->PrintMember("InitExpr", init_);
+  d->PrintMember("CondExpr", cond_);
+  d->PrintMember("IncrExpr", incr_);
+  d->PrintMember("Body", body_);
 }
 } /* end ast */

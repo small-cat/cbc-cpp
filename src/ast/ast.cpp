@@ -33,4 +33,6 @@ void ASTNode::DumpAst(Dumper* d) {
   d->PrintNodeList("functions", declarations_->defuns());
 }
 
+std::string ASTNode::GetClass() { return ""; }
+
 } /* end as */

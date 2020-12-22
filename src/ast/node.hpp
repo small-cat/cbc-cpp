@@ -11,10 +11,9 @@
 #define __NODE_H__
 
 #include "location.hpp"
+#include "dumper.h"
 
 namespace ast {
-
-class Dumper;
 
 class Node  {
 public:

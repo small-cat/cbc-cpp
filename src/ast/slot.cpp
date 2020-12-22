@@ -49,6 +49,7 @@ std::string SlotNode::GetClass() {
 }
 
 void SlotNode::_dump(Dumper* d) {
-  // @todo {  things to be done }
+  d->PrintMember("Name", name_);
+  d->PrintMember("TypeNode", type_node_);
 }
 } /* end ast */

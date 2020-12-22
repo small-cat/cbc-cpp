@@ -15,6 +15,6 @@ std::string ExprStmtNode::GetClass() {
 }
 
 void ExprStmtNode::_dump(Dumper* d) {
-  // @todo { not implement _dump }
+  d->PrintMember("expr", expr_);
 }
 } /* end ast */

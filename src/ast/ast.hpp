@@ -26,6 +26,7 @@ public:
   void SetTokenStrings(std::vector<std::string> sv);
   void DumpTokens();
   void DumpAst(Dumper* d);
+  virtual std::string GetClass();
 private:
   Location* location_;
   Declarations* declarations_;

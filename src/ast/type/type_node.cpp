@@ -46,7 +46,8 @@ Location* TypeNode::location() {
 }
 
 void TypeNode::_dump(Dumper* d) {
-  // @todo { _dump }
+  d->PrintMember("Type", type_);
+  d->PrintMember("TypeRef", type_ref_);
 }
 
 /*

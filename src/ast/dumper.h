@@ -1,68 +1,73 @@
-/**
- * @copyright (c) Copyright 2020 Secsmart. All Rights Reserved.
- * @license
- * @file  : dumper.h
- * @author: Jona 
- * @email : wuzhenyu@secsmart.net
- * @date  : 2020-09-23
- * @brief : dumper ast for txt or other formats
+/** 
+* @copyright (c) Copyright, All Rights Reserved.
+* @license
+* @file: dumpable.h
+* @author: Jona
+* @email: mblrwuzy@gmail.com
+* @date: 2020/12/21
+* @brief: abstract interface for dumper
 */
+
 #ifndef __DUMPER_H__
 #define __DUMPER_H__
 
 #include <string>
-#include <iostream>
-#include <fstream>
 #include <vector>
 
-#include "node.hpp"
-#include "../entity/entity.h"
-#include "../entity/defined_function.h"
-#include "../entity/defined_variable.h"
-#include "../entity/parameter.h"
-#include "../entity/params.h"
+// pre declaration
+namespace ast {
+class Node;
+class ExprNode;
+class TypeNode;
+class StmtNode;
+class CaseNode;
+class SlotNode;
+class Location;
+} /* ast */
 
-#include "expr/expr_node.hpp"
-#include "stmt/stmt_node.hpp"
+namespace entity {
+class Entity;
+class DefinedVariable;
+class DefinedFunction;
+class Parameter;
+class Params;
+} /* entity */
+
+namespace type {
+class Type;
+class TypeRef;
+} /* type */
 
 namespace ast {
 class Dumper  {
 public:
-  Dumper(std::fstream* fs);
+  Dumper();
   virtual ~Dumper();
 
-  void PrintClass(Node* node, Location* loc);
-  void PrintClass(entity::Entity* node, Location* loc);
-
-  void PrintNodeList(const std::string& name, std::vector<Node *> nodes);
-  void PrintNodeList(const std::string& name, std::vector<ExprNode *> nodes);
-  void PrintNodeList(const std::string &name, std::vector<entity::DefinedVariable *> nodes);
-  void PrintNodeList(const std::string &name, std::vector<entity::DefinedFunction *> nodes);
-  void PrintNodeList(const std::string &name, std::vector<entity::Parameter *> nodes);
+  virtual void PrintClass(ast::Node* node, ast::Location* loc) = 0;
+  virtual void PrintClass(entity::Entity* node, ast::Location* loc) = 0;
+  virtual void PrintNodeList(const std::string& name, std::vector<Node *> nodes) = 0;
+  virtual void PrintNodeList(const std::string& name, std::vector<ExprNode *> nodes) = 0;
+  virtual void PrintNodeList(const std::string &name, std::vector<entity::DefinedVariable *> nodes) = 0;
+  virtual void PrintNodeList(const std::string &name, std::vector<entity::DefinedFunction *> nodes) = 0;
+  virtual void PrintNodeList(const std::string &name, std::vector<entity::Parameter *> nodes) = 0;
+  virtual void PrintNodeList(const std::string &name, std::vector<StmtNode *> nodes) = 0;
+  virtual void PrintNodeList(const std::string &name, std::vector<CaseNode *> nodes) = 0;
+  virtual void PrintNodeList(const std::string &name, std::vector<SlotNode *> nodes) = 0;
 
   // for int long boolean Type TypeRef
-  void PrintMember(const std::string& name, int n);
-  void PrintMember(const std::string& name, long l);
-  void PrintMember(const std::string& name, bool b);
-  void PrintMember(const std::string& name, std::string val);
-  void PrintMember(const std::string& name, type::TypeRef* ref);
-  void PrintMember(const std::string& name, type::Type* t);
-  void PrintMember(const std::string& name, std::string str, bool is_resolved);
-  void PrintMember(const std::string& name, ast::TypeNode* tn);
-  void PrintMember(const std::string& name, entity::Params* pams);
-  void PrintMember(const std::string& name, ast::StmtNode* stmt);
-  void PrintMember(const std::string& name, ast::ExprNode* expr);
-  void PrintPair(const std::string& name, std::string val);
-
-  void Indent();
-  void UnIndent();
-  void PrintIndent();
-
-  const static std::string INDENT_STRING;
-private:
-  int indent_;
-  std::ostream* stream_;
+  virtual void PrintMember(const std::string& name, int n) = 0;
+  virtual void PrintMember(const std::string& name, long l) = 0;
+  virtual void PrintMember(const std::string& name, bool b) = 0;
+  virtual void PrintMember(const std::string& name, std::string val) = 0;
+  virtual void PrintMember(const std::string& name, type::TypeRef* ref) = 0;
+  virtual void PrintMember(const std::string& name, type::Type* t) = 0;
+  virtual void PrintMember(const std::string& name, std::string str, bool is_resolved) = 0;
+  virtual void PrintMember(const std::string& name, ast::TypeNode* tn) = 0;
+  virtual void PrintMember(const std::string& name, entity::Params* pams) = 0;
+  virtual void PrintMember(const std::string& name, ast::StmtNode* stmt) = 0;
+  virtual void PrintMember(const std::string& name, ast::ExprNode* expr) = 0;
 };
-} /* end ast */
+} /* ast */
 
-#endif /* __DUMPER_H__ */
+#endif

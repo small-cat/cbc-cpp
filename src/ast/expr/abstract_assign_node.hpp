@@ -25,8 +25,8 @@ public:
   void SetRHS(ExprNode* r) { rhs_ = r; }
   Location* location() { return lhs_->location(); }
   void _dump(Dumper* d) {
-    d->PrintMember("lhs", lhs_);
-    d->PrintMember("rhs", rhs_);
+    d->PrintMember("Left", lhs_);
+    d->PrintMember("Right", rhs_);
   }
 private:
   ExprNode* lhs_;

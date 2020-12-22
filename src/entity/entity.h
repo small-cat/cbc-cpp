@@ -39,7 +39,7 @@ public:
 
   // void accept();
   void Dump(ast::Dumper* d);
-  virtual void _dump(ast::Dumper* d);
+  virtual void _dump(ast::Dumper* d) = 0;
 private:
   bool is_private_;               // attribute
   ast::TypeNode* type_node_;      // type: typename and type definition

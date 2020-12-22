@@ -11,7 +11,7 @@
 #ifndef __TYPE_REF_H__
 #define __TYPE_REF_H__
 
-#include "../ast/location.hpp"
+#include "ast/location.hpp"
 
 namespace type {
 class TypeRef {

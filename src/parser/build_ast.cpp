@@ -9,64 +9,64 @@
 */
 #include "build_ast.h"
 
-#include "../../type/type_ref.hpp"
-#include "../../entity/params.h"
-#include "../../ast/stmt/block_node.hpp"
-#include "../../type/function_type_ref.hpp"
-#include "../../type/array_type_ref.h"
-#include "../../type/pointer_type_ref.h"
-#include "../../type/struct_type_ref.h"
-#include "../../type/union_type_ref.h"
-#include "../../type/user_type_ref.hpp"
-#include "../../type/integer_type_ref.h"
-#include "../../type/void_type_ref.hpp"
-#include "../../ast/slot.hpp"
+#include "type/type_ref.hpp"
+#include "entity/params.h"
+#include "ast/stmt/block_node.hpp"
+#include "type/function_type_ref.hpp"
+#include "type/array_type_ref.h"
+#include "type/pointer_type_ref.h"
+#include "type/struct_type_ref.h"
+#include "type/union_type_ref.h"
+#include "type/user_type_ref.hpp"
+#include "type/integer_type_ref.h"
+#include "type/void_type_ref.hpp"
+#include "ast/slot.hpp"
 
 // expr
-#include "../../ast/expr/assign_node.hpp"
-#include "../../ast/expr/op_assign_node.hpp"
-#include "../../ast/expr/cond_expr_node.hpp"
-#include "../../ast/expr/logical_or_node.hpp"
-#include "../../ast/expr/logical_and_node.hpp"
-#include "../../ast/expr/binary_op_node.hpp"
-#include "../../ast/expr/cast_node.hpp"
-#include "../../ast/expr/prefix_op_node.hpp"
-#include "../../ast/expr/unary_op_node.hpp"
-#include "../../ast/expr/dereference_node.hpp"
-#include "../../ast/expr/address_node.hpp"
-#include "../../ast/expr/sizeof_expr_node.hpp"
-#include "../../ast/expr/sizeof_type_node.hpp"
-#include "../../ast/expr/suffix_op_node.hpp"
-#include "../../ast/expr/aref_node.hpp"
-#include "../../ast/expr/member_node.hpp"
-#include "../../ast/expr/ptr_member_node.hpp"
-#include "../../ast/expr/funcall_node.hpp"
-#include "../../ast/expr/string_literal_node.hpp"
-#include "../../ast/expr/variable_node.hpp"
+#include "ast/expr/assign_node.hpp"
+#include "ast/expr/op_assign_node.hpp"
+#include "ast/expr/cond_expr_node.hpp"
+#include "ast/expr/logical_or_node.hpp"
+#include "ast/expr/logical_and_node.hpp"
+#include "ast/expr/binary_op_node.hpp"
+#include "ast/expr/cast_node.hpp"
+#include "ast/expr/prefix_op_node.hpp"
+#include "ast/expr/unary_op_node.hpp"
+#include "ast/expr/dereference_node.hpp"
+#include "ast/expr/address_node.hpp"
+#include "ast/expr/sizeof_expr_node.hpp"
+#include "ast/expr/sizeof_type_node.hpp"
+#include "ast/expr/suffix_op_node.hpp"
+#include "ast/expr/aref_node.hpp"
+#include "ast/expr/member_node.hpp"
+#include "ast/expr/ptr_member_node.hpp"
+#include "ast/expr/funcall_node.hpp"
+#include "ast/expr/string_literal_node.hpp"
+#include "ast/expr/variable_node.hpp"
 
 // stmt node
-#include "../../ast/stmt/stmt_node.hpp"
-#include "../../ast/stmt/block_node.hpp"
-#include "../../ast/stmt/expr_stmt_node.hpp"
-#include "../../ast/stmt/label_node.hpp"
-#include "../../ast/stmt/if_node.hpp"
-#include "../../ast/stmt/while_node.hpp"
-#include "../../ast/stmt/do_while_node.hpp"
-#include "../../ast/stmt/for_node.hpp"
-#include "../../ast/stmt/switch_node.hpp"
-#include "../../ast/stmt/case_node.hpp"
-#include "../../ast/stmt/break_node.hpp"
-#include "../../ast/stmt/continue_node.hpp"
-#include "../../ast/stmt/goto_node.hpp"
-#include "../../ast/stmt/return_node.hpp"
+#include "ast/stmt/stmt_node.hpp"
+#include "ast/stmt/block_node.hpp"
+#include "ast/stmt/expr_stmt_node.hpp"
+#include "ast/stmt/label_node.hpp"
+#include "ast/stmt/if_node.hpp"
+#include "ast/stmt/while_node.hpp"
+#include "ast/stmt/do_while_node.hpp"
+#include "ast/stmt/for_node.hpp"
+#include "ast/stmt/switch_node.hpp"
+#include "ast/stmt/case_node.hpp"
+#include "ast/stmt/break_node.hpp"
+#include "ast/stmt/continue_node.hpp"
+#include "ast/stmt/goto_node.hpp"
+#include "ast/stmt/return_node.hpp"
 
 // import declarations
-#include "../../ast/declarations.hpp"
-#include "../../entity/undefined_function.h"
-#include "../../entity/undefined_variable.h"
+#include "ast/declarations.hpp"
+#include "entity/undefined_function.h"
+#include "entity/undefined_variable.h"
 
 // utils
-#include "../../utils/string_utils.hpp"
+#include "utils/string_utils.hpp"
 
 #include <regex>
 
@@ -424,6 +424,11 @@ antlrcpp::Any BuildAstVisitor::visitBlock(SesameParser::BlockContext * ctx) {
 
   ast::CflatToken* t = GetCFlatToken(ctx->start);
   return (antlrcpp::Any)(new ast::BlockNode(new ast::Location(filename_, t), defined_var_list, stmt_list));
+}
+
+antlrcpp::Any BuildAstVisitor::visitBlock_stmt(SesameParser::Block_stmtContext * ctx) {
+  ast::BlockNode* bn = (ast::BlockNode *)visit(ctx->block());
+  return (antlrcpp::Any)((ast::StmtNode *)bn);
 }
 
 /************************************************************************************

@@ -3,6 +3,7 @@
 
 #include <map>
 
+#include "entity.h"
 #include "scope.h"
 #include "defined_variable.h"
 #include "../utils/error_handler.h"
@@ -23,7 +24,7 @@ public:
   void DefineVariable(DefinedVariable* var);
 
   DefinedVariable* AllocateTmp(type::Type* t);
-  Entity* Get(std::string n);
+  virtual Entity* Get(std::string n);
 
   // return all local vars without static local vars
   std::vector<DefinedVariable*> AllLocalVariables();

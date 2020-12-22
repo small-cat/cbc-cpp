@@ -10,7 +10,9 @@ public:
   virtual ~GotoNode() {}
 
   std::string label_name() { return label_name_; }
-  void _dump(Dumper* d) { /* @todo { not implement _dump }*/ }
+  void _dump(Dumper* d) {
+    d->PrintMember("Label", label_name_);
+  }
   // void accept();
   virtual std::string GetClass() { return "GotoStmtNode"; }
 private:

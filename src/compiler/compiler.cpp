@@ -1,5 +1,7 @@
+#include <iostream>
 #include "compiler.h"
-#include "../parser/parsing/parser.h"
+#include "parser/parser.h"
+#include "ast/dumpable.h"
 
 namespace compiler {
 const std::string Compiler::kProgramName = AX(PROGNAME);
@@ -107,9 +109,11 @@ ast::ASTNode* Compiler::GetAstByParseFile(const std::string& src, Options* opts)
 bool Compiler::DumpAst(ast::ASTNode* ast, CompilerMode mode) {
   switch(mode.mode()) {
     case CompilerMode::Mode::DumpAST:
-      // @todo[UNIMPLEMENT]/2020/12/17: dump the whole ast to console
-      // ast->dump();
-      return true;
+      {
+        ast::Dumpable d(&(std::cout));
+        ast->DumpAst(&d);
+        return true;
+      }
     case CompilerMode::Mode::DumpTokens:
       ast->DumpTokens();
       return true;

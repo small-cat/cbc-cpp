@@ -24,8 +24,11 @@ public:
   void SetScope(entity::LocalScope* s) { scope_ = s; }
 
   virtual std::string GetClass() { return "BlockNode"; }
-  // @todo { not implement _dump and accept }
-  // void _dump(ast::Dumper* d);
+  void _dump(ast::Dumper* d) {
+    d->PrintNodeList("variables", variables_);
+    d->PrintNodeList("statements", stmts_);
+  }
+  // @todo { not implement and accept }
   // void accept();
 private:
   std::vector<StmtNode*> stmts_;

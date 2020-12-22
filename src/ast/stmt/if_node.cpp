@@ -23,6 +23,8 @@ std::string IfNode::GetClass() {
 }
 
 void IfNode::_dump(Dumper* d) {
-  // @todo { not implement _dump }
+  d->PrintMember("CondExpr", cond_);
+  d->PrintMember("ThenStmt", then_body_);
+  d->PrintMember("ElseStmt", else_body_);
 }
 } /* end ast */

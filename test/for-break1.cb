@@ -1,0 +1,9 @@
+import stdio;
+
+int
+main(int argc, char **argv)
+{
+    for (i = 1; i; i--) {
+        break;
+    }
+}

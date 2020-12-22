@@ -30,7 +30,7 @@ public:
   type::TypeRef* RealTypeRef();
   type::Type* DefiningType();
 
-  void Dump(Dumper* d);
+  void _dump(Dumper* d);
   // todo: Accept()
 
   virtual std::string GetClass();

@@ -10,6 +10,7 @@ public:
   virtual ~Variable() {}
   
   std::string GetClass() { return "Variable"; }
+  virtual void _dump(ast::Dumper* d) {}
 };
 } /* end entity */
 

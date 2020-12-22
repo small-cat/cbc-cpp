@@ -5,6 +5,7 @@
 #include <vector>
 #include <map>
 
+#include "entity.h"
 #include "defined_variable.h"
 #include "scope.h"
 #include "../utils/error_handler.h"

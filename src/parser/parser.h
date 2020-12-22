@@ -14,11 +14,11 @@
 #include <vector>
 
 #include "antlr4-runtime.h"
-#include "SesameLexer.h"
-#include "SesameParser.h"
-#include "../error_verbose_listener.hpp"
-#include "../../utils/errors.hpp"
-#include "../../ast/ast.hpp"
+#include "syntax/generated/SesameLexer.h"
+#include "syntax/generated/SesameParser.h"
+#include "error_verbose_listener.hpp"
+#include "utils/errors.hpp"
+#include "ast/ast.hpp"
 #include "build_ast.h"
 
 namespace parser {

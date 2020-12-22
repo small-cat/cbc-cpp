@@ -21,6 +21,7 @@ std::string SwitchNode::GetClass() {
 }
 
 void SwitchNode::_dump(Dumper* d) {
-  // @todo { not implement _dump }
+  d->PrintMember("CondExpr", cond_);
+  d->PrintNodeList("CaseNodes", cases_);
 }
 } /* end ast */

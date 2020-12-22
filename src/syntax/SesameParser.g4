@@ -154,7 +154,7 @@ stmt
     : SEMI
     | labeled_stmt      // the label for goto
     | expr_stmt
-    | block
+    | block_stmt
     | if_stmt
     | while_stmt
     | do_while_stmt
@@ -172,6 +172,10 @@ labeled_stmt
 
 expr_stmt
     : expr SEMI
+    ;
+
+block_stmt
+    : block
     ;
 
 // if (cond) ... else ... 

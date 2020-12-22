@@ -25,4 +25,6 @@ std::string Function::GetClass() {
   return "Function";
 }
 
+void Function::_dump(ast::Dumper* d) {}
+
 } /* end entity */

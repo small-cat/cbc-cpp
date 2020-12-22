@@ -14,6 +14,7 @@ std::vector<SlotNode*> CompositeTypeDefinitionNode::members() {
 }
 
 void CompositeTypeDefinitionNode::_dump(Dumper* d) {
-  // @todo { not implement _dump }
+  d->PrintMember("Name", name());
+  d->PrintNodeList("Members", members_);
 }
 } /* end ast */

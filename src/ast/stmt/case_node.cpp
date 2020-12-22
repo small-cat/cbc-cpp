@@ -25,6 +25,7 @@ std::string CaseNode::GetClass() {
 }
 
 void CaseNode::_dump(Dumper* d) {
-  // @todo { not implement _dump }
+  d->PrintNodeList("CaseValues", values_);
+  d->PrintMember("body", body_);
 }
 } /* end ast */

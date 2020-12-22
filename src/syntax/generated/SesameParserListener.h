@@ -139,6 +139,9 @@ public:
   virtual void enterExpr_stmt(SesameParser::Expr_stmtContext *ctx) = 0;
   virtual void exitExpr_stmt(SesameParser::Expr_stmtContext *ctx) = 0;
 
+  virtual void enterBlock_stmt(SesameParser::Block_stmtContext *ctx) = 0;
+  virtual void exitBlock_stmt(SesameParser::Block_stmtContext *ctx) = 0;
+
   virtual void enterIf_stmt(SesameParser::If_stmtContext *ctx) = 0;
   virtual void exitIf_stmt(SesameParser::If_stmtContext *ctx) = 0;
 

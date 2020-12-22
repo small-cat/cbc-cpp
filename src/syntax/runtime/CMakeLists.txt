@@ -23,7 +23,6 @@ file(GLOB libantlrcpp_SRC
 )
 
 add_library(antlr4_shared SHARED ${libantlrcpp_SRC})
-add_library(antlr4_static STATIC ${libantlrcpp_SRC})
 
 set(LIB_OUTPUT_DIR "${CMAKE_HOME_DIRECTORY}/dist") # put generated libraries here.
 message(STATUS "Output libraries to ${LIB_OUTPUT_DIR}")
@@ -34,11 +33,9 @@ add_custom_target(make_lib_output_dir ALL
     )
 
 add_dependencies(antlr4_shared make_lib_output_dir)
-add_dependencies(antlr4_static make_lib_output_dir)
 
 if(CMAKE_SYSTEM_NAME MATCHES "Linux")
   target_link_libraries(antlr4_shared ${UUID_LIBRARIES})
-  target_link_libraries(antlr4_static ${UUID_LIBRARIES})
   target_link_libraries(antlr4_shared -ltcmalloc)
 endif()
 
@@ -58,18 +55,8 @@ set_target_properties(antlr4_shared
                                  ARCHIVE_OUTPUT_DIRECTORY ${LIB_OUTPUT_DIR}
                                  COMPILE_FLAGS "${disabled_compile_warnings} ${extra_share_compile_flags}")
 
-set_target_properties(antlr4_static
-                      PROPERTIES VERSION   ${ANTLR_VERSION}
-                                 SOVERSION ${ANTLR_VERSION}
-                                 OUTPUT_NAME "antlr4-runtime${static_lib_suffix}"
-                                 ARCHIVE_OUTPUT_DIRECTORY ${LIB_OUTPUT_DIR}
-                                 COMPILE_FLAGS "${disabled_compile_warnings} ${extra_static_compile_flags}")
-
 install(TARGETS antlr4_shared
         DESTINATION lib 
-        EXPORT antlr4-targets)
-install(TARGETS antlr4_static
-        DESTINATION lib
         EXPORT antlr4-targets)
 
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/src/" 

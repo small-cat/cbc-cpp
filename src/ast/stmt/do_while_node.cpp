@@ -19,6 +19,7 @@ std::string DoWhileNode::GetClass() {
 }
 
 void DoWhileNode::_dump(Dumper* d) {
-  // @todo { not implement _dump }
+  d->PrintMember("CondExpr", cond_);
+  d->PrintMember("body", body_);
 }
 } /* end ast */

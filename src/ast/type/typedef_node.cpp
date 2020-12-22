@@ -40,4 +40,9 @@ std::string TypeDefNode::GetClass() {
   return "TypeDefNode";
 }
 
+void TypeDefNode::_dump(Dumper* d) {
+  d->PrintMember("Name", name());
+  d->PrintMember("TypeNode", type_node());
+}
+
 } /* end ast */

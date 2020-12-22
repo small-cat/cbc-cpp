@@ -21,11 +21,13 @@ public:
   bool IsVoid();
   std::string GetClass();
 
+  virtual void _dump(ast::Dumper* d);
+
   // @todo { not implement calling symbol and label in Function }
   // void SetCallingSymbol(Symbol* s);
   // Symbol calling_symbol();
   // Label label();
-private:
+//private:
   // Symbol* calling_symbol_;
   // Label* label_;
 };

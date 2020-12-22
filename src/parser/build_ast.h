@@ -10,13 +10,13 @@
 #ifndef BUILD_AST_H
 #define BUILD_AST_H
 
-#include "../generated/SesameLexer.h"
-#include "../generated/SesameParser.h"
-#include "../generated/SesameParserBaseVisitor.h"
+#include "syntax/generated/SesameLexer.h"
+#include "syntax/generated/SesameParser.h"
+#include "syntax/generated/SesameParserBaseVisitor.h"
 
-#include "../../ast/ast.hpp"
-#include "../../entity/defined_variable.h"
-#include "../../ast/expr/integer_literal_node.hpp"
+#include "ast/ast.hpp"
+#include "entity/defined_variable.h"
+#include "ast/expr/integer_literal_node.hpp"
 
 namespace parser {
 class BuildAstVisitor : public SesameParserBaseVisitor {
@@ -110,6 +110,7 @@ public:
   virtual antlrcpp::Any visitContinue_stmt(SesameParser::Continue_stmtContext * ctx);
   virtual antlrcpp::Any visitGoto_stmt(SesameParser::Goto_stmtContext * ctx);
   virtual antlrcpp::Any visitReturn_stmt(SesameParser::Return_stmtContext * ctx);  
+  virtual antlrcpp::Any visitBlock_stmt(SesameParser::Block_stmtContext * ctx);
   
   // import declaration
   virtual antlrcpp::Any visitDeclaration_file(SesameParser::Declaration_fileContext *ctx);

@@ -9,7 +9,7 @@ public:
   BreakNode(Location* l) : StmtNode(l) {}
   virtual ~BreakNode() {}
 
-  void _dump(Dumper* d) { /* @todo { not implement _dump } */ }
+  void _dump(Dumper* d) {}
   // void accept();
   virtual std::string GetClass() { return "BreakStmtNode"; }
 };

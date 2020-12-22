@@ -41,18 +41,18 @@ public:
     RuleDef_union = 19, RuleMember_list = 20, RuleSlot = 21, RuleS_typedef = 22, 
     RuleType = 23, RuleTyperef = 24, RuleTyperef_base = 25, RuleTyperef_precise = 26, 
     RuleParam_typerefs = 27, RuleFixed_param_typerefs = 28, RuleStmts = 29, 
-    RuleStmt = 30, RuleLabeled_stmt = 31, RuleExpr_stmt = 32, RuleIf_stmt = 33, 
-    RuleWhile_stmt = 34, RuleDo_while_stmt = 35, RuleFor_stmt = 36, RuleSwitch_stmt = 37, 
-    RuleCase_clauses = 38, RuleCase_clause = 39, RuleCases = 40, RuleDefault_clause = 41, 
-    RuleCase_body = 42, RuleBreak_stmt = 43, RuleContinue_stmt = 44, RuleGoto_stmt = 45, 
-    RuleReturn_stmt = 46, RuleExpr = 47, RuleOpassign_op = 48, RuleExpr10 = 49, 
-    RuleExpr9 = 50, RuleLogic_or_rhs = 51, RuleExpr8 = 52, RuleLogic_and_rhs = 53, 
-    RuleExpr7 = 54, RuleBinary_op_rhs = 55, RuleLogical_op = 56, RuleExpr6 = 57, 
-    RuleBit_or_rhs = 58, RuleExpr5 = 59, RuleXor_rhs = 60, RuleExpr4 = 61, 
-    RuleBit_and_rhs = 62, RuleExpr3 = 63, RuleShift_op_rhs = 64, RuleExpr2 = 65, 
-    RuleAdd_sub_rhs = 66, RuleExpr1 = 67, RuleMulti_div_mod_rhs = 68, RuleTerm = 69, 
-    RuleUnary = 70, RulePostfix = 71, RulePostfix_option = 72, RuleArgs = 73, 
-    RulePrimary = 74
+    RuleStmt = 30, RuleLabeled_stmt = 31, RuleExpr_stmt = 32, RuleBlock_stmt = 33, 
+    RuleIf_stmt = 34, RuleWhile_stmt = 35, RuleDo_while_stmt = 36, RuleFor_stmt = 37, 
+    RuleSwitch_stmt = 38, RuleCase_clauses = 39, RuleCase_clause = 40, RuleCases = 41, 
+    RuleDefault_clause = 42, RuleCase_body = 43, RuleBreak_stmt = 44, RuleContinue_stmt = 45, 
+    RuleGoto_stmt = 46, RuleReturn_stmt = 47, RuleExpr = 48, RuleOpassign_op = 49, 
+    RuleExpr10 = 50, RuleExpr9 = 51, RuleLogic_or_rhs = 52, RuleExpr8 = 53, 
+    RuleLogic_and_rhs = 54, RuleExpr7 = 55, RuleBinary_op_rhs = 56, RuleLogical_op = 57, 
+    RuleExpr6 = 58, RuleBit_or_rhs = 59, RuleExpr5 = 60, RuleXor_rhs = 61, 
+    RuleExpr4 = 62, RuleBit_and_rhs = 63, RuleExpr3 = 64, RuleShift_op_rhs = 65, 
+    RuleExpr2 = 66, RuleAdd_sub_rhs = 67, RuleExpr1 = 68, RuleMulti_div_mod_rhs = 69, 
+    RuleTerm = 70, RuleUnary = 71, RulePostfix = 72, RulePostfix_option = 73, 
+    RuleArgs = 74, RulePrimary = 75
   };
 
   SesameParser(antlr4::TokenStream *input);
@@ -98,6 +98,7 @@ public:
   class StmtContext;
   class Labeled_stmtContext;
   class Expr_stmtContext;
+  class Block_stmtContext;
   class If_stmtContext;
   class While_stmtContext;
   class Do_while_stmtContext;
@@ -798,7 +799,7 @@ public:
     antlr4::tree::TerminalNode *SEMI();
     Labeled_stmtContext *labeled_stmt();
     Expr_stmtContext *expr_stmt();
-    BlockContext *block();
+    Block_stmtContext *block_stmt();
     If_stmtContext *if_stmt();
     While_stmtContext *while_stmt();
     Do_while_stmtContext *do_while_stmt();
@@ -851,6 +852,21 @@ public:
   };
 
   Expr_stmtContext* expr_stmt();
+
+  class  Block_stmtContext : public antlr4::ParserRuleContext {
+  public:
+    Block_stmtContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    BlockContext *block();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Block_stmtContext* block_stmt();
 
   class  If_stmtContext : public antlr4::ParserRuleContext {
   public:

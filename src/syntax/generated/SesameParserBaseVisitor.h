@@ -181,6 +181,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitBlock_stmt(SesameParser::Block_stmtContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitIf_stmt(SesameParser::If_stmtContext *ctx) override {
     return visitChildren(ctx);
   }
