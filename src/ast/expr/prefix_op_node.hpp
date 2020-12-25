@@ -10,7 +10,7 @@ public:
   virtual ~PrefixOpNode() {}
   virtual std::string GetClass() { return "PrefixOpNode"; }
 
-  // void accept();
+  void Accept(ASTVisitor * visitor) { visitor->Visit(this); }
 };
 } /* end ast */
 

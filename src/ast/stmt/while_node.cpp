@@ -33,4 +33,8 @@ void WhileNode::_dump(Dumper* d) {
   d->PrintMember("body", body_);
 }
 
+void WhileNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
+
 } /* end ast */

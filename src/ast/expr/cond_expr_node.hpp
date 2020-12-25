@@ -46,7 +46,7 @@ public:
     d->PrintMember("ElseExpr", else_expr_);
   }
 
-  // void accept(ASTVisitor* visitor);
+  void Accept(ASTVisitor * visitor) { visitor->Visit(this); }
 private:
   ExprNode* cond_;
   ExprNode* then_expr_;

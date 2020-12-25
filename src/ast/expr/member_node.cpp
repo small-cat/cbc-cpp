@@ -45,4 +45,9 @@ void MemberNode::_dump(Dumper* d) {
   d->PrintMember("Expr", expr_);
   d->PrintMember("Member", member_);
 }
+
+void MemberNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
+
 } /* end ast */

@@ -51,4 +51,8 @@ void AddressNode::_dump(Dumper* d) {
   d->PrintMember("Expr", expr_);
 }
 
+void AddressNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
+
 } /* end ast */

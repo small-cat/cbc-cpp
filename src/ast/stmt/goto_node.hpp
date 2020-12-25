@@ -13,7 +13,7 @@ public:
   void _dump(Dumper* d) {
     d->PrintMember("Label", label_name_);
   }
-  // void accept();
+  void Accept(ASTVisitor * visitor) { visitor->Visit(this); }
   virtual std::string GetClass() { return "GotoStmtNode"; }
 private:
   std::string label_name_;

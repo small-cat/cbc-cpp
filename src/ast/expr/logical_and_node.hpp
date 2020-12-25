@@ -10,6 +10,8 @@ public:
   virtual ~LogicalAndNode() {}
 
   std::string GetClass() { return "LogicalAndNode"; }
+
+  void Accept(ASTVisitor * visitor) { visitor->Visit(this); }
 };
 } /* end ast */
 

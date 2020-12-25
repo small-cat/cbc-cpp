@@ -1,2 +1,2 @@
 # cbc-cpp
-an implementation for cbc by cpp
+A c-like compiler implemented by cpp.

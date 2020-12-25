@@ -12,7 +12,7 @@ public:
   void _dump(Dumper* d) {}
   virtual std::string GetClass() { return "ContinueStmtNode"; }
 
-  // void accept();
+  void Accept(ASTVisitor * visitor) { visitor->Visit(this); }
 };
 } /* end ast */
 

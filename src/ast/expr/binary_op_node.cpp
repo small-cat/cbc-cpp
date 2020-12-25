@@ -67,4 +67,8 @@ void BinaryOpNode::_dump(Dumper* d) {
   d->PrintMember("Left", left_);
   d->PrintMember("Right", right_);
 }
+
+void BinaryOpNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
 } /* end ast */

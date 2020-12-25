@@ -10,7 +10,7 @@ public:
   virtual ~BreakNode() {}
 
   void _dump(Dumper* d) {}
-  // void accept();
+  void Accept(ASTVisitor * visitor) { visitor->Visit(this); }
   virtual std::string GetClass() { return "BreakStmtNode"; }
 };
 } /* end ast */

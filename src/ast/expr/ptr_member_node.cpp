@@ -53,4 +53,9 @@ std::string PtrMemberNode::GetClass() {
 type::Type* PtrMemberNode::original_type() {
   return DereferedCompositeType()->MemberType(member_);
 }
+
+void PtrMemberNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
+
 } /* end ast */

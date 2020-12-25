@@ -27,4 +27,8 @@ void LabelNode::_dump(Dumper* d) {
   d->PrintMember("Label", name_);
   d->PrintMember("Statement", stmt_);
 }
+
+void LabelNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
 } /* end ast */

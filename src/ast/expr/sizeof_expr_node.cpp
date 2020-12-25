@@ -44,4 +44,9 @@ std::string SizeofExprNode::GetClass() {
 void SizeofExprNode::_dump(Dumper* d) {
   d->PrintMember("Expr", expr_);
 }
+
+void SizeofExprNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
+
 } /* end type */

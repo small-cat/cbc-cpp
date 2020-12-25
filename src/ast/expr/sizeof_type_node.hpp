@@ -19,7 +19,7 @@ public:
 
   virtual std::string GetClass();
 
-  // void accept();
+  void Accept(ASTVisitor * visitor);
 private:
   TypeNode* operand_;     // type of operand
   TypeNode* type_node_;   // return type

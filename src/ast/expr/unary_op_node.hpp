@@ -20,7 +20,7 @@ public:
   void _dump(Dumper* d);
 
   virtual std::string GetClass();
-  // void accept();
+  void Accept(ASTVisitor * visitor);
 private:
   std::string operator_;
   ExprNode* expr_;

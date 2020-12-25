@@ -59,4 +59,8 @@ std::string VariableNode::GetClass() {
   return "VariableNode";
 }
 
+void VariableNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
+
 } /* end type */

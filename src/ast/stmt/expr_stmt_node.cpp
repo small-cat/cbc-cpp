@@ -22,4 +22,8 @@ std::string ExprStmtNode::GetClass() {
 void ExprStmtNode::_dump(Dumper* d) {
   d->PrintMember("expr", expr_);
 }
+
+void ExprStmtNode::Accept(ASTVisitor *visitor) {
+  visitor->Visit(this);
+}
 } /* end ast */

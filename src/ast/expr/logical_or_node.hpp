@@ -10,7 +10,8 @@ public:
   virtual ~LogicalOrNode() {}
 
   virtual std::string GetClass() { return "LogicalOrNode"; }
-  // void accept();
+
+  void Accept(ASTVisitor * visitor) { visitor->Visit(this); }
 };
 } /* end ast */
 

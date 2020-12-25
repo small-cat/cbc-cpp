@@ -32,4 +32,8 @@ void DoWhileNode::_dump(Dumper* d) {
   d->PrintMember("CondExpr", cond_);
   d->PrintMember("body", body_);
 }
+
+void DoWhileNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
 } /* end ast */

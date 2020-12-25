@@ -14,5 +14,9 @@ std::string StringLiteralNode::GetClass() {
 void StringLiteralNode::_dump(Dumper* d) {
   d->PrintMember("Value", value_);
 }
+
+void StringLiteralNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
   
 } /* end ty */

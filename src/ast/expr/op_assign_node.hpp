@@ -22,7 +22,7 @@ public:
   std::string OpAssignOperator() { return operator_; }
   virtual std::string GetClass() { return "OpAssignNode"; }
 
-  // void accept();
+  void Accept(ASTVisitor * visitor) { visitor->Visit(this); }
 private:
   std::string operator_;
 };

@@ -26,7 +26,7 @@ public:
   void _dump(Dumper* d);
   virtual std::string GetClass();
 
-  // void accept();
+  void Accept(ASTVisitor * visitor);
 private:
   StmtNode* body_;
   ExprNode* cond_;

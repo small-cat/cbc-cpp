@@ -34,4 +34,8 @@ void SwitchNode::_dump(Dumper* d) {
   d->PrintMember("CondExpr", cond_);
   d->PrintNodeList("CaseNodes", cases_);
 }
+
+void SwitchNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
 } /* end ast */

@@ -30,7 +30,7 @@ public:
   Location* location();
   std::string GetClass();
   void _dump(Dumper* d);
-  // void accept();
+  void Accept(ASTVisitor * visitor);
 private:
   ExprNode* expr_;
   ExprNode* index_;     // like expr_[index_]

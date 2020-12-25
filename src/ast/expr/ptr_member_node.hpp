@@ -33,6 +33,7 @@ public:
   virtual std::string GetClass();
   void _dump(Dumper* d);
 
+  void Accept(ASTVisitor * visitor);
 private:
   ExprNode* expr_;
   std::string member_;

@@ -34,7 +34,7 @@ public:
   std::string GetClass();
   void _dump(Dumper* d);
 
-  // void accept(ASTVisitor* visitor);
+  void Accept(ASTVisitor * visitor);
 private:
   TypeNode* type_node_;
   ExprNode* expr_;

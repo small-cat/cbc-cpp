@@ -60,4 +60,9 @@ void ARefNode::_dump(Dumper* d) {
   d->PrintMember("Expr", expr_);
   d->PrintMember("Index", index_);
 }
+
+void ARefNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
+
 } /* end ast */

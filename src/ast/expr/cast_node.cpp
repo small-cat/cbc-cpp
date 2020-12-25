@@ -64,4 +64,8 @@ void CastNode::_dump(Dumper *d) {
   d->PrintMember("Expr", expr_);
 }
 
+void CastNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
+
 } /* end ast */

@@ -41,6 +41,13 @@ Entity* TopLevelScope::Get(std::string n) {
   return search->second;
 }
 
+/************************************************************************************
+* @fn AllGlobalVariables
+* @brief 返回所有的全局变量定义，在顶层作用域 TopLevelScope 中
+* @param
+* @author Jona
+* @date 2020/12/24
+************************************************************************************/
 std::vector<Variable*> TopLevelScope::AllGlobalVariables() {
   std::vector<Variable*> result;
   for (auto iter = entities_.begin(); iter != entities_.end(); iter++) {

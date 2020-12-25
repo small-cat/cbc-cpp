@@ -44,4 +44,9 @@ std::string SizeofTypeNode::GetClass() {
 void SizeofTypeNode::_dump(Dumper* d) {
   d->PrintMember("Operand", type_node_);
 }
-} /* end ty */
+
+void SizeofTypeNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
+
+} /* end type */

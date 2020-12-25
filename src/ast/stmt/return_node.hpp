@@ -21,6 +21,8 @@ public:
     d->PrintMember("Expr",expr_);
   }
   virtual std::string GetClass() { return "ReturnStmtNode"; }
+
+  void Accept(ASTVisitor * visitor) { visitor->Visit(this); }
 private:
   ExprNode* expr_;
 };

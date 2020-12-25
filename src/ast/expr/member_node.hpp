@@ -29,7 +29,8 @@ public:
   Location* location();
   virtual std::string GetClass();
   void _dump(Dumper* d);
-  // void accept(ASTVisitor visitor);
+
+  void Accept(ASTVisitor * visitor);
 
 private:
   ExprNode* expr_;

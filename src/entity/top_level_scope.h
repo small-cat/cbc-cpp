@@ -25,15 +25,13 @@ public:
 
   Entity* Get(std::string n);
 
-  // returns a list of all global vars
-  // in TopLevelScope, vars regardes as global 
   std::vector<Variable*> AllGlobalVariables();
   std::vector<DefinedVariable*> DefinedGlobalScopeVariables();
   std::vector<DefinedVariable*> StaticLocalVariables();
 
   void CheckReferences(utils::ErrorHandler* h);
 private:
-  std::map<std::string, Entity*> entities_;
+  std::map<std::string, Entity*> entities_;   // 全局变量符号表(变量和函数)，全局变量名称及其定义的映射关系
   std::vector<DefinedVariable*> static_local_variables_;
 };
 } /* end entity */

@@ -13,6 +13,7 @@
 #include "../node.hpp"
 #include "../dumper.h"
 #include "../../type/type.hpp"
+#include "../../compiler/ast_visitor.h"
 
 namespace ast {
 class ExprNode : public Node {
@@ -40,7 +41,7 @@ public:
   }
 
   virtual void _dump(Dumper* d) = 0;
-  //virtual void Accept(ASTVisitor* visitor) = 0;
+  virtual void Accept(ASTVisitor* visitor) = 0;
 };
 } /* end ast */
 

@@ -10,7 +10,7 @@ public:
   virtual ~SuffixOpNode() {}
 
   virtual std::string GetClass() { return "SuffixOpNode"; }
-  // void accept(ASTVisitor* visitor);
+  void Accept(ASTVisitor * visitor) { visitor->Visit(this); }
 };
 } /* end ast */
 

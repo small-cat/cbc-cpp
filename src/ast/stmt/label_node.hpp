@@ -29,8 +29,7 @@ public:
   void _dump(Dumper* d);
   virtual std::string GetClass();
 
-  // @todo[UNIMPLEMENT]/2020/12/22: not implement accept
-  // void accept();
+  void Accept(ASTVisitor * visitor);
 private:
   std::string name_;
   StmtNode* stmt_;

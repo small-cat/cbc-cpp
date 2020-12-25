@@ -67,4 +67,8 @@ void FuncallNode::_dump(Dumper* d) {
   d->PrintNodeList("Arguments", args_);
 }
 
+void FuncallNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
+
 } /* end ast */

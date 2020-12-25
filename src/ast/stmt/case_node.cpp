@@ -38,4 +38,8 @@ void CaseNode::_dump(Dumper* d) {
   d->PrintNodeList("CaseValues", values_);
   d->PrintMember("body", body_);
 }
+
+void CaseNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
 } /* end ast */

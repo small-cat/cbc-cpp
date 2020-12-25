@@ -56,4 +56,8 @@ void ForNode::_dump(Dumper* d) {
   d->PrintMember("IncrExpr", incr_);
   d->PrintMember("Body", body_);
 }
+
+void ForNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
 } /* end ast */

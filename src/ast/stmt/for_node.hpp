@@ -29,7 +29,7 @@ public:
 
   virtual std::string GetClass();
   void _dump(Dumper* d);
-  // void accept();
+  void Accept(ASTVisitor * visitor);
 private:
   StmtNode* init_;
   ExprNode* cond_;

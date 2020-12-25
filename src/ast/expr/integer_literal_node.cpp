@@ -17,4 +17,8 @@ void IntegerLiteralNode::_dump(Dumper* d) {
   d->PrintMember("TypeNode", type_node());
   d->PrintMember("Value", value_);
 }
+
+void IntegerLiteralNode::Accept(ASTVisitor *visitor) {
+  visitor->Visit(this);
+}
 } /* end type */

@@ -44,4 +44,8 @@ void IfNode::_dump(Dumper* d) {
   d->PrintMember("ThenStmt", then_body_);
   d->PrintMember("ElseStmt", else_body_);
 }
+
+void IfNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
 } /* end ast */

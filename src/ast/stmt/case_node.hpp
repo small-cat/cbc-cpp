@@ -33,7 +33,7 @@ public:
   BlockNode* body();
   // Label* label();
   void _dump(Dumper* d);
-  // void accept();
+  void Accept(ASTVisitor * visitor);
   virtual std::string GetClass();
 private:
   // Label label_;    // used in assembly code

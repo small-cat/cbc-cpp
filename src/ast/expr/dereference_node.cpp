@@ -36,4 +36,8 @@ void DereferenceNode::_dump(Dumper* d) {
 
   d->PrintMember("Expr", expr_);
 }
+
+void DereferenceNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
 } /* end ast */

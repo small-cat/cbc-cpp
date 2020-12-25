@@ -11,7 +11,7 @@ public:
 
   std::string value();
   void _dump(Dumper* d);
-  // void accept();
+  void Accept(ASTVisitor * visitor);
 
   virtual std::string GetClass();
 private:

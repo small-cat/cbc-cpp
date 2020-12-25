@@ -11,7 +11,7 @@ public:
 
   std::string GetClass() { return "AssignNode"; }
 
-  // void accept();
+  void Accept(ASTVisitor * visitor) { visitor->Visit(this); }
 };
 } /* end ast */
 

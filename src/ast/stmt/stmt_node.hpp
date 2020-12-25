@@ -13,6 +13,7 @@
 
 #include "../node.hpp"
 #include "../location.hpp"
+#include "../../compiler/ast_visitor.h"
 
 namespace ast {
 class StmtNode : public Node {
@@ -31,6 +32,8 @@ public:
     d->PrintClass(this, location_);
     _dump(d);
   }
+
+  virtual void Accept(ASTVisitor* visitor) = 0;
 private:
   Location* location_;
 };

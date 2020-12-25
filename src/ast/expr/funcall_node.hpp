@@ -9,14 +9,14 @@
 namespace ast {
 class FuncallNode : public ExprNode {
 public:
-  FuncallNode(ExprNode* expr, std::vector<ExprNode*> args);
+  FuncallNode(ExprNode *expr, std::vector<ExprNode *> args);
   virtual ~FuncallNode();
 
   ExprNode* expr();
   type::Type* type();
   type::FunctionType* GetFunctionType();
   long NumOfArgs();
-  std::vector<ExprNode*> args();
+  std::vector<ExprNode *> args();
 
   // void ReplaceArgs(std::vector<ExprNode*> args);  // called by TypeChecker
 
@@ -24,7 +24,7 @@ public:
   std::string GetClass();
   void _dump(Dumper* d);
 
-  //void Accept(ASTVisitor* visitor);
+  void Accept(ASTVisitor * visitor);
 private:
   ExprNode* expr_;              // function name expression
   std::vector<ExprNode*> args_; // arguments

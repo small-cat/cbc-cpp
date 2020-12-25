@@ -51,5 +51,9 @@ void UnaryOpNode::_dump(Dumper* d) {
 std::string UnaryOpNode::GetClass() {
   return "";
 }
+
+void UnaryOpNode::Accept(ASTVisitor * visitor) {
+  visitor->Visit(this);
+}
   
 } /* end as */

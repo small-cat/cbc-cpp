@@ -24,10 +24,12 @@ public:
   Location* location();
   void _dump(Dumper* d);
   virtual std::string GetClass();
+
+  void Accept(ASTVisitor * visitor);
 private:
   Location* location_;
   std::string name_;
-  entity::Entity* entity_; 
+  entity::Entity* entity_;    // 在变量消解过程中，给该变量添加 Variable 的信息, 即变量的定义, 此处仅仅是变量的引用，也就是表达式中对变量的使用
 };
 } /* end ast */
 

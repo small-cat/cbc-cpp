@@ -43,8 +43,10 @@ public:
     d->PrintNodeList("variables", variables_);
     d->PrintNodeList("statements", stmts_);
   }
-  // @todo { not implement and accept }
-  // void accept();
+
+  void Accept(ASTVisitor * visitor) {
+    visitor->Visit(this);
+  }
 private:
   std::vector<StmtNode*> stmts_;
   std::vector<entity::DefinedVariable*> variables_;   // 申明的变量定义
