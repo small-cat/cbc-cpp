@@ -7,25 +7,7 @@ namespace ast {
 class CondExprNode : public ExprNode {
 public:
   CondExprNode(ExprNode* c, ExprNode* t, ExprNode* e) : cond_(c), then_expr_(t), else_expr_(e) {}
-  virtual ~CondExprNode() {
-    if (nullptr != cond_)
-    {
-      delete cond_;
-      cond_ = nullptr;
-    }
-
-    if (nullptr != then_expr_)
-    {
-      delete then_expr_;
-      then_expr_ = nullptr;
-    }
-
-    if (nullptr != else_expr_)
-    {
-      delete else_expr_;
-      else_expr_ = nullptr;
-    }
-  }
+  virtual ~CondExprNode() {}
 
   type::Type* type() {
     return then_expr_->type();

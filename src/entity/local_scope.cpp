@@ -6,7 +6,17 @@ LocalScope::LocalScope(Scope* s) : parent_(s) {
   parent_->AddChildren(this);
 }
 
-LocalScope::~LocalScope() {}
+LocalScope::~LocalScope() {
+  parent_ = nullptr;
+  variables_.clear();
+
+  for (auto& child : children()) {
+    if (child != nullptr) {
+      delete child;
+      child = nullptr;
+    }
+  }
+}
 
 bool LocalScope::IsTopLevel() {
   return false;
@@ -47,6 +57,14 @@ DefinedVariable* LocalScope::AllocateTmp(type::Type* t) {
   return nullptr;
 }
 
+/************************************************************************************
+* @fn Get
+* @brief 从作用域中查找变量定义，该作用域也就是符号表.此处符号表作用域的处理方法，每一次均保留了之前
+         的完整作用域范围，且没有破坏，属于数式子风格的符号表,见 《现代编译原理c语言描述 5.1.5》
+* @param
+* @author Jona
+* @date 2020/12/25
+************************************************************************************/
 Entity* LocalScope::Get(std::string n) {
   auto search = variables_.find(n);
   if (search == variables_.end()) {

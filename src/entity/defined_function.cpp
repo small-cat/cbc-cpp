@@ -4,18 +4,7 @@ namespace entity {
 DefinedFunction::DefinedFunction(bool priv, ast::TypeNode* tn, std::string n, Params* params, ast::BlockNode* body)
   : Function(priv, tn, n), params_(params), body_(body) {}
 
-DefinedFunction::~DefinedFunction() {
-  if (nullptr != params_) {
-    delete params_;
-  }
-
-  if (nullptr != body_) {
-    delete body_;
-  }
-
-  params_ = nullptr;
-  body_ = nullptr;
-}
+DefinedFunction::~DefinedFunction() {}
 
 bool DefinedFunction::IsDefined() { 
   return true;

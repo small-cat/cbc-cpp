@@ -15,22 +15,7 @@ public:
       variables_.swap(vars);
       stmts_.swap(stmts);
     }
-  virtual ~BlockNode() {
-    for (auto& stm : stmts_) {
-      delete stm;
-      stm = nullptr;
-    }
-
-    for (auto& v : variables_) {
-      delete v;
-      v = nullptr;
-    }
-
-    if (nullptr != scope_) {
-      delete scope_;
-      scope_ = nullptr;
-    }
-  }
+  virtual ~BlockNode() {}
 
   std::vector<entity::DefinedVariable*> variables() { return variables_; }
   std::vector<StmtNode*> stmts() { return stmts_; }

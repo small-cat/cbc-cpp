@@ -10,11 +10,6 @@ SizeofExprNode::~SizeofExprNode() {
     delete type_node_;
     type_node_ = nullptr;
   }
-
-  if (nullptr != expr_) {
-    delete expr_;
-    expr_ = nullptr;
-  }
 }
 
 ExprNode* SizeofExprNode::expr() {

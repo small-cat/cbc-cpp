@@ -2,12 +2,7 @@
 
 namespace ast {
 DereferenceNode::DereferenceNode(ExprNode* e) : expr_(e) {}
-DereferenceNode::~DereferenceNode() {
-  if (nullptr != expr_) {
-    delete expr_;
-    expr_ = nullptr;
-  }
-}
+DereferenceNode::~DereferenceNode() {}
 
 type::Type* DereferenceNode::original_type() {
   return expr_->type()->base_type();

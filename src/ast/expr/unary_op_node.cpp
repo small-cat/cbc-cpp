@@ -3,17 +3,7 @@
 namespace ast {
 
 UnaryOpNode::UnaryOpNode(std::string op, ExprNode* e) : operator_(op), expr_(e), op_type_(nullptr) {}
-UnaryOpNode::~UnaryOpNode() {
-  if (nullptr != expr_) {
-    delete expr_;
-    expr_ = nullptr;
-  }
-
-  if (nullptr != op_type_) {
-    delete op_type_;
-    op_type_ = nullptr;
-  }
-}
+UnaryOpNode::~UnaryOpNode() {}
 
 std::string UnaryOpNode::UnaryOpNodeOperator() {
   return operator_;

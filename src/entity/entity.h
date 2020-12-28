@@ -48,6 +48,30 @@ private:
   // MemoryReference* memref_;    // defined in asm
   // Operand* address_;
 };
+
+class EntityTracker {
+public:
+  template <typename T, typename ... Args>
+    T* CreateInstance(Args&& ... args) {
+      static_assert(std::is_base_of<Entity, T>::value, "Argument must be Entity Type");
+      T *result = new T(args...);
+      allocated_.push_back(result);
+      return result;
+    }
+
+  void Reset() {
+    for (auto entry : allocated_)
+    {
+      delete entry;
+    }
+
+    allocated_.clear();
+  }
+
+private:
+  std::vector<Entity *> allocated_;
+};
+
 } /* end entity */
 
 #endif /* __ENTITY_H__ */

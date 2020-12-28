@@ -36,9 +36,11 @@ void Visitor::Visit(ast::BlockNode *node) {
 
   VisitStmts(node->stmts());
 } 
+
 void Visitor::Visit(ast::ExprStmtNode * node) {
   VisitExpr(node->expr());
 }
+
 void Visitor::Visit(ast::IfNode * node) {
   VisitExpr(node->cond());
   VisitStmt(node->then_body());
@@ -47,6 +49,7 @@ void Visitor::Visit(ast::IfNode * node) {
     VisitStmt(node->else_body());
   }
 }
+
 void Visitor::Visit(ast::SwitchNode * node) {
   VisitExpr(node->cond());
   for (auto& c : node->cases()) {

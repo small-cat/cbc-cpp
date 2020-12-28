@@ -19,12 +19,7 @@ namespace ast {
 class StmtNode : public Node {
 public:
   StmtNode(Location* l) : location_(l) {}
-  virtual ~StmtNode() {
-    if (nullptr != location_) {
-      delete location_;
-      location_ = nullptr;
-    }
-  }
+  virtual ~StmtNode() {}
 
   Location* location() { return location_; }
   virtual std::string GetClass() { return ""; }

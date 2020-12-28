@@ -2,12 +2,7 @@
 
 namespace ast {
 MemberNode::MemberNode(ExprNode* e, std::string m) : expr_(e), member_(m) {}
-MemberNode::~MemberNode() {
-  if (nullptr != expr_) {
-    delete expr_;
-    expr_ = nullptr;
-  }
-}
+MemberNode::~MemberNode() {}
 
 type::CompositeType* MemberNode::BaseType() {
   return expr_->type()->GetCompositeType();

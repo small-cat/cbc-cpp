@@ -17,17 +17,7 @@ namespace ast {
 class AbstractAssignNode : public ExprNode {
 public:
   AbstractAssignNode(ExprNode* l, ExprNode* r) : lhs_(l), rhs_(r) {}
-  virtual ~AbstractAssignNode() {
-    if (nullptr != lhs_) {
-      delete lhs_;
-      lhs_ = nullptr;
-    }
-
-    if (nullptr != rhs_) {
-      delete rhs_;
-      rhs_ = nullptr;
-    }
-  }
+  virtual ~AbstractAssignNode() {}
 
   type::Type* type() { return lhs_->type(); }
   ExprNode* lhs() { return lhs_; }

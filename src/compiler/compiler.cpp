@@ -2,6 +2,7 @@
 #include "compiler.h"
 #include "parser/parser.h"
 #include "ast/dumpable.h"
+#include "local_resolver.h"
 
 namespace compiler {
 const std::string Compiler::kProgramName = AX(PROGNAME);
@@ -9,14 +10,19 @@ const std::string Compiler::kProgVersion = AX(PROG_VERSION);
 
 Compiler::Compiler(const std::string& progname) {
   err_handler_ = new utils::ErrorHandler(progname);
+  file_parser_ = nullptr;
 }
 
 Compiler::~Compiler() {
   if (err_handler_ != nullptr) {
     delete err_handler_;
+    err_handler_ = nullptr;
   }
 
-  err_handler_ = nullptr;
+  if (file_parser_ != nullptr) {
+    delete file_parser_;
+    file_parser_ = nullptr;
+  }
 }
 
 void Compiler::CommandMain(int argc, char* argv[]) {
@@ -102,13 +108,16 @@ void Compiler::Compile(const std::string& src, const std::string& dest, Options*
   }
 
   if (DumpAst(ast, opts->mode())) return;
-  delete ast;
 }
 
 ast::ASTNode* Compiler::GetAstByParseFile(const std::string& src, Options* opts) {
   // build ast
-  parser::FileParser fp(src);
-  return fp.BuildAst();
+  if (nullptr != file_parser_) {
+    delete file_parser_;
+  }
+
+  file_parser_ = new parser::FileParser(src);
+  return file_parser_->BuildAst();
 }
 
 bool Compiler::DumpAst(ast::ASTNode* ast, CompilerMode mode) {
@@ -127,6 +136,13 @@ bool Compiler::DumpAst(ast::ASTNode* ast, CompilerMode mode) {
   }
 
   return false;
+}
+
+ast::ASTNode* Compiler::SemanticAnalyze(ast::ASTNode* ast) {
+  LocalResolver lresolver(err_handler_);
+  lresolver.Resolve(ast);
+
+  return ast;
 }
 
 } /* end compiler */

@@ -14,17 +14,7 @@ TypeNode::TypeNode(Type* t) : type_ref_(nullptr) {
   type_ = t;
 }
 
-TypeNode::~TypeNode() {
-  if (nullptr != type_) {
-    delete type_;
-    type_ = nullptr;
-  }
-
-  if (nullptr != type_ref_) {
-    delete type_ref_;
-    type_ref_ = nullptr;
-  }
-}
+TypeNode::~TypeNode() {}
 
 TypeRef* TypeNode::type_ref() {
   return type_ref_;

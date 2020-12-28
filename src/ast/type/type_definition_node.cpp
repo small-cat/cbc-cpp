@@ -14,11 +14,6 @@ TypeDefinitionNode::~TypeDefinitionNode() {
     delete type_node_;
     type_node_ = nullptr;
   }
-
-  if (nullptr != location_) {
-    delete location_;
-    location_ = nullptr;
-  }
 }
 
 std::string TypeDefinitionNode::name() {

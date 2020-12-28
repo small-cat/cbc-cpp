@@ -7,6 +7,7 @@ namespace ast {
 class CflatToken {
 public:
   CflatToken();
+  CflatToken(CflatToken* t);
   CflatToken(std::string str, std::size_t i, std::size_t l, std::size_t s, std::size_t e, std::size_t pos_in_line);
   virtual ~CflatToken();
 

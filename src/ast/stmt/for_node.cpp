@@ -17,17 +17,6 @@ ForNode::~ForNode() {
     delete incr_;
     incr_ = nullptr;
   }
-
-  if (nullptr != cond_) {
-    delete cond_;
-    cond_ = nullptr;
-  }
-
-  if (nullptr != body_) {
-    delete body_;
-    body_ = nullptr;
-  }
-
 }
 
 StmtNode* ForNode::init() {

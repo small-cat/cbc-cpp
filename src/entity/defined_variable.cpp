@@ -7,13 +7,7 @@ DefinedVariable::DefinedVariable(bool priv, ast::TypeNode* tn,
                                  std::string n, ast::ExprNode* init)
   : Variable(priv, tn, n), initializer_(init) {}
 
-DefinedVariable::~DefinedVariable() {
-  if (nullptr != initializer_) {
-    delete initializer_;
-  }
-
-  initializer_ = nullptr;
-}
+DefinedVariable::~DefinedVariable() {}
 
 bool DefinedVariable::IsDefined() {
   return true;

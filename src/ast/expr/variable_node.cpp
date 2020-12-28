@@ -6,17 +6,7 @@ VariableNode::VariableNode(entity::DefinedVariable* var) : entity_(var) {
   location_ = nullptr;
   name_ = var->name();
 }
-VariableNode::~VariableNode() {
-  if (nullptr != location_) {
-    delete location_;
-    location_ = nullptr;
-  }
-
-  if (nullptr != entity_) {
-    delete entity_;
-    entity_ = nullptr;
-  }
-}
+VariableNode::~VariableNode() {}
 
 std::string VariableNode::name() {
   return name_;
@@ -27,7 +17,7 @@ bool VariableNode::IsResolved() {
 }
 
 entity::Entity* VariableNode::entity() { return entity_; }
-void VariableNode::SetEntity(entity::DefinedVariable* var) {
+void VariableNode::SetEntity(entity::Entity* var) {
   entity_ = var;
 }
 

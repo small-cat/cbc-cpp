@@ -3,12 +3,7 @@
 
 namespace ast {
 PtrMemberNode::PtrMemberNode(ExprNode* e, std::string m) : expr_(e), member_(m) {}
-PtrMemberNode::~PtrMemberNode() {
-  if (nullptr != expr_) {
-    delete expr_;
-    expr_ = nullptr;
-  }
-}
+PtrMemberNode::~PtrMemberNode() {}
 
 type::CompositeType* PtrMemberNode::DereferedCompositeType() {
   type::PointerType* pt = expr_->type()->GetPointerType();

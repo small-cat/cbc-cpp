@@ -10,11 +10,6 @@ SizeofTypeNode::~SizeofTypeNode() {
     delete type_node_;
     type_node_ = nullptr;
   }
-
-  if (nullptr != operand_) {
-    delete operand_;
-    operand_ = nullptr;
-  }
 }
 
 type::Type* SizeofTypeNode::OperandType() {

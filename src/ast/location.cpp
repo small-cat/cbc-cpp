@@ -4,6 +4,17 @@ namespace ast {
 Location::Location(std::string name, CflatToken* t) : source_name_(name),
                                                       token_(t) {}
 
+Location::Location(Location* l) {
+  source_name_ = l->source_name();
+
+  if (token_ != nullptr) {
+    delete token_;
+    token_ = nullptr;
+  }
+
+  token_ = new CflatToken(l->token());
+}
+
 Location::Location(std::string name, std::string text, std::size_t i, std::size_t l, std::size_t s, std::size_t e, std::size_t pil) 
   : source_name_(name) {
     token_ = new CflatToken(text, i, l, s, e, pil);

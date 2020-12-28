@@ -22,11 +22,19 @@ public:
 
   Location* location();
   void AddDeclarations(Declarations* decl);
+  std::vector<entity::Entity *> DeclarationEntities();
+  std::vector<entity::Entity *> DefinitionEntities();
+  std::vector<entity::DefinedVariable *> DefinedVariables();
+  std::vector<entity::DefinedFunction *> DefinedFunctions();
+  std::vector<entity::Constant *> GetConstants();
 
   void SetTokenStrings(std::vector<std::string> sv);
   void DumpTokens();
   void DumpAst(Dumper* d);
   virtual std::string GetClass();
+
+  void SetScope(entity::TopLevelScope* top_scope);
+  void SetConstantTable(entity::ConstantTable* tb);
 private:
   Location* location_;
   Declarations* declarations_;

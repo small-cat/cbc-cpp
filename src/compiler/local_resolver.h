@@ -18,6 +18,7 @@
 #include "../entity/local_scope.h"
 #include "../entity/top_level_scope.h"
 #include "../entity/constant_table.hpp"
+#include "../entity/parameter.h"
 #include "../utils/error_handler.h"
 
 #include "../ast/ast.hpp"
@@ -39,6 +40,8 @@ public:
   void Visit(ast::StringLiteralNode * node);
   void Visit(ast::VariableNode * node);
   void PushScope(std::vector<entity::DefinedVariable *> vars);
+  void PushScope(std::vector<entity::Parameter *> params);
+  void PushScope(entity::DefinedVariable * var, entity::LocalScope* ls);
   entity::LocalScope* PopScope();
   entity::Scope* GetCurrentScope();
 private:

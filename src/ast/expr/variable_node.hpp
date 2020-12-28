@@ -16,7 +16,7 @@ public:
   
   bool IsResolved();
   entity::Entity* entity();
-  void SetEntity(entity::DefinedVariable* var);
+  void SetEntity(entity::Entity* var);
   TypeNode* type_node();
   bool IsParameter();
   type::Type* original_type();
@@ -29,7 +29,10 @@ public:
 private:
   Location* location_;
   std::string name_;
-  entity::Entity* entity_;    // 在变量消解过程中，给该变量添加 Variable 的信息, 即变量的定义, 此处仅仅是变量的引用，也就是表达式中对变量的使用
+
+  // 在变量消解过程中，给该变量添加 Variable 的信息, 即变量的定义, 此处仅仅是变量的引用，
+  // 也就是表达式中对变量的使用, 这样变量的引用就与定义绑定起来
+  entity::Entity* entity_;    
 };
 } /* end ast */
 

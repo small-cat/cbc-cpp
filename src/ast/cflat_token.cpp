@@ -2,6 +2,10 @@
 
 namespace ast {
 CflatToken::CflatToken() : index_(0), line_no_(0), start_(0), end_(0) {}
+
+CflatToken::CflatToken(CflatToken* t) : CflatToken(t->text(), t->index(), t->line_no(), 
+                                                   t->start(), t->end(), t->position_in_line()) {}
+
 CflatToken::CflatToken(std::string str, std::size_t i, std::size_t l, std::size_t s, std::size_t e, std::size_t pos_in_line)
   : text_(str), index_(i), line_no_(l), start_(s), end_(e), pos_in_line_(pos_in_line) {}
 

@@ -15,7 +15,6 @@ public:
 
   std::vector<Parameter*> GetParameters();
 
-  // @todo { not implement functions below }
   type::ParamTypeRefs* GetParameterTypeRefs();
   void _dump(ast::Dumper* d); 
 private:

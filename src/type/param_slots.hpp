@@ -22,17 +22,7 @@ public:
     param_descriptors_.swap(param_desc);
   }
 
-  virtual ~ParamSlots() {
-    if (nullptr != location_) {
-      delete location_;
-      location_ = nullptr;
-    }
-
-    for (auto& p : param_descriptors_) {
-      delete p;
-      p = nullptr;
-    }
-  }
+  virtual ~ParamSlots() {}
 
   int Argc() {
     if (vararg_) {
@@ -51,6 +41,27 @@ private:
   ast::Location* location_;
   std::vector<T*> param_descriptors_;
   bool vararg_;
+};
+
+template <typename T>
+class ParamSlotsTracker {
+public:
+  template <typename S, typename ... Args>
+    S* CreateInstance(Args&& ... args) {
+      static_assert(std::is_base_of<T, S>::value, "Argument type error");
+      S* result = new S(args ...);
+      allocated_.push_back(result);
+      return result;
+    }
+
+  void Reset() {
+    for (auto entry : allocated_) {
+      delete entry;
+    }
+    allocated_.clear();
+  }
+private:
+  std::vector<T *> allocated_;
 };
 
 } /* end type */

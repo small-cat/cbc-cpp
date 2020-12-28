@@ -13,19 +13,7 @@ namespace ast {
 CastNode::CastNode(TypeNode* t, ExprNode* expr) : type_node_(t), expr_(expr) {
 }
 
-CastNode::~CastNode() {
-  if (nullptr != expr_)
-  {
-    delete expr_;
-    expr_ = nullptr;
-  }
-
-  if (nullptr != type_node_)
-  {
-    delete type_node_;
-    type_node_ = nullptr;
-  }
-}
+CastNode::~CastNode() {}
 
 type::Type* CastNode::type() {
   return type_node_->type();

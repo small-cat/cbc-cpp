@@ -17,6 +17,14 @@
 #include "ast/ast.hpp"
 #include "entity/defined_variable.h"
 #include "ast/expr/integer_literal_node.hpp"
+#include "type/integer_type_ref.h"
+#include "type/param_type_ref.hpp"
+#include "type/param_types.hpp"
+#include "entity/params.h"
+
+#include "ast/location.hpp"
+#include "entity/entity.h"
+#include "type/type.hpp"
 
 namespace parser {
 class BuildAstVisitor : public SesameParserBaseVisitor {
@@ -122,6 +130,8 @@ public:
   ast::CflatToken* GetCFlatToken(antlr4::Token *t);  ast::IntegerLiteralNode* GetIntegerNode(ast::Location *l, std::string str);
   long GetIntegerValue(std::string str, ast::Location *l);
   long GetCharValue(const std::string& str, ast::Location *l);
+  type::TypeRef* GetIntegerTypeRef(type::IntegerTypeRef::IntegerTypeClass cls, ast::Location* loc = nullptr);
+  ast::Location* GetLocation(ast::CflatToken* t);
 private:
   SesameParser* parser_;
   antlr4::TokenStream* tokens_;
@@ -130,6 +140,15 @@ private:
 
   std::vector<entity::DefinedVariable *> defined_vars_; // for def_vars only
   std::vector<ast::SlotNode *> member_list_;            // for member_list
+
+  ast::NodeTracker node_tracker_;
+  entity::EntityTracker entity_tracker_;
+  type::TypeTracker type_tracker_;
+  type::TypeRefTracker typeref_tracker_;
+  ast::LocationTracker location_tracker_;
+  type::ParamSlotsTracker<entity::Params> params_tracker_;
+  type::ParamSlotsTracker<type::ParamTypeRefs> param_typeref_tracker_;
+  type::ParamSlotsTracker<type::ParamTypes> param_types_tracker_;
 };
 } /* parser */
 

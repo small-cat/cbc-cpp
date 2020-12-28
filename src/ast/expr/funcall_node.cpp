@@ -6,17 +6,7 @@ FuncallNode::FuncallNode(ExprNode* expr, std::vector<ExprNode*> args) : expr_(ex
   args_.swap(args);
 }
 
-FuncallNode::~FuncallNode() {
-  if (nullptr != expr_) {
-    delete expr_;
-    expr_ = nullptr;
-  }
-
-  for (auto& arg : args_) {
-    delete arg;
-    arg = nullptr;
-  }
-}
+FuncallNode::~FuncallNode() {}
 
 ExprNode* FuncallNode::expr() {
   return expr_;

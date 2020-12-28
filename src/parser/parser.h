@@ -34,6 +34,8 @@ private:
   ast::ASTNode* _ParseFile(std::error_code& ec, bool check);
   std::string filename_;
   std::vector<std::string> token_strings_; // dump tokens
+
+  parser::BuildAstVisitor* visitor_;  // visitor 包含有管理ast整个树形节点的 tracker
 };
 } /* end parser */
 

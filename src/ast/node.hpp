@@ -10,6 +10,8 @@
 #ifndef __NODE_H__
 #define __NODE_H__
 
+#include <vector>
+
 #include "location.hpp"
 #include "dumper.h"
 
@@ -25,6 +27,29 @@ public:
 
   virtual std::string GetClass() = 0;
 };
+
+class NodeTracker {
+public:
+  template <typename T, typename ... Args>
+    T* CreateInstance(Args&& ... args) {
+      static_assert(std::is_base_of<Node, T>::value, "Arguments must be Node type");
+      T* result = new T(args ...);
+      allocated_.push_back(result);
+      return result;
+    }
+
+  void Reset() {
+    for (auto entry : allocated_) {
+      delete entry;
+    }
+
+    allocated_.clear();
+  }
+
+private:
+  std::vector<Node *> allocated_;
+};
+
 } /* end ast */
 
 #endif /* __NODE_H__ */

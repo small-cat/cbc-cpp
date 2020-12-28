@@ -3,12 +3,7 @@
 namespace type {
 ArrayTypeRef::ArrayTypeRef(TypeRef* base) : TypeRef(base->location()), base_type_(base) {}
 ArrayTypeRef::ArrayTypeRef(TypeRef* base, long len) : TypeRef(base->location()), base_type_(base), length_(len) {}
-ArrayTypeRef::~ArrayTypeRef() {   // here location maybe delete twice, NOTE
-  if (nullptr != base_type_) {
-    delete base_type_;
-    base_type_ = nullptr;
-  }
-}
+ArrayTypeRef::~ArrayTypeRef() {}
 
 bool ArrayTypeRef::IsArray() {
   return true;

@@ -18,5 +18,13 @@ void StringLiteralNode::_dump(Dumper* d) {
 void StringLiteralNode::Accept(ASTVisitor * visitor) {
   visitor->Visit(this);
 }
+
+entity::ConstantEntry* StringLiteralNode::entry() {
+  return entry_;
+}
+
+void StringLiteralNode::SetEntry(entity::ConstantEntry* e) {
+  entry_ = e;
+}
   
 } /* end ty */

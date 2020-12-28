@@ -69,10 +69,10 @@ ast::ASTNode* FileParser::_ParseFile(std::error_code& ec, bool check) {
     return nullptr;
   }
 
-  BuildAstVisitor ast_visitor(&parser, filename_);
+  visitor_ = new parser::BuildAstVisitor(&parser, filename_);
 
   // @todo[UNIMPLEMENT]/2020/12/17: 没有对 import files 进行处理
-  ast::ASTNode* ast = (ast::ASTNode *)(ast_visitor.visitCompilation_unit(compile_ctx));
+  ast::ASTNode* ast = (ast::ASTNode *)(visitor_->visitCompilation_unit(compile_ctx));
   return ast;
 }
 

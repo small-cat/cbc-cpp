@@ -4,24 +4,7 @@ namespace ast {
 IfNode::IfNode(Location* l, ExprNode* c, StmtNode* t, StmtNode* e) 
   : StmtNode(l), cond_(c), then_body_(t), else_body_(e) {}
 
-IfNode::~IfNode() {
-  if (nullptr != cond_) {
-    delete cond_;
-    cond_ = nullptr;
-  }
-
-  if (nullptr != then_body_)
-  {
-    delete then_body_;
-    then_body_ = nullptr;
-  }
-
-  if (nullptr != else_body_)
-  {
-    delete else_body_;
-    else_body_ = nullptr;
-  }
-}
+IfNode::~IfNode() {}
 
 ExprNode* IfNode::cond() {
   return cond_;

@@ -14,6 +14,7 @@
 #include "source_file.h"
 #include "utils/error_handler.h"
 #include "ast/ast.hpp"
+#include "parser/parser.h"
 
 namespace compiler {
 class Compiler {
@@ -33,8 +34,11 @@ public:
   // @todo { ast and asm generated and dump }
   ast::ASTNode* GetAstByParseFile(const std::string& src, Options* opts);
   bool DumpAst(ast::ASTNode* ast, CompilerMode mode);
+
+  ast::ASTNode* SemanticAnalyze(ast::ASTNode* ast);
 private:
   utils::ErrorHandler* err_handler_;
+  parser::FileParser* file_parser_;
 };
 } /* end compiler */
 

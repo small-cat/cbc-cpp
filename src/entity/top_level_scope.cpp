@@ -7,7 +7,14 @@
 
 namespace entity {
 TopLevelScope::TopLevelScope() {}
-TopLevelScope::~TopLevelScope() {}
+TopLevelScope::~TopLevelScope() {
+  for (auto& child : children()) {
+    if (nullptr != child) {
+      delete child;
+      child = nullptr;
+    }
+  }
+}
 
 bool TopLevelScope::IsTopLevel() {
   return true;
@@ -21,9 +28,27 @@ Scope* TopLevelScope::GetParent() {
   return nullptr;
 }
 
-void TopLevelScope::DeclareOrDefineEntity(Entity* e) {
+/************************************************************************************
+* @fn DeclareOrDefineEntity
+* @brief 在符号表中查找，该符号表保存的是所有的全局变量定义或者申明。
+* @param
+* @author Jona
+* @date 2020/12/25
+************************************************************************************/
+void TopLevelScope::DeclareEntity(Entity* e) {
   auto search = entities_.find(e->name());
   if (search != entities_.end()) {
+    std::cout << "duplicated declaration: " << e->name() << ": " <<
+      search->second->GetLocation()->ToString() << " and " << e->GetLocation()->ToString() << std::endl;
+    exit(EXIT_FAILURE);
+  }
+
+  entities_.emplace(std::make_pair(e->name(), e));
+}
+
+void TopLevelScope::DefineEntity(Entity* e) {
+  auto search = entities_.find(e->name());
+  if (search != entities_.end() && search->second->IsDefined()) {
     std::cout << "duplicated declaration: " << e->name() << ": " <<
       search->second->GetLocation()->ToString() << " and " << e->GetLocation()->ToString() << std::endl;
     exit(EXIT_FAILURE);
@@ -36,6 +61,7 @@ Entity* TopLevelScope::Get(std::string n) {
   auto search = entities_.find(n);
   if (search == entities_.end()) {
     std::cout << "unresolved reference: " << n << std::endl;
+    return nullptr;
   }
 
   return search->second;
@@ -59,6 +85,13 @@ std::vector<Variable*> TopLevelScope::AllGlobalVariables() {
   return result;
 }
 
+/************************************************************************************
+* @fn DefinedGlobalScopeVariables
+* @brief 返回所有的全局变量，在顶层作用域中的全局变量
+* @param
+* @author Jona
+* @date 2020/12/25
+************************************************************************************/
 std::vector<DefinedVariable*> TopLevelScope::DefinedGlobalScopeVariables() {
   std::vector<DefinedVariable*> result;
   for (auto iter = entities_.begin(); iter != entities_.end(); iter++) {

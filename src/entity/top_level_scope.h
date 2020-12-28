@@ -21,7 +21,8 @@ public:
   Scope* GetParent();
 
   // declare or define variable and function globally
-  void DeclareOrDefineEntity(Entity* e);
+  void DeclareEntity(Entity* e);
+  void DefineEntity(Entity* e);
 
   Entity* Get(std::string n);
 

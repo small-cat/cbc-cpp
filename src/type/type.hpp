@@ -12,6 +12,7 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 
 namespace type {
 class IntegerType;
@@ -71,6 +72,28 @@ public:
   CompositeType* GetCompositeType() { return (CompositeType*)this; }
   ArrayType*     GetArrayType()     { return (ArrayType*)this; }
 };
+
+class TypeTracker {
+public:
+  template <typename T, typename ... Args> 
+    T* CreateInstance(Args&& ... args) {
+      static_assert(std::is_base_of<Type, T>::value, "Argument must be Type type");
+      T* result = new T(args ...);
+      allocated_.push_back(result);
+      return result;
+    }
+
+  void Reset() {
+    for (auto entry : allocated_) {
+      delete entry;
+    }
+    allocated_.clear();
+  }
+
+private:
+  std::vector<Type *> allocated_;
+};
+
 } /* end type */
 
 #endif /* __TYPE_HPP__ */

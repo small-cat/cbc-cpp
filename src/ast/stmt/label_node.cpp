@@ -4,12 +4,7 @@ namespace ast {
 LabelNode::LabelNode(Location* l, std::string n, StmtNode* s) 
   : StmtNode(l), name_(n), stmt_(s) {}
 
-LabelNode::~LabelNode() {
-  if (nullptr != stmt_) {
-    delete stmt_;
-    stmt_ = nullptr;
-  }
-}
+LabelNode::~LabelNode() {}
 
 std::string LabelNode::name() {
   return name_;

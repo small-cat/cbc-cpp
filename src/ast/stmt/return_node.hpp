@@ -8,12 +8,7 @@ namespace ast {
 class ReturnNode : public StmtNode {
 public:
   ReturnNode(Location* l, ExprNode* e) : StmtNode(l), expr_(e) {}
-  virtual ~ReturnNode() {
-    if (nullptr != expr_) {
-      delete expr_;
-      expr_ = nullptr;
-    }
-  }
+  virtual ~ReturnNode() {}
 
   ExprNode* expr() { return expr_; }
   void SetExpr(ExprNode* e) { expr_ = e; }
