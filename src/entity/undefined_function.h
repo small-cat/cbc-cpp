@@ -20,7 +20,7 @@ public:
     d->PrintMember("Parameters", params_);
   }
   std::string GetClass() { return "UndefinedFunction"; }
-  // void accept();
+  virtual void Accept(ast::ASTVisitor *visitor) { visitor->Visit(this); }
 private:
   Params* params_;
 };

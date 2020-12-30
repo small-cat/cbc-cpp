@@ -31,9 +31,9 @@ public:
   type::Type* DefiningType();
 
   void _dump(Dumper* d);
-  // todo: Accept()
 
   virtual std::string GetClass();
+  virtual void Accept(ASTVisitor *visitor);
 private:
   TypeNode* real_;
 };

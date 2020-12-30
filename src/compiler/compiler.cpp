@@ -80,7 +80,7 @@ void Compiler::Build(Options* opts) {
 bool Compiler::CheckSyntax(Options* opts) {
   bool syntax_ok = true;
   for (auto& src : opts->source_file()) {
-    parser::FileParser fp(src.Path());
+    parser::FileParser fp(src.Path(), err_handler_);
     if (fp.ParseFile()) {
       std::cout << src.Path() << ": Syntax OK" << std::endl;
     } else {
@@ -108,6 +108,9 @@ void Compiler::Compile(const std::string& src, const std::string& dest, Options*
   }
 
   if (DumpAst(ast, opts->mode())) return;
+
+  // semantic analyze
+  ast = SemanticAnalyze(ast);
 }
 
 ast::ASTNode* Compiler::GetAstByParseFile(const std::string& src, Options* opts) {
@@ -116,8 +119,8 @@ ast::ASTNode* Compiler::GetAstByParseFile(const std::string& src, Options* opts)
     delete file_parser_;
   }
 
-  file_parser_ = new parser::FileParser(src);
-  return file_parser_->BuildAst();
+  file_parser_ = new parser::FileParser(src, err_handler_);
+  return file_parser_->BuildAst(opts->include_path());
 }
 
 bool Compiler::DumpAst(ast::ASTNode* ast, CompilerMode mode) {

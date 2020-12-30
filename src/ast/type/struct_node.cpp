@@ -19,7 +19,12 @@ std::string StructTypeNode::GetClass() {
   return "StructTypeNode";
 }
 
+void StructTypeNode::Accept(ASTVisitor *visitor) {
+  visitor->Visit(this);
+}
+
 type::Type* StructTypeNode::DefiningType() {
   return new type::StructType(name(), members(), location());
 }
+
 } /* end ast */

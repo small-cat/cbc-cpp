@@ -122,6 +122,11 @@ void LocalResolver::Visit(ast::VariableNode* node) {
   // 从当前作用域（符号表）开始查找变量定义，如果当前没有，就通过当前作用域的父节点网上查找，直到找到为止
   // 否则，该变量就是未定义的变量。
   entity::Entity* ent = GetCurrentScope()->Get(node->name());
+  if (nullptr == ent) {
+    err_handler_->Error(node->location(), "unresolved reference: " + node->name());
+    exit(EXIT_FAILURE);
+  }
+
   ent->refered(); // inc reference count
   node->SetEntity(ent);
 }

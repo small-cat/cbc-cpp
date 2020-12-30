@@ -175,4 +175,15 @@ void Visitor::Visit(ast::SizeofTypeNode * node) {}
 void Visitor::Visit(ast::VariableNode * node) {}
 void Visitor::Visit(ast::IntegerLiteralNode * node) {}
 void Visitor::Visit(ast::StringLiteralNode * node) {}
+
+void Visitor::Visit(ast::StructTypeNode * node) {}
+void Visitor::Visit(ast::UnionTypeNode * node) {}
+void Visitor::Visit(ast::TypeDefNode * node) {}
+
+void Visitor::Visit(entity::DefinedFunction * ent) {}
+void Visitor::Visit(entity::UndefinedFunction * ent) {}
+void Visitor::Visit(entity::DefinedVariable * ent) {}
+void Visitor::Visit(entity::UndefinedVariable * ent) {}
+void Visitor::Visit(entity::Constant * ent) {}
+
 } /* compiler */

@@ -44,4 +44,8 @@ void TypeDefNode::_dump(Dumper* d) {
   d->PrintMember("TypeNode", type_node());
 }
 
+void TypeDefNode::Accept(ASTVisitor *visitor) {
+  visitor->Visit(this);
+}
+
 } /* end ast */

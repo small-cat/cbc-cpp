@@ -19,6 +19,10 @@ std::string UnionTypeNode::GetClass() {
   return "UnionTypeNode";
 }
 
+void UnionTypeNode::Accept(ASTVisitor *visitor) {
+  visitor->Visit(this);
+}
+
 type::Type* UnionTypeNode::DefiningType() {
   return new type::UnionType(name(), members(), location());
 }

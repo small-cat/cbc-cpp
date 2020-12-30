@@ -21,6 +21,7 @@
 #include "type/param_type_ref.hpp"
 #include "type/param_types.hpp"
 #include "entity/params.h"
+#include "ast/import_file_node.h"
 
 #include "ast/location.hpp"
 #include "entity/entity.h"
@@ -125,8 +126,8 @@ public:
   virtual antlrcpp::Any visitFunc_decl(SesameParser::Func_declContext * ctx);
   virtual antlrcpp::Any visitVar_decl(SesameParser::Var_declContext * ctx);
 
-  void AddImportFile(const std::string& fname);
-  std::vector<std::string> import_files();
+  void AddImportFile(const std::string& fname, ast::Location* loc);
+  std::vector<ast::ImportFileNode *> import_files();
   ast::CflatToken* GetCFlatToken(antlr4::Token *t);  ast::IntegerLiteralNode* GetIntegerNode(ast::Location *l, std::string str);
   long GetIntegerValue(std::string str, ast::Location *l);
   long GetCharValue(const std::string& str, ast::Location *l);
@@ -136,14 +137,13 @@ private:
   SesameParser* parser_;
   antlr4::TokenStream* tokens_;
   std::string filename_;
-  std::vector<std::string> import_files_;
+  std::vector<ast::ImportFileNode *> import_files_;
 
   std::vector<entity::DefinedVariable *> defined_vars_; // for def_vars only
   std::vector<ast::SlotNode *> member_list_;            // for member_list
 
   ast::NodeTracker node_tracker_;
   entity::EntityTracker entity_tracker_;
-  type::TypeTracker type_tracker_;
   type::TypeRefTracker typeref_tracker_;
   ast::LocationTracker location_tracker_;
   type::ParamSlotsTracker<entity::Params> params_tracker_;

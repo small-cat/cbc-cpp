@@ -70,6 +70,7 @@ public:
   void ParseArgs(int argc, char* argv[]);
   void PrintUsage();
   void HelloSesame();
+  std::vector<std::string> include_path();
 
   void ParseError(const std::string& msg);
 private:
@@ -88,6 +89,7 @@ private:
   sysdep::LinkerOptions ld_options_;
   std::list<std::string> ld_args_;
   std::vector<SourceFile> src_files_;
+  std::vector<std::string> include_path_;   // -I includepath
 };
 }
 

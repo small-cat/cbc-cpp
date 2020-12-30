@@ -20,7 +20,7 @@ public:
   IntegerTypeRef(ast::Location* l, std::string name);
   virtual ~IntegerTypeRef();
 
-  std::string integer_type_name();
+  std::string name();
   std::string ToString();
 
   enum IntegerTypeClass {

@@ -34,19 +34,20 @@ std::vector<LocalScope*> LocalScope::GetChildren() {
   return children();
 }
 
-bool LocalScope::IsDefinedLocally(std::string n) {
+entity::DefinedVariable* LocalScope::IsDefinedLocally(std::string n) {
   auto search = variables_.find(n);
   if (search == variables_.end()) {
-    return false;
+    return nullptr;
   } else {
-    return true;
+    return search->second;
   }
 }
 
 void LocalScope::DefineVariable(DefinedVariable* var) {
-  if (IsDefinedLocally(var->name())) {
-    std::cout << "Error: duplicated variable: " << var->name() << std::endl;
-    // exit(EXIT_FAILURE);
+  auto ent = IsDefinedLocally(var->name());
+  if (nullptr != ent) {
+    std::cout << var->name() << "defined duplicated, first defined at " << ent->GetLocation()->ToString() << std::endl;
+    exit(EXIT_FAILURE);
   }
 
   variables_.emplace(std::make_pair(var->name(), var));

@@ -14,7 +14,7 @@ public:
   type::Type* DefiningType();
   virtual std::string GetClass();
 
-  // void accept();
+  virtual void Accept(ASTVisitor *visitor);
 private:
   /* data */
 };

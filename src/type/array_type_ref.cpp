@@ -21,4 +21,9 @@ std::string ArrayTypeRef::ToString() {
   std::string ret = base_type_->ToString();
   return ret + "[" + (length_ == UNDEFINED? "" : std::to_string(length_)) + "]";
 }
+
+std::string ArrayTypeRef::name() {
+  return base_type_->name();
+}
+
 } /* type */

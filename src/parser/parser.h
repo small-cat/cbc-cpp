@@ -19,24 +19,62 @@
 #include "error_verbose_listener.hpp"
 #include "utils/errors.hpp"
 #include "ast/ast.hpp"
+#include "ast/import_file_node.h"
 #include "build_ast.h"
 
 namespace parser {
 class FileParser {
 public:
-  FileParser(const std::string& filename);
+  FileParser(const std::string& filename, utils::ErrorHandler* handler);
   virtual ~FileParser();
 
   bool ParseFile();
-  ast::ASTNode* BuildAst();
+  ast::ASTNode* BuildAst(std::vector<std::string> import_path);
   std::vector<std::string> GetTokenStrings();
+
+  // for parsing import files
+  ast::Declarations* ParseImportFile(const std::string& fname);
+  void LoadImportFile(ast::ImportFileNode* imp_file);
+  std::string ReplaceFilePath(std::string fname);
+  void AddPath(const std::string& path);
+  void AddPath(std::vector<std::string> paths);
+  void AddImportFiles(std::vector<ast::ImportFileNode *> files);
+  std::string GetImportFilePath(const std::string& filename);
 private:
   ast::ASTNode* _ParseFile(std::error_code& ec, bool check);
-  std::string filename_;
+  std::string filename_;    // 解析的源代码文件
   std::vector<std::string> token_strings_; // dump tokens
 
-  parser::BuildAstVisitor* visitor_;  // visitor 包含有管理ast整个树形节点的 tracker
+  // visitor 包含有管理ast整个树形节点的 tracker
+  std::vector<parser::BuildAstVisitor *> visitor_tracker_;
+
+  // for import file
+  std::vector<std::string> load_path_;
+  std::map<std::string, ast::ImportFileNode *> unloaded_file_map_;
+  std::map<std::string, ast::Declarations *> decls_map_;
+  utils::ErrorHandler* err_handler_;
 };
+
+class FileParserTracker {
+public:
+  template <typename T, typename ... Args>
+    T* CreateInstance(Args&& ... args) {
+      static_assert(std::is_base_of<FileParser, T>::value, "Argument must be FileParser type");
+      T* result = new T(args ...);
+      allocated_.push_back(result);
+      return result;
+    }
+
+  void Reset() {
+    for (auto entry : allocated_) {
+      delete entry;
+    }
+    allocated_.clear();
+  }
+private:
+  std::vector<FileParser *> allocated_;
+};
+
 } /* end parser */
 
 #endif /* __PARSER_H__ */

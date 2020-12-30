@@ -2,10 +2,11 @@
 #define __ENTITY_H__
 
 #include <string>
-#include "../ast/location.hpp"
-#include "../ast/type/type_node.hpp"
-#include "../type/type.hpp"
-#include "../ast/dumper.h"
+#include "ast/location.hpp"
+#include "ast/type/type_node.hpp"
+#include "type/type.hpp"
+#include "ast/dumper.h"
+#include "compiler/ast_visitor.h"
 
 namespace entity {
 class Entity  {
@@ -37,7 +38,7 @@ public:
   ast::Location* GetLocation();
   virtual std::string GetClass();
 
-  // void accept();
+  virtual void Accept(ast::ASTVisitor * visitor) {}
   void Dump(ast::Dumper* d);
   virtual void _dump(ast::Dumper* d) = 0;
 private:

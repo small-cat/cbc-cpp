@@ -20,7 +20,7 @@ public:
   TopLevelScope* GetTopLevelScope();
   Scope* GetParent();
   std::vector<LocalScope*> GetChildren();
-  bool IsDefinedLocally(std::string n);
+  entity::DefinedVariable* IsDefinedLocally(std::string n);
   void DefineVariable(DefinedVariable* var);
 
   DefinedVariable* AllocateTmp(type::Type* t);

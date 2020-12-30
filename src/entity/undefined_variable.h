@@ -33,7 +33,7 @@ public:
   }
 
   std::string GetClass() { return "UndefinedVariable"; }
-  // void accept();
+  virtual void Accept(ast::ASTVisitor *visitor) { visitor->Visit(this); }
 };
 } /* end entity */
 

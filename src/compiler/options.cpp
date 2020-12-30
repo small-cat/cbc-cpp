@@ -177,7 +177,7 @@ void Options::ParseArgs(int argc, char* argv[]) {
         ld_options_.SetVerbose(true);
         break;
       case 'I':
-        // @todo { loader_ }
+        include_path_.push_back(std::string(optarg));
         break;
       case 'l':
         AddLdArg("-l" + std::string(optarg));
@@ -438,6 +438,10 @@ std::string Options::Trim(std::string str) {
   }
 
   return str;
+}
+
+std::vector<std::string> Options::include_path() {
+  return include_path_;
 }
 
 } /* end compiler */

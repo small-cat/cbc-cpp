@@ -32,4 +32,9 @@ std::string FunctionTypeRef::ToString() {
   ret += ")";
   return ret;
 }
+
+std::string FunctionTypeRef::name() {
+  return return_type_->name();
+}
+
 } /* end type */

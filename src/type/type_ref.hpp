@@ -12,7 +12,7 @@
 #define __TYPE_REF_H__
 
 #include <vector>
-#include "ast/location.hpp"
+#include "../ast/location.hpp"
 
 namespace type {
 class TypeRef {
@@ -25,6 +25,9 @@ public:
   // HashCode
 
   virtual std::string ToString();
+  virtual std::string name();
+
+  friend bool operator< (TypeRef lhs, TypeRef rhs);
 private:
   ast::Location* location_;
 };

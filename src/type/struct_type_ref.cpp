@@ -6,7 +6,7 @@ StructTypeRef::StructTypeRef(std::string name) : TypeRef(nullptr), struct_name_(
 StructTypeRef::StructTypeRef(ast::Location* l, std::string name) : TypeRef(l), struct_name_(name) {}
 StructTypeRef::~StructTypeRef() {}
 
-std::string StructTypeRef::struct_name() {
+std::string StructTypeRef::name() {
   return struct_name_;
 }
 
@@ -20,7 +20,7 @@ bool StructTypeRef::Equals(TypeRef* other) {
     return false;
   }
 
-  return ((StructTypeRef*)other)->struct_name() == struct_name_;
+  return ((StructTypeRef*)other)->name() == struct_name_;
 }
 
 bool operator==(const StructTypeRef& src, const StructTypeRef& other) {

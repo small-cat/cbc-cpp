@@ -2,17 +2,17 @@
 #define __VISITOR_H__
 
 #include "ast_visitor.h"
-#include "../ast/stmt/block_node.hpp"
-#include "../ast/stmt/expr_stmt_node.hpp"
-#include "../ast/stmt/if_node.hpp"
-#include "../ast/stmt/switch_node.hpp"
-#include "../ast/stmt/case_node.hpp"
-#include "../ast/stmt/while_node.hpp"
-#include "../ast/stmt/do_while_node.hpp"
-#include "../ast/stmt/for_node.hpp"
-#include "../ast/stmt/break_node.hpp"
-#include "../ast/stmt/label_node.hpp"
-#include "../ast/stmt/return_node.hpp"
+#include "ast/stmt/block_node.hpp"
+#include "ast/stmt/expr_stmt_node.hpp"
+#include "ast/stmt/if_node.hpp"
+#include "ast/stmt/switch_node.hpp"
+#include "ast/stmt/case_node.hpp"
+#include "ast/stmt/while_node.hpp"
+#include "ast/stmt/do_while_node.hpp"
+#include "ast/stmt/for_node.hpp"
+#include "ast/stmt/break_node.hpp"
+#include "ast/stmt/label_node.hpp"
+#include "ast/stmt/return_node.hpp"
 
 // exprs
 #include "ast/expr/assign_node.hpp"
@@ -36,6 +36,20 @@
 #include "ast/expr/integer_literal_node.hpp"
 #include "ast/expr/string_literal_node.hpp"
 #include "ast/expr/variable_node.hpp"
+
+// type
+#include "ast/type/type_definition_node.hpp"
+#include "ast/type/composite_type_definition_node.hpp"
+#include "ast/type/struct_node.hpp"
+#include "ast/type/union_node.hpp"
+#include "ast/type/typedef_node.hpp"
+
+// entity
+#include "entity/defined_function.h"
+#include "entity/undefined_function.h"
+#include "entity/defined_variable.h"
+#include "entity/undefined_variable.h"
+#include "entity/constant.hpp"
 
 namespace compiler {
 class Visitor : public ast::ASTVisitor {
@@ -84,6 +98,18 @@ public:
   virtual void Visit(ast::VariableNode * node);
   virtual void Visit(ast::IntegerLiteralNode * node);
   virtual void Visit(ast::StringLiteralNode * node);
+
+  // type
+  virtual void Visit(ast::StructTypeNode * node);
+  virtual void Visit(ast::UnionTypeNode * node);
+  virtual void Visit(ast::TypeDefNode * node);
+
+  // entity
+  virtual void Visit(entity::DefinedFunction * ent);
+  virtual void Visit(entity::UndefinedFunction * ent);
+  virtual void Visit(entity::DefinedVariable * ent);
+  virtual void Visit(entity::UndefinedVariable * ent);
+  virtual void Visit(entity::Constant * ent);
 };
 }
 

@@ -52,6 +52,10 @@ std::string DefinedVariable::GetClass() {
   return "DefinedVariable";
 }
 
+void DefinedVariable::Accept(ast::ASTVisitor *visitor) {
+  visitor->Visit(this);
+}
+
 // void DefinedVariable::SetIR(ir::Expr* ir) {}
 // ir::ExprNode* DefinedVariable::ir() {}
 

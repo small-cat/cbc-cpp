@@ -40,4 +40,9 @@ void DefinedFunction::_dump(ast::Dumper* d) {
   d->PrintMember("Parameters", params_);
   d->PrintMember("FunctionBody", body_);
 }
+
+void DefinedFunction::Accept(ast::ASTVisitor *visitor) {
+  visitor->Visit(this);
+}
+
 } /* end entity */

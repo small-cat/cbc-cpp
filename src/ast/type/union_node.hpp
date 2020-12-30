@@ -22,6 +22,7 @@ public:
   // void accept();
 
   virtual std::string GetClass();
+  virtual void Accept(ASTVisitor *visitor);
 };
 } /* end ast */
 

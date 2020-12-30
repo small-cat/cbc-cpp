@@ -26,8 +26,7 @@ public:
     d->PrintMember("Value", value_);
   }
 
-  // @todo { not implement accept }
-  // void accept();
+  virtual void Accept(ast::ASTVisitor *visitor) { visitor->Visit(this); }
 private:
   // ast::TypeNode* type_node_;    // 常量类型, inherited from Entity
   // std::string name_;            // 常量名称

@@ -29,8 +29,7 @@ Location* ASTNode::location() {
 }
 
 void ASTNode::AddDeclarations(Declarations* decl) {
-  // @todo {  things to be done }
-  // add defvars defuncs, constants, structs unions typedefs
+  declarations_->Add(decl);
 }
 
 void ASTNode::SetTokenStrings(std::vector<std::string> sv) {
@@ -107,6 +106,48 @@ void ASTNode::SetConstantTable(entity::ConstantTable* tb) {
   // 拷贝构造函数，这样 ast 与 local_resolver 之间的 constant table 就不会相互影响了
   // local_resolver 即使释放了也不会影响
   constant_table_ = new entity::ConstantTable(*tb);
+}
+
+std::vector<TypeDefinitionNode *> ASTNode::GetAllTypes() {
+  std::vector<TypeDefinitionNode *> types;
+  for (auto def_struct : declarations_->def_structs()) {
+    types.push_back(def_struct);
+  }
+
+  for (auto def_union : declarations_->def_unions()) {
+    types.push_back(def_union);
+  }
+
+  for (auto def_typedef : declarations_->typedefs()) {
+    types.push_back(def_typedef);
+  }
+
+  return types;
+}
+
+std::vector<entity::Entity *> ASTNode::GetAllEntities() {
+  std::vector<entity::Entity *> entities;
+  for (auto f_decl : declarations_->funcdecls()) {
+    entities.push_back(f_decl);
+  }
+
+  for (auto v_decl : declarations_->vardecls()) {
+    entities.push_back(v_decl);
+  }
+
+  for (auto def_f : declarations_->defuns()) {
+    entities.push_back(def_f);
+  }
+
+  for (auto def_v : declarations_->defvars()) {
+    entities.push_back(def_v);
+  }
+
+  for (auto c : declarations_->constants()) {
+    entities.push_back(c);
+  }
+
+  return entities;
 }
 
 } /* end as */

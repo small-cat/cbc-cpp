@@ -3,6 +3,7 @@
 
 #include "../node.hpp"
 #include "../type/type_node.hpp"
+#include "../../compiler/ast_visitor.h"
 
 namespace ast {
 class TypeDefinitionNode : public Node {
@@ -17,6 +18,8 @@ public:
   type::Type* Type();
   
   virtual std::string GetClass();
+  virtual void Accept(ASTVisitor *visitor) {}
+  virtual type::Type* DefiningType() { return nullptr; }
 
 private:
   std::string name_;

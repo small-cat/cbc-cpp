@@ -32,6 +32,8 @@ std::string TypeNode::GetClass() {
   return "";
 }
 
+// 将 TypeNode 与 Type 绑定起来，这样就完成了类型的消解
+// 也就是说，每一个TypeNode都有具体的类型Type
 void TypeNode::SetType(Type* t) {
   if (type_ != nullptr) {
     // throw RuntimeException("TypeNode#SetType called twice");

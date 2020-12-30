@@ -60,7 +60,6 @@ void TopLevelScope::DefineEntity(Entity* e) {
 Entity* TopLevelScope::Get(std::string n) {
   auto search = entities_.find(n);
   if (search == entities_.end()) {
-    std::cout << "unresolved reference: " << n << std::endl;
     return nullptr;
   }
 

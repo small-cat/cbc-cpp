@@ -29,7 +29,7 @@ public:
   std::vector<DefinedVariable*> GetLocalVariables();
   void _dump(ast::Dumper* d);
   std::string GetClass();
-  // void accept();
+  virtual void Accept(ast::ASTVisitor *visitor);
 private:
   Params* params_;
   ast::BlockNode* body_;

@@ -19,10 +19,11 @@ public:
   virtual ~PointerTypeRef();
 
   bool IsPointer();
-  TypeRef* base_type();
+  TypeRef* base_typeref();
   virtual std::string ToString();
+  virtual std::string name();
 private:
-  TypeRef* base_type_;
+  TypeRef* base_typeref_;
 };
 } /* type */
 

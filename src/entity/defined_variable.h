@@ -28,7 +28,7 @@ public:
   
   std::string GetClass();
   void _dump(ast::Dumper* d);
-  // void accept();
+  virtual void Accept(ast::ASTVisitor *visitor);
 private:
   ast::ExprNode* initializer_;
   // ir::Expr* ir_;     // @todo { do not implement ir so far }

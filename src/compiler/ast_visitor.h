@@ -11,6 +11,14 @@
 #ifndef __AST_VISITOR_H__
 #define __AST_VISITOR_H__
 
+namespace entity {
+class DefinedFunction;
+class UndefinedFunction;
+class DefinedVariable;
+class UndefinedVariable;
+class Constant;
+}
+
 namespace ast {
 
 class BlockNode;
@@ -49,6 +57,9 @@ class VariableNode;
 class IntegerLiteralNode;
 class StringLiteralNode;
 
+class StructTypeNode;
+class UnionTypeNode;
+class TypeDefNode;
 
 class ASTVisitor {
 public:
@@ -92,6 +103,15 @@ public:
   virtual void Visit(IntegerLiteralNode * node) = 0;
   virtual void Visit(StringLiteralNode * node) = 0;
 
+  virtual void Visit(StructTypeNode * node) = 0;
+  virtual void Visit(UnionTypeNode * node) = 0;
+  virtual void Visit(TypeDefNode * node) = 0;
+
+  virtual void Visit(entity::DefinedFunction * ent) = 0;
+  virtual void Visit(entity::UndefinedFunction * ent) = 0;
+  virtual void Visit(entity::DefinedVariable * ent) = 0;
+  virtual void Visit(entity::UndefinedVariable * ent) = 0;
+  virtual void Visit(entity::Constant * ent) = 0;
 };
 } /* ast */
 

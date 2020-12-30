@@ -35,6 +35,9 @@ public:
 
   void SetScope(entity::TopLevelScope* top_scope);
   void SetConstantTable(entity::ConstantTable* tb);
+
+  std::vector<TypeDefinitionNode *> GetAllTypes();
+  std::vector<entity::Entity *> GetAllEntities();
 private:
   Location* location_;
   Declarations* declarations_;
