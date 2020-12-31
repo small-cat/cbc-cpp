@@ -6,7 +6,7 @@ UnionTypeRef::UnionTypeRef(ast::Location* l, std::string name) : TypeRef(l), uni
 UnionTypeRef::~UnionTypeRef() {}
 
 bool UnionTypeRef::IsUnion() { return true; }
-std::string UnionTypeRef::name() { return union_name_; }
+std::string UnionTypeRef::name() const { return union_name_; }
 
 std::string UnionTypeRef::ToString() {
   return "union " + union_name_;

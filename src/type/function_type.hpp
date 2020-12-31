@@ -13,6 +13,8 @@ public:
   Type* return_type() { return return_type_; }
   ParamTypes* param_types() { return param_types_; }
 
+  // 函数类型，可以看作是指针，长度应该是指针大小
+  long Size() { return 0; }
   bool IsFunction() { return true; }
   bool IsCallable() { return true; }
 

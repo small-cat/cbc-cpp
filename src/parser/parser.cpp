@@ -109,6 +109,7 @@ ast::ASTNode* FileParser::BuildAst(std::vector<std::string> import_path) {
   for (auto iter = unloaded_file_map_.begin(); iter != unloaded_file_map_.end(); ) {
     LoadImportFile(iter->second);
     iter = unloaded_file_map_.erase(iter);
+    iter = unloaded_file_map_.begin();
   }
 
   // add all declarations to ast
@@ -246,7 +247,11 @@ void FileParser::LoadImportFile(ast::ImportFileNode* imp_file) {
 
 void FileParser::AddImportFiles(std::vector<ast::ImportFileNode *> files) {
   for (auto f : files) {
-    unloaded_file_map_.emplace(std::make_pair(f->filename(), f));
+    auto search = loaded_file_map_.find(f->filename());
+    if (search == loaded_file_map_.end()) {
+      unloaded_file_map_.emplace(std::make_pair(f->filename(), f));
+      loaded_file_map_.emplace(std::make_pair(f->filename(), true));
+    }
   }
 }
 

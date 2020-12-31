@@ -12,7 +12,7 @@ public:
 
   bool IsVoid() { return true; }
   std::string ToString() { return "void"; }
-  std::string name() { return ""; }
+  std::string name() const { return ""; }
 };
 } /* type */
 

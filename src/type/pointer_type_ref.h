@@ -21,7 +21,7 @@ public:
   bool IsPointer();
   TypeRef* base_typeref();
   virtual std::string ToString();
-  virtual std::string name();
+  virtual std::string name() const;
 private:
   TypeRef* base_typeref_;
 };

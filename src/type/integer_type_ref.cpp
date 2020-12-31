@@ -17,7 +17,7 @@ IntegerTypeRef::IntegerTypeRef(std::string name) : TypeRef(nullptr), integer_typ
 IntegerTypeRef::IntegerTypeRef(ast::Location* l, std::string name) : TypeRef(l), integer_type_name_(name) {}
 IntegerTypeRef::~IntegerTypeRef() {}
 
-std::string IntegerTypeRef::name() { return integer_type_name_; }
+std::string IntegerTypeRef::name() const { return integer_type_name_; }
 std::string IntegerTypeRef::ToString() { return integer_type_name_; }
 
 std::string IntegerTypeRef::GetIntegerTypeClassName(std::map<IntegerTypeRef::IntegerTypeClass, std::string> map, 

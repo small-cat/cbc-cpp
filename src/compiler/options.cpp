@@ -7,6 +7,8 @@
 #include <unistd.h>
 #include <getopt.h>
 
+#include "sysdep/X86Linux.h"
+
 extern char* optarg;
 namespace compiler {
 
@@ -15,9 +17,16 @@ const std::string Options::DEFAULT_LINKER_OUTPUT = "a.out";
 Options::Options() : mode_(CompilerMode::Mode::UNKNOWN),
                      output_filename_(""),
                      verbose_(false),
-                     debug_parser_(false) {}
+                     debug_parser_(false) {
+  platform_ = new sysdep::X86Linux();
+}
 
-Options::~Options() {}
+Options::~Options() {
+  if (nullptr != platform_) {
+    delete platform_;
+    platform_ = nullptr;
+  }
+}
 
 CompilerMode Options::mode() {
   return mode_;
@@ -442,6 +451,10 @@ std::string Options::Trim(std::string str) {
 
 std::vector<std::string> Options::include_path() {
   return include_path_;
+}
+
+type::TypeTable::TypeTableClass Options::GetTypeTableClass() {
+  return platform_->GetTypeTableClass();
 }
 
 } /* end compiler */

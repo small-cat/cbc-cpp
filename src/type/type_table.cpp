@@ -19,11 +19,14 @@ TypeTable::TypeTable() : int_size_(0), long_size_(0), pointer_size_(0) {
 
 TypeTable::TypeTable(long isize, long lsize, long ptrsize) : int_size_(isize),
                                                              long_size_(lsize),
-                                                             pointer_size_(ptrsize) {}
+                                                             pointer_size_(ptrsize) {
+  InitialTable();
+}
 
 TypeTable::~TypeTable() {
   param_types_tracker_.Reset();
   type_tracker_.Reset();
+  typeref_tracker_.Reset();
 }
 
 void TypeTable::SetTypeTable(TypeTable::TypeTableClass cls) {
@@ -55,43 +58,44 @@ void TypeTable::SetILPSize(long isize, long lsize, long ptrsize) {
 
 void TypeTable::InitialTable() {
   // char and short size is 1 and 2
-  table_.emplace(std::make_pair("void", type_tracker_.CreateInstance<VoidType>()));
+  TypeRef* ref = typeref_tracker_.CreateInstance<VoidTypeRef>();
+  table_.emplace(std::make_pair(ref, type_tracker_.CreateInstance<VoidType>()));
 
-  std::string type_cls_name = type::IntegerTypeRef::GetIntegerTypeClassName(type::IntegerTypeRef::IntegerTypeNames,
-                                                                            type::IntegerTypeRef::IntegerTypeClass::SESAME_CHAR);
-  table_.emplace(std::make_pair(type_cls_name, type_tracker_.CreateInstance<IntegerType>(CHAR_SIZE, true, type_cls_name)));
+  ref = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_CHAR);
+  typeref_tracker_.AddInstance(ref);
+  table_.emplace(std::make_pair(ref, type_tracker_.CreateInstance<IntegerType>(CHAR_SIZE, true, "char")));
 
-  type_cls_name = type::IntegerTypeRef::GetIntegerTypeClassName(type::IntegerTypeRef::IntegerTypeNames,
-                                                                type::IntegerTypeRef::IntegerTypeClass::SESAME_SHORT);
-  table_.emplace(std::make_pair(type_cls_name, type_tracker_.CreateInstance<IntegerType>(SHORT_SIZE, true, type_cls_name)));
+  ref = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_SHORT);
+  typeref_tracker_.AddInstance(ref);
+  table_.emplace(std::make_pair(ref, type_tracker_.CreateInstance<IntegerType>(SHORT_SIZE, true, "short")));
 
-  type_cls_name = type::IntegerTypeRef::GetIntegerTypeClassName(type::IntegerTypeRef::IntegerTypeNames,
-                                                                type::IntegerTypeRef::IntegerTypeClass::SESAME_INT);
-  table_.emplace(std::make_pair(type_cls_name, type_tracker_.CreateInstance<IntegerType>(int_size_, true, type_cls_name)));
+  ref = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_INT);
+  typeref_tracker_.AddInstance(ref);
+  table_.emplace(std::make_pair(ref, type_tracker_.CreateInstance<IntegerType>(int_size_, true, "int")));
 
-  type_cls_name = type::IntegerTypeRef::GetIntegerTypeClassName(type::IntegerTypeRef::IntegerTypeNames,
-                                                                type::IntegerTypeRef::IntegerTypeClass::SESAME_LONG);
-  table_.emplace(std::make_pair(type_cls_name, type_tracker_.CreateInstance<IntegerType>(long_size_, true, type_cls_name)));
+  ref = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_LONG);
+  typeref_tracker_.AddInstance(ref);
+  table_.emplace(std::make_pair(ref, type_tracker_.CreateInstance<IntegerType>(long_size_, true, "long")));
 
-  type_cls_name = type::IntegerTypeRef::GetIntegerTypeClassName(type::IntegerTypeRef::IntegerTypeNames,
-                                                                type::IntegerTypeRef::IntegerTypeClass::SESAME_UCHAR);
-  table_.emplace(std::make_pair(type_cls_name, type_tracker_.CreateInstance<IntegerType>(CHAR_SIZE, false, type_cls_name)));
+  ref = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_UCHAR);
+  typeref_tracker_.AddInstance(ref);
+  table_.emplace(std::make_pair(ref, type_tracker_.CreateInstance<IntegerType>(CHAR_SIZE, false, "unsigned char")));
 
-  type_cls_name = type::IntegerTypeRef::GetIntegerTypeClassName(type::IntegerTypeRef::IntegerTypeNames,
-                                                                type::IntegerTypeRef::IntegerTypeClass::SESAME_USHORT);
-  table_.emplace(std::make_pair(type_cls_name, type_tracker_.CreateInstance<IntegerType>(SHORT_SIZE, false, type_cls_name)));
+  ref = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_USHORT);
+  typeref_tracker_.AddInstance(ref);
+  table_.emplace(std::make_pair(ref, type_tracker_.CreateInstance<IntegerType>(SHORT_SIZE, false, "unsigned short")));
 
-  type_cls_name = type::IntegerTypeRef::GetIntegerTypeClassName(type::IntegerTypeRef::IntegerTypeNames,
-                                                                type::IntegerTypeRef::IntegerTypeClass::SESAME_UINT);
-  table_.emplace(std::make_pair(type_cls_name, type_tracker_.CreateInstance<IntegerType>(int_size_, false, type_cls_name)));
+  ref = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_UINT);
+  typeref_tracker_.AddInstance(ref);
+  table_.emplace(std::make_pair(ref, type_tracker_.CreateInstance<IntegerType>(int_size_, false, "unsigned int")));
 
-  type_cls_name = type::IntegerTypeRef::GetIntegerTypeClassName(type::IntegerTypeRef::IntegerTypeNames,
-                                                                type::IntegerTypeRef::IntegerTypeClass::SESAME_ULONG);
-  table_.emplace(std::make_pair(type_cls_name, type_tracker_.CreateInstance<IntegerType>(long_size_, false, type_cls_name)));
+  ref = type::IntegerTypeRef::GetIntegerTypeClass(type::IntegerTypeRef::IntegerTypeClass::SESAME_ULONG);
+  typeref_tracker_.AddInstance(ref);
+  table_.emplace(std::make_pair(ref, type_tracker_.CreateInstance<IntegerType>(long_size_, false, "unsigned long")));
 }
 
 bool TypeTable::IsDefined(TypeRef *ref) {
-  auto search = table_.find(ref->name());
+  auto search = table_.find(ref);
   if (search == table_.end()) {
     return false;
   }
@@ -105,11 +109,11 @@ void TypeTable::AddType(TypeRef *ref, Type *t) {
     exit(EXIT_FAILURE);
   }
 
-  table_.emplace(std::make_pair(ref->name(), t));
+  table_.emplace(std::make_pair(ref, t));
 }
 
 Type* TypeTable::GetType(TypeRef *ref) {
-  auto search = table_.find(ref->name());
+  auto search = table_.find(ref);
   if (search != table_.end()) {
     return search->second;
   }

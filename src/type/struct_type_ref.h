@@ -20,7 +20,7 @@ public:
   virtual ~StructTypeRef();
 
   bool IsStruct();
-  std::string name();
+  virtual std::string name() const;
   virtual std::string ToString();
   friend bool operator==(const StructTypeRef& src, const StructTypeRef& other);
   bool Equals(TypeRef* other);

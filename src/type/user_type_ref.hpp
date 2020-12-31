@@ -12,7 +12,7 @@ public:
   virtual ~UserTypeRef();
 
   bool IsUserType();
-  std::string name();
+  std::string name() const;
   std::string ToString();
 private:
   std::string name_;

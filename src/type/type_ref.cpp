@@ -18,13 +18,12 @@ std::string TypeRef::ToString() {
   return "";
 }
 
-std::string TypeRef::name() {
+std::string TypeRef::name() const {
   return "";
 }
 
-bool operator< (TypeRef lhs, TypeRef rhs) {
-  return utils::StringUtils::StrCmp(lhs.name(), rhs.name());
+bool TypeRef::operator< (const TypeRef &other) const {
+  return strcmp(name().c_str(), other.name().c_str()) < 0;
 }
-
 
 } /* end type */

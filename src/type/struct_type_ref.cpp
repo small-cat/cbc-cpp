@@ -6,7 +6,7 @@ StructTypeRef::StructTypeRef(std::string name) : TypeRef(nullptr), struct_name_(
 StructTypeRef::StructTypeRef(ast::Location* l, std::string name) : TypeRef(l), struct_name_(name) {}
 StructTypeRef::~StructTypeRef() {}
 
-std::string StructTypeRef::name() {
+std::string StructTypeRef::name() const {
   return struct_name_;
 }
 

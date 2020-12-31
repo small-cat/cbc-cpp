@@ -20,7 +20,7 @@ public:
   virtual ~UnionTypeRef();
 
   bool IsUnion();
-  std::string name();
+  std::string name() const;
   std::string ToString();
   friend bool operator==(const UnionTypeRef&, const UnionTypeRef&);
 private:

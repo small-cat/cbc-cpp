@@ -21,7 +21,7 @@ static std::string KNOWN_EXTENSIONS[] = {
   EXT_EXECUTABLE_FILE
 };
 
-class SourceFile  {
+class SourceFile {
 public:
   SourceFile(std::string filename);
   virtual ~SourceFile();

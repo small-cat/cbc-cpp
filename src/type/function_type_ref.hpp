@@ -15,7 +15,7 @@ public:
   ParamTypeRefs* params();
 
   virtual std::string ToString();
-  virtual std::string name();
+  virtual std::string name() const;
 private:
   TypeRef* return_type_;
   ParamTypeRefs* params_;

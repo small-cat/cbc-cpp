@@ -90,7 +90,13 @@ std::string SourceFile::LinkedFileName(const std::string& new_ext) {
 
 // static function definitions
 std::string SourceFile::ReplaceExt(const std::string& ext) {
-  return BaseName(original_name_) + ext;
+  // replace suffix .cb with ext
+  std::size_t pos = original_name_.find_last_of('.');
+  if (pos == std::string::npos) {
+    return original_name_;
+  }
+
+  return original_name_.substr(0, pos) + ext;
 }
 
 std::string SourceFile::BaseName(const std::string& path) {

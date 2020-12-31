@@ -10,7 +10,7 @@ std::string PointerTypeRef::ToString() {
   return base_typeref_->ToString() + "*";
 }
 
-std::string PointerTypeRef::name() {
+std::string PointerTypeRef::name() const {
   return base_typeref_->name();
 }
 

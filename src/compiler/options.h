@@ -17,9 +17,10 @@
 #include "compiler_mode.h"
 #include "source_file.h"
 
-#include "../sysdep/code_generator_options.h"
-#include "../sysdep/assembler_options.h"
-#include "../sysdep/linker_options.h"
+#include "sysdep/code_generator_options.h"
+#include "sysdep/assembler_options.h"
+#include "sysdep/linker_options.h"
+#include "sysdep/platform.h"
 
 #define PROGNAME "sesame"
 
@@ -57,8 +58,7 @@ public:
   bool DoesDebugParser();
 
   // @todo { not implement }
-  // LibraryLoader* loader();
-  // TypeTable GetTypeTable();
+  type::TypeTable::TypeTableClass GetTypeTableClass();
   // CodeGenerator* GetCodeGenerator();
   sysdep::CodeGeneratorOptions gen_options();
   // Assembler* GetAssembler();
@@ -79,7 +79,7 @@ private:
 
 private:
   CompilerMode mode_;
-  //Platform platform_;
+  sysdep::Platform* platform_;
   std::string output_filename_;
   bool verbose_;
   bool debug_parser_;

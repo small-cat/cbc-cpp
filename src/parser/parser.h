@@ -51,6 +51,7 @@ private:
   // for import file
   std::vector<std::string> load_path_;
   std::map<std::string, ast::ImportFileNode *> unloaded_file_map_;
+  std::map<std::string, bool> loaded_file_map_;
   std::map<std::string, ast::Declarations *> decls_map_;
   utils::ErrorHandler* err_handler_;
 };

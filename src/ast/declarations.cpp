@@ -110,6 +110,11 @@ void Declarations::Add(Declarations* decls) {
   for (auto& un : union_nodes) {
     def_unions_.push_back(un);
   }
+
+  auto typedef_list = decls->typedefs();
+  for (auto& td : typedef_list) {
+    typedefs_.push_back(td);
+  }
 }
 
 } /* end ast */

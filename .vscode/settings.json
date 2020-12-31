@@ -70,5 +70,6 @@
   "cmake.debugConfig": {
     "args": ["-I", "/home/jona/myGit/cbc-cpp/build/test/import", "/home/jona/myGit/cbc-cpp/build/hello.cb"],
     "MIMode": "gdb"
-  }
+  },
+  "editor.fontLigatures": true
 }

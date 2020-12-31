@@ -3,6 +3,7 @@
 #include "parser/parser.h"
 #include "ast/dumpable.h"
 #include "local_resolver.h"
+#include "type_resolver.h"
 
 namespace compiler {
 const std::string Compiler::kProgramName = AX(PROGNAME);
@@ -110,7 +111,12 @@ void Compiler::Compile(const std::string& src, const std::string& dest, Options*
   if (DumpAst(ast, opts->mode())) return;
 
   // semantic analyze
-  ast = SemanticAnalyze(ast);
+  type::TypeTable* type_tb = new type::TypeTable();
+  type_tb->SetTypeTable(opts->GetTypeTableClass());
+  ast = SemanticAnalyze(ast, type_tb);
+
+  delete type_tb;
+  delete ast;
 }
 
 ast::ASTNode* Compiler::GetAstByParseFile(const std::string& src, Options* opts) {
@@ -141,10 +147,14 @@ bool Compiler::DumpAst(ast::ASTNode* ast, CompilerMode mode) {
   return false;
 }
 
-ast::ASTNode* Compiler::SemanticAnalyze(ast::ASTNode* ast) {
+ast::ASTNode* Compiler::SemanticAnalyze(ast::ASTNode* ast, type::TypeTable* tb) {
+  // variable resolving
   LocalResolver lresolver(err_handler_);
   lresolver.Resolve(ast);
 
+  // type resolving
+  TypeResolver tresolver(tb, err_handler_);
+  tresolver.Resolve(ast);
   return ast;
 }
 

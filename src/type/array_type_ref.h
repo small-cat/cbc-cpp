@@ -26,7 +26,7 @@ public:
   bool IsArrayUndefined();
 
   virtual std::string ToString();
-  virtual std::string name();
+  virtual std::string name() const;
 
   static const long UNDEFINED = -1;
 private:

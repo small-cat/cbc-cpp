@@ -33,7 +33,7 @@ std::string FunctionTypeRef::ToString() {
   return ret;
 }
 
-std::string FunctionTypeRef::name() {
+std::string FunctionTypeRef::name() const {
   return return_type_->name();
 }
 

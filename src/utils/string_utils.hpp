@@ -39,6 +39,11 @@ public:
     char* base = basename((char*)(path.c_str()));
     return std::string(base);
   }
+
+  static std::string DirName(const std::string& path) {
+    char* dir = dirname((char*)(path.c_str()));
+    return std::string(dir);
+  }
 };
 } /* end utils */
 

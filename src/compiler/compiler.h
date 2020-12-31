@@ -35,7 +35,7 @@ public:
   ast::ASTNode* GetAstByParseFile(const std::string& src, Options* opts);
   bool DumpAst(ast::ASTNode* ast, CompilerMode mode);
 
-  ast::ASTNode* SemanticAnalyze(ast::ASTNode* ast);
+  ast::ASTNode* SemanticAnalyze(ast::ASTNode* ast, type::TypeTable* tb);
 private:
   utils::ErrorHandler* err_handler_;
   parser::FileParser* file_parser_;

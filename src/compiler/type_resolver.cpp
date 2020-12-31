@@ -35,12 +35,12 @@ void TypeResolver::Resolve(ast::ASTNode *ast) {
 ************************************************************************************/
 void TypeResolver::AddDefineTypes(std::vector<ast::TypeDefinitionNode *> deftypes) {
   for (auto def_t : deftypes) {
-    if(type_table_->IsDefined(def_t)) {
+    if(type_table_->IsDefined(def_t->TypeRef())) {
       // 目前 type table 记录的是类型名称与类型定义的映射，暂时无法知道第一次定义的位置
       // 作为改进的目标，后续可以加上
       err_handler_->Error(def_t->location(), "duplicated type definition: " + def_t->name());
     } else {
-      type_table_->AddType(def_t, def_t->DefiningType());
+      type_table_->AddType(def_t->TypeRef(), def_t->DefiningType());
     }
   }
 }
@@ -147,7 +147,8 @@ void TypeResolver::Visit(entity::Constant *c) {
 void TypeResolver::ResolveFunctionHeader(entity::Function *func) {
   BindType(func->type_node());
   for (auto& param : func->GetParameters()) {
-    Type* t = type_table_->GetParamType(param->type_node()->type_ref());
+    // arrays must be converted to pointers in function parameters
+    type::Type* t = type_table_->GetParamType(param->type_node()->type_ref());
     param->type_node()->SetType(t);
   }
 }

@@ -18,6 +18,8 @@
 #include "type_ref.hpp"
 #include "type.hpp"
 #include "pointer_type.hpp"
+#include "param_slots.hpp"
+#include "param_types.hpp"
 
 #define CHAR_SIZE 1
 #define SHORT_SIZE 2
@@ -65,10 +67,11 @@ private:
   long int_size_;
   long long_size_;
   long pointer_size_;
-  std::map<std::string, Type *> table_;
+  std::map<TypeRef *, Type *, Less_TypeRef<TypeRef *>> table_;
 
   ParamSlotsTracker<ParamTypes> param_types_tracker_;
   ParamSlotsTracker<Type> type_tracker_;
+  TypeRefTracker typeref_tracker_;
 };
 } /* type */
 

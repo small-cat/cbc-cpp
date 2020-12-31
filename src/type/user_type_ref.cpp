@@ -9,7 +9,7 @@ UserTypeRef::~UserTypeRef() {}
 
 bool UserTypeRef::IsUserType() { return true; }
 
-std::string UserTypeRef::name() {
+std::string UserTypeRef::name() const {
   return name_;
 }
 
