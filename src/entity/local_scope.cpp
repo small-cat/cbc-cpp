@@ -9,13 +9,6 @@ LocalScope::LocalScope(Scope* s) : parent_(s) {
 LocalScope::~LocalScope() {
   parent_ = nullptr;
   variables_.clear();
-
-  for (auto& child : children()) {
-    if (child != nullptr) {
-      delete child;
-      child = nullptr;
-    }
-  }
 }
 
 bool LocalScope::IsTopLevel() {

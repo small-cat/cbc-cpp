@@ -113,6 +113,7 @@ void Compiler::Compile(const std::string& src, const std::string& dest, Options*
   // semantic analyze
   type::TypeTable* type_tb = new type::TypeTable();
   type_tb->SetTypeTable(opts->GetTypeTableClass());
+  type_tb->SemanticCheck(err_handler_);
   ast = SemanticAnalyze(ast, type_tb);
 
   delete type_tb;

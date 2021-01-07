@@ -14,14 +14,15 @@
 #include <vector>
 
 #include "visitor.h"
-#include "../entity/scope.h"
-#include "../entity/local_scope.h"
-#include "../entity/top_level_scope.h"
-#include "../entity/constant_table.hpp"
-#include "../entity/parameter.h"
-#include "../utils/error_handler.h"
+#include "entity/scope.h"
+#include "entity/local_scope.h"
+#include "entity/top_level_scope.h"
+#include "entity/constant_table.hpp"
+#include "entity/parameter.h"
+#include "utils/error_handler.h"
 
-#include "../ast/ast.hpp"
+#include "ast/ast.hpp"
+#include "type/param_slots.hpp"
 
 namespace compiler {
 class LocalResolver : public Visitor {
@@ -48,6 +49,8 @@ private:
   std::vector<entity::Scope *> scope_stack_;    // 保存作用于的变量，也称为符号表 symbol table
   entity::ConstantTable * constant_table_;
   utils::ErrorHandler * err_handler_;
+
+  type::ParamSlotsTracker<entity::Scope> scope_tracker_;
 };
 } /* compiler */
 

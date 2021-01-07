@@ -16,9 +16,7 @@ bool UnionType::IsSameType(Type* other) {
     return false;
   }
 
-  // @todo { IsSameType }
-  return true;
-  // return *this == *other;
+  return CompositeType::IsSameType(other);
 }
 
 void UnionType::ComputeOffsets() {

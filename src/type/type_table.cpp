@@ -10,6 +10,7 @@
 #include "array_type.h"
 #include "function_type_ref.hpp"
 #include "function_type.hpp"
+#include "composite_type.hpp"
 
 #include "../utils/cpp_utils.hpp"
 
@@ -166,6 +167,15 @@ Type* TypeTable::GetParamType(TypeRef *ref) {
   return t->IsArray()? PointerTo(t->base_type()) : t;
 }
 
+std::vector<Type *> TypeTable::GetTypes() {
+  std::vector<Type *> all_types;
+  for (auto iter : table_) {
+    all_types.push_back(iter.second);
+  }
+
+  return all_types;
+}
+
 PointerType* TypeTable::PointerTo(Type *t) {
   return type_tracker_.CreateInstance<PointerType>(pointer_size_, t);
 }
@@ -180,6 +190,122 @@ long TypeTable::long_size() {
 
 long TypeTable::pointer_size() {
   return pointer_size_;
+}
+
+void TypeTable::CheckVoidMembers(ArrayType *arr, utils::ErrorHandler *handler) {
+  if (arr->base_type()->IsVoid()) {
+    handler->Error("array can not contain void type member");
+  }
+}
+
+// check if struct or union has void member
+void TypeTable::CheckVoidMembers(CompositeType *ct, utils::ErrorHandler *handler) {
+  for (Type *t : ct->MemberTypes()) {
+    if (t->IsVoid()) {
+      handler->Error("struct/union can not contain void type member");
+    }
+  }
+}
+
+// check if member exist more than once in struct or union definition
+void TypeTable::CheckDuplicatedMembers(CompositeType *ct, utils::ErrorHandler *handler) {
+  std::map<std::string, ast::SlotNode *> seen;
+  for (auto m : ct->members()) {
+    auto search = seen.find(m->name());
+    if (search == seen.end()) {
+      seen.emplace(std::make_pair(m->name(), m));
+    } else {
+      handler->Error(m->location(), ct->ToString() + " has duplicated member " + m->name());
+    }
+  }
+}
+
+/************************************************************************************
+* @fn CheckRecursiveDefinition
+* @brief 检查类型定义是否存在环。
+* @param
+* @author Jona
+* @date 2021/01/04
+************************************************************************************/
+void TypeTable::CheckRecursiveDefinition(Type *t, utils::ErrorHandler *handler) {
+  std::vector<Type *> type_check;
+  std::vector<CheckType> type_check_flag;
+  _CheckRecursiveDefinition(t, type_check, type_check_flag, handler);
+}
+
+/************************************************************************************
+* @fn _CheckRecursiveDefinition
+* @brief 对任一类型进行检查，先将其状态设置为 CHECKING，检查中，然后递归检查其返回值类型，参数类型
+*        或者成员类型，如果检查的类型中，有类型状态为 CHECKING，说明存在环
+* @param
+* @author Jona
+* @date 2021/01/07
+************************************************************************************/
+void TypeTable::_CheckRecursiveDefinition(Type *t, std::vector<Type *> &type_check, std::vector<CheckType> &type_check_flag, utils::ErrorHandler *handler) {
+  int idx = FindCheckType(type_check, t);
+  if (idx != -1 && type_check_flag.at(idx) == TypeTable::CheckType::CHECKING) {
+    // 说明该 Type 已经检查过，类型定义中存在环
+    handler->Error(((NamedType *)t)->location(), "recursive type definition: " + t->ToString());
+    exit(EXIT_FAILURE);
+  } else if (idx != -1 && type_check_flag.at(idx) == TypeTable::CheckType::CHECKED) {
+    // 说明该 Type 已经检查结束，直接退出
+    return;
+  } else if (idx == -1) {
+    // 说明该 Type 没有检查过
+    type_check.push_back(t);
+    type_check_flag.push_back(TypeTable::CheckType::CHECKING);
+
+    if (utils::is<CompositeType *>(t)) {
+      CompositeType *ct = t->GetCompositeType();
+      for (auto s : ct->members()) {
+        _CheckRecursiveDefinition(s->type(), type_check, type_check_flag, handler);
+      }
+    } else if (utils::is<ArrayType *>(t)) {
+      ArrayType *at = t->GetArrayType();
+      _CheckRecursiveDefinition(at->base_type(), type_check, type_check_flag, handler);
+    } else if (utils::is<UserType *>(t)) {
+      UserType *ut = (UserType *)t;
+      _CheckRecursiveDefinition(ut->RealType(), type_check, type_check_flag, handler);
+    }
+
+    auto i = FindCheckType(type_check, t);
+    type_check_flag[i] = TypeTable::CheckType::CHECKED;
+  }
+}
+
+/************************************************************************************
+* @fn FincCheckType
+* @brief find check type from type_check array
+* @param t the target type which we want to find from type_check
+* @return success return unnegative num, -1 not found.
+* @author Jona
+* @date 2021/01/07
+************************************************************************************/
+int TypeTable::FindCheckType(std::vector<Type *> type_check, Type *t) {
+  std::size_t index = 0;
+  for (auto tp : type_check) {
+    if (tp->IsSameType(t)) {
+      return index;
+    }
+
+    index++;
+  }
+
+  return -1;
+}
+
+void TypeTable::SemanticCheck(utils::ErrorHandler *handler) {
+  for (auto t : GetTypes()) {
+    if (utils::is<CompositeType *>(t))  {
+      auto ct = t->GetCompositeType();
+      CheckVoidMembers(ct, handler);
+      CheckDuplicatedMembers(ct, handler);
+    } else if (utils::is<ArrayType *>(t)) {
+      CheckVoidMembers(t->GetArrayType(), handler);
+    }
+
+    CheckRecursiveDefinition(t, handler);
+  }
 }
 
 } /* type */

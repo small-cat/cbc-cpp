@@ -13,11 +13,6 @@ ASTNode::~ASTNode() {
     declarations_ = nullptr;
   }
 
-  if (nullptr != scope_) {
-    delete scope_;
-    scope_ = nullptr;
-  }
-
   if (nullptr != constant_table_) {
     delete constant_table_;
     constant_table_ = nullptr;

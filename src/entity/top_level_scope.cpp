@@ -7,14 +7,7 @@
 
 namespace entity {
 TopLevelScope::TopLevelScope() {}
-TopLevelScope::~TopLevelScope() {
-  for (auto& child : children()) {
-    if (nullptr != child) {
-      delete child;
-      child = nullptr;
-    }
-  }
-}
+TopLevelScope::~TopLevelScope() {}
 
 bool TopLevelScope::IsTopLevel() {
   return true;

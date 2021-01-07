@@ -20,6 +20,7 @@
 #include "pointer_type.hpp"
 #include "param_slots.hpp"
 #include "param_types.hpp"
+#include "utils/error_handler.h"
 
 #define CHAR_SIZE 1
 #define SHORT_SIZE 2
@@ -43,6 +44,7 @@ public:
   void AddType(TypeRef *ref, Type* t);
   Type* GetType(TypeRef *ref);
   Type* GetParamType(TypeRef *ref);
+  std::vector<Type *> GetTypes();
 
   long int_size();
   long long_size();
@@ -58,10 +60,23 @@ public:
   PointerType* PointerTo(Type *t);
 
   // semantic check
+  void SemanticCheck(utils::ErrorHandler *handler);
+  void CheckVoidMembers(ArrayType *arr, utils::ErrorHandler *handler);
+  void CheckVoidMembers(CompositeType *ct, utils::ErrorHandler *handler);
+  void CheckDuplicatedMembers(CompositeType *ct, utils::ErrorHandler *handler);
+  void CheckRecursiveDefinition(Type *t, utils::ErrorHandler *handler);
 
 private:
   void SetILPSize(long isize, long lsize, long ptrsize);
   void InitialTable();
+
+  enum class CheckType {
+    CHECKING,   // 处理中，没有处理完
+    CHECKED,    // 处理结束
+    UNCHECK     // 未处理
+  };
+  void _CheckRecursiveDefinition(Type *t, std::vector<Type *> &type_check, std::vector<CheckType> &type_check_flag, utils::ErrorHandler *handler);
+  int FindCheckType(std::vector<Type *> type_check, Type *t);
 
 private:
   long int_size_;

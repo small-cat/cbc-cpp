@@ -16,9 +16,7 @@ bool StructType::IsSameType(Type* other) {
     return false;
   }
 
-  return true;
-  // @todo { IsSameType }
-  // *this == *other
+  return CompositeType::IsSameType(other);
 }
 
 void StructType::ComputeOffsets() {

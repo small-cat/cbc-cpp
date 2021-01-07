@@ -7,15 +7,12 @@ LocalResolver::LocalResolver(utils::ErrorHandler * err) : err_handler_(err) {
 }
 
 LocalResolver::~LocalResolver() {
-  for (auto s : scope_stack_) {
-    delete s;
-    s = nullptr;
-  }
-
   if (constant_table_ != nullptr) {
     delete constant_table_;
     constant_table_ = nullptr;
   }
+
+  scope_tracker_.Reset();
 }
 
 void LocalResolver::Resolve(ast::StmtNode * node) {
@@ -27,7 +24,7 @@ void LocalResolver::Resolve(ast::ExprNode * expr) {
 }
 
 void LocalResolver::Resolve(ast::ASTNode * ast) {
-  entity::TopLevelScope* top_scope = new entity::TopLevelScope();
+  entity::TopLevelScope* top_scope = scope_tracker_.CreateInstance<entity::TopLevelScope>();
   scope_stack_.push_back(top_scope);
 
   // 将顶层作用域中的所有申明的变量或者函数加入到符号表中，TopLevelScope 就是符号表
@@ -132,7 +129,7 @@ void LocalResolver::Visit(ast::VariableNode* node) {
 }
 
 void LocalResolver::PushScope(std::vector<entity::DefinedVariable *> vars) {
-  entity::LocalScope* ls = new entity::LocalScope(GetCurrentScope());
+  entity::LocalScope* ls = scope_tracker_.CreateInstance<entity::LocalScope>(GetCurrentScope());
   for (auto& v : vars) {
     PushScope(v, ls);
   }
@@ -141,7 +138,7 @@ void LocalResolver::PushScope(std::vector<entity::DefinedVariable *> vars) {
 }
 
 void LocalResolver::PushScope(std::vector<entity::Parameter *> params) {
-  entity::LocalScope* ls = new entity::LocalScope(GetCurrentScope());
+  entity::LocalScope* ls = scope_tracker_.CreateInstance<entity::LocalScope>(GetCurrentScope());
   for (auto& p : params) {
     PushScope(p, ls);
   }
