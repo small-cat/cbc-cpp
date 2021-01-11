@@ -68,7 +68,7 @@
       "FIXME"
   ],
   "cmake.debugConfig": {
-    "args": ["-I", "/home/jona/myGit/cbc-cpp/build/test/import", "/home/jona/myGit/cbc-cpp/build/hello.cb"],
+    "args": ["-I", "/home/jona/myGit/cbc-cpp/build/test/import", "/home/jona/myGit/cbc-cpp/build/increment.cb"],
     "MIMode": "gdb"
   },
   "editor.fontLigatures": true

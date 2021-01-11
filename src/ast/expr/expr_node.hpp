@@ -23,17 +23,17 @@ public:
 
   virtual std::string GetClass() { return ""; }
   virtual type::Type* type() = 0;
-  type::Type* OriginalType() { return type(); }
+  virtual type::Type* OriginalType() { return type(); }
 
-  long AllocSize() { return type()->AllocSize(); }
+  virtual long AllocSize() { return type()->AllocSize(); }
 
-  bool IsConstant() { return false; }
-  bool IsParameter() { return false; }
-  bool IsLValue() { return false; }
-  bool IsAssignable() { return false; }
-  bool IsLoadable() { return false; }
-  bool IsCallable() { return type()->IsCallable(); }
-  bool IsPointer() { return type()->IsPointer(); }
+  virtual bool IsConstant() { return false; }
+  virtual bool IsParameter() { return false; }
+  virtual bool IsLValue() { return false; }
+  virtual bool IsAssignable() { return false; }
+  virtual bool IsLoadable() { return false; }
+  virtual bool IsCallable() { return type()->IsCallable(); }
+  virtual bool IsPointer() { return type()->IsPointer(); }
 
   virtual void Dump(Dumper* d) {
     d->PrintClass(this, location());

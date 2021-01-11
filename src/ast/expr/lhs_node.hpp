@@ -38,7 +38,7 @@ public:
 
   /************************************************************************************
   * @fn IsAssignable
-  * @brief 数组或者函数是不能被赋值的，IsLoadable 返回的是false
+  * @brief 数组或者函数是不能被赋值的， 如果是数组或者函数, IsLoadable 返回的是false
   * @param
   * @author Jona
   * @date 2021/01/08

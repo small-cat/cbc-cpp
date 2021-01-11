@@ -16,6 +16,7 @@ void ExpressionChecker::CheckAst(ast::ASTNode *ast) {
 
   if (handler_->ErrorOccured()) {
     handler_->Error("Compiler failed when ExpressionChecker");
+    exit(EXIT_FAILURE);
   }
 }
 
@@ -123,7 +124,7 @@ void ExpressionChecker::Visit(ast::PrefixOpNode *node) {
 void ExpressionChecker::Visit(ast::SuffixOpNode *node) {
   Visitor::Visit(node);
   if (! node->expr()->IsAssignable()) {
-    handler_->Error(node->location(), "can not duffix decrement/increment");
+    handler_->Error(node->location(), "can not suffix decrement/increment");
   }
 }
 
