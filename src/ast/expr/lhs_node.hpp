@@ -16,31 +16,42 @@
 namespace ast {
 class LHSNode : public ExprNode {
 public:
-  LHSNode() : type_(nullptr), original_type_(nullptr) {}
+  LHSNode() : type_(nullptr) {}
   virtual ~LHSNode() {}
 
   void SetType(type::Type* type) {
     type_ = type;
   }
 
+  type::Type* GetLhsNodeType() {
+    return type_;
+  }
+
   type::Type* type() {
-    return type_ == nullptr ? original_type_ : type_;
+    return type_ == nullptr ? original_type() : type_;
   }
 
   virtual type::Type* original_type() = 0;
 
-  long AllocSize() { return original_type_->AllocSize(); }
+  long AllocSize() { return original_type()->AllocSize(); }
   bool IsLValue() { return true; }
+
+  /************************************************************************************
+  * @fn IsAssignable
+  * @brief 数组或者函数是不能被赋值的，IsLoadable 返回的是false
+  * @param
+  * @author Jona
+  * @date 2021/01/08
+  ************************************************************************************/
   bool IsAssignable() { return IsLoadable(); }
   bool IsLoadable() {
-    return !original_type_->IsArray() && !original_type_->IsFunction();
+    return !original_type()->IsArray() && !original_type()->IsFunction();
   }
 
   std::string GetClass() { return ""; }
 
 private:
   type::Type* type_;
-  type::Type* original_type_;
 };
 } /* end ast */
 

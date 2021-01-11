@@ -84,7 +84,9 @@ void LocalResolver::ResolveConstantValues(std::vector<entity::Constant *> consta
 ************************************************************************************/
 void LocalResolver::ResolveFunctions(std::vector<entity::DefinedFunction *> funcs) {
   for (auto& f : funcs) {
-    PushScope(f->GetParameters());
+    if (f->HasParameters()) {
+      PushScope(f->GetParameters());
+    }
     Resolve(f->body());
     f->SetScope(PopScope());
   }
@@ -116,7 +118,7 @@ void LocalResolver::Visit(ast::StringLiteralNode *node) {
 }
 
 void LocalResolver::Visit(ast::VariableNode* node) {
-  // 从当前作用域（符号表）开始查找变量定义，如果当前没有，就通过当前作用域的父节点网上查找，直到找到为止
+  // 从当前作用域（符号表）开始查找变量定义，如果当前没有，就通过当前作用域的父节点往上查找，直到找到为止
   // 否则，该变量就是未定义的变量。
   entity::Entity* ent = GetCurrentScope()->Get(node->name());
   if (nullptr == ent) {

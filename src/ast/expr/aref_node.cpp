@@ -43,8 +43,8 @@ std::string ARefNode::GetClass() {
 }
 
 void ARefNode::_dump(Dumper* d) {
-  if (type() != nullptr) {
-    d->PrintMember("Type", type());
+  if (GetLhsNodeType() != nullptr) {
+    d->PrintMember("Type", GetLhsNodeType());
   }
 
   d->PrintMember("Expr", expr_);

@@ -30,7 +30,7 @@ public:
   bool IsConstant() { return false; }
   bool IsParameter() { return false; }
   bool IsLValue() { return false; }
-  bool IsAssignalble() { return false; }
+  bool IsAssignable() { return false; }
   bool IsLoadable() { return false; }
   bool IsCallable() { return type()->IsCallable(); }
   bool IsPointer() { return type()->IsPointer(); }

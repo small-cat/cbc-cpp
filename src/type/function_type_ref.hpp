@@ -8,13 +8,14 @@ namespace type {
 class FunctionTypeRef : public TypeRef {
 public:
   FunctionTypeRef(TypeRef* tr, ParamTypeRefs* param_tr);
+  FunctionTypeRef(TypeRef* tr);
   virtual ~FunctionTypeRef();
 
   bool IsFunction();
   TypeRef* return_type();
   ParamTypeRefs* params();
 
-  virtual std::string ToString();
+  virtual std::string ToString() const;
   virtual std::string name() const;
 private:
   TypeRef* return_type_;

@@ -4,6 +4,7 @@
 #include "ast/dumpable.h"
 #include "local_resolver.h"
 #include "type_resolver.h"
+#include "expression_checker.h"
 
 namespace compiler {
 const std::string Compiler::kProgramName = AX(PROGNAME);
@@ -113,7 +114,6 @@ void Compiler::Compile(const std::string& src, const std::string& dest, Options*
   // semantic analyze
   type::TypeTable* type_tb = new type::TypeTable();
   type_tb->SetTypeTable(opts->GetTypeTableClass());
-  type_tb->SemanticCheck(err_handler_);
   ast = SemanticAnalyze(ast, type_tb);
 
   delete type_tb;
@@ -156,6 +156,10 @@ ast::ASTNode* Compiler::SemanticAnalyze(ast::ASTNode* ast, type::TypeTable* tb) 
   // type resolving
   TypeResolver tresolver(tb, err_handler_);
   tresolver.Resolve(ast);
+  tb->SemanticCheck(err_handler_);
+
+  ExpressionChecker ec(tb, err_handler_);
+  ec.CheckAst(ast);
   return ast;
 }
 

@@ -32,7 +32,7 @@ bool CastNode::IsLValue() {
 }
 
 bool CastNode::IsAssignable() {
-  return expr_->IsAssignalble();
+  return expr_->IsAssignable();
 }
 
 bool CastNode::IsEffectiveCast() {

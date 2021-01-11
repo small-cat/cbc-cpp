@@ -10,11 +10,18 @@ std::vector<Parameter*> Params::GetParameters() {
   return ParamDecs();
 }
 
+bool Params::IsParamsEmpty() {
+  return IsParametersEmpty();
+}
+
 type::ParamTypeRefs* Params::GetParameterTypeRefs() {
   std::vector<type::TypeRef*> typeref_list;
-  for (auto& p : ParamDecs()) {
-    auto tr = p->type_node()->type_ref();
-    typeref_list.push_back(tr);
+  if (!IsParamsEmpty()) {
+    for (auto &p : ParamDecs())
+    {
+      auto tr = p->type_node()->type_ref();
+      typeref_list.push_back(tr);
+    }
   }
 
   return new type::ParamTypeRefs(location(), typeref_list, false); // vararg_ is false when constructure Params

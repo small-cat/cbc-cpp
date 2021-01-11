@@ -23,6 +23,11 @@ public:
   virtual ~ParamTypeRefs() {}
 
   std::vector<TypeRef*> GetTypeRefs() {
+    std::vector<TypeRef *> res;
+    if (IsParametersEmpty()) {
+      return res;
+    } 
+
     return ParamDecs();
   }
 

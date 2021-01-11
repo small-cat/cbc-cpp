@@ -18,6 +18,7 @@ public:
 
   bool IsDefined();
   std::vector<Parameter*> GetParameters();
+  bool HasParameters();
   ast::BlockNode* body();
 
   // std::vector<ir:Stmt*> ir();

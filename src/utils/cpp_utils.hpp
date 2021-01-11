@@ -1,3 +1,6 @@
+#ifndef __CPP_UTILS_H__
+#define __CPP_UTILS_H__
+
 /**
  * @copyright (c) Copyright 2020 . All Rights Reserved.
  * @license
@@ -17,3 +20,5 @@ inline bool is(T2 *obj) { // for pointer types
 }
   
 } /* end cpp_utils */
+
+#endif

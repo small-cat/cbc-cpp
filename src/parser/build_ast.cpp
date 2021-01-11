@@ -268,6 +268,11 @@ antlrcpp::Any BuildAstVisitor::visitDef_func(SesameParser::Def_funcContext * ctx
   entity::Params* func_params = nullptr;
   if (ctx->params()) {
     func_params = (entity::Params*)visit(ctx->params());
+  } else {
+    auto lparen_ctx = ctx->LPAREN()->getSymbol();
+    auto loc = GetLocation(GetCFlatToken(lparen_ctx));
+    std::vector<entity::Parameter *> pams;
+    func_params = params_tracker_.CreateInstance<entity::Params>(loc, pams);
   }
 
   ast::BlockNode* body = (ast::BlockNode*)visit(ctx->block());
@@ -1038,7 +1043,12 @@ antlrcpp::Any BuildAstVisitor::visitFunc_decl(SesameParser::Func_declContext * c
   type::TypeRef* ref = (type::TypeRef *)visit(ctx->typeref());
   auto pams = (entity::Params *)visit(ctx->params());
 
-  type::TypeRef* tr = typeref_tracker_.CreateInstance<type::FunctionTypeRef>(ref, pams->GetParameterTypeRefs());
+  type::TypeRef* tr = nullptr;
+  if (pams != nullptr) {
+    tr = typeref_tracker_.CreateInstance<type::FunctionTypeRef>(ref, pams->GetParameterTypeRefs());
+  } else {
+    tr = typeref_tracker_.CreateInstance<type::FunctionTypeRef>(ref);
+  }
   ast::TypeNode* tn = node_tracker_.CreateInstance<ast::TypeNode>(tr);
   return (antlrcpp::Any)(entity_tracker_.CreateInstance<entity::UndefinedFunction>(tn, func_name, pams));
 }

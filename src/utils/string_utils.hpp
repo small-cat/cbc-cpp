@@ -15,7 +15,7 @@ public:
    * @fn StrCmp
    * @brief string compare
    * @param 
-   * @return zero if lhs==rhs, otherwise non-zero
+   * @return true if lhs==rhs, otherwise false 
    * @author Jona
    * @date 16/10/2020 16:10:48 
   */ 

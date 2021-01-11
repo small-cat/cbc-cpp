@@ -10,6 +10,9 @@ public:
   virtual ~UndefinedFunction() {}
 
   std::vector<Parameter*> GetParameters() { return params_->GetParameters(); }
+  bool HasParameters() { 
+    return params_->IsParamsEmpty();
+  }
   bool IsDefined() { return false; }
 
   // @todo { not implement _dump accept }

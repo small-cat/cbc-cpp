@@ -37,6 +37,7 @@ public:
   bool vararg() { return vararg_; }
   ast::Location* location() { return location_; }
   std::vector<T*> ParamDecs() { return param_descriptors_; }
+  bool IsParametersEmpty() { return param_descriptors_.empty(); }
 private:
   ast::Location* location_;
   std::vector<T*> param_descriptors_;

@@ -23,15 +23,19 @@ public:
       return false;
     }
 
-    auto it1 = Types().begin();
-    auto it2 = t->Types().begin();
-    while (it1 != Types().end() && it2 != t->Types().end()) {
-      if (!(*it1)->IsSameType(*it2)) {
+    auto pam_types1 = Types();
+    auto pam_types2 = t->Types();
+    if (pam_types1.size() != pam_types2.size()) {
+      return false;
+    }
+
+    std::vector<Type *>::size_type pos = 0;
+    while (pos < pam_types1.size()) {
+      if (!(pam_types1.at(pos))->IsSameType(pam_types2.at(pos))) {
         return false;
       }
 
-      it1++;
-      it2++;
+      pos ++;
     }
     return true;
   }

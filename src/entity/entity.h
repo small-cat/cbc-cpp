@@ -39,6 +39,7 @@ public:
   virtual std::string GetClass();
 
   virtual void Accept(ast::ASTVisitor * visitor) {}
+  virtual ast::ExprNode* value() { return nullptr; }
   void Dump(ast::Dumper* d);
   virtual void _dump(ast::Dumper* d) = 0;
 private:

@@ -16,6 +16,7 @@ public:
   bool IsInitialized();
   virtual bool IsDefined();
   virtual std::vector<Parameter*> GetParameters() = 0;
+  virtual bool HasParameters() { return false; }
 
   type::Type* ReturnType();
   bool IsVoid();

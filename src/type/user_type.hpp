@@ -4,6 +4,8 @@
 #include "named_type.hpp"
 #include "../ast/type/type_node.hpp"
 #include "../ast/location.hpp"
+#include "../utils/string_utils.hpp"
+#include "../utils/cpp_utils.hpp"
 
 namespace type {
 class UserType : public NamedType {
@@ -20,7 +22,18 @@ public:
   long AllocSize() { return RealType()->AllocSize(); }
   long Alignment() { return RealType()->Alignment(); }
 
-  bool IsSameType(Type* other) { return RealType()->IsSameType(other); }
+  // typedef realtype aliastype; 比较是不是同一个类型，比较 realtype 即可
+  bool IsSameRealType(Type* other) { return RealType()->IsSameType(other); }
+
+  // 这个方法比较的是 UserType 别名类型是否相同
+  bool IsSameType(Type* other) {
+    if (utils::is<UserType *>(other)) {
+      return utils::StringUtils::StrCmp(name(), ((UserType *)other)->name());
+    } else {
+      return false;
+    }
+  }
+
   bool IsCompatible(Type* other) { return RealType()->IsCompatible(other); }
   bool IsCastableTo(Type* target) { return RealType()->IsCastableTo(target); }
 

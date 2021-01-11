@@ -16,6 +16,7 @@ public:
   std::vector<Parameter*> GetParameters();
 
   type::ParamTypeRefs* GetParameterTypeRefs();
+  bool IsParamsEmpty();
   void _dump(ast::Dumper* d); 
 private:
   /* data */
