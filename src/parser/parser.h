@@ -56,26 +56,6 @@ private:
   utils::ErrorHandler* err_handler_;
 };
 
-class FileParserTracker {
-public:
-  template <typename T, typename ... Args>
-    T* CreateInstance(Args&& ... args) {
-      static_assert(std::is_base_of<FileParser, T>::value, "Argument must be FileParser type");
-      T* result = new T(args ...);
-      allocated_.push_back(result);
-      return result;
-    }
-
-  void Reset() {
-    for (auto entry : allocated_) {
-      delete entry;
-    }
-    allocated_.clear();
-  }
-private:
-  std::vector<FileParser *> allocated_;
-};
-
 } /* end parser */
 
 #endif /* __PARSER_H__ */

@@ -19,14 +19,15 @@ public:
 
   bool IsCompositeType() { return true; }
   bool IsSameType(Type* other);
+  bool EqualType(Type* other);
   bool IsCompatible(Type* target);
   bool IsCastableTo(Type* target);
 
   bool CompareMemberTypes(Type* other);
   long Size();
   long Alignment();
-  std::vector<ast::SlotNode*> members();
-  std::vector<Type*> MemberTypes();
+  std::vector<ast::SlotNode *> members();
+  std::vector<Type *> MemberTypes();
   bool HasMember(std::string mem_name);
   Type* MemberType(std::string mem_name);
   long MemberOffset(std::string mem_name);

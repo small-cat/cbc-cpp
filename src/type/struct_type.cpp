@@ -12,11 +12,16 @@ bool StructType::IsStruct() {
 }
 
 bool StructType::IsSameType(Type* other) {
+  if (this == other) { return true; }
   if (!other->IsStruct()) {
     return false;
   }
 
   return CompositeType::IsSameType(other);
+}
+
+bool StructType::EqualType(Type *other) {
+  return IsSameType(other);
 }
 
 void StructType::ComputeOffsets() {

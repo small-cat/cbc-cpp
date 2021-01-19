@@ -26,6 +26,7 @@
 #include "ast/location.hpp"
 #include "entity/entity.h"
 #include "type/type.hpp"
+#include "utils/node_tracker.hpp"
 
 namespace parser {
 class BuildAstVisitor : public SesameParserBaseVisitor {
@@ -142,13 +143,13 @@ private:
   std::vector<entity::DefinedVariable *> defined_vars_; // for def_vars only
   std::vector<ast::SlotNode *> member_list_;            // for member_list
 
-  ast::NodeTracker node_tracker_;
-  entity::EntityTracker entity_tracker_;
-  type::TypeRefTracker typeref_tracker_;
-  ast::LocationTracker location_tracker_;
-  type::ParamSlotsTracker<entity::Params> params_tracker_;
-  type::ParamSlotsTracker<type::ParamTypeRefs> param_typeref_tracker_;
-  type::ParamSlotsTracker<type::ParamTypes> param_types_tracker_;
+  utils::NodeTracker<ast::Node> node_tracker_;
+  utils::NodeTracker<entity::Entity> entity_tracker_;
+  utils::NodeTracker<type::TypeRef> typeref_tracker_;
+  utils::NodeTracker<ast::Location> location_tracker_;
+  utils::NodeTracker<entity::Params> params_tracker_;
+  utils::NodeTracker<type::ParamTypeRefs> param_typeref_tracker_;
+  utils::NodeTracker<type::ParamTypes> param_types_tracker_;
 };
 } /* parser */
 

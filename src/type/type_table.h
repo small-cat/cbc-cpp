@@ -18,9 +18,12 @@
 #include "type_ref.hpp"
 #include "type.hpp"
 #include "pointer_type.hpp"
+#include "integer_type_ref.h"
+#include "integer_type.hpp"
 #include "param_slots.hpp"
 #include "param_types.hpp"
 #include "utils/error_handler.h"
+#include "utils/node_tracker.hpp"
 
 #define CHAR_SIZE 1
 #define SHORT_SIZE 2
@@ -51,11 +54,12 @@ public:
   long pointer_size();
 
   Type* PtrDiffType();
-  TypeRef* PtrDiffTypeRef();
-  std::string PtrDiffTypeName();
 
   // stack type
+  Type* SignedStackType();
+  Type* UnsignedStackType();
   // integer type
+  IntegerType* GetIntegerType(IntegerTypeRef::IntegerTypeClass cls);
 
   PointerType* PointerTo(Type *t);
 
@@ -84,9 +88,9 @@ private:
   long pointer_size_;
   std::map<TypeRef *, Type *, Less_TypeRef<TypeRef *>> table_;
 
-  ParamSlotsTracker<ParamTypes> param_types_tracker_;
-  ParamSlotsTracker<Type> type_tracker_;
-  TypeRefTracker typeref_tracker_;
+  utils::NodeTracker<ParamTypes> param_types_tracker_;
+  utils::NodeTracker<Type> type_tracker_;
+  utils::NodeTracker<TypeRef> typeref_tracker_;
 };
 } /* type */
 

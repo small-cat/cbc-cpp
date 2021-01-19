@@ -20,11 +20,12 @@ public:
   long AllocSize();
   long Alignment();
  
-  // equals 
+  // equals
 
-  bool IsSameType(Type* other);
-  bool IsCompatible(Type* other);
-  bool IsCastableTo(Type* target);
+  bool IsSameType(Type *other);
+  bool EqualType(Type *other);
+  bool IsCompatible(Type *other);
+  bool IsCastableTo(Type *target);
   std::string ToString();
 private:
   Type* base_type_;     // type of array elements

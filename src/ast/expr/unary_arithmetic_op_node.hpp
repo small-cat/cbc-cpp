@@ -13,12 +13,14 @@ public:
     return amount_;
   }
 
+  /// 自增或者自减，指针的步长为所指类型的大小，整数为1
   void SetAmount(long a) {
     amount_ = a;
   }
 
   virtual std::string GetClass() { return "UnaryArithmeticOpNode"; }
 private:
+  /// 单目操作符，如果是整，自增或者自减，amount 设置为1即可，如是指针，amount 设置为指针所指向类型的大小
   long amount_;
 };
 } /* end ast */

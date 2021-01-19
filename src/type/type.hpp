@@ -33,7 +33,8 @@ public:
   virtual long Size() = 0;
   virtual long AllocSize() { return false; }
   virtual long Alignment() {return false; }
-  virtual bool IsSameType(Type* other) = 0;
+  virtual bool IsSameType(Type *other) = 0;
+  virtual bool EqualType(Type *other) = 0;
   virtual std::string ToString() = 0;
 
   virtual bool IsVoid() { return false; }
@@ -51,6 +52,8 @@ public:
   // ability methods for unary
   virtual bool IsAllocatedArray() { return false; }
   virtual bool IsIncompleteArray() { return false; }
+
+  // 是否是标量，只有指针和整数才是
   virtual bool IsScalar() { return false; }
   virtual bool IsCallable() { return false; }
 
@@ -71,27 +74,6 @@ public:
   UnionType*     GetUnionType()     { return (UnionType*)this; }
   CompositeType* GetCompositeType() { return (CompositeType*)this; }
   ArrayType*     GetArrayType()     { return (ArrayType*)this; }
-};
-
-class TypeTracker {
-public:
-  template <typename T, typename ... Args> 
-    T* CreateInstance(Args&& ... args) {
-      static_assert(std::is_base_of<Type, T>::value, "Argument must be Type type");
-      T* result = new T(args ...);
-      allocated_.push_back(result);
-      return result;
-    }
-
-  void Reset() {
-    for (auto entry : allocated_) {
-      delete entry;
-    }
-    allocated_.clear();
-  }
-
-private:
-  std::vector<Type *> allocated_;
 };
 
 } /* end type */

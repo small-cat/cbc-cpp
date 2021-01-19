@@ -56,11 +56,16 @@ long ArrayType::Alignment() {
 }
 
 bool ArrayType::IsSameType(Type* other) {
+  if (this == other) { return true; }
   if (!other->IsPointer() && !other->IsArray()) {
     return false;
   }
 
   return base_type_->IsSameType(other->base_type());
+}
+
+bool ArrayType::EqualType(Type *other) {
+  return IsSameType(other);
 }
 
 bool ArrayType::IsCompatible(Type* other) {

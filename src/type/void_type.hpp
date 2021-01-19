@@ -16,6 +16,10 @@ public:
     return other->IsVoid();
   }
 
+  bool EqualType(Type *other) {
+    return IsSameType(other);
+  }
+
   bool IsCompatible(Type* other) {
     return other->IsVoid();
   }

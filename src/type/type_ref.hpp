@@ -33,31 +33,6 @@ private:
   ast::Location* location_;
 };
 
-class TypeRefTracker {
-public:
-  template <typename T, typename ... Args>
-    T* CreateInstance(Args&& ... args) {
-      static_assert(std::is_base_of<TypeRef, T>::value, "Argument must be TypeRef type");
-      T *result = new T(args ...);
-      allocated_.push_back(result);
-      return result;
-    }
-
-  void AddInstance(TypeRef* ref) {
-    allocated_.push_back(ref);
-  }
-
-  void Reset() {
-    for (auto entry : allocated_) {
-      delete entry;
-    }
-    allocated_.clear();
-  }
-
-private:
-  std::vector<TypeRef *> allocated_;
-};
-
 template <typename T>
 struct Less_TypeRef {
   bool operator() (const T &lhs, const T &rhs) {

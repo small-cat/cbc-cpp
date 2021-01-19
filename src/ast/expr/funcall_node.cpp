@@ -16,6 +16,10 @@ std::vector<ExprNode*> FuncallNode::args() {
   return args_;
 }
 
+void FuncallNode::SetArgs(std::vector<ExprNode *> args) {
+  args_.swap(args);
+}
+
 /**
  * @fn type
  * @brief returns a type of return value of the function which is refered

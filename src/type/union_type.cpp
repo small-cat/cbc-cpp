@@ -12,11 +12,16 @@ bool UnionType::IsUnion() {
 }
 
 bool UnionType::IsSameType(Type* other) {
+  if (this == other) { return true; }
   if (!other->IsUnion()) {
     return false;
   }
 
   return CompositeType::IsSameType(other);
+}
+
+bool UnionType::EqualType(Type *other) {
+  return IsSameType(other);
 }
 
 void UnionType::ComputeOffsets() {

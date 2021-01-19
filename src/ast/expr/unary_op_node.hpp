@@ -5,6 +5,8 @@
 #include "../../type/type.hpp"
 
 namespace ast {
+
+/// 单目操作符表达式，比如 +， -， ！， ~
 class UnaryOpNode : public ExprNode {
 public:
   UnaryOpNode(std::string op, ExprNode* e);

@@ -24,7 +24,8 @@ type::ParamTypeRefs* Params::GetParameterTypeRefs() {
     }
   }
 
-  return new type::ParamTypeRefs(location(), typeref_list, false); // vararg_ is false when constructure Params
+  // 在构造 ast 的过程中，如果函数参数是可变参数， vararg() 返回 true
+  return new type::ParamTypeRefs(location(), typeref_list, vararg());
 }
 
 void Params::_dump(ast::Dumper* d) {

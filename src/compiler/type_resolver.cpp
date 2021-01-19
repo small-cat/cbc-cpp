@@ -147,8 +147,7 @@ void TypeResolver::Visit(entity::Constant *c) {
 void TypeResolver::ResolveFunctionHeader(entity::Function *func) {
   BindType(func->type_node());
   if (func->HasParameters()) {
-    for (auto &param : func->GetParameters())
-    {
+    for (auto &param : func->GetParameters()) {
       // arrays must be converted to pointers in function parameters
       type::Type *t = type_table_->GetParamType(param->type_node()->type_ref());
       param->type_node()->SetType(t);

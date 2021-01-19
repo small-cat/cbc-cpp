@@ -12,6 +12,13 @@ bool IntegerType::IsScalar() { return true; }
 long IntegerType::MinValue() { return is_signed_ ? (long)(-powl(2, size_ * 8 - 1)) : 0; }
 long IntegerType::MaxValue() { return is_signed_ ? (long)powl(2, size_ * 8 - 1) - 1 : (long)powl(2, size_ * 8) - 1; }
 
+/************************************************************************************
+* @fn IsInDomain
+* @brief 判断数值 i 是否在当前值域内，及判断数值 i 的有效性
+* @param
+* @author Jona
+* @date 2021/01/12
+************************************************************************************/
 bool IntegerType::IsInDomain(long i) {
   return i >= MinValue() && i <= MaxValue();
 }
@@ -38,12 +45,17 @@ bool operator==(const IntegerType &src, const IntegerType &other) {
 }
 
 bool IntegerType::IsSameType(Type *other) {
+  if (this == other) { return true; }
   if (!other->IsInteger())
   {
     return false;
   }
 
   return *((IntegerType *)other) == *this;
+}
+
+bool IntegerType::EqualType(Type *other) {
+  return IsSameType(other);
 }
 
 bool IntegerType::IsCompatible(Type *other) {

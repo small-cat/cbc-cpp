@@ -25,27 +25,6 @@ private:
   CflatToken* token_;
 };
 
-class LocationTracker {
-public:
-  template <typename T, typename ... Args>
-    T* CreateInstance(Args&& ... args) {
-      static_assert(std::is_base_of<Location, T>::value, "Argument must be Location type");
-      T *result = new T(args...);
-      allocated_.push_back(result);
-      return result;
-    }
-
-  void Reset() {
-    for (auto entry : allocated_) {
-      delete entry;
-    }
-    allocated_.clear();
-  }
-
-private:
-  std::vector<Location *> allocated_;
-};
-
 } /* end ast */
 
 #endif /* __LOCATION_H__ */

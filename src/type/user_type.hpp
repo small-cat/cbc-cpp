@@ -21,12 +21,24 @@ public:
   long Size() { return RealType()->Size(); }
   long AllocSize() { return RealType()->AllocSize(); }
   long Alignment() { return RealType()->Alignment(); }
+  bool IsVoid() { return RealType()->IsVoid(); }
+  bool IsInt() { return RealType()->IsInt(); }
+  bool IsInteger() { return RealType()->IsInteger(); }
+  bool IsSigned() { return RealType()->IsSigned(); } 
+  bool IsPointer() { return RealType()->IsPointer(); }
+  bool IsArray() { return RealType()->IsArray(); }
+  bool IsAllocatedArray() { return RealType()->IsAllocatedArray(); }
+  bool IsCompositeType() { return RealType()->IsCompositeType(); }
+  bool IsStruct() { return RealType()->IsStruct(); }
+  bool IsUnion() { return RealType()->IsUnion(); }
+  bool IsUserType() { return true; }
+  bool IsFunction() { return RealType()->IsFunction(); }
 
   // typedef realtype aliastype; 比较是不是同一个类型，比较 realtype 即可
-  bool IsSameRealType(Type* other) { return RealType()->IsSameType(other); }
+  bool IsSameType(Type* other) { return RealType()->IsSameType(other); }
 
   // 这个方法比较的是 UserType 别名类型是否相同
-  bool IsSameType(Type* other) {
+  bool EqualType(Type* other) {
     if (utils::is<UserType *>(other)) {
       return utils::StringUtils::StrCmp(name(), ((UserType *)other)->name());
     } else {

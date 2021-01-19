@@ -15,6 +15,7 @@ public:
   }
 
   bool IsSameType(ParamTypes* t) {
+    if (t == this) { return true; }
     if (vararg() != t->vararg()) {
       return false;
     }
@@ -38,6 +39,10 @@ public:
       pos ++;
     }
     return true;
+  }
+
+  bool EqualType(ParamTypes *other) {
+    return IsSameType(other);
   }
 };
   

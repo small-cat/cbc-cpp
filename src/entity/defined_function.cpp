@@ -15,7 +15,7 @@ std::vector<Parameter*> DefinedFunction::GetParameters() {
 }
 
 bool DefinedFunction::HasParameters() {
-  return params_->IsParamsEmpty();
+  return !params_->IsParamsEmpty();
 }
 
 ast::BlockNode* DefinedFunction::body() {

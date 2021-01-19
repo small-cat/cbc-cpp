@@ -23,11 +23,16 @@ public:
   }
 
   bool IsSameType(Type* other) {
+    if (this == other) { return true; }
     if (!other->IsPointer()) {
       return false;
     }
 
     return base_type_->IsSameType(other->base_type());
+  }
+
+  bool EqualType(Type *other) {
+    return IsSameType(other);
   }
 
   bool IsCompatible(Type* other) {

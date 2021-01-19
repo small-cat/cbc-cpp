@@ -5,6 +5,7 @@
 #include "local_resolver.h"
 #include "type_resolver.h"
 #include "expression_checker.h"
+#include "type_checker.h"
 
 namespace compiler {
 const std::string Compiler::kProgramName = AX(PROGNAME);
@@ -25,6 +26,8 @@ Compiler::~Compiler() {
     delete file_parser_;
     file_parser_ = nullptr;
   }
+
+  visitor_tracker_.Reset();
 }
 
 void Compiler::CommandMain(int argc, char* argv[]) {
@@ -150,16 +153,19 @@ bool Compiler::DumpAst(ast::ASTNode* ast, CompilerMode mode) {
 
 ast::ASTNode* Compiler::SemanticAnalyze(ast::ASTNode* ast, type::TypeTable* tb) {
   // variable resolving
-  LocalResolver lresolver(err_handler_);
-  lresolver.Resolve(ast);
+  LocalResolver *lresolver = visitor_tracker_.CreateInstance<LocalResolver>(err_handler_);
+  lresolver->Resolve(ast);
 
   // type resolving
-  TypeResolver tresolver(tb, err_handler_);
-  tresolver.Resolve(ast);
+  TypeResolver *tresolver = visitor_tracker_.CreateInstance<TypeResolver>(tb, err_handler_);
+  tresolver->Resolve(ast);
   tb->SemanticCheck(err_handler_);
 
-  ExpressionChecker ec(tb, err_handler_);
-  ec.CheckAst(ast);
+  ExpressionChecker *ec = visitor_tracker_.CreateInstance<ExpressionChecker>(tb, err_handler_);
+  ec->CheckAst(ast);
+
+  TypeChecker *tc = visitor_tracker_.CreateInstance<TypeChecker>(tb, err_handler_);
+  tc->Check(ast);
   return ast;
 }
 

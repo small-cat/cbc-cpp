@@ -23,9 +23,10 @@ public:
   bool is_signed();
   std::string name();
   friend bool operator==(const IntegerType&, const IntegerType&);
-  bool IsSameType(Type* other);
-  bool IsCompatible(Type* other);
-  bool IsCastableTo(Type* target);
+  bool IsSameType(Type *other);
+  bool EqualType(Type *other);
+  bool IsCompatible(Type *other);
+  bool IsCastableTo(Type *target);
   std::string ToString();
 private:
   long size_;

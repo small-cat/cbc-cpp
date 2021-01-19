@@ -86,6 +86,10 @@ void LocalResolver::ResolveFunctions(std::vector<entity::DefinedFunction *> func
   for (auto& f : funcs) {
     if (f->HasParameters()) {
       PushScope(f->GetParameters());
+    } else {
+      // no parameters, but scope must be create
+      entity::LocalScope *ls = scope_tracker_.CreateInstance<entity::LocalScope>(GetCurrentScope());
+      scope_stack_.push_back(ls);
     }
     Resolve(f->body());
     f->SetScope(PopScope());

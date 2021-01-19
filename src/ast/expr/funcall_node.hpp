@@ -17,6 +17,7 @@ public:
   type::FunctionType* GetFunctionType();
   long NumOfArgs();
   std::vector<ExprNode *> args();
+  void SetArgs(std::vector<ExprNode *> args);
 
   // void ReplaceArgs(std::vector<ExprNode*> args);  // called by TypeChecker
 

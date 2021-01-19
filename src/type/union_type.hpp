@@ -10,7 +10,8 @@ public:
   virtual ~UnionType(); 
 
   bool IsUnion();
-  bool IsSameType(Type* other);
+  bool IsSameType(Type *other);
+  bool EqualType(Type *other);
   void ComputeOffsets();
   std::string ToString();
 };

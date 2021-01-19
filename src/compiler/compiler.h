@@ -15,6 +15,8 @@
 #include "utils/error_handler.h"
 #include "ast/ast.hpp"
 #include "parser/parser.h"
+#include "utils/node_tracker.hpp"
+#include "visitor.h"
 
 namespace compiler {
 class Compiler {
@@ -39,6 +41,8 @@ public:
 private:
   utils::ErrorHandler* err_handler_;
   parser::FileParser* file_parser_;
+
+  utils::NodeTracker<Visitor> visitor_tracker_;
 };
 } /* end compiler */
 

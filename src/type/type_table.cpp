@@ -284,7 +284,7 @@ void TypeTable::_CheckRecursiveDefinition(Type *t, std::vector<Type *> &type_che
 int TypeTable::FindCheckType(std::vector<Type *> type_check, Type *t) {
   std::size_t index = 0;
   for (auto tp : type_check) {
-    if (tp->IsSameType(t)) {
+    if (tp->EqualType(t)) {
       return index;
     }
 
@@ -306,6 +306,36 @@ void TypeTable::SemanticCheck(utils::ErrorHandler *handler) {
 
     CheckRecursiveDefinition(t, handler);
   }
+}
+
+Type* TypeTable::PtrDiffType() {
+  if (long_size_ == pointer_size_) {
+    return GetIntegerType(IntegerTypeRef::IntegerTypeClass::SESAME_LONG);
+  }
+   
+  if (int_size_ == pointer_size_) {
+    return GetIntegerType(IntegerTypeRef::IntegerTypeClass::SESAME_INT);
+  }
+
+  // short
+  std::cout << "Must not happen: interger.size != pointer.size" << std::endl;
+  exit(EXIT_FAILURE);
+}
+
+IntegerType* TypeTable::GetIntegerType(IntegerTypeRef::IntegerTypeClass cls) {
+  auto tr = IntegerTypeRef::GetIntegerTypeClass(cls);
+  typeref_tracker_.AddInstance(tr);
+
+  IntegerType* t = GetType(tr)->GetIntegerType();
+  return t;
+}
+
+Type* TypeTable::SignedStackType() {
+  return GetIntegerType(IntegerTypeRef::IntegerTypeClass::SESAME_LONG);
+}
+
+Type* TypeTable::UnsignedStackType() {
+  return GetIntegerType(IntegerTypeRef::IntegerTypeClass::SESAME_ULONG);
 }
 
 } /* type */

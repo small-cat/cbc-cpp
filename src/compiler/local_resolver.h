@@ -20,6 +20,7 @@
 #include "entity/constant_table.hpp"
 #include "entity/parameter.h"
 #include "utils/error_handler.h"
+#include "utils/node_tracker.hpp"
 
 #include "ast/ast.hpp"
 #include "type/param_slots.hpp"
@@ -50,7 +51,7 @@ private:
   entity::ConstantTable * constant_table_;
   utils::ErrorHandler * err_handler_;
 
-  type::ParamSlotsTracker<entity::Scope> scope_tracker_;
+  utils::NodeTracker<entity::Scope> scope_tracker_;
 };
 } /* compiler */
 

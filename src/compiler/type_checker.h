@@ -10,16 +10,20 @@
 #ifndef __TYPE_CHECKER_H__
 #define __TYPE_CHECKER_H__
 
+#include <map>
+
 #include "visitor.h"
-#include "../type/type_table.h"
-#include "../utils/error_handler.h"
-#include "../entity/defined_function.h"
+#include "ast/ast.hpp"
+#include "type/type_table.h"
+#include "utils/error_handler.h"
+#include "utils/node_tracker.hpp"
+#include "entity/defined_function.h"
 
 namespace compiler {
 class TypeChecker : public Visitor {
 public:
   TypeChecker(type::TypeTable *tb, utils::ErrorHandler *err);
-  virtual TypeChecker();
+  virtual ~TypeChecker();
 
   void Check(ast::StmtNode *node);
   void Check(ast::ExprNode *node);
@@ -30,7 +34,6 @@ public:
   void Visit(ast::IfNode *node);
   void Visit(ast::WhileNode *node);
   void Visit(ast::ForNode *node);
-  void Visit(ast::ExprNode *node);
   void Visit(ast::SwitchNode *node);
   void Visit(ast::ReturnNode *node);
   void Visit(ast::AssignNode *node);
@@ -46,15 +49,16 @@ public:
   void Visit(ast::ARefNode *node);
   void Visit(ast::CastNode *node);
 
+  static std::map<std::string, int> BinaryOpMaps;
 private:
   void CheckReturnType(entity::DefinedFunction *defun);
   void CheckParamTypes(entity::DefinedFunction *defun);
   void CheckVariable(entity::DefinedVariable *defvar);
-  void CheckRHS(ast::ExprNode *rhs);
   void CheckCond(ast::ExprNode *cond);
 
   bool IsSafeIntegerCast(ast::Node *node, type::Type *t);
   bool CheckLHS(ast::ExprNode *lhs); 
+  bool CheckRHS(ast::ExprNode *rhs);
   bool IsInvalidStatementType(type::Type *t);
   bool IsInvalidReturnType(type::Type *t);
   bool IsInvalidParameterType(type::Type *t);
@@ -71,17 +75,22 @@ private:
   ast::ExprNode* IntegerPromotedExpr(ast::ExprNode *expr);
   ast::ExprNode* ForcePointerType(ast::ExprNode *master, ast::ExprNode *slave);
   void ArithmeticImplicitCast(ast::BinaryOpNode *node);
-  ast::ExprNode* CastOptionalArg(ast::ExprNode *node);
-  ast::ExprNode* ImplicitCast(type::Type *target, ast::ExprNode *node);
+  ast::ExprNode* CastOptionalArg(ast::ExprNode *arg);
+  ast::ExprNode* ImplicitCast(type::Type *target, ast::ExprNode *expr);
 
   type::Type* IntegerPromotion(type::Type *t);
-  type::Type* UsualArimeticConversion(type::Type *l, type::Type *r);
+  type::Type* UsualArithmeticConversion(type::Type *l, type::Type *r);
+
+  int FindBinaryOp(const std::string &op, std::map<std::string, int> op_map);
+  ast::CastNode* GetCastNode(type::Type *t, ast::ExprNode *expr);
 
 private:
   type::TypeTable *table_;
   utils::ErrorHandler *handler_;
 
   entity::DefinedFunction *cur_function_;
+
+  utils::NodeTracker<ast::Node> ast_node_tracker_;
 };
 } /* compiler */
 

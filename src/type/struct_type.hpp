@@ -14,7 +14,8 @@ public:
   virtual ~StructType();
 
   bool IsStruct();
-  bool IsSameType(Type* other);
+  bool IsSameType(Type *other);
+  bool EqualType(Type *other);
   void ComputeOffsets();
   std::string ToString();
 private:

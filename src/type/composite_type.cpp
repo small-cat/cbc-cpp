@@ -7,6 +7,7 @@
 namespace type {
 
 bool CompositeType::IsSameType(Type* other) {
+  if (this == other) { return true; }
   if (!CompareMemberTypes(other)) {
     return false;
   }
@@ -20,6 +21,10 @@ bool CompositeType::IsSameType(Type* other) {
   }
 
   return true;
+}
+
+bool CompositeType::EqualType(Type *other) {
+  return IsSameType(other);
 }
 
 bool CompositeType::IsCompatible(Type* target) {
