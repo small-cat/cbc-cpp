@@ -12,6 +12,14 @@ std::string UnionTypeRef::ToString() {
   return "union " + union_name_;
 }
 
+bool UnionTypeRef::IsSameTypeRef(TypeRef *other) {
+  if (! utils::is<UnionTypeRef *>(other)) {
+    return false;
+  }
+
+  return name() == ((UnionTypeRef *)other)->name();
+}
+
 bool operator==(const UnionTypeRef& src, const UnionTypeRef& other) {
   if (&src == &other) {
     return true;

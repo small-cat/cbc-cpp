@@ -1,5 +1,6 @@
 #include <iostream>
 #include "integer_type_ref.h"
+#include "utils/string_utils.hpp"
 
 namespace type {
 std::map<IntegerTypeRef::IntegerTypeClass, std::string> IntegerTypeRef::IntegerTypeNames = {
@@ -47,6 +48,14 @@ IntegerTypeRef* IntegerTypeRef::GetIntegerTypeClass(IntegerTypeRef::IntegerTypeC
   }
 
   return new IntegerTypeRef(l, clsname);
+}
+
+bool IntegerTypeRef::IsSameTypeRef(TypeRef *other) {
+  if (! utils::is<IntegerTypeRef *>(other)) {
+    return false;
+  }
+
+  return utils::StringUtils::StrCmp(name(), other->name());
 }
 
 } /* type */

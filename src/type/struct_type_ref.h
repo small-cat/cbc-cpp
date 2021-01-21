@@ -23,7 +23,8 @@ public:
   virtual std::string name() const;
   virtual std::string ToString();
   friend bool operator==(const StructTypeRef& src, const StructTypeRef& other);
-  bool Equals(TypeRef* other);
+  virtual bool IsSameTypeRef(TypeRef *other);
+
 private:
   std::string struct_name_;
 };

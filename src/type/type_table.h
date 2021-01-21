@@ -31,6 +31,22 @@
 namespace type {
 class TypeTable {
 public:
+  class TypeMap {
+  public:
+    TypeMap();
+    virtual ~TypeMap();
+
+    std::vector<TypeRef *> keys();
+    std::vector<Type *> values();
+    bool Contains(TypeRef *tr);
+    void Put(TypeRef *k, Type *v);
+    int Find(TypeRef *k);
+    Type* Get(TypeRef *k);
+  private:
+    std::vector<TypeRef *> keys_;
+    std::vector<Type *> values_;
+  };
+
   TypeTable();
   TypeTable(long isize, long lsize, long ptrsize);
   virtual ~TypeTable();
@@ -86,7 +102,8 @@ private:
   long int_size_;
   long long_size_;
   long pointer_size_;
-  std::map<TypeRef *, Type *, Less_TypeRef<TypeRef *>> table_;
+  // std::map<TypeRef *, Type *, Less_TypeRef<TypeRef *>> table_;
+  TypeMap table_;
 
   utils::NodeTracker<ParamTypes> param_types_tracker_;
   utils::NodeTracker<Type> type_tracker_;

@@ -14,6 +14,7 @@ public:
   bool IsUserType();
   std::string name() const;
   std::string ToString();
+  virtual bool IsSameTypeRef(TypeRef *other);
 private:
   std::string name_;
 };

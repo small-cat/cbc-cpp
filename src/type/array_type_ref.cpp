@@ -27,4 +27,13 @@ std::string ArrayTypeRef::name() const {
   return ToString();
 }
 
+bool ArrayTypeRef::IsSameTypeRef(TypeRef *other) {
+  if (! utils::is<ArrayTypeRef *>(other)) {
+    return false;
+  }
+
+  auto arr_tr = (ArrayTypeRef *)other;
+  return base_type_->IsSameTypeRef(arr_tr->base_type()) && length_ == arr_tr->length();
+}
+
 } /* type */

@@ -31,6 +31,37 @@ public:
     return ParamDecs();
   }
 
+  virtual bool IsSameTypeRef(TypeRef *other) {
+    if (! utils::is<ParamTypeRefs *>(other)) {
+      return false;
+    }
+
+    return IsSameTypeRef((ParamTypeRefs *)other);
+  }
+
+  virtual bool IsSameTypeRef(ParamTypeRefs *other) {
+    if (vararg() != other->vararg()) {
+      return false;
+    }
+
+    auto tr_list1 = GetTypeRefs();
+    auto tr_list2 = other->GetTypeRefs();
+
+    if (tr_list1.size() != tr_list2.size()) {
+      return false;
+    }
+
+    int i = tr_list1.size() - 1;
+    while (i >= 0) {
+      if (! tr_list1.at(i)->IsSameTypeRef(tr_list2.at(i))) {
+        return false;
+      }
+      i--;
+    }
+
+    return true;
+  }
+
   // @todo { not implement InternTypes }
   /*
   ParamTypes* InternTypes(TypeTable* table) {

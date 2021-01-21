@@ -322,7 +322,7 @@ void TypeChecker::Visit(ast::FuncallNode *node) {
 
   // 检查实参类型和行参类型，不一致就做隐式类型转换
   // 对于可变参数函数，先检查固定参数，然后检查可变参数部分
-  for (; pos < args.size(); pos ++) {
+  for (; pos < pam_types.size(); pos ++) {
     auto tmp = args.at(pos);
     new_args.push_back(CheckRHS(tmp) ? ImplicitCast(pam_types.at(pos), tmp) : tmp);
   }

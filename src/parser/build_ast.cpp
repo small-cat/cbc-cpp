@@ -837,7 +837,8 @@ antlrcpp::Any BuildAstVisitor::visitPrimary(SesameParser::PrimaryContext * ctx) 
 
   if (ctx->S_STRING()) {
     auto int_type_ref = GetIntegerTypeRef(type::IntegerTypeRef::IntegerTypeClass::SESAME_CHAR);
-    return (antlrcpp::Any)((ast::ExprNode *)(node_tracker_.CreateInstance<ast::StringLiteralNode>(loc, int_type_ref, ctx->S_STRING()->getText())));
+    auto ptr_type_ref = typeref_tracker_.CreateInstance<type::PointerTypeRef>(int_type_ref);
+    return (antlrcpp::Any)((ast::ExprNode *)(node_tracker_.CreateInstance<ast::StringLiteralNode>(loc, ptr_type_ref, ctx->S_STRING()->getText())));
   }
 
   if (ctx->IDENTIFIER()) {

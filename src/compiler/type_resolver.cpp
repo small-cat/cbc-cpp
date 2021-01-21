@@ -35,9 +35,13 @@ void TypeResolver::Resolve(ast::ASTNode *ast) {
 ************************************************************************************/
 void TypeResolver::AddDefineTypes(std::vector<ast::TypeDefinitionNode *> deftypes) {
   for (auto def_t : deftypes) {
+
+    // deftypes 包含 struct，union 和 typedef 的用户类型， struct 和 union 按照 TypeRef 在
+    // table 中可作为key直接识别，但是 typedef 的用户类型，首先需要检测 realtype 是否存在，然后
+    // 再检测用户自定义的类型名称是否存在，因为同一个类型可以有多个 typedef 的类型申明
     if(type_table_->IsDefined(def_t->TypeRef())) {
       // 目前 type table 记录的是类型名称与类型定义的映射，暂时无法知道第一次定义的位置
-      // 作为改进的目标，后续可以加上
+      // 作为改进的目标，后续可以加上 TODO
       err_handler_->Error(def_t->location(), "duplicated type definition: " + def_t->name());
     } else {
       type_table_->AddType(def_t->TypeRef(), def_t->DefiningType());
@@ -150,7 +154,7 @@ void TypeResolver::ResolveFunctionHeader(entity::Function *func) {
     for (auto &param : func->GetParameters()) {
       // arrays must be converted to pointers in function parameters
       type::Type *t = type_table_->GetParamType(param->type_node()->type_ref());
-      param->type_node()->SetType(t);
+      param->type_node()->SetType(t);   // 在函数的时候，函数名作为 VariableNode 的时候，SetType 出了问题
     }
   }
 }

@@ -22,6 +22,7 @@ public:
   TypeRef* base_typeref();
   virtual std::string ToString();
   virtual std::string name() const;
+  virtual bool IsSameTypeRef(TypeRef *other);
 private:
   TypeRef* base_typeref_;
 };

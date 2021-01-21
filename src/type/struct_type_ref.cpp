@@ -15,7 +15,7 @@ std::string StructTypeRef::ToString() {
   return "struct " + struct_name_;
 }
 
-bool StructTypeRef::Equals(TypeRef* other) {
+bool StructTypeRef::IsSameTypeRef(TypeRef *other) {
   if (utils::is<StructTypeRef*>(other)) {
     return false;
   }

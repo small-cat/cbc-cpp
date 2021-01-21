@@ -15,6 +15,7 @@ public:
   TypeRef* return_type();
   ParamTypeRefs* params();
 
+  virtual bool IsSameTypeRef(TypeRef *other);
   virtual std::string ToString() const;
   virtual std::string name() const;
 private:

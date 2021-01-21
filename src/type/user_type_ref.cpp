@@ -1,4 +1,5 @@
 #include "user_type_ref.hpp"
+#include "utils/string_utils.hpp"
 
 namespace type {
 UserTypeRef::UserTypeRef(std::string n) : TypeRef(nullptr), name_(n) {}
@@ -16,4 +17,13 @@ std::string UserTypeRef::name() const {
 std::string UserTypeRef::ToString() {
   return name_;
 }
+
+bool UserTypeRef::IsSameTypeRef(TypeRef *other) {
+  if (! utils::is<UserTypeRef *>(other)) {
+    return false;
+  }
+
+  return utils::StringUtils::StrCmp(name_, ((UserTypeRef *)other)->name());
+}
+
 } /* end ast */

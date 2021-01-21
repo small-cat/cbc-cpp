@@ -52,4 +52,13 @@ std::string FunctionTypeRef::name() const {
   return ToString();
 }
 
+bool FunctionTypeRef::IsSameTypeRef(TypeRef *other) {
+  if (! utils::is<FunctionTypeRef *>(other)) {
+    return false;
+  }
+
+  auto fun_tr = (FunctionTypeRef *)other;
+  return return_type_->IsSameTypeRef(fun_tr->return_type()) && params_->IsSameTypeRef(fun_tr->params());
+}
+
 } /* end type */

@@ -23,6 +23,7 @@ public:
   std::string name() const;
   std::string ToString();
   friend bool operator==(const UnionTypeRef&, const UnionTypeRef&);
+  virtual bool IsSameTypeRef(TypeRef *other);
 private:
   std::string union_name_;
 };

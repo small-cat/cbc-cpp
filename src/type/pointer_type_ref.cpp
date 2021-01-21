@@ -14,4 +14,13 @@ std::string PointerTypeRef::name() const {
   return base_typeref_->name();
 }
 
+bool PointerTypeRef::IsSameTypeRef(TypeRef *other) {
+  if (! utils::is<PointerTypeRef *>(other)) {
+    return false;
+  }
+
+  auto other_ptr =  (PointerTypeRef *)other;
+  return base_typeref_->IsSameTypeRef(other_ptr->base_typeref());
+}
+
 } /* type */

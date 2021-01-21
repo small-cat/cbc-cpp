@@ -25,6 +25,7 @@ public:
   long length();
   bool IsArrayUndefined();
 
+  virtual bool IsSameTypeRef(TypeRef *other);
   virtual std::string ToString() const;
   virtual std::string name() const;
 

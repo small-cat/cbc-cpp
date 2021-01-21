@@ -323,7 +323,7 @@ void Options::ParseArgs(int argc, char* argv[]) {
 
   for (auto& f : src_files_) {
     if (!f.IsKnownFileType()) {
-      ParseError("unknown file type: " + f.Path());
+      ParseError("unknown file type for " + f.Path() + ", request for .cb");
     }
   }
 

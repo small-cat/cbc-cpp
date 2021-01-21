@@ -22,6 +22,7 @@ public:
 
   std::string name() const;
   std::string ToString();
+  virtual bool IsSameTypeRef(TypeRef *other);
 
   enum IntegerTypeClass {
     SESAME_CHAR = 1,

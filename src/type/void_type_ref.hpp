@@ -13,6 +13,9 @@ public:
   bool IsVoid() { return true; }
   std::string ToString() { return "void"; }
   std::string name() const { return ""; }
+  virtual bool IsSameTypeRef(TypeRef *other) {
+    return utils::is<VoidTypeRef *>(other);
+  }
 };
 } /* type */
 
