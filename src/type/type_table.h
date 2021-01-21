@@ -42,6 +42,7 @@ public:
     void Put(TypeRef *k, Type *v);
     int Find(TypeRef *k);
     Type* Get(TypeRef *k);
+    TypeRef* GetTypeRef(TypeRef *k);
   private:
     std::vector<TypeRef *> keys_;
     std::vector<Type *> values_;
@@ -64,6 +65,7 @@ public:
   Type* GetType(TypeRef *ref);
   Type* GetParamType(TypeRef *ref);
   std::vector<Type *> GetTypes();
+  TypeRef* GetTypeRef(TypeRef *ref);
 
   long int_size();
   long long_size();

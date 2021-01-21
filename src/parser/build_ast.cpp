@@ -549,7 +549,7 @@ antlrcpp::Any BuildAstVisitor::visitS_typedef(SesameParser::S_typedefContext * c
   std::string new_type_name = ctx->IDENTIFIER()->getText();
   auto loc = GetLocation(GetCFlatToken(ctx->start));
   type::TypeRef* tr = (type::TypeRef*)visit(ctx->typeref());
-  auto user_type_ref = typeref_tracker_.CreateInstance<type::UserTypeRef>(new_type_name);
+  auto user_type_ref = typeref_tracker_.CreateInstance<type::UserTypeRef>(loc, new_type_name);
 
   return (antlrcpp::Any)(node_tracker_.CreateInstance<ast::TypeDefNode>(loc, tr, user_type_ref, new_type_name));
 }

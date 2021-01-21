@@ -17,7 +17,6 @@ public:
 
   bool IsDefined() { return false; }
 
-  // @todo { not implement _dump accept }
   void _dump(ast::Dumper* d) {
     d->PrintMember("Name", name());
     d->PrintMember("IsPrivate", is_private());

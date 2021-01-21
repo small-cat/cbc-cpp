@@ -63,6 +63,15 @@ Type* TypeTable::TypeMap::Get(TypeRef *k) {
   return nullptr;
 }
 
+TypeRef* TypeTable::TypeMap::GetTypeRef(TypeRef *k) {
+  int idx = Find(k);
+  if (idx >= 0) {
+    return keys_.at(idx);
+  }
+
+  return nullptr;
+}
+
 TypeTable::TypeTable() : int_size_(0), long_size_(0), pointer_size_(0) {
 }
 
@@ -149,7 +158,8 @@ bool TypeTable::IsDefined(TypeRef *ref) {
 
 void TypeTable::AddType(TypeRef *ref, Type *t) {
   if (IsDefined(ref)) {
-    std::cout << "duplicated type definition: " << ref->name() << std::endl;
+    auto first_def_tr = table_.GetTypeRef(ref);
+    std::cout << "duplicated type definition: " << ref->name() << ", first defined at " << first_def_tr->location()->ToString() << std::endl;
     exit(EXIT_FAILURE);
   }
 
@@ -212,6 +222,10 @@ Type* TypeTable::GetParamType(TypeRef *ref) {
 
 std::vector<Type *> TypeTable::GetTypes() {
   return table_.values();
+}
+
+TypeRef* TypeTable::GetTypeRef(TypeRef *ref) {
+  return table_.GetTypeRef(ref);
 }
 
 PointerType* TypeTable::PointerTo(Type *t) {

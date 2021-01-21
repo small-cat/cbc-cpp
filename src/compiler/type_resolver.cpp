@@ -42,7 +42,10 @@ void TypeResolver::AddDefineTypes(std::vector<ast::TypeDefinitionNode *> deftype
     if(type_table_->IsDefined(def_t->TypeRef())) {
       // 目前 type table 记录的是类型名称与类型定义的映射，暂时无法知道第一次定义的位置
       // 作为改进的目标，后续可以加上 TODO
-      err_handler_->Error(def_t->location(), "duplicated type definition: " + def_t->name());
+      auto first_def_tr = type_table_->GetTypeRef(def_t->TypeRef());
+      err_handler_->Error(def_t->location(), 
+                          "duplicated type definition: " + def_t->name() + ", first defined at " 
+                          + first_def_tr->location()->ToString());
     } else {
       type_table_->AddType(def_t->TypeRef(), def_t->DefiningType());
     }
