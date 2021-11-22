@@ -3,3 +3,5 @@ build/
 dist
 .antlr
 .vscode
+package-lock.json
+package.json
