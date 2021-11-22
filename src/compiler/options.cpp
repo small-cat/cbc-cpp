@@ -1,11 +1,12 @@
 #include "options.h"
 
+#include <getopt.h>
+#include <stdio.h>
+#include <strings.h>
+#include <unistd.h>
+
 #include <regex>
 #include <sstream>
-#include <strings.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <getopt.h>
 
 #include "sysdep/X86Linux.h"
 
@@ -14,10 +15,11 @@ namespace compiler {
 
 const std::string Options::DEFAULT_LINKER_OUTPUT = "a.out";
 
-Options::Options() : mode_(CompilerMode::Mode::UNKNOWN),
-                     output_filename_(""),
-                     verbose_(false),
-                     debug_parser_(false) {
+Options::Options()
+    : mode_(CompilerMode::Mode::UNKNOWN),
+      output_filename_(""),
+      verbose_(false),
+      debug_parser_(false) {
   platform_ = new sysdep::X86Linux();
 }
 
@@ -28,9 +30,7 @@ Options::~Options() {
   }
 }
 
-CompilerMode Options::mode() {
-  return mode_;
-}
+CompilerMode Options::mode() { return mode_; }
 
 bool Options::IsAssembleRequired() {
   return mode_.Requires(CompilerMode::Mode::Assemble);
@@ -40,20 +40,19 @@ bool Options::IsLinkRequired() {
   return mode_.Requires(CompilerMode::Mode::Link);
 }
 
-std::vector<SourceFile> Options::source_file() {
-  return src_files_;
-}
+std::vector<SourceFile> Options::source_file() { return src_files_; }
 
 /**
  * @fn AsmFileNameOf
  * @brief return file name with assembly extensions
  *  test.cbc -> test.s
- * @param 
+ * @param
  * @author Jona
- * @date 16/10/2020 17:17:35 
-*/ 
+ * @date 16/10/2020 17:17:35
+ */
 std::string Options::AsmFileNameOf(SourceFile* src) {
-  if (!output_filename_.empty() && mode_.mode() == CompilerMode::Mode::Compile) {
+  if (!output_filename_.empty() &&
+      mode_.mode() == CompilerMode::Mode::Compile) {
     return output_filename_;
   }
 
@@ -61,28 +60,25 @@ std::string Options::AsmFileNameOf(SourceFile* src) {
 }
 
 std::string Options::ObjFileNameOf(SourceFile* src) {
-  if (!output_filename_.empty() && mode_.mode() == CompilerMode::Mode::Assemble) {
+  if (!output_filename_.empty() &&
+      mode_.mode() == CompilerMode::Mode::Assemble) {
     return output_filename_;
   }
 
   return src->ObjFileName();
 }
 
-std::string Options::ExeFileName() {
-  return LinkedFileName("");
-}
+std::string Options::ExeFileName() { return LinkedFileName(""); }
 
-std::string Options::SoFileName() {
-  return LinkedFileName(".so");
-}
+std::string Options::SoFileName() { return LinkedFileName(".so"); }
 
 /**
  * @fn LinkedFileName
- * @brief file name with new extension named new_ext 
- * @param 
+ * @brief file name with new extension named new_ext
+ * @param
  * @author Jona
- * @date 16/10/2020 17:25:47 
-*/ 
+ * @date 16/10/2020 17:25:47
+ */
 std::string Options::LinkedFileName(std::string new_ext) {
   if (!output_filename_.empty()) {
     return output_filename_;
@@ -95,67 +91,55 @@ std::string Options::LinkedFileName(std::string new_ext) {
   }
 }
 
-std::string Options::output_filename() {
-  return output_filename_;
-}
+std::string Options::output_filename() { return output_filename_; }
 
-bool Options::IsVerboseMode() {
-  return verbose_;
-}
+bool Options::IsVerboseMode() { return verbose_; }
 
-bool Options::DoesDebugParser() {
-  return debug_parser_;
-}
+bool Options::DoesDebugParser() { return debug_parser_; }
 
-sysdep::CodeGeneratorOptions Options::gen_options() {
-  return gen_options_;
-}
+sysdep::CodeGeneratorOptions Options::gen_options() { return gen_options_; }
 
-sysdep::AssemblerOptions Options::asm_options() {
-  return asm_options_;
-}
+sysdep::AssemblerOptions Options::asm_options() { return asm_options_; }
 
-sysdep::LinkerOptions Options::ld_options() {
-  return ld_options_;
-}
+sysdep::LinkerOptions Options::ld_options() { return ld_options_; }
 
 void Options::ParseArgs(int argc, char* argv[]) {
   int ret = 0;
   std::string optstring = ":Sco:O::vI:l:L:";
   static struct option long_options[] = {
-    {"check-syntax",  no_argument,       0, 300},
-    {"dump-tokens",   no_argument,       0, 301},
-    {"dump-ast",      no_argument,       0, 302},
-    {"dump-semantic", no_argument,       0, 303},
-    {"dump-ir",       no_argument,       0, 304},
-    {"dump-asm",      no_argument,       0, 305},
-    {"print-asm",     no_argument,       0, 306},
-    {"version",       no_argument,       0, 307},
-    {"help",          no_argument,       0, 308},
-    {"debug-parser",  no_argument,       0, 309},
-    {"readonly-got",  no_argument,       0, 310},
-    {"Wa,",           required_argument, 0, 311},
-    {"Wl,",           required_argument, 0, 312},
-    {"Xassembler",    required_argument, 0, 313},
-    {"shared",        no_argument,       0, 314},
-    {"static",        no_argument,       0, 315},
-    {"pie",           no_argument,       0, 316},
-    {"nostartfiles",  no_argument,       0, 317},
-    {"nodefaultlibs", no_argument,       0, 318},
-    {"nostdlib",      no_argument,       0, 319},
-    {"Xlinker",       required_argument, 0, 320},
-    {"fpie",          no_argument,       0, 321},
-    {"fPIE",          no_argument,       0, 322},
-    {"fpic",          no_argument,       0, 323},
-    {"fPIC",          no_argument,       0, 324},
-    {"fverbose-asm",  no_argument,       0, 325},
-    {"verbose-asm",   no_argument,       0, 326},
-    {0,               0,                 0, 0}
-  };
+      {"check-syntax", no_argument, 0, 300},
+      {"dump-tokens", no_argument, 0, 301},
+      {"dump-ast", no_argument, 0, 302},
+      {"dump-semantic", no_argument, 0, 303},
+      {"dump-ir", no_argument, 0, 304},
+      {"dump-asm", no_argument, 0, 305},
+      {"print-asm", no_argument, 0, 306},
+      {"version", no_argument, 0, 307},
+      {"help", no_argument, 0, 308},
+      {"debug-parser", no_argument, 0, 309},
+      {"readonly-got", no_argument, 0, 310},
+      {"Wa,", required_argument, 0, 311},
+      {"Wl,", required_argument, 0, 312},
+      {"Xassembler", required_argument, 0, 313},
+      {"shared", no_argument, 0, 314},
+      {"static", no_argument, 0, 315},
+      {"pie", no_argument, 0, 316},
+      {"nostartfiles", no_argument, 0, 317},
+      {"nodefaultlibs", no_argument, 0, 318},
+      {"nostdlib", no_argument, 0, 319},
+      {"Xlinker", required_argument, 0, 320},
+      {"fpie", no_argument, 0, 321},
+      {"fPIE", no_argument, 0, 322},
+      {"fpic", no_argument, 0, 323},
+      {"fPIC", no_argument, 0, 324},
+      {"fverbose-asm", no_argument, 0, 325},
+      {"verbose-asm", no_argument, 0, 326},
+      {0, 0, 0, 0}};
 
   while (1) {
     int opt_index = 0;
-    ret = getopt_long_only(argc, argv, optstring.c_str(), long_options, &opt_index);
+    ret = getopt_long_only(argc, argv, optstring.c_str(), long_options,
+                           &opt_index);
     if (ret == -1) {
       break;
     }
@@ -164,22 +148,21 @@ void Options::ParseArgs(int argc, char* argv[]) {
       case 'o':
         output_filename_ = std::string(optarg);
         break;
-      case 'O': 
-        {
-          const std::regex regO("[0123s]");
-          if (std::regex_search(optarg, regO)) {
-            if (strcmp(optarg, "0") == 0) {
-              gen_options_.SetOptimizeLevel(0);
-            } else {
-              gen_options_.SetOptimizeLevel(1);
-            }
+      case 'O': {
+        const std::regex regO("[0123s]");
+        if (std::regex_search(optarg, regO)) {
+          if (strcmp(optarg, "0") == 0) {
+            gen_options_.SetOptimizeLevel(0);
           } else {
-            ParseError("unknown optimization arg: " + std::string(optarg));
-            exit(EXIT_FAILURE);
+            gen_options_.SetOptimizeLevel(1);
           }
-
-          break;
+        } else {
+          ParseError("unknown optimization arg: " + std::string(optarg));
+          exit(EXIT_FAILURE);
         }
+
+        break;
+      }
       case 'v':
         verbose_ = true;
         asm_options_.SetVerbose(true);
@@ -195,11 +178,11 @@ void Options::ParseArgs(int argc, char* argv[]) {
         AddLdArg("-L" + std::string(optarg));
         break;
 
-      case 'S': 
+      case 'S':
         // compile
       case 'c':
         // generate assembly code
-        // long options 
+        // long options
       case 300:
       case 301:
       case 302:
@@ -207,63 +190,60 @@ void Options::ParseArgs(int argc, char* argv[]) {
       case 304:
       case 305:
       case 306:
-        if (CompilerMode::IsModeOption(std::string(long_options[opt_index].name))) {
+        if (CompilerMode::IsModeOption(
+                std::string(long_options[opt_index].name))) {
           if (mode_.mode() != CompilerMode::Mode::UNKNOWN) {
-            std::cout << mode_.ToOption() << " option and " << std::string(long_options[opt_index].name)
-              << " option is exclusive" << std::endl;
+            std::cout << mode_.ToOption() << " option and "
+                      << std::string(long_options[opt_index].name)
+                      << " option is exclusive" << std::endl;
           }
 
-          mode_ = CompilerMode::FromOption(std::string(long_options[opt_index].name));
+          mode_ = CompilerMode::FromOption(
+              std::string(long_options[opt_index].name));
         }
         break;
       case 307:
-        printf("%s VERSION %s\n", AX(PROGNAME), AX(PROG_VERSION));
+        ShowVersion();
         exit(EXIT_SUCCESS);
-        break;
       case 308:
         PrintUsage();
         exit(EXIT_SUCCESS);
-        break;
       case 309:
         debug_parser_ = true;
         break;
-      case 310:
-        {
-          // readonly
-          AddLdArg("-z");
-          AddLdArg("combreloc");
-          AddLdArg("-z");
-          AddLdArg("now");
-          AddLdArg("-z");
-          AddLdArg("relro");
-          break;
+      case 310: {
+        // readonly
+        AddLdArg("-z");
+        AddLdArg("combreloc");
+        AddLdArg("-z");
+        AddLdArg("now");
+        AddLdArg("-z");
+        AddLdArg("relro");
+        break;
+      }
+      case 311: {
+        // -Wa, OPT
+        // there must be at least one blank before OPT
+        std::vector<std::string> sv;
+        Split(std::string(optarg), sv, ',');
+        for (auto& opt : sv) {
+          asm_options_.AddArg(opt);
         }
-      case 311:
-        {
-          // -Wa, OPT
-          // there must be at least one blank before OPT
-          std::vector<std::string> sv;
-          Split(std::string(optarg), sv, ',');
-          for (auto& opt : sv) {
-            asm_options_.AddArg(opt);
-          }
-          break;
+        break;
+      }
+      case 312: {
+        std::vector<std::string> sv;
+        Split(std::string(optarg), sv, ',');
+        for (auto& opt : sv) {
+          ld_args_.push_back(opt);
         }
-      case 312:
-        {
-          std::vector<std::string> sv;
-          Split(std::string(optarg), sv, ',');
-          for (auto& opt : sv) {
-            ld_args_.push_back(opt);
-          }
-          break;
-        }
-      case 313:
-        {
-          // -Xassembler OPT
-          asm_options_.AddArg(std::string(optarg));
-          break;
-        }
+        break;
+      }
+      case 313: {
+        // -Xassembler OPT
+        asm_options_.AddArg(std::string(optarg));
+        break;
+      }
       case 314:
         ld_options_.SetGenerateSharedLib(true);
         break;
@@ -308,7 +288,7 @@ void Options::ParseArgs(int argc, char* argv[]) {
         exit(EXIT_FAILURE);
         break;
     }
-  } // end while
+  }  // end while
   while (optind < argc) {
     src_files_.push_back(SourceFile(std::string(argv[optind++])));
   }
@@ -332,13 +312,9 @@ void Options::ParseArgs(int argc, char* argv[]) {
   }
 }
 
-std::list<std::string> Options::ld_args() {
-  return ld_args_;
-}
+std::list<std::string> Options::ld_args() { return ld_args_; }
 
-void Options::AddLdArg(const std::string& arg) {
-  ld_args_.push_back(arg);
-}
+void Options::AddLdArg(const std::string& arg) { ld_args_.push_back(arg); }
 
 void Options::HelloSesame() {
   printf("   .--,       .--,\n");
@@ -354,6 +330,22 @@ void Options::HelloSesame() {
   printf("     ___)( )(___\n");
   printf("    (((__) (__)))\n");
   printf("\n");
+}
+
+void Options::ShowVersion() {
+  std::cout << "   _____  ______ _____  ___     __  ___ ______" << std::endl;
+  std::cout << "  / ___/ / ____// ___/ /   |   /  |/  // ____/" << std::endl;
+  std::cout << "  \\__ \\ / __/   \\__ \\ / /| |  / /|_/ // __/   "
+            << std::endl;
+  std::cout << " ___/ // /___  ___/ // ___ | / /  / // /___   " << std::endl;
+  std::cout << "/____//_____/ /____//_/  |_|/_/  /_//_____/   " << std::endl;
+  std::cout << "" << std::endl;
+  std::cout << "" << std::endl;
+  std::cout << "Version: " << AX(PROG_VERSION) << std::endl;
+  std::cout << " Commit: " << AX(COMMIT_ID) << std::endl;
+  std::cout << "   Date: " << AX(BUILD_DATE) << std::endl;
+  std::cout << "    GCC: " << AX(COMPILE_TOOL_VERSION) << std::endl;
+  std::cout << "     OS: " << AX(COMPILE_OS) << std::endl;
 }
 
 void Options::PrintUsage() {
@@ -405,10 +397,13 @@ void Options::PrintUsage() {
   printf("Linker Options:\n");
   printf("  -l LIB           Links the library LIB.\n");
   printf("  -L PATH          Adds PATH as library directory.\n");
-  printf("  -shared          Generates shared library rather than executable.\n");
+  printf(
+      "  -shared          Generates shared library rather than executable.\n");
   printf("  -static          Linkes only with static libraries.\n");
   printf("  -pie             Generates PIE.\n");
-  printf("  --readonly-got   Generates read-only GOT (ld -z combreloc -z now -z relro).\n");
+  printf(
+      "  --readonly-got   Generates read-only GOT (ld -z combreloc -z now -z "
+      "relro).\n");
   printf("  -nostartfiles    Do not link startup files.\n");
   printf("  -nodefaultlibs   Do not link default libraries.\n");
   printf("  -nostdlib        Enables -nostartfiles and -nodefaultlibs.\n");
@@ -422,7 +417,8 @@ void Options::ParseError(const std::string& msg) {
   exit(EXIT_FAILURE);
 }
 
-void Options::Split(const std::string& s, std::vector<std::string>& sv, const char delim) {
+void Options::Split(const std::string& s, std::vector<std::string>& sv,
+                    const char delim) {
   sv.clear();
   std::istringstream iss(s);
   std::string temp;
@@ -436,7 +432,7 @@ std::string Options::Trim(std::string str) {
     return str;
   }
 
-  std::string blanks {"\t "};
+  std::string blanks{"\t "};
   std::size_t pos = 0;
   if ((pos = str.find_first_not_of(blanks)) != std::string::npos) {
     str.erase(0, pos);
@@ -449,12 +445,10 @@ std::string Options::Trim(std::string str) {
   return str;
 }
 
-std::vector<std::string> Options::include_path() {
-  return include_path_;
-}
+std::vector<std::string> Options::include_path() { return include_path_; }
 
 type::TypeTable::TypeTableClass Options::GetTypeTableClass() {
   return platform_->GetTypeTableClass();
 }
 
-} /* end compiler */
+}  // namespace compiler

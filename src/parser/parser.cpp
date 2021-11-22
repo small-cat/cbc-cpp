@@ -49,6 +49,10 @@ ast::ASTNode* FileParser::_ParseFile(std::error_code& ec, bool check) {
   parser.removeErrorListeners();
   parser.setErrorHandler(std::make_shared<antlr4::BailErrorStrategy>());
 
+  #ifdef DEBUG_0
+  parser.setProfile(true);
+  #endif
+
   SesameParser::Compilation_unitContext* compile_ctx = nullptr;
   try {
     compile_ctx = parser.compilation_unit();
@@ -59,6 +63,11 @@ ast::ASTNode* FileParser::_ParseFile(std::error_code& ec, bool check) {
     parser.addErrorListener(&parser_err);
     parser.setErrorHandler(std::make_shared<antlr4::DefaultErrorStrategy>());
     parser.getInterpreter<antlr4::atn::ParserATNSimulator>()->setPredictionMode(antlr4::atn::PredictionMode::LL);
+
+    #ifdef DEBUG_0
+    parser.setProfile(true);
+    #endif
+
     compile_ctx = parser.compilation_unit();
   }
 

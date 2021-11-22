@@ -50,6 +50,7 @@
 #include "atn/LexerTypeAction.h"
 
 #include "atn/ATNDeserializer.h"
+#include "plog.h"
 
 #include <string>
 
@@ -159,18 +160,22 @@ ATN ATNDeserializer::deserialize(const std::vector<uint16_t>& input) {
   // Don't adjust the first value since that's the version number.
   std::vector<uint16_t> data(input.size());
   data[0] = input[0];
+  PLOG("p=%d, input=%d, data=%d\n", 0, input[0], data[0]);
   for (size_t i = 1; i < input.size(); ++i) {
     data[i] = input[i] - 2;
+    // PLOG("p=%ld, input=%d, data=%d\n", i, input[i], data[i]);
   }
 
   int p = 0;
   int version = data[p++];
+  PLOG("version=%d\n", version);
   if (version != SERIALIZED_VERSION) {
     std::string reason = "Could not deserialize ATN with version" + std::to_string(version) + "(expected " + std::to_string(SERIALIZED_VERSION) + ").";
 
     throw UnsupportedOperationException(reason);
   }
 
+  // 将 data 中从 data+p 开始的8个元素，按照高字节和低字节的方式，分别存储，保存在 uuid 中 的 _bytes 中
   Guid uuid = toUUID(data.data(), p);
   p += 8;
   auto uuidIterator = std::find(SUPPORTED_UUIDS().begin(), SUPPORTED_UUIDS().end(), uuid);
@@ -186,6 +191,7 @@ ATN ATNDeserializer::deserialize(const std::vector<uint16_t>& input) {
 
   ATNType grammarType = (ATNType)data[p++];
   size_t maxTokenType = data[p++];
+  PLOG("p=%d, grammarType=%d, maxTokenType=%ld\n", p, (int)grammarType, maxTokenType);
   ATN atn(grammarType, maxTokenType);
 
   //
@@ -196,6 +202,7 @@ ATN ATNDeserializer::deserialize(const std::vector<uint16_t>& input) {
   size_t nstates = data[p++];
   for (size_t i = 0; i < nstates; i++) {
     size_t stype = data[p++];
+    PLOG("p=%d, stype=%ld\n", p, stype);
     // ignore bad type of states
     if (stype == ATNState::ATN_INVALID_TYPE) {
       atn.addState(nullptr);
@@ -203,6 +210,7 @@ ATN ATNDeserializer::deserialize(const std::vector<uint16_t>& input) {
     }
 
     size_t ruleIndex = data[p++];
+    PLOG("p=%d, ruleIndex=%ld\n", p, ruleIndex);
     if (ruleIndex == 0xFFFF) {
       ruleIndex = INVALID_INDEX;
     }
@@ -210,9 +218,11 @@ ATN ATNDeserializer::deserialize(const std::vector<uint16_t>& input) {
     ATNState *s = stateFactory(stype, ruleIndex);
     if (stype == ATNState::LOOP_END) { // special case
       int loopBackStateNumber = data[p++];
+      PLOG("LOOP_END: p=%d, loopBackStateNumber=%d\n", p, loopBackStateNumber);
       loopBackStateNumbers.push_back({ (LoopEndState*)s,  loopBackStateNumber });
     } else if (s->isType(ATNState::BlockStartStateClass)) {
       int endStateNumber = data[p++];
+      PLOG("BlockStartState: p=%d, endStateNumber=%d\n", p, endStateNumber);
       endStateNumbers.push_back({ (BlockStartState*)s, endStateNumber });
     }
     atn.addState(s);
@@ -230,6 +240,7 @@ ATN ATNDeserializer::deserialize(const std::vector<uint16_t>& input) {
   size_t numNonGreedyStates = data[p++];
   for (size_t i = 0; i < numNonGreedyStates; i++) {
     size_t stateNumber = data[p++];
+    PLOG("NonGreedy: p=%d, stateNumber=%ld\n", p, stateNumber);
     // The serialized ATN must be specifying the right states, so that the
     // cast below is correct.
     ((DecisionState *)atn.states[stateNumber])->nonGreedy = true;
@@ -247,6 +258,7 @@ ATN ATNDeserializer::deserialize(const std::vector<uint16_t>& input) {
   // RULES
   //
   size_t nrules = data[p++];
+  PLOG("RULES: p=%d, nrules=%ld\n", p, nrules);
   for (size_t i = 0; i < nrules; i++) {
     size_t s = data[p++];
     // Also here, the serialized atn must ensure to point to the correct class type.

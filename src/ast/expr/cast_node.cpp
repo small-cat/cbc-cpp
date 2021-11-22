@@ -44,7 +44,7 @@ Location* CastNode::location() {
 }
 
 std::string CastNode::GetClass() {
-  return "CaseNode";
+  return "CastNode";
 }
 
 void CastNode::_dump(Dumper *d) {

@@ -14,8 +14,20 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 file(STRINGS "VERSION" SVERSION)
 add_definitions(-Wall -Wno-unused-function -DSVERSION=${SVERSION})
 
-set(CMAKE_CXX_FLAGS_DEBUG     "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g -DDEBUG_0")
-set(CMAKE_CXX_FLAGS_RELEASE   "${CMAKE_CXX_FLAGS_RELEASE} -O3")
+# set MACROS for program
+execute_process(COMMAND bash "-c" "gcc --version | head -n1 | tr -d '\n'" OUTPUT_VARIABLE COMPILE_TOOL_VERSION)
+execute_process(COMMAND bash "-c" "uname -r | tr -d '\n'" OUTPUT_VARIABLE COMPILE_OS)
+execute_process(COMMAND bash "-c" "git log | head -n1 | awk '{print $2}' | tr -d '\n'" OUTPUT_VARIABLE COMMIT_ID)
+execute_process(COMMAND bash "-c" "date '+%Y-%m-%d %H:%M:%S' | tr -d '\n'" OUTPUT_VARIABLE BUILD_DATE)
+
+set(MY_CXX_FLAGS "-DCOMPILE_TOOL_VERSION=\"${COMPILE_TOOL_VERSION}\" \
+                  -DCOMPILE_OS=\"${COMPILE_OS}\" \
+                  -DBUILD_DATE=\"${BUILD_DATE}\" \
+                  -DCOMMIT_ID=\"${COMMIT_ID}\"")
+
+#set(CMAKE_CXX_FLAGS_DEBUG     "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g -DDEBUG_0 -DDEBUG_ATN=1 -DDEBUG_LIST_ATN_DECISIONS=1 -DDEBUG_ANTLR=true")
+set(CMAKE_CXX_FLAGS_DEBUG     "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g -DDEBUG_0 ${MY_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS_RELEASE   "${CMAKE_CXX_FLAGS_RELEASE} -O3 ${MY_CXX_FLAGS}")
 
 include_directories(
   # ${PROJECT_SOURCE_DIR}/src/compiler

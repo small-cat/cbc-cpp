@@ -1,6 +1,7 @@
 * build ast from antlr4
   - build ast **DONE**
-  - fix memory leak, definitely lost in 1 block but I don't figure it out
+  - fix memory leak, definitely lost in 1 block but I don't figure it out DONE
+  - rewrite functions in dumpable with template functions
 
 * generate ir
   - design ir structure

@@ -38,7 +38,9 @@
 #define DEBUG_ATN 0
 #endif
 
+#ifndef DEBUG_LIST_ATN_DECISIONS
 #define DEBUG_LIST_ATN_DECISIONS 0
+#endif
 
 #ifndef DEBUG_DFA
 #define DEBUG_DFA 0

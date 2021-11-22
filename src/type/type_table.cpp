@@ -352,7 +352,6 @@ void TypeTable::SemanticCheck(utils::ErrorHandler *handler) {
       auto ct = t->GetCompositeType();
       CheckVoidMembers(ct, handler);
       CheckDuplicatedMembers(ct, handler);
-    } else if (utils::is<ArrayType *>(t)) {
       CheckVoidMembers(t->GetArrayType(), handler);
     }
 
