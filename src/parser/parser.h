@@ -50,8 +50,8 @@ private:
 
   // for import file
   std::vector<std::string> load_path_;
-  std::map<std::string, ast::ImportFileNode *> unloaded_file_map_;
-  std::map<std::string, bool> loaded_file_map_;
+  std::map<std::string, ast::ImportFileNode *> unloaded_file_map_;  /// 表示未加载的头文件
+  std::map<std::string, bool> loaded_file_map_;   /// 表示已经加载的头文件，防止重复加载
   std::map<std::string, ast::Declarations *> decls_map_;
   utils::ErrorHandler* err_handler_;
 };
